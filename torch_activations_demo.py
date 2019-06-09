@@ -20,10 +20,12 @@ from torchvision import datasets, transforms
 
 # import custom activations
 from Echo.Activation.Torch.weightedTanh import weightedTanh
+from Echo.Activation.Torch.mish import mish
 import Echo.Activation.Torch.functional as Func
 
 # activation names constants
 WEIGHTED_TANH = 'weighted_tanh'
+MISH = 'mish'
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
@@ -47,6 +49,9 @@ class Classifier(nn.Module):
         if (self.activation == WEIGHTED_TANH):
             x = Func.weighted_tanh(self.fc1(x), weight = 1)
 
+        if (self.activation == MISH):
+            x = Func.mish(self.fc1(x))
+
         x = F.relu(self.fc2(x))
         x = F.relu(self.fc3(x))
         x = F.log_softmax(self.fc4(x), dim=1)
@@ -63,7 +68,7 @@ def main():
     # Add argument to choose one of the activation functions
     parser.add_argument('--activation', action='store', default = WEIGHTED_TANH,
                         help='Activation function for demonstration.',
-                        choices = [WEIGHTED_TANH])
+                        choices = [WEIGHTED_TANH, MISH])
 
     # Add argument to choose the way to initialize the model
     parser.add_argument('--model_initialization', action='store', default = 'class',
@@ -93,10 +98,17 @@ def main():
         # Initialize the model using defined Classifier class
         model = Classifier()
     else:
+        # Setup the activation function
+        if (activation == WEIGHTED_TANH):
+            activation_function = weightedTanh(weight = 1)
+
+        if (activation == MISH):
+            activation_function = mish()
+
         # Initialize the model using nn.Sequential
         model = nn.Sequential(OrderedDict([
                               ('fc1', nn.Linear(784, 256)),
-                              ('wtahn1', weightedTanh(weight = 1)), # use custom activation function
+                              ('wtahn1', activation_function), # use custom activation function
                               ('fc2', nn.Linear(256, 128)),
                               ('bn2', nn.BatchNorm1d(num_features=128)),
                               ('relu2', nn.ReLU()),
@@ -108,7 +120,7 @@ def main():
                               ('logsoftmax', nn.LogSoftmax(dim=1))]))
 
     # Train the model
-    print("Training the model on Fashion MNIST dataset.\n")
+    print("Training the model on Fashion MNIST dataset with {} activation function.\n".format(activation))
 
     criterion = nn.NLLLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.003)

@@ -1,6 +1,6 @@
 '''
-Applies the weighted tanh function element-wise:
-f(x) = tanh(x * weight)
+Applies the mish function element-wise:
+mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))
 '''
 
 # import pytorch
@@ -10,9 +10,10 @@ from torch import nn
 # import activation functions
 import Echo.Activation.Torch.functional as Func
 
-class weightedTanh(nn.Module):
+class mish(nn.Module):
     '''
-    Applies the weighted tanh function element-wise: weighted_tanh(x) = tanh(x * weight)
+    Applies the mish function element-wise:
+    mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))
 
     Shape:
         - Input: (N, *) where * means, any number of additional
@@ -20,22 +21,19 @@ class weightedTanh(nn.Module):
         - Output: (N, *), same shape as the input
 
     Examples:
-        >>> m = weightedTanh(weight = 1)
+        >>> m = mish()
         >>> input = torch.randn(2)
         >>> output = m(input)
 
     '''
-    def __init__(self, weight = 1):
+    def __init__(self):
         '''
         Init method.
-        INPUT:
-            weight - weight to be multiplied with the argument of the function
         '''
         super().__init__()
-        self.weight = weight
 
     def forward(self, input):
         '''
         Forward pass of the function.
         '''
-        return Func.weighted_tanh(input, self.weight)
+        return Func.mish(input)

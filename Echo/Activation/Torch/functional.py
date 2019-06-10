@@ -41,8 +41,16 @@ def softplus(input):
 
 def aria2(input, beta=1, alpha=1.5):
     '''
-    Applies the softplus function element-wise:
+    Applies the Aria-2 function element-wise:
     aria2(x) = (1+exp(-beta*x))^-alpha
     See additional documentation for aria2 class.
     '''
     return (1+torch.exp(-beta * input)) ** -alpha
+
+def logsigmoid(input):
+    '''
+    Applies the Log-Sigmoid function element-wise:
+    logsigmoid(x) = log(sigmoid(x)) = log(1/(1+exp(-x)))
+    See additional documentation for logsigmoid class.
+    '''
+    return F.logsigmoid(input) 

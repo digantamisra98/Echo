@@ -24,3 +24,12 @@ def mish(input):
     See additional documentation for mish class.
     '''
     return input * torch.tanh(F.softplus(input))
+
+def swish(input):
+    '''
+    Applies the swish function element-wise:
+    swish(x) = x * sigmoid(x)
+
+    See additional documentation for swish class.
+    '''
+    return input * torch.sigmoid(input)

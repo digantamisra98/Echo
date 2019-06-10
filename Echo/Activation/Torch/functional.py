@@ -38,3 +38,11 @@ def softplus(input):
     See additional documentation for softplus class.
     '''
     return F.softplus(input)
+
+def aria2(input, beta=1, alpha=1.5):
+    '''
+    Applies the softplus function element-wise:
+    aria2(x) = (1+exp(-beta*x))^-alpha
+    See additional documentation for aria2 class.
+    '''
+    return (1+torch.exp(-beta * input)) ** -alpha

@@ -27,19 +27,22 @@ class aria2(nn.Module):
         - Output: (N, *), same shape as the input
 
     Examples:
-        >>> m = aria2()
+        >>> m = aria2(beta=0.5, alpha=1)
         >>> input = torch.randn(2)
-        >>> output = m(input, beta=0.5, alpha=1)
+        >>> output = m(input)
 
     '''
-    def __init__(self):
+    def __init__(self, beta = 1, alpha = 1.5):
         '''
         Init method.
         '''
         super().__init__()
+        self.beta = beta
+        self.alpha = alpha
+
 
     def forward(self, input):
         '''
         Forward pass of the function.
         '''
-        return Func.swish(input, self.alpha, self.beta)
+        return Func.aria2(input, self.alpha, self.beta)

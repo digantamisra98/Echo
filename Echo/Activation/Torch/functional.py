@@ -31,13 +31,6 @@ def swish(input):
     '''
     return input * torch.sigmoid(input)
 
-def softplus(input):
-    '''
-    Applies the softplus function element-wise:
-    softplus(x) = ln(1+exp(x))
-    See additional documentation for softplus class.
-    '''
-    return F.softplus(input)
 
 def aria2(input, beta=1, alpha=1.5):
     '''
@@ -45,12 +38,4 @@ def aria2(input, beta=1, alpha=1.5):
     aria2(x) = (1+exp(-beta*x))^-alpha
     See additional documentation for aria2 class.
     '''
-    return (1+torch.exp(-beta * input)) ** -alpha
-
-def logsigmoid(input):
-    '''
-    Applies the Log-Sigmoid function element-wise:
-    logsigmoid(x) = log(sigmoid(x)) = log(1/(1+exp(-x)))
-    See additional documentation for logsigmoid class.
-    '''
-    return F.logsigmoid(input) 
+    return torch.pow((1+torch.exp(-beta * input)),-alpha)

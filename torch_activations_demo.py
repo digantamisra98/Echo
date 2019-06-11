@@ -22,14 +22,14 @@ from torchvision import datasets, transforms
 from Echo.Activation.Torch.weightedTanh import weightedTanh
 from Echo.Activation.Torch.mish import mish
 from Echo.Activation.Torch.swish import swish
-from Echo.Activation.Torch.softplus import softplus
+from Echo.Activation.Torch.aria2 import aria2
 import Echo.Activation.Torch.functional as Func
 
 # activation names constants
 WEIGHTED_TANH = 'weighted_tanh'
 MISH = 'mish'
 SWISH = 'swish'
-SOFTPLUS = 'softplus'
+ARIA2 = 'aria2'
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
@@ -59,8 +59,8 @@ class Classifier(nn.Module):
         if (self.activation == SWISH):
             x = Func.swish(self.fc1(x))
 
-        if (self.activation == SOFTPLUS):
-            x = Func.softplus(self.fc1(x))
+        if (self.activation == ARIA2):
+            x = Func.aria2(self.fc1(x))
 
         x = F.relu(self.fc2(x))
         x = F.relu(self.fc3(x))
@@ -78,7 +78,7 @@ def main():
     # Add argument to choose one of the activation functions
     parser.add_argument('--activation', action='store', default = WEIGHTED_TANH,
                         help='Activation function for demonstration.',
-                        choices = [WEIGHTED_TANH, MISH, SWISH, SOFTPLUS])
+                        choices = [WEIGHTED_TANH, MISH, SWISH, ARIA2])
 
     # Add argument to choose the way to initialize the model
     parser.add_argument('--model_initialization', action='store', default = 'class',
@@ -118,8 +118,8 @@ def main():
         if (activation == SWISH):
             activation_function = swish()
 
-        if (activation == SOFTPLUS):
-            activation_function = softplus()
+        if (activation == ARIA2):
+            activation_function = aria2()
 
         # Initialize the model using nn.Sequential
         model = nn.Sequential(OrderedDict([

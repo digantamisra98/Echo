@@ -1,0 +1,292 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to Echo’s documentation! &#8212; Echo 2019 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-echo-s-documentation">
+<h1>Welcome to Echo’s documentation!<a class="headerlink" href="#welcome-to-echo-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="echo-activation-torch-functional">
+<h1>Echo.Activation.Torch.functional<a class="headerlink" href="#echo-activation-torch-functional" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-Echo.Activation.Torch.functional"></span><p>Script provides functional interface for custom activation functions.</p>
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.aria2">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">aria2</code><span class="sig-paren">(</span><em>input</em>, <em>beta=1</em>, <em>alpha=1.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#aria2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.aria2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the Aria-2 function element-wise:
+aria2(x) = (1+exp(-beta*x))^-alpha
+See additional documentation for aria2 class.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.mish">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">mish</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#mish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.mish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the mish function element-wise:
+mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))
+See additional documentation for mish class.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.swish">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">swish</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#swish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.swish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the swish function element-wise:
+swish(x) = x * sigmoid(x)
+See additional documentation for swish class.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.weighted_tanh">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">weighted_tanh</code><span class="sig-paren">(</span><em>input</em>, <em>weight=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#weighted_tanh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.weighted_tanh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the weighted tanh function element-wise:
+weighted_tanh(x) = tanh(x * weight)
+See additional documentation for weightedTanh class.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-Echo.Activation.Torch.aria2">
+<span id="echo-activation-torch-aria2"></span><h1>Echo.Activation.Torch.aria2<a class="headerlink" href="#module-Echo.Activation.Torch.aria2" title="Permalink to this headline">¶</a></h1>
+<p>Applies the Aria-2 function element-wise:
+Aria-2(x, alpha, beta) = (1+exp(-beta*x))^-alpha</p>
+<p>See Aria paper:
+<a class="reference external" href="https://arxiv.org/abs/1805.08878">https://arxiv.org/abs/1805.08878</a></p>
+<dl class="class">
+<dt id="Echo.Activation.Torch.aria2.aria2">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.aria2.</code><code class="descname">aria2</code><span class="sig-paren">(</span><em>beta=1</em>, <em>alpha=1.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/aria2.html#aria2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.aria2.aria2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the Aria-2 function element-wise:
+aria2(x) = (1+exp(-beta*x))^-alpha</p>
+<p>Aria paper:
+<a class="reference external" href="https://arxiv.org/abs/1805.08878">https://arxiv.org/abs/1805.08878</a></p>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first last simple">
+<li>Input: (N, <a href="#id1"><span class="problematic" id="id2">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id3"><span class="problematic" id="id4">*</span></a>), same shape as the input</li>
+</ul>
+</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">aria2</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Echo.Activation.Torch.aria2.aria2.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/aria2.html#aria2.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.aria2.aria2.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass of the function.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Echo.Activation.Torch.mish">
+<span id="echo-activation-torch-mish"></span><h1>Echo.Activation.Torch.mish<a class="headerlink" href="#module-Echo.Activation.Torch.mish" title="Permalink to this headline">¶</a></h1>
+<p>Applies the mish function element-wise:
+mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))</p>
+<dl class="class">
+<dt id="Echo.Activation.Torch.mish.mish">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.mish.</code><code class="descname">mish</code><a class="reference internal" href="_modules/Echo/Activation/Torch/mish.html#mish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.mish.mish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the mish function element-wise:
+mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))</p>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first last simple">
+<li>Input: (N, <a href="#id5"><span class="problematic" id="id6">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id7"><span class="problematic" id="id8">*</span></a>), same shape as the input</li>
+</ul>
+</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">mish</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Echo.Activation.Torch.mish.mish.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/mish.html#mish.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.mish.mish.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass of the function.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Echo.Activation.Torch.swish">
+<span id="echo-activation-torch-swish"></span><h1>Echo.Activation.Torch.swish<a class="headerlink" href="#module-Echo.Activation.Torch.swish" title="Permalink to this headline">¶</a></h1>
+<p>Applies the swish function element-wise:
+swish(x) = x * sigmoid(x)</p>
+<p>See Swish paper:
+<a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+<dl class="class">
+<dt id="Echo.Activation.Torch.swish.swish">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.swish.</code><code class="descname">swish</code><a class="reference internal" href="_modules/Echo/Activation/Torch/swish.html#swish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.swish.swish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the swish function element-wise:
+swish(x) = x * sigmoid(x)</p>
+<p>Swish paper:
+<a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first last simple">
+<li>Input: (N, <a href="#id9"><span class="problematic" id="id10">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id11"><span class="problematic" id="id12">*</span></a>), same shape as the input</li>
+</ul>
+</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">swish</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Echo.Activation.Torch.swish.swish.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/swish.html#swish.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.swish.swish.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass of the function.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="echo-activation-torch-weightedtanh">
+<h1>Echo.Activation.Torch.weightedTanh<a class="headerlink" href="#echo-activation-torch-weightedtanh" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-Echo.Activation.Torch.weightedTanh"></span><p>Applies the weighted tanh function element-wise:
+f(x) = tanh(x * weight)</p>
+<dl class="class">
+<dt id="Echo.Activation.Torch.weightedTanh.weightedTanh">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.weightedTanh.</code><code class="descname">weightedTanh</code><span class="sig-paren">(</span><em>weight=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/weightedTanh.html#weightedTanh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.weightedTanh.weightedTanh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the weighted tanh function element-wise: weighted_tanh(x) = tanh(x * weight)</p>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first last simple">
+<li>Input: (N, <a href="#id13"><span class="problematic" id="id14">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id15"><span class="problematic" id="id16">*</span></a>), same shape as the input</li>
+</ul>
+</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">weightedTanh</span><span class="p">(</span><span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Echo.Activation.Torch.weightedTanh.weightedTanh.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/weightedTanh.html#weightedTanh.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.weightedTanh.weightedTanh.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass of the function.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Echo</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Diganta Misra, Aleksandra Deis.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -39,3 +39,12 @@ def aria2(input, beta=1, alpha=1.5):
     See additional documentation for aria2 class.
     '''
     return torch.pow((1+torch.exp(-beta * input)),-alpha)
+
+def beta_mish(input, beta=1.5):
+    '''
+    Applies the β mish function element-wise:
+    β mish(x) = x * tanh(ln((1 + exp(x))^β))
+
+    See additional documentation for beta_mish class.
+    '''
+    return input * torch.tanh(torch.log(torch.pow((1+torch.exp(input)),beta)))

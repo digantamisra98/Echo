@@ -48,3 +48,12 @@ def beta_mish(input, beta=1.5):
     See additional documentation for beta_mish class.
     '''
     return input * torch.tanh(torch.log(torch.pow((1+torch.exp(input)),beta)))
+
+def eswish(input, beta=1.75):
+    '''
+    Applies the E-Swish function element-wise:
+    E-Swish(x, beta) = beta*x*sigmoid(x)
+
+    See additional documentation for eswish class.
+    '''
+    return beta * input * torch.sigmoid(input)

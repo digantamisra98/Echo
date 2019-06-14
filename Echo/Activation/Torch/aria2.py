@@ -1,6 +1,9 @@
 '''
 Applies the Aria-2 function element-wise:
-Aria-2(x, alpha, beta) = (1+exp(-beta*x))^-alpha
+
+.. math::
+
+    Aria2(x, \\alpha, \\beta) = (1+e^{-\\beta*x})^{-\\alpha}
 
 See Aria paper:
 https://arxiv.org/abs/1805.08878
@@ -16,10 +19,19 @@ import Echo.Activation.Torch.functional as Func
 class aria2(nn.Module):
     '''
     Applies the Aria-2 function element-wise:
-    aria2(x) = (1+exp(-beta*x))^-alpha
+
+    .. math::
+
+        Aria2(x, \\alpha, \\beta) = (1+e^{-\\beta*x})^{-\\alpha}
 
     Aria paper:
     https://arxiv.org/abs/1805.08878
+
+    Plot:
+
+    .. figure::  _static/aria2.png
+        :align:   center
+
 
     Shape:
         - Input: (N, *) where * means, any number of additional

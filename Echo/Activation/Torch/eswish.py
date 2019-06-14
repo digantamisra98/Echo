@@ -1,6 +1,9 @@
 '''
 Applies the E-Swish function element-wise:
-E-Swish(x, beta) = beta*x*sigmoid(x)
+
+.. math::
+
+    ESwish(x, \\beta) = \\beta*x*sigmoid(x)
 
 See E-Swish paper:
 https://arxiv.org/abs/1801.07145
@@ -16,10 +19,18 @@ import Echo.Activation.Torch.functional as Func
 class eswish(nn.Module):
     '''
     Applies the E-Swish function element-wise:
-    E-Swish(x, beta) = beta*x*sigmoid(x)
+
+    .. math::
+
+        ESwish(x, \\beta) = \\beta*x*sigmoid(x)
 
     See E-Swish paper:
     https://arxiv.org/abs/1801.07145
+
+    Plot:
+
+    .. figure::  _static/eswish.png
+        :align:   center
 
     Shape:
         - Input: (N, *) where * means, any number of additional

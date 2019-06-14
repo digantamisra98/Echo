@@ -1,6 +1,9 @@
 '''
 Applies the weighted tanh function element-wise:
-f(x) = tanh(x * weight)
+
+.. math::
+
+    weightedtanh(x) = tanh(x * weight)
 '''
 
 # import pytorch
@@ -12,7 +15,16 @@ import Echo.Activation.Torch.functional as Func
 
 class weightedTanh(nn.Module):
     '''
-    Applies the weighted tanh function element-wise: weighted_tanh(x) = tanh(x * weight)
+    Applies the weighted tanh function element-wise:
+
+    .. math::
+
+        weightedtanh(x) = tanh(x * weight)
+
+    Plot:
+
+    .. figure::  _static/weighted_tanh.png
+        :align:   center
 
     Shape:
         - Input: (N, *) where * means, any number of additional

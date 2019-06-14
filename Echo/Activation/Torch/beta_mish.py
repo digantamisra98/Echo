@@ -1,6 +1,9 @@
 '''
 Applies the β mish function element-wise:
-β mish(x) = x * tanh(ln((1 + exp(x))^β))
+
+.. math::
+
+    \\beta mish(x) = x * tanh(ln((1 + e^{x})^{\\beta}))
 '''
 
 # import pytorch
@@ -13,7 +16,16 @@ import Echo.Activation.Torch.functional as Func
 class beta_mish(nn.Module):
     '''
     Applies the β mish function element-wise:
-    β mish(x) = x * tanh(ln((1 + exp(x))^β))
+
+    .. math::
+
+        \\beta mish(x) = x * tanh(ln((1 + e^{x})^{\\beta}))
+
+    Plot:
+
+    .. figure::  _static/beta_mish.png
+        :align:   center
+
 
     Shape:
         - Input: (N, *) where * means, any number of additional

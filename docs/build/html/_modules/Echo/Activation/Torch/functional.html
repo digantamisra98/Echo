@@ -13,6 +13,7 @@
     <script type="text/javascript" src="../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
    
@@ -44,24 +45,36 @@
 <div class="viewcode-block" id="weighted_tanh"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.weighted_tanh">[docs]</a><span class="k">def</span> <span class="nf">weighted_tanh</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Applies the weighted tanh function element-wise:</span>
-<span class="sd">    weighted_tanh(x) = tanh(x * weight)</span>
-<span class="sd">    See additional documentation for weightedTanh class.</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        weightedtanh(x) = tanh(x * weight)</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.weightedTanh`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">weight</span> <span class="o">*</span> <span class="nb">input</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="mish"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.mish">[docs]</a><span class="k">def</span> <span class="nf">mish</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Applies the mish function element-wise:</span>
-<span class="sd">    mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))</span>
-<span class="sd">    See additional documentation for mish class.</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.mish`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">softplus</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="swish"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.swish">[docs]</a><span class="k">def</span> <span class="nf">swish</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Applies the swish function element-wise:</span>
-<span class="sd">    swish(x) = x * sigmoid(x)</span>
-<span class="sd">    See additional documentation for swish class.</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        swish(x) = x * sigmoid(x)</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.swish`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
 
@@ -69,10 +82,50 @@
 <div class="viewcode-block" id="aria2"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.aria2">[docs]</a><span class="k">def</span> <span class="nf">aria2</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.5</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Applies the Aria-2 function element-wise:</span>
-<span class="sd">    aria2(x) = (1+exp(-beta*x))^-alpha</span>
-<span class="sd">    See additional documentation for aria2 class.</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        Aria2(x, \\alpha, \\beta) = (1+e^{-\\beta*x})^{-\\alpha}</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.aria2`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span> <span class="o">*</span> <span class="nb">input</span><span class="p">)),</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="beta_mish"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.beta_mish">[docs]</a><span class="k">def</span> <span class="nf">beta_mish</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1.5</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies the β mish function element-wise:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            \\beta mish(x) = x * tanh(ln((1 + e^{x})^{\\beta}))</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.beta_mish`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="nb">input</span><span class="p">)),</span><span class="n">beta</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="eswish"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.eswish">[docs]</a><span class="k">def</span> <span class="nf">eswish</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1.75</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies the E-Swish function element-wise:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            ESwish(x, \\beta) = \\beta*x*sigmoid(x)</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.eswish`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">beta</span> <span class="o">*</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="swishx"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.swishx">[docs]</a><span class="k">def</span> <span class="nf">swishx</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1.25</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies the Swish-X function element-wise:</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            SwishX(x, \\beta) = x*sigmoid(\\beta,x) = \\frac{x}{(1+e^{-\\beta*x})}</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.swish`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="nb">input</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="o">-</span><span class="n">beta</span><span class="o">*</span><span class="n">x</span><span class="p">))</span></div>
 </pre></div>
 
           </div>
@@ -81,10 +134,22 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../../../index.html">Echo</a></h1>
+<p class="logo">
+  <a href="../../../../index.html">
+    <img class="logo" src="../../../../_static/echo_logo.png" alt="Logo"/>
+    
+  </a>
+</p>
 
 
 
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=digantamisra98&repo=Echo&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
 
 
 

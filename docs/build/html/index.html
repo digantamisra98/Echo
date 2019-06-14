@@ -13,6 +13,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
    
@@ -33,58 +34,32 @@
             
   <div class="section" id="welcome-to-echo-s-documentation">
 <h1>Welcome to Echo’s documentation!<a class="headerlink" href="#welcome-to-echo-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+<p><strong>Echo Package</strong> is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as <a class="reference external" href="https://pytorch.org/">PyTorch</a>, <a class="reference external" href="https://keras.io/">Keras</a> and
+<a class="reference external" href="https://www.tensorflow.org/">TensorFlow</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
-<div class="section" id="echo-activation-torch-functional">
-<h1>Echo.Activation.Torch.functional<a class="headerlink" href="#echo-activation-torch-functional" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="module-Echo.Activation.Torch.functional"></span><p>Script provides functional interface for custom activation functions.</p>
-<dl class="function">
-<dt id="Echo.Activation.Torch.functional.aria2">
-<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">aria2</code><span class="sig-paren">(</span><em>input</em>, <em>beta=1</em>, <em>alpha=1.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#aria2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.aria2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the Aria-2 function element-wise:
-aria2(x) = (1+exp(-beta*x))^-alpha
-See additional documentation for aria2 class.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="Echo.Activation.Torch.functional.mish">
-<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">mish</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#mish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.mish" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the mish function element-wise:
-mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))
-See additional documentation for mish class.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="Echo.Activation.Torch.functional.swish">
-<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">swish</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#swish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.swish" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the swish function element-wise:
-swish(x) = x * sigmoid(x)
-See additional documentation for swish class.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="Echo.Activation.Torch.functional.weighted_tanh">
-<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">weighted_tanh</code><span class="sig-paren">(</span><em>input</em>, <em>weight=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#weighted_tanh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.weighted_tanh" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the weighted tanh function element-wise:
-weighted_tanh(x) = tanh(x * weight)
-See additional documentation for weightedTanh class.</p>
-</dd></dl>
-
-</div>
 <div class="section" id="module-Echo.Activation.Torch.aria2">
-<span id="echo-activation-torch-aria2"></span><h1>Echo.Activation.Torch.aria2<a class="headerlink" href="#module-Echo.Activation.Torch.aria2" title="Permalink to this headline">¶</a></h1>
-<p>Applies the Aria-2 function element-wise:
-Aria-2(x, alpha, beta) = (1+exp(-beta*x))^-alpha</p>
+<span id="echo-activation-torch-aria2"></span><h2>Echo.Activation.Torch.aria2<a class="headerlink" href="#module-Echo.Activation.Torch.aria2" title="Permalink to this headline">¶</a></h2>
+<p>Applies the Aria-2 function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[Aria2(x, \alpha, \beta) = (1+e^{-\beta*x})^{-\alpha}\]</div>
 <p>See Aria paper:
 <a class="reference external" href="https://arxiv.org/abs/1805.08878">https://arxiv.org/abs/1805.08878</a></p>
 <dl class="class">
 <dt id="Echo.Activation.Torch.aria2.aria2">
 <em class="property">class </em><code class="descclassname">Echo.Activation.Torch.aria2.</code><code class="descname">aria2</code><span class="sig-paren">(</span><em>beta=1</em>, <em>alpha=1.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/aria2.html#aria2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.aria2.aria2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the Aria-2 function element-wise:
-aria2(x) = (1+exp(-beta*x))^-alpha</p>
+<dd><p>Applies the Aria-2 function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[Aria2(x, \alpha, \beta) = (1+e^{-\beta*x})^{-\alpha}\]</div>
 <p>Aria paper:
 <a class="reference external" href="https://arxiv.org/abs/1805.08878">https://arxiv.org/abs/1805.08878</a></p>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_static/aria2.png" src="_static/aria2.png" />
+</div>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
@@ -111,14 +86,20 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.mish">
-<span id="echo-activation-torch-mish"></span><h1>Echo.Activation.Torch.mish<a class="headerlink" href="#module-Echo.Activation.Torch.mish" title="Permalink to this headline">¶</a></h1>
-<p>Applies the mish function element-wise:
-mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))</p>
+<span id="echo-activation-torch-mish"></span><h2>Echo.Activation.Torch.mish<a class="headerlink" href="#module-Echo.Activation.Torch.mish" title="Permalink to this headline">¶</a></h2>
+<p>Applies the mish function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))\]</div>
 <dl class="class">
 <dt id="Echo.Activation.Torch.mish.mish">
 <em class="property">class </em><code class="descclassname">Echo.Activation.Torch.mish.</code><code class="descname">mish</code><a class="reference internal" href="_modules/Echo/Activation/Torch/mish.html#mish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.mish.mish" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the mish function element-wise:
-mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))</p>
+<dd><p>Applies the mish function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_static/mish.png" src="_static/mish.png" />
+</div>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
@@ -144,25 +125,71 @@ dimensions</li>
 </dd></dl>
 
 </div>
-<div class="section" id="module-Echo.Activation.Torch.swish">
-<span id="echo-activation-torch-swish"></span><h1>Echo.Activation.Torch.swish<a class="headerlink" href="#module-Echo.Activation.Torch.swish" title="Permalink to this headline">¶</a></h1>
-<p>Applies the swish function element-wise:
-swish(x) = x * sigmoid(x)</p>
-<p>See Swish paper:
-<a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+<div class="section" id="module-Echo.Activation.Torch.beta_mish">
+<span id="echo-activation-torch-beta-mish"></span><h2>Echo.Activation.Torch.beta_mish<a class="headerlink" href="#module-Echo.Activation.Torch.beta_mish" title="Permalink to this headline">¶</a></h2>
+<p>Applies the β mish function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[\beta mish(x) = x * tanh(ln((1 + e^{x})^{\beta}))\]</div>
 <dl class="class">
-<dt id="Echo.Activation.Torch.swish.swish">
-<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.swish.</code><code class="descname">swish</code><a class="reference internal" href="_modules/Echo/Activation/Torch/swish.html#swish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.swish.swish" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the swish function element-wise:
-swish(x) = x * sigmoid(x)</p>
-<p>Swish paper:
-<a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+<dt id="Echo.Activation.Torch.beta_mish.beta_mish">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.beta_mish.</code><code class="descname">beta_mish</code><span class="sig-paren">(</span><em>beta=1.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/beta_mish.html#beta_mish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.beta_mish.beta_mish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the β mish function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[\beta mish(x) = x * tanh(ln((1 + e^{x})^{\beta}))\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_static/beta_mish.png" src="_static/beta_mish.png" />
+</div>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
 <li>Input: (N, <a href="#id9"><span class="problematic" id="id10">*</span></a>) where * means, any number of additional
 dimensions</li>
 <li>Output: (N, <a href="#id11"><span class="problematic" id="id12">*</span></a>), same shape as the input</li>
+</ul>
+</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">beta_mish</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Echo.Activation.Torch.beta_mish.beta_mish.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/beta_mish.html#beta_mish.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.beta_mish.beta_mish.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass of the function.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Echo.Activation.Torch.swish">
+<span id="echo-activation-torch-swish"></span><h2>Echo.Activation.Torch.swish<a class="headerlink" href="#module-Echo.Activation.Torch.swish" title="Permalink to this headline">¶</a></h2>
+<p>Applies the swish function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[swish(x) = x * sigmoid(x)\]</div>
+<p>See Swish paper:
+<a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+<dl class="class">
+<dt id="Echo.Activation.Torch.swish.swish">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.swish.</code><code class="descname">swish</code><a class="reference internal" href="_modules/Echo/Activation/Torch/swish.html#swish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.swish.swish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the swish function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[swish(x) = x * sigmoid(x)\]</div>
+<p>Swish paper:
+<a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_static/swish.png" src="_static/swish.png" />
+</div>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first last simple">
+<li>Input: (N, <a href="#id13"><span class="problematic" id="id14">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id15"><span class="problematic" id="id16">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Examples:</dt>
@@ -182,20 +209,115 @@ dimensions</li>
 </dd></dl>
 
 </div>
-<div class="section" id="echo-activation-torch-weightedtanh">
-<h1>Echo.Activation.Torch.weightedTanh<a class="headerlink" href="#echo-activation-torch-weightedtanh" title="Permalink to this headline">¶</a></h1>
-<span class="target" id="module-Echo.Activation.Torch.weightedTanh"></span><p>Applies the weighted tanh function element-wise:
-f(x) = tanh(x * weight)</p>
+<div class="section" id="module-Echo.Activation.Torch.eswish">
+<span id="echo-activation-torch-eswish"></span><h2>Echo.Activation.Torch.eswish<a class="headerlink" href="#module-Echo.Activation.Torch.eswish" title="Permalink to this headline">¶</a></h2>
+<p>Applies the E-Swish function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[ESwish(x, \beta) = \beta*x*sigmoid(x)\]</div>
+<p>See E-Swish paper:
+<a class="reference external" href="https://arxiv.org/abs/1801.07145">https://arxiv.org/abs/1801.07145</a></p>
 <dl class="class">
-<dt id="Echo.Activation.Torch.weightedTanh.weightedTanh">
-<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.weightedTanh.</code><code class="descname">weightedTanh</code><span class="sig-paren">(</span><em>weight=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/weightedTanh.html#weightedTanh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.weightedTanh.weightedTanh" title="Permalink to this definition">¶</a></dt>
-<dd><p>Applies the weighted tanh function element-wise: weighted_tanh(x) = tanh(x * weight)</p>
+<dt id="Echo.Activation.Torch.eswish.eswish">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.eswish.</code><code class="descname">eswish</code><span class="sig-paren">(</span><em>beta=1.75</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/eswish.html#eswish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.eswish.eswish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the E-Swish function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[ESwish(x, \beta) = \beta*x*sigmoid(x)\]</div>
+<p>See E-Swish paper:
+<a class="reference external" href="https://arxiv.org/abs/1801.07145">https://arxiv.org/abs/1801.07145</a></p>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_static/eswish.png" src="_static/eswish.png" />
+</div>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id13"><span class="problematic" id="id14">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id17"><span class="problematic" id="id18">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id15"><span class="problematic" id="id16">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id19"><span class="problematic" id="id20">*</span></a>), same shape as the input</li>
+</ul>
+</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">eswish</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">1.375</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Echo.Activation.Torch.eswish.eswish.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/eswish.html#eswish.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.eswish.eswish.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass of the function.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-Echo.Activation.Torch.swishx">
+<span id="echo-activation-torch-swishx"></span><h2>Echo.Activation.Torch.swishx<a class="headerlink" href="#module-Echo.Activation.Torch.swishx" title="Permalink to this headline">¶</a></h2>
+<p>Applies the Swish-X function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[SwishX(x, \beta) = x*sigmoid(\beta,x) = \frac{x}{(1+e^{-\beta*x})}\]</div>
+<p>See Swish-X paper:
+<a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+<dl class="class">
+<dt id="Echo.Activation.Torch.swishx.swishx">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.swishx.</code><code class="descname">swishx</code><span class="sig-paren">(</span><em>beta=1.25</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/swishx.html#swishx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.swishx.swishx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the Swish-X function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[SwishX(x, \beta) = x*sigmoid(\beta,x) = \frac{x}{(1+e^{-\beta*x})}\]</div>
+<p>See Swish paper:
+<a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_static/swishx.png" src="_static/swishx.png" />
+</div>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first last simple">
+<li>Input: (N, <a href="#id21"><span class="problematic" id="id22">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id23"><span class="problematic" id="id24">*</span></a>), same shape as the input</li>
+</ul>
+</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">swishx</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">1.25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Echo.Activation.Torch.swishx.swishx.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/swishx.html#swishx.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.swishx.swishx.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward pass of the function.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="echo-activation-torch-weightedtanh">
+<h2>Echo.Activation.Torch.weightedTanh<a class="headerlink" href="#echo-activation-torch-weightedtanh" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-Echo.Activation.Torch.weightedTanh"></span><p>Applies the weighted tanh function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[weightedtanh(x) = tanh(x * weight)\]</div>
+<dl class="class">
+<dt id="Echo.Activation.Torch.weightedTanh.weightedTanh">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Torch.weightedTanh.</code><code class="descname">weightedTanh</code><span class="sig-paren">(</span><em>weight=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/weightedTanh.html#weightedTanh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.weightedTanh.weightedTanh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the weighted tanh function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[weightedtanh(x) = tanh(x * weight)\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_static/weighted_tanh.png" src="_static/weighted_tanh.png" />
+</div>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first last simple">
+<li>Input: (N, <a href="#id25"><span class="problematic" id="id26">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id27"><span class="problematic" id="id28">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Examples:</dt>
@@ -215,13 +337,87 @@ dimensions</li>
 </dd></dl>
 
 </div>
+<div class="section" id="module-Echo.Activation.Torch.functional">
+<span id="echo-activation-torch-functional"></span><h2>Echo.Activation.Torch.functional<a class="headerlink" href="#module-Echo.Activation.Torch.functional" title="Permalink to this headline">¶</a></h2>
+<p>Script provides functional interface for custom activation functions.</p>
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.aria2">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">aria2</code><span class="sig-paren">(</span><em>input</em>, <em>beta=1</em>, <em>alpha=1.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#aria2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.aria2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the Aria-2 function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[Aria2(x, \alpha, \beta) = (1+e^{-\beta*x})^{-\alpha}\]</div>
+<p>See additional documentation for <a class="reference internal" href="#module-Echo.Activation.Torch.aria2" title="Echo.Activation.Torch.aria2"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.aria2</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.beta_mish">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">beta_mish</code><span class="sig-paren">(</span><em>input</em>, <em>beta=1.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#beta_mish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.beta_mish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the β mish function element-wise:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\beta mish(x) = x * tanh(ln((1 + e^{x})^{\beta}))\]</div>
+</div></blockquote>
+<p>See additional documentation for <a class="reference internal" href="#module-Echo.Activation.Torch.beta_mish" title="Echo.Activation.Torch.beta_mish"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.beta_mish</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.eswish">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">eswish</code><span class="sig-paren">(</span><em>input</em>, <em>beta=1.75</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#eswish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.eswish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the E-Swish function element-wise:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[ESwish(x, \beta) = \beta*x*sigmoid(x)\]</div>
+</div></blockquote>
+<p>See additional documentation for <a class="reference internal" href="#module-Echo.Activation.Torch.eswish" title="Echo.Activation.Torch.eswish"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.eswish</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.mish">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">mish</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#mish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.mish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the mish function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))\]</div>
+<p>See additional documentation for <a class="reference internal" href="#module-Echo.Activation.Torch.mish" title="Echo.Activation.Torch.mish"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.mish</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.swish">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">swish</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#swish"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.swish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the swish function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[swish(x) = x * sigmoid(x)\]</div>
+<p>See additional documentation for <a class="reference internal" href="#module-Echo.Activation.Torch.swish" title="Echo.Activation.Torch.swish"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.swish</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.swishx">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">swishx</code><span class="sig-paren">(</span><em>input</em>, <em>beta=1.25</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#swishx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.swishx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the Swish-X function element-wise:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[SwishX(x, \beta) = x*sigmoid(\beta,x) = \frac{x}{(1+e^{-\beta*x})}\]</div>
+</div></blockquote>
+<p>See additional documentation for <a class="reference internal" href="#module-Echo.Activation.Torch.swish" title="Echo.Activation.Torch.swish"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.swish</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="Echo.Activation.Torch.functional.weighted_tanh">
+<code class="descclassname">Echo.Activation.Torch.functional.</code><code class="descname">weighted_tanh</code><span class="sig-paren">(</span><em>input</em>, <em>weight=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Echo/Activation/Torch/functional.html#weighted_tanh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Echo.Activation.Torch.functional.weighted_tanh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the weighted tanh function element-wise:</p>
+<div class="math notranslate nohighlight">
+\[weightedtanh(x) = tanh(x * weight)\]</div>
+<p>See additional documentation for <a class="reference internal" href="#module-Echo.Activation.Torch.weightedTanh" title="Echo.Activation.Torch.weightedTanh"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.weightedTanh</span></code></a>.</p>
+</dd></dl>
+
+</div>
 <div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
 <li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
+</div>
 </div>
 
 
@@ -231,10 +427,22 @@ dimensions</li>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="#">Echo</a></h1>
+<p class="logo">
+  <a href="#">
+    <img class="logo" src="_static/echo_logo.png" alt="Logo"/>
+    
+  </a>
+</p>
 
 
 
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=digantamisra98&repo=Echo&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
 
 
 

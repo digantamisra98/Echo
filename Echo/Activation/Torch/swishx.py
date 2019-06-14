@@ -1,6 +1,9 @@
 '''
 Applies the Swish-X function element-wise:
-Swish-X(x, beta) = x*sigmoid(beta,x) = x/(1+e^(-beta*x))
+
+.. math::
+
+    SwishX(x, \\beta) = x*sigmoid(\\beta,x) = \\frac{x}{(1+e^{-\\beta*x})}
 
 See Swish-X paper:
 https://arxiv.org/pdf/1710.05941.pdf
@@ -16,10 +19,18 @@ import Echo.Activation.Torch.functional as Func
 class swishx(nn.Module):
     '''
     Applies the Swish-X function element-wise:
-    Swish-X(x, beta) = x*sigmoid(beta,x) = x/(1+e^(-beta*x))
+
+    .. math::
+
+        SwishX(x, \\beta) = x*sigmoid(\\beta,x) = \\frac{x}{(1+e^{-\\beta*x})}
 
     See Swish paper:
     https://arxiv.org/pdf/1710.05941.pdf
+
+    Plot:
+
+    .. figure::  _static/swishx.png
+        :align:   center
 
     Shape:
         - Input: (N, *) where * means, any number of additional

@@ -1,6 +1,9 @@
 '''
 Applies the mish function element-wise:
-mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))
+
+.. math::
+
+    mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))
 '''
 
 # import pytorch
@@ -13,7 +16,16 @@ import Echo.Activation.Torch.functional as Func
 class mish(nn.Module):
     '''
     Applies the mish function element-wise:
-    mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))
+
+    .. math::
+
+        mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))
+
+    Plot:
+
+    .. figure::  _static/mish.png
+        :align:   center
+
 
     Shape:
         - Input: (N, *) where * means, any number of additional

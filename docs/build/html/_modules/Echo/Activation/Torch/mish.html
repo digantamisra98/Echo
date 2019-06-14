@@ -13,6 +13,7 @@
     <script type="text/javascript" src="../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
    
@@ -34,7 +35,10 @@
   <h1>Source code for Echo.Activation.Torch.mish</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Applies the mish function element-wise:</span>
-<span class="sd">mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))</span>
+
+<span class="sd">.. math::</span>
+
+<span class="sd">    mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="c1"># import pytorch</span>
@@ -47,7 +51,16 @@
 <div class="viewcode-block" id="mish"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.mish.mish">[docs]</a><span class="k">class</span> <span class="nc">mish</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Applies the mish function element-wise:</span>
-<span class="sd">    mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + exp(x)))</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))</span>
+
+<span class="sd">    Plot:</span>
+
+<span class="sd">    .. figure::  _static/mish.png</span>
+<span class="sd">        :align:   center</span>
+
 
 <span class="sd">    Shape:</span>
 <span class="sd">        - Input: (N, *) where * means, any number of additional</span>
@@ -79,10 +92,22 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../../../index.html">Echo</a></h1>
+<p class="logo">
+  <a href="../../../../index.html">
+    <img class="logo" src="../../../../_static/echo_logo.png" alt="Logo"/>
+    
+  </a>
+</p>
 
 
 
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=digantamisra98&repo=Echo&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
 
 
 

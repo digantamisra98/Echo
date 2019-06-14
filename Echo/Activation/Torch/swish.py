@@ -1,6 +1,10 @@
 '''
 Applies the swish function element-wise:
-swish(x) = x * sigmoid(x)
+
+.. math::
+
+    swish(x) = x * sigmoid(x)
+
 
 See Swish paper:
 https://arxiv.org/pdf/1710.05941.pdf
@@ -16,10 +20,18 @@ import Echo.Activation.Torch.functional as Func
 class swish(nn.Module):
     '''
     Applies the swish function element-wise:
-    swish(x) = x * sigmoid(x)
+
+    .. math::
+
+        swish(x) = x * sigmoid(x)
 
     Swish paper:
     https://arxiv.org/pdf/1710.05941.pdf
+
+    Plot:
+
+    .. figure::  _static/swish.png
+        :align:   center
 
     Shape:
         - Input: (N, *) where * means, any number of additional

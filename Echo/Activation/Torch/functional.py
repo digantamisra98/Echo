@@ -90,4 +90,4 @@ def swishx(input, beta=1.25):
 
     See additional documentation for :mod:`Echo.Activation.Torch.swish`.
     '''
-    return input/(1+torch.pow(e,-beta*x))
+    return input/(1+torch.pow(e,-beta*input))

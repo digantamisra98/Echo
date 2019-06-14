@@ -65,4 +65,4 @@ def swishx(input, beta=1.25):
 
     See additional documentation for swish class.
     '''
-    return input/(1+torch.pow(e,-beta*x))
+    return input/(1+torch.pow(e,-beta*input))

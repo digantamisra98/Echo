@@ -57,3 +57,12 @@ def eswish(input, beta=1.75):
     See additional documentation for eswish class.
     '''
     return beta * input * torch.sigmoid(input)
+
+def swishx(input, beta=1.25):
+    '''
+    Applies the Swish-X function element-wise:
+    Swish-X(x, beta) = x*sigmoid(beta,x) = x/(1+e^(-beta*x))
+
+    See additional documentation for swish class.
+    '''
+    return input/(1+torch.pow(e,-beta*x))

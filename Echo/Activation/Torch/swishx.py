@@ -1,9 +1,9 @@
 '''
-Applies the E-Swish function element-wise:
-E-Swish(x, beta) = beta*x*sigmoid(x)
+Applies the Swish-X function element-wise:
+Swish-X(x, beta) = x*sigmoid(beta,x) = x/(1+e^(-beta*x))
 
-See E-Swish paper:
-https://arxiv.org/abs/1801.07145
+See Swish-X paper:
+https://arxiv.org/pdf/1710.05941.pdf
 '''
 
 # import pytorch
@@ -13,13 +13,13 @@ from torch import nn
 # import activation functions
 import Echo.Activation.Torch.functional as Func
 
-class eswish(nn.Module):
+class swishx(nn.Module):
     '''
-    Applies the E-Swish function element-wise:
-    E-Swish(x, beta) = beta*x*sigmoid(x)
+    Applies the Swish-X function element-wise:
+    Swish-X(x, beta) = x*sigmoid(beta,x) = x/(1+e^(-beta*x))
 
-    See E-Swish paper:
-    https://arxiv.org/abs/1801.07145
+    See Swish paper:
+    https://arxiv.org/pdf/1710.05941.pdf
 
     Shape:
         - Input: (N, *) where * means, any number of additional
@@ -27,12 +27,12 @@ class eswish(nn.Module):
         - Output: (N, *), same shape as the input
 
     Examples:
-        >>> m = eswish(beta=1.375)
+        >>> m = swishx(beta=1.25)
         >>> input = torch.randn(2)
         >>> output = m(input)
 
     '''
-    def __init__(self, beta = 1.75):
+    def __init__(self, beta = 1.25):
         '''
         Init method.
         '''
@@ -44,4 +44,4 @@ class eswish(nn.Module):
         '''
         Forward pass of the function.
         '''
-        return Func.eswish(input, self.beta)
+        return Func.swishx(input, self.beta)

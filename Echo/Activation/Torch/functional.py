@@ -63,6 +63,6 @@ def swishx(input, beta=1.25):
     Applies the Swish-X function element-wise:
     Swish-X(x, beta) = x*sigmoid(beta,x) = x/(1+e^(-beta*x))
 
-    See additional documentation for swish class.
+    See additional documentation for swishx class.
     '''
     return input/(1+torch.pow(e,-beta*input))

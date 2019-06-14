@@ -21,7 +21,7 @@ class beta_mish(nn.Module):
         - Output: (N, *), same shape as the input
 
     Examples:
-        >>> m = mish(beta=1.5)
+        >>> m = beta_mish(beta=1.5)
         >>> input = torch.randn(2)
         >>> output = m(input)
 

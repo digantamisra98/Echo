@@ -88,6 +88,6 @@ def swishx(input, beta=1.25):
 
             SwishX(x, \\beta) = x*sigmoid(\\beta,x) = \\frac{x}{(1+e^{-\\beta*x})}
 
-    See additional documentation for :mod:`Echo.Activation.Torch.swish`.
+    See additional documentation for :mod:`Echo.Activation.Torch.swishx`.
     '''
     return input/(1+torch.pow(e,-beta*input))

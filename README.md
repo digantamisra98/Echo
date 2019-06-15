@@ -28,7 +28,7 @@ The package contains implementation for following activation functions:
 
 * [Swish](https://arxiv.org/pdf/1710.05941.pdf)
 
-![equation](https://latex.codecogs.com/gif.latex?SwishX%28x%2C%20%5Cbeta%29%20%3D%20x*sigmoid%28%5Cbeta%2Cx%29%20%3D%20%5Cfrac%7Bx%7D%7B%281&plus;e%5E%7B-%5Cbeta*x%7D%29%7D)
+![equation](https://latex.codecogs.com/gif.latex?Swish%28x%29%20%3D%20x%20*%20sigmoid%28x%29)
 
 * [ESwish](https://arxiv.org/abs/1801.07145)
 
@@ -70,7 +70,7 @@ The repository has the following structure:
 ## Setup Instructions
 To install Echo package follow the instructions below:
 
-1. Clone or download [GitHub repository](<https://github.com/digantamisra98/Echo).
+1. Clone or download [GitHub repository](https://github.com/digantamisra98/Echo).
 
 2. Navigate to **Echo** folder:
   

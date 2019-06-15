@@ -23,6 +23,9 @@ from Echo.Activation.Torch.weightedTanh import weightedTanh
 from Echo.Activation.Torch.mish import mish
 from Echo.Activation.Torch.swish import swish
 from Echo.Activation.Torch.aria2 import aria2
+from Echo.Activation.Torch.eswish import eswish
+from Echo.Activation.Torch.swishx import swishx
+from Echo.Activation.Torch.beta_mish import beta_mish
 import Echo.Activation.Torch.functional as Func
 
 # activation names constants
@@ -30,6 +33,9 @@ WEIGHTED_TANH = 'weighted_tanh'
 MISH = 'mish'
 SWISH = 'swish'
 ARIA2 = 'aria2'
+SWISHX = 'swishx'
+ESWISH = 'eswish'
+BMISH = 'beta_mish'
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
@@ -62,6 +68,15 @@ class Classifier(nn.Module):
         if (self.activation == ARIA2):
             x = Func.aria2(self.fc1(x))
 
+        if (self.activation == ESWISH):
+            x = Func.eswish(self.fc1(x))
+
+        if (self.activation == SWISHX):
+            x = Func.swishx(self.fc1(x))
+
+        if (self.activation == BMISH):
+            x = Func.beta_mish(self.fc1(x))
+
         x = F.relu(self.fc2(x))
         x = F.relu(self.fc3(x))
         x = F.log_softmax(self.fc4(x), dim=1)
@@ -78,7 +93,7 @@ def main():
     # Add argument to choose one of the activation functions
     parser.add_argument('--activation', action='store', default = WEIGHTED_TANH,
                         help='Activation function for demonstration.',
-                        choices = [WEIGHTED_TANH, MISH, SWISH, ARIA2])
+                        choices = [WEIGHTED_TANH, MISH, SWISH, ARIA2, ESWISH, SWISHX, BMISH])
 
     # Add argument to choose the way to initialize the model
     parser.add_argument('--model_initialization', action='store', default = 'class',
@@ -120,6 +135,15 @@ def main():
 
         if (activation == ARIA2):
             activation_function = aria2()
+
+        if (activation == ESWISH):
+            activation_function = eswish()
+
+        if (activation == SWISHX):
+            activation_function = swishx()
+
+        if (activation == BMISH):
+            activation_function = beta_mish()
 
         # Initialize the model using nn.Sequential
         model = nn.Sequential(OrderedDict([

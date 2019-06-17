@@ -3,7 +3,7 @@ Applies the Swish-X function element-wise:
 
 .. math::
 
-    SwishX(x, \\beta) = x*sigmoid(\\beta,x) = \\frac{x}{(1+e^{-\\beta*x})}
+    SwishX(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}
 
 See Swish-X paper:
 https://arxiv.org/pdf/1710.05941.pdf
@@ -22,7 +22,7 @@ class swishx(nn.Module):
 
     .. math::
 
-        SwishX(x, \\beta) = x*sigmoid(\\beta,x) = \\frac{x}{(1+e^{-\\beta*x})}
+        SwishX(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}
 
     See Swish paper:
     https://arxiv.org/pdf/1710.05941.pdf

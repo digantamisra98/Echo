@@ -86,7 +86,7 @@ def swishx(input, beta=1.25):
 
         .. math::
 
-            SwishX(x, \\beta) = x*sigmoid(\\beta,x) = \\frac{x}{(1+e^{-\\beta*x})}
+            SwishX(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}
 
     See additional documentation for :mod:`Echo.Activation.Torch.swishx`.
     '''

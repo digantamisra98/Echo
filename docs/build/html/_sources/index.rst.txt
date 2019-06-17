@@ -140,6 +140,11 @@ Echo.Activation.Torch.swishx
 .. automodule:: Echo.Activation.Torch.swishx
   :members:
 
+Echo.Activation.Torch.elish
+--------------------------------
+.. automodule:: Echo.Activation.Torch.elish
+  :members:
+
 Echo.Activation.Torch.weightedTanh
 --------------------------------
 .. automodule:: Echo.Activation.Torch.weightedTanh

@@ -91,3 +91,17 @@ def swishx(input, beta=1.25):
     See additional documentation for :mod:`Echo.Activation.Torch.swishx`.
     '''
     return input/(1+torch.exp(-beta*input))
+
+def elish(input):
+    '''
+    Applies the ELiSH (Exponential Linear Sigmoid SquasHing) function element-wise:
+
+    See additional documentation for :mod:`Echo.Activation.Torch.elish`.
+
+        .. math::
+
+            ELiSH(x) = \\left\\{\\begin{matrix} x / (1+e^{-x}), x \\geq 0 \\\\ (e^{x} - 1) / (1 + e^{-x}), x < 0 \\end{matrix}\\right.
+
+    See additional documentation for :mod:`Echo.Activation.Torch.elish`.
+    '''
+    return (input >= 0).float() * input * torch.sigmoid(input) + (input < 0).float() * (torch.exp(input) - 1) / (torch.exp(- input) + 1)

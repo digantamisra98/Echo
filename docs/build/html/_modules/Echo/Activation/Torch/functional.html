@@ -121,11 +121,25 @@
 
 <span class="sd">        .. math::</span>
 
-<span class="sd">            SwishX(x, \\beta) = x*sigmoid(\\beta,x) = \\frac{x}{(1+e^{-\\beta*x})}</span>
+<span class="sd">            SwishX(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}</span>
 
 <span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.swishx`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="nb">input</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="o">-</span><span class="n">beta</span><span class="o">*</span><span class="nb">input</span><span class="p">))</span></div>
+    <span class="k">return</span> <span class="nb">input</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span><span class="o">*</span><span class="nb">input</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="elish"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.elish">[docs]</a><span class="k">def</span> <span class="nf">elish</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies the ELiSH (Exponential Linear Sigmoid SquasHing) function element-wise:</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.elish`.</span>
+
+<span class="sd">        .. math::</span>
+
+<span class="sd">            ELiSH(x) = \\left\\{\\begin{matrix} x / (1+e^{-x}), x \\geq 0 \\\\ (e^{x} - 1) / (1 + e^{-x}), x &lt; 0 \\end{matrix}\\right.</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.elish`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="k">if</span> <span class="nb">input</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="nb">input</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
 </pre></div>
 
           </div>

@@ -105,3 +105,15 @@ def elish(input):
     See additional documentation for :mod:`Echo.Activation.Torch.elish`.
     '''
     return (input >= 0).float() * input * torch.sigmoid(input) + (input < 0).float() * (torch.exp(input) - 1) / (torch.exp(- input) + 1)
+
+def hard_elish(input):
+    '''
+    Applies the HardELiSH (Exponential Linear Sigmoid SquasHing) function element-wise:
+
+        .. math::
+
+            HardELiSH(x) = \\left\\{\\begin{matrix} x \\times max(0, min(1, (x + 1) / 2)), x \\geq 0 \\\\ (e^{x} - 1)\\times max(0, min(1, (x + 1) / 2)), x < 0 \\end{matrix}\\right.
+
+    See additional documentation for :mod:`Echo.Activation.Torch.hard_elish`.
+    '''
+    return (input >= 0).float() * input * torch.max(torch.tensor(0.0), torch.min(torch.tensor(1.0), (input + 1.0)/2.0)) + (input < 0).float() * (torch.exp(input - 1) * torch.max(torch.tensor(0.0), torch.min(torch.tensor(1.0), (input + 1.0)/2.0)))

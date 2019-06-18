@@ -145,6 +145,11 @@ Echo.Activation.Torch.elish
 .. automodule:: Echo.Activation.Torch.elish
   :members:
 
+Echo.Activation.Torch.hard_elish
+--------------------------------
+.. automodule:: Echo.Activation.Torch.hard_elish
+  :members:
+
 Echo.Activation.Torch.weightedTanh
 --------------------------------
 .. automodule:: Echo.Activation.Torch.weightedTanh

@@ -117,3 +117,15 @@ def hard_elish(input):
     See additional documentation for :mod:`Echo.Activation.Torch.hard_elish`.
     '''
     return (input >= 0).float() * input * torch.max(torch.tensor(0.0), torch.min(torch.tensor(1.0), (input + 1.0)/2.0)) + (input < 0).float() * (torch.exp(input - 1) * torch.max(torch.tensor(0.0), torch.min(torch.tensor(1.0), (input + 1.0)/2.0)))
+
+def mila(input, beta=-0.25):
+    '''
+    Applies the mila function element-wise:
+
+    .. math::
+
+        mila(x) = x * tanh(softplus(\\beta + x)) = x * tanh(ln(1 + e^{\\beta + x}))
+
+    See additional documentation for :mod:`Echo.Activation.Torch.mila`.
+    '''
+    return input * torch.tanh(F.softplus(input + beta))

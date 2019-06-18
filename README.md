@@ -52,7 +52,7 @@ The package contains implementation for following activation functions:
 
 * Mila
 
-![equation](https://latex.codecogs.com/gif.latex?mila%28x%29%20%3D%20x%20*%20tanh%28ln%281%20&plus;%20e%5E%7B%5Cbeta%20&plus;%20x%7D%29%29%20%3D%20x%20*%20tanh%28softplus%28%5Cbeta%20&plus;%20x%29)
+![equation](https://latex.codecogs.com/gif.latex?mila%28x%29%20%3D%20x%20*%20tanh%28ln%281%20&plus;%20e%5E%7B%5Cbeta%20&plus;%20x%7D%29%29%20%3D%20x%20*%20tanh%28softplus%28%5Cbeta%20&plus;%20x%29%29)
 
 * Mish
 * Beta Mish

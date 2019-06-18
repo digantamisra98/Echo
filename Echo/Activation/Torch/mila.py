@@ -3,7 +3,7 @@ Applies the Mila function element-wise:
 
 .. math::
 
-    \\mila(x) = x * tanh(ln(1 + e^{\\beta + x})) = x * tanh(softplus(\\beta + x))
+    mila(x) = x * tanh(ln(1 + e^{\\beta + x})) = x * tanh(softplus(\\beta + x))
 '''
 
 # import pytorch
@@ -19,7 +19,12 @@ class mila(nn.Module):
 
     .. math::
 
-        \\mila(x) = x * tanh(ln(1 + e^{\\beta + x})) = x * tanh(softplus(\\beta + x)
+        mila(x) = x * tanh(ln(1 + e^{\\beta + x})) = x * tanh(softplus(\\beta + x)
+
+    Plot:
+
+    .. figure::  _static/mila.png
+        :align:   center
 
     Shape:
         - Input: (N, *) where * means, any number of additional

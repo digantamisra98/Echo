@@ -176,6 +176,18 @@
 <span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.sine_relu`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="p">(</span><span class="nb">input</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">*</span> <span class="nb">input</span> <span class="o">+</span> <span class="p">(</span><span class="nb">input</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">*</span> <span class="n">eps</span> <span class="o">*</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">-</span> <span class="n">torch</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="fts"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.fts">[docs]</a><span class="k">def</span> <span class="nf">fts</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies the FTS (Flatten T-Swish) activation function element-wise:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        FTS(x) = \\left\\{\\begin{matrix} \\frac{x}{1 + e^{-x}} , x \\geq  0 \\\\ 0, x &lt; 0 \\end{matrix}\\right.</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.fts`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">input</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">*</span> <span class="nb">input</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="nb">input</span><span class="p">))</span></div>
 </pre></div>
 
           </div>

@@ -141,3 +141,15 @@ def sineReLU(input, eps = 0.01):
     See additional documentation for :mod:`Echo.Activation.Torch.sine_relu`.
     '''
     return (input > 0).float() * input + (input <= 0).float() * eps * (torch.sin(input) - torch.cos(input))
+
+def fts(input):
+    '''
+    Applies the FTS (Flatten T-Swish) activation function element-wise:
+
+    .. math::
+
+        FTS(x) = \\left\\{\\begin{matrix} \\frac{x}{1 + e^{-x}} , x \\geq  0 \\\\ 0, x < 0 \\end{matrix}\\right.
+
+    See additional documentation for :mod:`Echo.Activation.Torch.fts`.
+    '''
+    return (input > 0).float() * input / (1 + torch.exp(- input))

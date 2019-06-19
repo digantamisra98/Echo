@@ -164,6 +164,18 @@
 <span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.mila`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">softplus</span><span class="p">(</span><span class="nb">input</span> <span class="o">+</span> <span class="n">beta</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="sineReLU"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.sineReLU">[docs]</a><span class="k">def</span> <span class="nf">sineReLU</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies the SineReLU activation function element-wise:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        SineReLU(x, \\epsilon) = \\left\\{\\begin{matrix} x , x &gt; 0 \\\\ \\epsilon * (sin(x) - cos(x)), x \\leq  0 \\end{matrix}\\right.</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.sine_relu`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">input</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">*</span> <span class="nb">input</span> <span class="o">+</span> <span class="p">(</span><span class="nb">input</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">*</span> <span class="n">eps</span> <span class="o">*</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">-</span> <span class="n">torch</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span></div>
 </pre></div>
 
           </div>

@@ -29,6 +29,7 @@ from Echo.Activation.Torch.beta_mish import beta_mish
 from Echo.Activation.Torch.elish import elish
 from Echo.Activation.Torch.hard_elish import hard_elish
 from Echo.Activation.Torch.mila import mila
+from Echo.Activation.Torch.sine_relu import sine_relu
 import Echo.Activation.Torch.functional as Func
 
 # activation names constants
@@ -42,6 +43,7 @@ BMISH = 'beta_mish'
 ELISH = 'elish'
 HELISH = 'hard_elish'
 MILA = 'mila'
+SINERELU = 'sine_relu'
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
@@ -92,6 +94,9 @@ class Classifier(nn.Module):
         if (self.activation == MILA):
             x = Func.mila(self.fc1(x))
 
+        if (self.activation == SINERELU):
+            x = Func.sineReLU(self.fc1(x))
+
         x = F.relu(self.fc2(x))
         x = F.relu(self.fc3(x))
         x = F.log_softmax(self.fc4(x), dim=1)
@@ -108,7 +113,7 @@ def main():
     # Add argument to choose one of the activation functions
     parser.add_argument('--activation', action='store', default = WEIGHTED_TANH,
                         help='Activation function for demonstration.',
-                        choices = [WEIGHTED_TANH, MISH, SWISH, ARIA2, ESWISH, SWISHX, BMISH, ELISH, HELISH, MILA])
+                        choices = [WEIGHTED_TANH, MISH, SWISH, ARIA2, ESWISH, SWISHX, BMISH, ELISH, HELISH, MILA, SINERELU])
 
     # Add argument to choose the way to initialize the model
     parser.add_argument('--model_initialization', action='store', default = 'class',
@@ -168,6 +173,9 @@ def main():
 
         if (activation == MILA):
             activation_function = mila()
+
+        if (activation == SINERELU):
+            activation_function = sine_relu()
 
         # Initialize the model using nn.Sequential
         model = nn.Sequential(OrderedDict([

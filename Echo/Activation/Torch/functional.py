@@ -129,3 +129,15 @@ def mila(input, beta=-0.25):
     See additional documentation for :mod:`Echo.Activation.Torch.mila`.
     '''
     return input * torch.tanh(F.softplus(input + beta))
+
+def sineReLU(input, eps = 0.01):
+    '''
+    Applies the SineReLU activation function element-wise:
+
+    .. math::
+
+        SineReLU(x, \\epsilon) = \\left\\{\\begin{matrix} x , x > 0 \\\\ \\epsilon * (sin(x) - cos(x)), x \\leq  0 \\end{matrix}\\right.
+
+    See additional documentation for :mod:`Echo.Activation.Torch.sine_relu`.
+    '''
+    return (input > 0).float() * input + (input <= 0).float() * eps * (torch.sin(input) - torch.cos(input))

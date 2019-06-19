@@ -38,6 +38,7 @@ List of activation functions implemented in Echo:
   * Mila (see :mod:`Echo.Activation.Torch.mila`)
   * SineReLU (see :mod:`Echo.Activation.Torch.sine_relu`)
   * Flatten T-Swish (see :mod:`Echo.Activation.Torch.fts`)
+  * SQNL (see :mod:`Echo.Activation.Torch.sqnl`)
   * Mish (see :mod:`Echo.Activation.Torch.mish`)
   * Beta Mish (see :mod:`Echo.Activation.Torch.beta_mish`)
 
@@ -168,6 +169,11 @@ Echo.Activation.Torch.sine_relu
 Echo.Activation.Torch.fts
 --------------------------------
 .. automodule:: Echo.Activation.Torch.fts
+  :members:
+
+Echo.Activation.Torch.sqnl
+--------------------------------
+.. automodule:: Echo.Activation.Torch.sqnl
   :members:
 
 Echo.Activation.Torch.weightedTanh

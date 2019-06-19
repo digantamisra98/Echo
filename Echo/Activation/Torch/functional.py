@@ -153,3 +153,15 @@ def fts(input):
     See additional documentation for :mod:`Echo.Activation.Torch.fts`.
     '''
     return (input > 0).float() * input / (1 + torch.exp(- input))
+
+def sqnl(input):
+    '''
+    Applies the SQNL activation function element-wise:
+
+    .. math::
+
+        SQNL(x) = \\left\\{\\begin{matrix} 1, x > 2 \\\\ x - \\frac{x^2}{4}, 0 \\leq x \\leq 2 \\\\  x + \\frac{x^2}{4}, -2 \\leq x < 0 \\\\ -1, x < -2 \\end{matrix}\\right.
+
+    See additional documentation for :mod:`Echo.Activation.Torch.sqnl`.
+    '''
+    return (input > 2).float() + (input - torch.pow(input,2)/4)*(input >= 0).float()*(input <= 2).float() + (input + torch.pow(input,2)/4)*(input < 0).float()*(input >= -2).float() - (input < -2).float()

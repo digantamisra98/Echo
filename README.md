@@ -58,6 +58,10 @@ The package contains implementation for following activation functions:
 
 ![equation](https://latex.codecogs.com/gif.latex?SineReLU%28x%2C%20%5Cepsilon%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20x%20%2C%20x%20%3E%200%20%5C%5C%20%5Cepsilon%20*%20%28sin%28x%29%20-%20cos%28x%29%29%2C%20x%20%5Cleq%200%20%5Cend%7Bmatrix%7D%5Cright)
 
+* [Flatten T-Swish](https://arxiv.org/pdf/1812.06247.pdf)
+
+![equation](https://latex.codecogs.com/gif.latex?FTS%28x%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20%5Cfrac%7Bx%7D%7B1%20&plus;%20e%5E%7B-x%7D%7D%20%2C%20x%20%5Cgeq%200%20%5C%5C%200%2C%20x%20%3C%200%20%5Cend%7Bmatrix%7D%5Cright.)
+
 * Mish
 * Beta Mish
 

@@ -140,3 +140,36 @@ class beta_mish(Layer):
 
     def compute_output_shape(self, input_shape):
         return input_shape
+
+class isru(Layer):
+    """ISRU (Inverse Square Root Unit) Activation Function.
+    It follows:
+    `f(x) = x / ((1 + \\alpha * x)^0.5) `.
+    # Input shape
+        Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+    # Output shape
+        Same shape as the input.
+    # Arguments
+        alpha: A constant (default = 1.0)
+    # References
+        - [Improving Deep Learning by Inverse Square Root Linear Units (ISRLUs)](
+           https://arxiv.org/abs/1710.09967)
+    """
+
+    def __init__(self, alpha=1.0, **kwargs):
+        super(isru, self).__init__(**kwargs)
+        self.supports_masking = True
+        self.alpha = K.cast_to_floatx(alpha)
+
+    def call(self, inputs):
+        return inputs/(K.sqrt(1 + self.alpha * inputs))
+
+    def get_config(self):
+        config = {'alpha': float(self.alpha)}
+        base_config = super(isru, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape

@@ -129,3 +129,39 @@ def mila(input, beta=-0.25):
     See additional documentation for :mod:`Echo.Activation.Torch.mila`.
     '''
     return input * torch.tanh(F.softplus(input + beta))
+
+def sineReLU(input, eps = 0.01):
+    '''
+    Applies the SineReLU activation function element-wise:
+
+    .. math::
+
+        SineReLU(x, \\epsilon) = \\left\\{\\begin{matrix} x , x > 0 \\\\ \\epsilon * (sin(x) - cos(x)), x \\leq  0 \\end{matrix}\\right.
+
+    See additional documentation for :mod:`Echo.Activation.Torch.sine_relu`.
+    '''
+    return (input > 0).float() * input + (input <= 0).float() * eps * (torch.sin(input) - torch.cos(input))
+
+def fts(input):
+    '''
+    Applies the FTS (Flatten T-Swish) activation function element-wise:
+
+    .. math::
+
+        FTS(x) = \\left\\{\\begin{matrix} \\frac{x}{1 + e^{-x}} , x \\geq  0 \\\\ 0, x < 0 \\end{matrix}\\right.
+
+    See additional documentation for :mod:`Echo.Activation.Torch.fts`.
+    '''
+    return (input > 0).float() * input / (1 + torch.exp(- input))
+
+def sqnl(input):
+    '''
+    Applies the SQNL activation function element-wise:
+
+    .. math::
+
+        SQNL(x) = \\left\\{\\begin{matrix} 1, x > 2 \\\\ x - \\frac{x^2}{4}, 0 \\leq x \\leq 2 \\\\  x + \\frac{x^2}{4}, -2 \\leq x < 0 \\\\ -1, x < -2 \\end{matrix}\\right.
+
+    See additional documentation for :mod:`Echo.Activation.Torch.sqnl`.
+    '''
+    return (input > 2).float() + (input - torch.pow(input,2)/4)*(input >= 0).float()*(input <= 2).float() + (input + torch.pow(input,2)/4)*(input < 0).float()*(input >= -2).float() - (input < -2).float()

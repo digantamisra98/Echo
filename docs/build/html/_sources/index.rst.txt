@@ -33,6 +33,12 @@ List of activation functions implemented in Echo:
   * Swish (see :mod:`Echo.Activation.Torch.swish`)
   * E-Swish (see :mod:`Echo.Activation.Torch.eswish`)
   * SwishX (see :mod:`Echo.Activation.Torch.swishx`)
+  * ELiSH (see :mod:`Echo.Activation.Torch.elish`)
+  * Hard ELiSH (see :mod:`Echo.Activation.Torch.hard_elish`)
+  * Mila (see :mod:`Echo.Activation.Torch.mila`)
+  * SineReLU (see :mod:`Echo.Activation.Torch.sine_relu`)
+  * Flatten T-Swish (see :mod:`Echo.Activation.Torch.fts`)
+  * SQNL (see :mod:`Echo.Activation.Torch.sqnl`)
   * Mish (see :mod:`Echo.Activation.Torch.mish`)
   * Beta Mish (see :mod:`Echo.Activation.Torch.beta_mish`)
 
@@ -153,6 +159,21 @@ Echo.Activation.Torch.hard_elish
 Echo.Activation.Torch.mila
 --------------------------------
 .. automodule:: Echo.Activation.Torch.mila
+  :members:
+
+Echo.Activation.Torch.sine_relu
+--------------------------------
+.. automodule:: Echo.Activation.Torch.sine_relu
+  :members:
+
+Echo.Activation.Torch.fts
+--------------------------------
+.. automodule:: Echo.Activation.Torch.fts
+  :members:
+
+Echo.Activation.Torch.sqnl
+--------------------------------
+.. automodule:: Echo.Activation.Torch.sqnl
   :members:
 
 Echo.Activation.Torch.weightedTanh

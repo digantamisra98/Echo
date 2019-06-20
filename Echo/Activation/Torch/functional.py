@@ -165,3 +165,15 @@ def sqnl(input):
     See additional documentation for :mod:`Echo.Activation.Torch.sqnl`.
     '''
     return (input > 2).float() + (input - torch.pow(input,2)/4)*(input >= 0).float()*(input <= 2).float() + (input + torch.pow(input,2)/4)*(input < 0).float()*(input >= -2).float() - (input < -2).float()
+
+def isru(input, alpha=1.0):
+    '''
+    Applies the ISRU function element-wise:
+
+    .. math::
+
+        isru(x) = x / ((1 + \\alpha * x)^0.5)
+
+    See additional documentation for :mod:`Echo.Activation.Torch.isru`.
+    '''
+    return input/(torch.sqrt(1+alpha*input))

@@ -144,7 +144,7 @@ class beta_mish(Layer):
 class isru(Layer):
     """ISRU (Inverse Square Root Unit) Activation Function.
     It follows:
-    `f(x) = x / ((1 + \\alpha * x)^0.5) `.
+    `f(x) = x / ((1 + \\alpha * x^2)^0.5) `.
     # Input shape
         Arbitrary. Use the keyword argument `input_shape`
         (tuple of integers, does not include the samples axis)
@@ -164,7 +164,7 @@ class isru(Layer):
         self.alpha = K.cast_to_floatx(alpha)
 
     def call(self, inputs):
-        return inputs/(K.sqrt(1 + self.alpha * inputs))
+        return inputs/(K.sqrt(1 + self.alpha * K.pow(inputs,2)))
 
     def get_config(self):
         config = {'alpha': float(self.alpha)}

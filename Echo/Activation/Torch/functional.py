@@ -172,8 +172,8 @@ def isru(input, alpha=1.0):
 
     .. math::
 
-        isru(x) = x / ((1 + \\alpha * x)^0.5)
+        isru(x) = x / ((1 + \\alpha * x^2)^0.5)
 
     See additional documentation for :mod:`Echo.Activation.Torch.isru`.
     '''
-    return input/(torch.sqrt(1+alpha*input))
+    return input/(torch.sqrt(1+alpha*torch.pow(input,2)))

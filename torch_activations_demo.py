@@ -30,6 +30,7 @@ from Echo.Activation.Torch.mila import mila
 from Echo.Activation.Torch.sine_relu import sine_relu
 from Echo.Activation.Torch.fts import fts
 from Echo.Activation.Torch.sqnl import sqnl
+from Echo.Activation.Torch.isru import isru
 import Echo.Activation.Torch.functional as Func
 
 # activation names constants
@@ -46,6 +47,7 @@ MILA = 'mila'
 SINERELU = 'sine_relu'
 FTS = 'fts'
 SQNL = 'sqnl'
+ISRU = 'isru'
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
@@ -105,6 +107,9 @@ class Classifier(nn.Module):
         if (self.activation == SQNL):
             x = Func.sqnl(self.fc1(x))
 
+        if (self.activation == ISRU):
+            x = Func.isru(self.fc1(x))
+
         x = F.relu(self.fc2(x))
         x = F.relu(self.fc3(x))
         x = F.log_softmax(self.fc4(x), dim=1)
@@ -121,7 +126,7 @@ def main():
     # Add argument to choose one of the activation functions
     parser.add_argument('--activation', action='store', default = WEIGHTED_TANH,
                         help='Activation function for demonstration.',
-                        choices = [WEIGHTED_TANH, MISH, SWISH, ARIA2, ESWISH, SWISHX, BMISH, ELISH, HELISH, MILA, SINERELU, FTS, SQNL])
+                        choices = [WEIGHTED_TANH, MISH, SWISH, ARIA2, ESWISH, SWISHX, BMISH, ELISH, HELISH, MILA, SINERELU, FTS, SQNL, ISRU])
 
     # Add argument to choose the way to initialize the model
     parser.add_argument('--model_initialization', action='store', default = 'class',
@@ -190,6 +195,9 @@ def main():
 
         if (activation == SQNL):
             activation_function = sqnl()
+
+        if (activation == ISRU):
+            activation_function = isru()
 
         # Initialize the model using nn.Sequential
         model = nn.Sequential(OrderedDict([

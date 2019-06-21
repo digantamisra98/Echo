@@ -19,10 +19,10 @@ from torchvision import datasets, transforms
 # import custom activations
 from Echo.Activation.Torch.weightedTanh import weightedTanh
 from Echo.Activation.Torch.mish import mish
-from Echo.Activation.Torch.swish import swish
+from Echo.Activation.Torch.silu import silu
 from Echo.Activation.Torch.aria2 import aria2
 from Echo.Activation.Torch.eswish import eswish
-from Echo.Activation.Torch.swishx import swishx
+from Echo.Activation.Torch.swish import swish
 from Echo.Activation.Torch.beta_mish import beta_mish
 from Echo.Activation.Torch.elish import elish
 from Echo.Activation.Torch.hard_elish import hard_elish
@@ -36,9 +36,9 @@ import Echo.Activation.Torch.functional as Func
 # activation names constants
 WEIGHTED_TANH = 'weighted_tanh'
 MISH = 'mish'
-SWISH = 'swish'
+SILU = 'silu'
 ARIA2 = 'aria2'
-SWISHX = 'swishx'
+SWISH = 'swish'
 ESWISH = 'eswish'
 BMISH = 'beta_mish'
 ELISH = 'elish'
@@ -74,8 +74,8 @@ class Classifier(nn.Module):
         if (self.activation == MISH):
             x = Func.mish(self.fc1(x))
 
-        if (self.activation == SWISH):
-            x = Func.swish(self.fc1(x))
+        if (self.activation == SILU):
+            x = Func.silu(self.fc1(x))
 
         if (self.activation == ARIA2):
             x = Func.aria2(self.fc1(x))
@@ -83,8 +83,8 @@ class Classifier(nn.Module):
         if (self.activation == ESWISH):
             x = Func.eswish(self.fc1(x))
 
-        if (self.activation == SWISHX):
-            x = Func.swishx(self.fc1(x))
+        if (self.activation == SWISH):
+            x = Func.swish(self.fc1(x))
 
         if (self.activation == BMISH):
             x = Func.beta_mish(self.fc1(x))
@@ -126,7 +126,7 @@ def main():
     # Add argument to choose one of the activation functions
     parser.add_argument('--activation', action='store', default = WEIGHTED_TANH,
                         help='Activation function for demonstration.',
-                        choices = [WEIGHTED_TANH, MISH, SWISH, ARIA2, ESWISH, SWISHX, BMISH, ELISH, HELISH, MILA, SINERELU, FTS, SQNL, ISRU])
+                        choices = [WEIGHTED_TANH, MISH, SILU, ARIA2, ESWISH, SWISH, BMISH, ELISH, HELISH, MILA, SINERELU, FTS, SQNL, ISRU])
 
     # Add argument to choose the way to initialize the model
     parser.add_argument('--model_initialization', action='store', default = 'class',
@@ -163,8 +163,8 @@ def main():
         if (activation == MISH):
             activation_function = mish()
 
-        if (activation == SWISH):
-            activation_function = swish()
+        if (activation == SILU):
+            activation_function = silu()
 
         if (activation == ARIA2):
             activation_function = aria2()
@@ -172,8 +172,8 @@ def main():
         if (activation == ESWISH):
             activation_function = eswish()
 
-        if (activation == SWISHX):
-            activation_function = swishx()
+        if (activation == SWISH):
+            activation_function = swish()
 
         if (activation == BMISH):
             activation_function = beta_mish()
@@ -202,7 +202,7 @@ def main():
         # Initialize the model using nn.Sequential
         model = nn.Sequential(OrderedDict([
                               ('fc1', nn.Linear(784, 256)),
-                              ('wtahn1', activation_function), # use custom activation function
+                              ('activation', activation_function), # use custom activation function
                               ('fc2', nn.Linear(256, 128)),
                               ('bn2', nn.BatchNorm1d(num_features=128)),
                               ('relu2', nn.ReLU()),

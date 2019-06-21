@@ -1,10 +1,9 @@
 '''
-Applies the swish function element-wise:
+Applies the Swish function element-wise:
 
 .. math::
 
-    swish(x) = x * sigmoid(x)
-
+    Swish(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}
 
 See Swish paper:
 https://arxiv.org/pdf/1710.05941.pdf
@@ -19,13 +18,13 @@ import Echo.Activation.Torch.functional as Func
 
 class swish(nn.Module):
     '''
-    Applies the swish function element-wise:
+    Applies the Swish function element-wise:
 
     .. math::
 
-        swish(x) = x * sigmoid(x)
+        Swish(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}
 
-    Swish paper:
+    See Swish paper:
     https://arxiv.org/pdf/1710.05941.pdf
 
     Plot:
@@ -39,19 +38,21 @@ class swish(nn.Module):
         - Output: (N, *), same shape as the input
 
     Examples:
-        >>> m = swish()
+        >>> m = swish(beta=1.25)
         >>> input = torch.randn(2)
         >>> output = m(input)
 
     '''
-    def __init__(self):
+    def __init__(self, beta = 1.25):
         '''
         Init method.
         '''
         super().__init__()
+        self.beta = beta
+
 
     def forward(self, input):
         '''
         Forward pass of the function.
         '''
-        return Func.swish(input)
+        return Func.swish(input, self.beta)

@@ -1,12 +1,13 @@
 '''
-Applies the Swish-X function element-wise:
+Applies the Sigmoid Linear Unit (SiLU) function element-wise:
 
 .. math::
 
-    SwishX(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}
+    silu(x) = x * sigmoid(x)
 
-See Swish-X paper:
-https://arxiv.org/pdf/1710.05941.pdf
+
+See related paper:
+https://arxiv.org/pdf/1606.08415.pdf
 '''
 
 # import pytorch
@@ -16,20 +17,20 @@ from torch import nn
 # import activation functions
 import Echo.Activation.Torch.functional as Func
 
-class swishx(nn.Module):
+class silu(nn.Module):
     '''
-    Applies the Swish-X function element-wise:
+    Applies the Sigmoid Linear Unit (SiLU) function element-wise:
 
     .. math::
 
-        SwishX(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}
+        silu(x) = x * sigmoid(x)
 
-    See Swish paper:
-    https://arxiv.org/pdf/1710.05941.pdf
+    Related paper:
+    https://arxiv.org/pdf/1606.08415.pdf
 
     Plot:
 
-    .. figure::  _static/swishx.png
+    .. figure::  _static/silu.png
         :align:   center
 
     Shape:
@@ -38,21 +39,19 @@ class swishx(nn.Module):
         - Output: (N, *), same shape as the input
 
     Examples:
-        >>> m = swishx(beta=1.25)
+        >>> m = silu()
         >>> input = torch.randn(2)
         >>> output = m(input)
 
     '''
-    def __init__(self, beta = 1.25):
+    def __init__(self):
         '''
         Init method.
         '''
         super().__init__()
-        self.beta = beta
-
 
     def forward(self, input):
         '''
         Forward pass of the function.
         '''
-        return Func.swishx(input, self.beta)
+        return Func.swish(input)

@@ -66,15 +66,15 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">softplus</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="swish"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.swish">[docs]</a><span class="k">def</span> <span class="nf">swish</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+<div class="viewcode-block" id="silu"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.silu">[docs]</a><span class="k">def</span> <span class="nf">silu</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Applies the swish function element-wise:</span>
+<span class="sd">    Applies the Sigmoid Linear Unit (SiLU) function element-wise:</span>
 
 <span class="sd">    .. math::</span>
 
-<span class="sd">        swish(x) = x * sigmoid(x)</span>
+<span class="sd">        SiLU(x) = x * sigmoid(x)</span>
 
-<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.swish`.</span>
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.silu`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
 
@@ -115,17 +115,17 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">beta</span> <span class="o">*</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="swishx"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.swishx">[docs]</a><span class="k">def</span> <span class="nf">swishx</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1.25</span><span class="p">):</span>
+<div class="viewcode-block" id="swish"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.swish">[docs]</a><span class="k">def</span> <span class="nf">swish</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1.25</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Applies the Swish-X function element-wise:</span>
+<span class="sd">    Applies the Swish function element-wise:</span>
 
 <span class="sd">        .. math::</span>
 
-<span class="sd">            SwishX(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}</span>
+<span class="sd">            Swish(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}</span>
 
-<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.swishx`.</span>
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.swish`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="nb">input</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span><span class="o">*</span><span class="nb">input</span><span class="p">))</span></div>
+    <span class="k">return</span> <span class="nb">input</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">beta</span> <span class="o">*</span> <span class="nb">input</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="elish"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.elish">[docs]</a><span class="k">def</span> <span class="nf">elish</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -200,6 +200,18 @@
 <span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.sqnl`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="p">(</span><span class="nb">input</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="nb">input</span> <span class="o">-</span> <span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">input</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="nb">input</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="nb">input</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">input</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="nb">input</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">-</span> <span class="p">(</span><span class="nb">input</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="isru"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.isru">[docs]</a><span class="k">def</span> <span class="nf">isru</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies the ISRU function element-wise:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        ISRU(x) = \\frac{x}{\\sqrt{1 + \\alpha * x^2}}</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.isru`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="nb">input</span><span class="o">/</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">alpha</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span></div>
 </pre></div>
 
           </div>

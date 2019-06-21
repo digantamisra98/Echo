@@ -3,7 +3,10 @@ Applies the ISRU (Inverse Square Root Unit) function element-wise:
 
 .. math::
 
-    isru(x) = x / ((1 + \\alpha * x)^0.5)
+    ISRU(x) = \\frac{x}{\\sqrt{1 + \\alpha * x^2}}
+
+ISRU paper:
+https://arxiv.org/pdf/1710.09967.pdf
 '''
 
 # import pytorch
@@ -19,7 +22,15 @@ class isru(nn.Module):
 
     .. math::
 
-        isru(x) = x / ((1 + \\alpha * x)^0.5)
+        ISRU(x) = \\frac{x}{\\sqrt{1 + \\alpha * x^2}}
+
+    Plot:
+
+    .. figure::  _static/isru.png
+        :align:   center
+
+    ISRU paper:
+    https://arxiv.org/pdf/1710.09967.pdf
 
     Shape:
         - Input: (N, *) where * means, any number of additional

@@ -30,9 +30,9 @@ List of activation functions implemented in Echo:
 1. PyTorch:
   * Weighted Tanh (see :mod:`Echo.Activation.Torch.weightedTanh`)
   * Aria2 (see :mod:`Echo.Activation.Torch.aria2`)
-  * Swish (see :mod:`Echo.Activation.Torch.swish`)
+  * SiLU (see :mod:`Echo.Activation.Torch.silu`)
   * E-Swish (see :mod:`Echo.Activation.Torch.eswish`)
-  * SwishX (see :mod:`Echo.Activation.Torch.swishx`)
+  * Swish (see :mod:`Echo.Activation.Torch.swish`)
   * ELiSH (see :mod:`Echo.Activation.Torch.elish`)
   * Hard ELiSH (see :mod:`Echo.Activation.Torch.hard_elish`)
   * Mila (see :mod:`Echo.Activation.Torch.mila`)
@@ -131,9 +131,9 @@ Echo.Activation.Torch.beta_mish
 .. automodule:: Echo.Activation.Torch.beta_mish
   :members:
 
-Echo.Activation.Torch.swish
+Echo.Activation.Torch.silu
 --------------------------------
-.. automodule:: Echo.Activation.Torch.swish
+.. automodule:: Echo.Activation.Torch.silu
   :members:
 
 Echo.Activation.Torch.eswish
@@ -141,9 +141,9 @@ Echo.Activation.Torch.eswish
 .. automodule:: Echo.Activation.Torch.eswish
   :members:
 
-Echo.Activation.Torch.swishx
+Echo.Activation.Torch.swish
 --------------------------------
-.. automodule:: Echo.Activation.Torch.swishx
+.. automodule:: Echo.Activation.Torch.swish
   :members:
 
 Echo.Activation.Torch.elish
@@ -174,6 +174,11 @@ Echo.Activation.Torch.fts
 Echo.Activation.Torch.sqnl
 --------------------------------
 .. automodule:: Echo.Activation.Torch.sqnl
+  :members:
+
+Echo.Activation.Torch.isru
+--------------------------------
+.. automodule:: Echo.Activation.Torch.isru
   :members:
 
 Echo.Activation.Torch.weightedTanh

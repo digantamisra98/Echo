@@ -31,15 +31,15 @@ def mish(input):
     '''
     return input * torch.tanh(F.softplus(input))
 
-def swish(input):
+def silu(input):
     '''
-    Applies the swish function element-wise:
+    Applies the Sigmoid Linear Unit (SiLU) function element-wise:
 
     .. math::
 
-        swish(x) = x * sigmoid(x)
+        SiLU(x) = x * sigmoid(x)
 
-    See additional documentation for :mod:`Echo.Activation.Torch.swish`.
+    See additional documentation for :mod:`Echo.Activation.Torch.silu`.
     '''
     return input * torch.sigmoid(input)
 
@@ -80,17 +80,17 @@ def eswish(input, beta=1.75):
     '''
     return beta * input * torch.sigmoid(input)
 
-def swishx(input, beta=1.25):
+def swish(input, beta=1.25):
     '''
-    Applies the Swish-X function element-wise:
+    Applies the Swish function element-wise:
 
         .. math::
 
-            SwishX(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}
+            Swish(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}
 
-    See additional documentation for :mod:`Echo.Activation.Torch.swishx`.
+    See additional documentation for :mod:`Echo.Activation.Torch.swish`.
     '''
-    return input/(1+torch.exp(-beta*input))
+    return input * torch.sigmoid(beta * input)
 
 def elish(input):
     '''
@@ -172,7 +172,7 @@ def isru(input, alpha=1.0):
 
     .. math::
 
-        isru(x) = x / ((1 + \\alpha * x^2)^0.5)
+        ISRU(x) = \\frac{x}{\\sqrt{1 + \\alpha * x^2}}
 
     See additional documentation for :mod:`Echo.Activation.Torch.isru`.
     '''

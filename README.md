@@ -12,8 +12,6 @@ Python package containing all mathematical backend algorithms used in Machine Le
   * [Activation Functions](#activation-functions)
 * [Repository Structure](#repository-structure)
 * [Setup Instructions](#setup-instructions)
-* [Code Examples](#code-examples)
-  * [PyTorch Activation Functions](#pytorch-activation-functions)
 
 ## About
 **Echo Package** is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as [PyTorch](https://pytorch.org/), [Keras](https://keras.io/) and
@@ -66,8 +64,14 @@ The package contains implementation for following activation functions:
 
 ![equation](https://latex.codecogs.com/gif.latex?SQNL%28x%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%2C%20x%20%3E%202%20%5C%5C%20x%20-%20%5Cfrac%7Bx%5E2%7D%7B4%7D%2C%200%20%5Cleq%20x%20%5Cleq%202%20%5C%5C%20x%20&plus;%20%5Cfrac%7Bx%5E2%7D%7B4%7D%2C%20-2%20%5Cleq%20x%20%3C%200%20%5C%5C%20-1%2C%20x%20%3C%20-2%20%5Cend%7Bmatrix%7D%5Cright.)
 
+* [ISRU](https://arxiv.org/pdf/1710.09967.pdf)
+
+![equation](https://latex.codecogs.com/gif.latex?ISRU%28x%29%20%3D%20%5Cfrac%7Bx%7D%7B%5Csqrt%7B1%20&plus;%20%5Calpha%20*%20x%5E2%7D%7D)
+
 * Mish
 * Beta Mish
+
+![equation](https://latex.codecogs.com/gif.latex?%5Cbeta%20mish%28x%29%20%3D%20x%20*%20tanh%28ln%28%281%20&plus;%20e%5E%7Bx%7D%29%5E%7B%5Cbeta%7D%29%29)
 
 ## Repository Structure
 The repository has the following structure:
@@ -103,60 +107,3 @@ To install Echo package follow the instructions below:
 3. Install the package with pip:
   
   ```$ pip install . ```
-
-## Code Examples
-
-### PyTorch Activation Functions
-
-The following code block contains an example of usage of a PyTorch activation function
-from Echo package:
-
-```python
-   # import activations from Echo
-   from Echo.Activation.Torch.weightedTanh import weightedTanh
-   import Echo.Activation.Torch.functional as Func
-
-   # use activations in layers of model defined in class
-   class Classifier(nn.Module):
-       def __init__(self):
-           super().__init__()
-
-           # initialize layers
-           self.fc1 = nn.Linear(784, 256)
-           self.fc2 = nn.Linear(256, 128)
-           self.fc3 = nn.Linear(128, 64)
-           self.fc4 = nn.Linear(64, 10)
-
-       def forward(self, x):
-           # make sure the input tensor is flattened
-           x = x.view(x.shape[0], -1)
-
-           # apply activation function from Echo
-           x = Func.weighted_tanh(self.fc1(x), weight = 1)
-
-           x = F.relu(self.fc2(x))
-           x = F.relu(self.fc3(x))
-           x = F.log_softmax(self.fc4(x), dim=1)
-
-           return x
-
-   def main():
-       # Initialize the model using defined Classifier class
-       model = Classifier()
-
-       # Create model with Sequential
-       model = nn.Sequential(OrderedDict([
-                            ('fc1', nn.Linear(784, 256)),
-                            # use activation function from Echo
-                            ('wtahn1',  weightedTanh(weight = 1)),
-                            ('fc2', nn.Linear(256, 128)),
-                            ('bn2', nn.BatchNorm1d(num_features=128)),
-                            ('relu2', nn.ReLU()),
-                            ('dropout', nn.Dropout(0.3)),
-                            ('fc3', nn.Linear(128, 64)),
-                            ('bn3', nn.BatchNorm1d(num_features=64)),
-                            ('relu3', nn.ReLU()),
-                            ('logits', nn.Linear(64, 10)),
-                            ('logsoftmax', nn.LogSoftmax(dim=1))]))
-```
-The following script contains a comprehensive demonstration of usage of PyTorch activation functions: [torch_activations_demo.py](https://github.com/digantamisra98/Echo/blob/Dev-adeis/torch_activations_demo.py)

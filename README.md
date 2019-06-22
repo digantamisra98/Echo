@@ -76,6 +76,10 @@ The package contains implementation for following activation functions:
 
 ![equation](https://latex.codecogs.com/gif.latex?bentId%28x%29%20%3D%20x%20&plus;%20%5Cfrac%7B%5Csqrt%7Bx%5E%7B2%7D&plus;1%7D-1%7D%7B2%7D)
 
+* [Soft Clipping](https://arxiv.org/pdf/1810.11509.pdf)
+
+![equation](https://latex.codecogs.com/gif.latex?SC%28x%29%20%3D%201%20/%20%5Calpha%20*%20log%28%5Cfrac%7B1%20&plus;%20e%5E%7B%5Calpha%20*%20x%7D%7D%7B1%20&plus;%20e%5E%7B%5Calpha%20*%20%28x-1%29%7D%7D%29)
+
 * Mish
 * Beta Mish
 

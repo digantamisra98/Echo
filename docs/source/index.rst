@@ -40,6 +40,9 @@ List of activation functions implemented in Echo:
   * Flatten T-Swish (see :mod:`Echo.Activation.Torch.fts`)
   * SQNL (see :mod:`Echo.Activation.Torch.sqnl`)
   * Mish (see :mod:`Echo.Activation.Torch.mish`)
+  * ISRU (see :mod:`Echo.Activation.Torch.isru`)
+  * ISRLU (see :mod:`Echo.Activation.Torch.isrlu`)
+  * Bent's Identity (see :mod:`Echo.Activation.Torch.bent_id`)
   * Beta Mish (see :mod:`Echo.Activation.Torch.beta_mish`)
 
 Installation
@@ -179,6 +182,16 @@ Echo.Activation.Torch.sqnl
 Echo.Activation.Torch.isru
 --------------------------------
 .. automodule:: Echo.Activation.Torch.isru
+  :members:
+
+Echo.Activation.Torch.isrlu
+--------------------------------
+.. automodule:: Echo.Activation.Torch.isrlu
+  :members:
+
+Echo.Activation.Torch.bent_id
+--------------------------------
+.. automodule:: Echo.Activation.Torch.bent_id
   :members:
 
 Echo.Activation.Torch.weightedTanh

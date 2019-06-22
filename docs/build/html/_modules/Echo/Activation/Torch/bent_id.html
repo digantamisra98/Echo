@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Echo.Activation.Torch.aria2 &#8212; Echo 2019 documentation</title>
+    <title>Echo.Activation.Torch.bent_id &#8212; Echo 2019 documentation</title>
     <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
@@ -32,16 +32,13 @@
 
           <div class="body" role="main">
             
-  <h1>Source code for Echo.Activation.Torch.aria2</h1><div class="highlight"><pre>
+  <h1>Source code for Echo.Activation.Torch.bent_id</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Applies the Aria-2 function element-wise:</span>
+<span class="sd">Applies the Bent&#39;s Identity function element-wise:</span>
 
 <span class="sd">.. math::</span>
 
-<span class="sd">    Aria2(x, \\alpha, \\beta) = (1+e^{-\\beta*x})^{-\\alpha}</span>
-
-<span class="sd">See Aria paper:</span>
-<span class="sd">https://arxiv.org/abs/1805.08878</span>
+<span class="sd">    bentId(x) = x + \\frac{\\sqrt{x^{2}+1}-1}{2}</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="c1"># import pytorch</span>
@@ -51,17 +48,17 @@
 <span class="c1"># import activation functions</span>
 <span class="kn">import</span> <span class="nn">Echo.Activation.Torch.functional</span> <span class="k">as</span> <span class="nn">Func</span>
 
-<div class="viewcode-block" id="aria2"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.aria2.aria2">[docs]</a><span class="k">class</span> <span class="nc">aria2</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="bent_id"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.bent_id.bent_id">[docs]</a><span class="k">class</span> <span class="nc">bent_id</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Applies the Aria-2 function element-wise:</span>
+<span class="sd">    Applies the Bent&#39;s Identity function element-wise:</span>
 
 <span class="sd">    .. math::</span>
 
-<span class="sd">        Aria2(x, \\alpha, \\beta) = (1+e^{-\\beta*x})^{-\\alpha}</span>
+<span class="sd">        bentId(x) = x + \\frac{\\sqrt{x^{2}+1}-1}{2}</span>
 
 <span class="sd">    Plot:</span>
 
-<span class="sd">    .. figure::  _static/aria2.png</span>
+<span class="sd">    .. figure::  _static/bent_id.png</span>
 <span class="sd">        :align:   center</span>
 
 <span class="sd">    Shape:</span>
@@ -69,35 +66,23 @@
 <span class="sd">          dimensions</span>
 <span class="sd">        - Output: (N, *), same shape as the input</span>
 
-<span class="sd">    Arguments:</span>
-<span class="sd">        - alpha: hyper-parameter which has a two-fold effect; it reduces the curvature in 3rd quadrant as well as increases the curvature in first quadrant while lowering the value of activation (default = 1)</span>
-
-<span class="sd">        - beta: the exponential growth rate (default = 0.5)</span>
-
-<span class="sd">    References:</span>
-<span class="sd">        - See Aria paper:</span>
-<span class="sd">            https://arxiv.org/abs/1805.08878</span>
-
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; m = aria2(beta=0.5, alpha=1)</span>
+<span class="sd">        &gt;&gt;&gt; m = bent_id()</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(2)</span>
 <span class="sd">        &gt;&gt;&gt; output = m(input)</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Init method.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">beta</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
 
-
-<div class="viewcode-block" id="aria2.forward"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.aria2.aria2.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+<div class="viewcode-block" id="bent_id.forward"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.bent_id.bent_id.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Forward pass of the function.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="n">Func</span><span class="o">.</span><span class="n">aria2</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">Func</span><span class="o">.</span><span class="n">bent_id</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div></div>
 </pre></div>
 
           </div>

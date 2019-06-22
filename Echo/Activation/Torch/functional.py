@@ -184,7 +184,7 @@ def bent_id(input):
 
     .. math::
 
-        \\bent_id(x) = x + ((((x^{2}+1)^{0.5})-1)/2)
+        bentId(x) = x + \\frac{\\sqrt{x^{2}+1}-1}{2}
 
     See additional documentation for :mod:`Echo.Activation.Torch.bent_id`.
     '''
@@ -193,6 +193,10 @@ def bent_id(input):
 def isrlu(input, alpha=1.0):
     '''
     Applies the ISRLU function element-wise:
+
+    .. math::
+
+        ISRLU(x)=\\left\\{\\begin{matrix} x, x\\geq 0 \\\\  x * (\\frac{1}{\\sqrt{1 + \\alpha*x^2}}), x <0 \\end{matrix}\\right.
 
     See additional documentation for :mod:`Echo.Activation.Torch.isrlu`.
     '''

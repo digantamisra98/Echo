@@ -24,19 +24,24 @@ class aria2(nn.Module):
 
         Aria2(x, \\alpha, \\beta) = (1+e^{-\\beta*x})^{-\\alpha}
 
-    Aria paper:
-    https://arxiv.org/abs/1805.08878
-
     Plot:
 
     .. figure::  _static/aria2.png
         :align:   center
 
-
     Shape:
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    Arguments:
+        - alpha: hyper-parameter which has a two-fold effect; it reduces the curvature in 3rd quadrant as well as increases the curvature in first quadrant while lowering the value of activation (default = 1)
+
+        - beta: the exponential growth rate (default = 0.5)
+
+    References:
+        - See Aria paper:
+            https://arxiv.org/abs/1805.08878
 
     Examples:
         >>> m = aria2(beta=0.5, alpha=1)

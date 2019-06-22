@@ -1,6 +1,10 @@
 '''
 Applies the ISRLU (Inverse Square Root Linear Unit) function element-wise:
 
+.. math::
+
+    ISRLU(x)=\\left\\{\\begin{matrix} x, x\\geq 0 \\\\  x * (\\frac{1}{\\sqrt{1 + \\alpha*x^2}}), x <0 \\end{matrix}\\right.
+
 ISRLU paper:
 https://arxiv.org/pdf/1710.09967.pdf
 '''
@@ -16,13 +20,25 @@ class isrlu(nn.Module):
     '''
     Applies the ISRLU function element-wise:
 
-    ISRLU paper:
-    https://arxiv.org/pdf/1710.09967.pdf
+    .. math::
+
+        ISRLU(x)=\\left\\{\\begin{matrix} x, x\\geq 0 \\\\  x * (\\frac{1}{\\sqrt{1 + \\alpha*x^2}}), x <0 \\end{matrix}\\right.
+
+    Plot:
+
+    .. figure::  _static/isrlu.png
+        :align:   center
 
     Shape:
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    Arguments:
+        - alpha: hyperparameter α controls the value to which an ISRLU saturates for negative inputs (default = 1)
+
+    References:
+        - ISRLU paper: https://arxiv.org/pdf/1710.09967.pdf
 
     Examples:
         >>> m = isrlu(alpha=1.0)

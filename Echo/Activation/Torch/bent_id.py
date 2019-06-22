@@ -3,7 +3,7 @@ Applies the Bent's Identity function element-wise:
 
 .. math::
 
-    \\bent_id(x) = x + ((((x^{2}+1)^{0.5})-1)/2)
+    bentId(x) = x + \\frac{\\sqrt{x^{2}+1}-1}{2}
 '''
 
 # import pytorch
@@ -19,7 +19,12 @@ class bent_id(nn.Module):
 
     .. math::
 
-        \\bent_id(x) = x + ((((x^{2}+1)^{0.5})-1)/2)
+        bentId(x) = x + \\frac{\\sqrt{x^{2}+1}-1}{2}
+
+    Plot:
+
+    .. figure::  _static/bent_id.png
+        :align:   center
 
     Shape:
         - Input: (N, *) where * means, any number of additional

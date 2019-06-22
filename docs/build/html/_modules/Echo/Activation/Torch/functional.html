@@ -212,6 +212,30 @@
 <span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.isru`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="nb">input</span><span class="o">/</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">alpha</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="bent_id"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.bent_id">[docs]</a><span class="k">def</span> <span class="nf">bent_id</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies the Bent&#39;s Identity function element-wise:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        bentId(x) = x + \\frac{\\sqrt{x^{2}+1}-1}{2}</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.bent_id`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="nb">input</span> <span class="o">+</span> <span class="p">((</span><span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="isrlu"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.functional.isrlu">[docs]</a><span class="k">def</span> <span class="nf">isrlu</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies the ISRLU function element-wise:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        ISRLU(x)=\\left\\{\\begin{matrix} x, x\\geq 0 \\\\  x * (\\frac{1}{\\sqrt{1 + \\alpha*x^2}}), x &lt;0 \\end{matrix}\\right.</span>
+
+<span class="sd">    See additional documentation for :mod:`Echo.Activation.Torch.isrlu`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">input</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">*</span> <span class="nb">input</span><span class="o">/</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">alpha</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span> <span class="o">+</span> <span class="p">(</span><span class="nb">input</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">*</span> <span class="nb">input</span></div>
 </pre></div>
 
           </div>

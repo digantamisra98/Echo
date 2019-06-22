@@ -68,6 +68,14 @@ The package contains implementation for following activation functions:
 
 ![equation](https://latex.codecogs.com/gif.latex?ISRU%28x%29%20%3D%20%5Cfrac%7Bx%7D%7B%5Csqrt%7B1%20&plus;%20%5Calpha%20*%20x%5E2%7D%7D)
 
+* [ISRLU](https://arxiv.org/pdf/1710.09967.pdf)
+
+![equation](https://latex.codecogs.com/gif.latex?ISRLU%28x%29%3D%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20x%2C%20x%5Cgeq%200%20%5C%5C%20x%20*%20%28%5Cfrac%7B1%7D%7B%5Csqrt%7B1%20&plus;%20%5Calpha*x%5E2%7D%7D%29%2C%20x%20%3C0%20%5Cend%7Bmatrix%7D%5Cright.)
+
+* Bent's identity
+
+![equation](https://latex.codecogs.com/gif.latex?bentId%28x%29%20%3D%20x%20&plus;%20%5Cfrac%7B%5Csqrt%7Bx%5E%7B2%7D&plus;1%7D-1%7D%7B2%7D)
+
 * Mish
 * Beta Mish
 

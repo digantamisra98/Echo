@@ -177,3 +177,23 @@ def isru(input, alpha=1.0):
     See additional documentation for :mod:`Echo.Activation.Torch.isru`.
     '''
     return input/(torch.sqrt(1+alpha*torch.pow(input,2)))
+
+def bent_id(input):
+    '''
+    Applies the Bent's Identity function element-wise:
+
+    .. math::
+
+        \\bent_id(x) = x + ((((x^{2}+1)^{0.5})-1)/2)
+
+    See additional documentation for :mod:`Echo.Activation.Torch.bent_id`.
+    '''
+    return input + ((torch.sqrt(torch.pow(input,2)+1)-1)/2)
+
+def isrlu(input, alpha=1.0):
+    '''
+    Applies the ISRLU function element-wise:
+
+    See additional documentation for :mod:`Echo.Activation.Torch.isrlu`.
+    '''
+    return (input < 0).float() * input/(torch.sqrt(1+alpha*torch.pow(input,2))) + (input >= 0).float() * input

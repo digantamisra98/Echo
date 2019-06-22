@@ -200,7 +200,7 @@ def isrlu(input, alpha=1.0):
 
     See additional documentation for :mod:`Echo.Activation.Torch.isrlu`.
     '''
-    return (input < 0).float() * input/(torch.sqrt(1+alpha*torch.pow(input,2))) + (input >= 0).float() * input
+    return (input < 0).float() * isru(x,alpha) + (input >= 0).float() * input
 
 def soft_clipping(input, alpha = 0.5):
     '''

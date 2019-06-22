@@ -24,9 +24,6 @@ class sqnl(nn.Module):
 
         SQNL(x) = \\left\\{\\begin{matrix} 1, x > 2 \\\\ x - \\frac{x^2}{4}, 0 \\leq x \\leq 2 \\\\  x + \\frac{x^2}{4}, -2 \\leq x < 0 \\\\ -1, x < -2 \\end{matrix}\\right.
 
-    See SQNL paper:
-    https://ieeexplore.ieee.org/document/8489043
-
     Plot:
 
     .. figure::  _static/sqnl.png
@@ -36,6 +33,10 @@ class sqnl(nn.Module):
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    References:
+        - See SQNL paper:
+        https://ieeexplore.ieee.org/document/8489043
 
     Examples:
         >>> m = sqnl()

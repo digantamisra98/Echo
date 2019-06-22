@@ -32,6 +32,9 @@ class beta_mish(nn.Module):
           dimensions
         - Output: (N, *), same shape as the input
 
+    Arguments:
+        - beta: hyperparameter (default = 1.5)
+
     Examples:
         >>> m = beta_mish(beta=1.5)
         >>> input = torch.randn(2)

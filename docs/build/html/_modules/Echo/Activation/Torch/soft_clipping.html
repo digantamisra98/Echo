@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Echo.Activation.Torch.sine_relu &#8212; Echo 2019 documentation</title>
+    <title>Echo.Activation.Torch.soft_clipping &#8212; Echo 2019 documentation</title>
     <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
@@ -32,17 +32,16 @@
 
           <div class="body" role="main">
             
-  <h1>Source code for Echo.Activation.Torch.sine_relu</h1><div class="highlight"><pre>
+  <h1>Source code for Echo.Activation.Torch.soft_clipping</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Applies the SineReLU function element-wise:</span>
+<span class="sd">Applies Soft Clipping function element-wise:</span>
 
 <span class="sd">.. math::</span>
 
-<span class="sd">    SineReLU(x, \\epsilon) = \\left\\{\\begin{matrix} x , x &gt; 0 \\\\ \\epsilon * (sin(x) - cos(x)), x \\leq  0 \\end{matrix}\\right.</span>
+<span class="sd">    SC(x) = 1 / \\alpha * log(\\frac{1 + e^{\\alpha * x}}{1 + e^{\\alpha * (x-1)}})</span>
 
-
-<span class="sd">See related Medium article:</span>
-<span class="sd">https://medium.com/@wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d</span>
+<span class="sd">See SC paper:</span>
+<span class="sd">https://arxiv.org/pdf/1810.11509.pdf</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="c1"># import pytorch</span>
@@ -52,17 +51,17 @@
 <span class="c1"># import activation functions</span>
 <span class="kn">import</span> <span class="nn">Echo.Activation.Torch.functional</span> <span class="k">as</span> <span class="nn">Func</span>
 
-<div class="viewcode-block" id="sine_relu"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.sine_relu.sine_relu">[docs]</a><span class="k">class</span> <span class="nc">sine_relu</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="soft_clipping"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.soft_clipping.soft_clipping">[docs]</a><span class="k">class</span> <span class="nc">soft_clipping</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Applies the SineReLU function element-wise:</span>
+<span class="sd">    Applies the Soft Clipping function element-wise:</span>
 
 <span class="sd">    .. math::</span>
 
-<span class="sd">        SineReLU(x, \\epsilon) = \\left\\{\\begin{matrix} x , x &gt; 0 \\\\ \\epsilon * (sin(x) - cos(x)), x \\leq  0 \\end{matrix}\\right.</span>
+<span class="sd">        SC(x) = 1 / \\alpha * log(\\frac{1 + e^{\\alpha * x}}{1 + e^{\\alpha * (x-1)}})</span>
 
 <span class="sd">    Plot:</span>
 
-<span class="sd">    .. figure::  _static/sine_relu.png</span>
+<span class="sd">    .. figure::  _static/sc.png</span>
 <span class="sd">        :align:   center</span>
 
 <span class="sd">    Shape:</span>
@@ -70,27 +69,32 @@
 <span class="sd">          dimensions</span>
 <span class="sd">        - Output: (N, *), same shape as the input</span>
 
+<span class="sd">    Arguments:</span>
+<span class="sd">        - alpha: hyper-parameter, which determines how close to linear the central region is and how sharply the linear region turns to the asymptotic values</span>
+
 <span class="sd">    References:</span>
-<span class="sd">        - See related Medium article:</span>
-<span class="sd">        https://medium.com/@wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d</span>
+<span class="sd">        - See SC paper:</span>
+<span class="sd">            https://arxiv.org/pdf/1810.11509.pdf</span>
 
 <span class="sd">    Examples:</span>
-<span class="sd">        &gt;&gt;&gt; m = sine_relu()</span>
+<span class="sd">        &gt;&gt;&gt; m = soft_clipping(alpha=50)</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.randn(2)</span>
 <span class="sd">        &gt;&gt;&gt; output = m(input)</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">50</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Init method.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
 
-<div class="viewcode-block" id="sine_relu.forward"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.sine_relu.sine_relu.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+
+<div class="viewcode-block" id="soft_clipping.forward"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.soft_clipping.soft_clipping.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Forward pass of the function.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="n">Func</span><span class="o">.</span><span class="n">sineReLU</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">Func</span><span class="o">.</span><span class="n">soft_clipping</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span></div></div>
 </pre></div>
 
           </div>

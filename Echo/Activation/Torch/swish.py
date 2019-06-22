@@ -24,9 +24,6 @@ class swish(nn.Module):
 
         Swish(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}
 
-    See Swish paper:
-    https://arxiv.org/pdf/1710.05941.pdf
-
     Plot:
 
     .. figure::  _static/swish.png
@@ -36,6 +33,13 @@ class swish(nn.Module):
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    Arguments:
+        - beta: hyperparameter, which controls the shape of the bump (default = 1.25)
+
+    References:
+        - See Swish paper:
+        https://arxiv.org/pdf/1710.05941.pdf
 
     Examples:
         >>> m = swish(beta=1.25)

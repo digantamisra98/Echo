@@ -25,9 +25,6 @@ class elish(nn.Module):
 
         ELiSH(x) = \\left\\{\\begin{matrix} x / (1+e^{-x}), x \\geq 0 \\\\ (e^{x} - 1) / (1 + e^{-x}), x < 0 \\end{matrix}\\right.
 
-    See ELiSH paper:
-    https://arxiv.org/pdf/1710.05941.pdf
-
     Plot:
 
     .. figure::  _static/elish.png
@@ -37,6 +34,10 @@ class elish(nn.Module):
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    References:
+        - Related paper:
+        https://arxiv.org/pdf/1710.05941.pdf
 
     Examples:
         >>> m = elish()

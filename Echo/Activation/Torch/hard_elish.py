@@ -24,9 +24,6 @@ class hard_elish(nn.Module):
 
         HardELiSH(x) = \\left\\{\\begin{matrix} x \\times max(0, min(1, (x + 1) / 2)), x \\geq 0 \\\\ (e^{x} - 1)\\times max(0, min(1, (x + 1) / 2)), x < 0 \\end{matrix}\\right.
 
-    See HardELiSH paper:
-    https://arxiv.org/pdf/1710.05941.pdf
-
     Plot:
 
     .. figure::  _static/hard_elish.png
@@ -36,6 +33,10 @@ class hard_elish(nn.Module):
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    References:
+        - See HardELiSH paper:
+        https://arxiv.org/pdf/1710.05941.pdf
 
     Examples:
         >>> m = hard_elish()

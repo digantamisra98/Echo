@@ -59,9 +59,6 @@
 
 <span class="sd">        Swish(x, \\beta) = x*sigmoid(\\beta*x) = \\frac{x}{(1+e^{-\\beta*x})}</span>
 
-<span class="sd">    See Swish paper:</span>
-<span class="sd">    https://arxiv.org/pdf/1710.05941.pdf</span>
-
 <span class="sd">    Plot:</span>
 
 <span class="sd">    .. figure::  _static/swish.png</span>
@@ -71,6 +68,13 @@
 <span class="sd">        - Input: (N, *) where * means, any number of additional</span>
 <span class="sd">          dimensions</span>
 <span class="sd">        - Output: (N, *), same shape as the input</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        - beta: hyperparameter, which controls the shape of the bump (default = 1.25)</span>
+
+<span class="sd">    References:</span>
+<span class="sd">        - See Swish paper:</span>
+<span class="sd">        https://arxiv.org/pdf/1710.05941.pdf</span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; m = swish(beta=1.25)</span>

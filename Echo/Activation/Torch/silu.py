@@ -25,9 +25,6 @@ class silu(nn.Module):
 
         silu(x) = x * sigmoid(x)
 
-    Related paper:
-    https://arxiv.org/pdf/1606.08415.pdf
-
     Plot:
 
     .. figure::  _static/silu.png
@@ -37,6 +34,10 @@ class silu(nn.Module):
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    References:
+        -  Related paper:
+        https://arxiv.org/pdf/1606.08415.pdf
 
     Examples:
         >>> m = silu()

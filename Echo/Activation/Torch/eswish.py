@@ -24,9 +24,6 @@ class eswish(nn.Module):
 
         ESwish(x, \\beta) = \\beta*x*sigmoid(x)
 
-    See E-Swish paper:
-    https://arxiv.org/abs/1801.07145
-
     Plot:
 
     .. figure::  _static/eswish.png
@@ -36,6 +33,10 @@ class eswish(nn.Module):
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    References:
+        - See related paper:
+        https://arxiv.org/abs/1801.07145
 
     Examples:
         >>> m = eswish(beta=1.375)

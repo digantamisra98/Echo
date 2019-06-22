@@ -31,6 +31,9 @@ class weightedTanh(nn.Module):
           dimensions
         - Output: (N, *), same shape as the input
 
+    Arguments:
+        - weight: hyperparameter (default = 1.0)
+
     Examples:
         >>> m = weightedTanh(weight = 1)
         >>> input = torch.randn(2)

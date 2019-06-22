@@ -59,9 +59,6 @@
 
 <span class="sd">        FTS(x) = \\left\\{\\begin{matrix} \\frac{x}{1 + e^{-x}} , x \\geq  0 \\\\ 0, x &lt; 0 \\end{matrix}\\right.</span>
 
-<span class="sd">    See Flatten T-Swish paper:</span>
-<span class="sd">    https://arxiv.org/pdf/1812.06247.pdf</span>
-
 <span class="sd">    Plot:</span>
 
 <span class="sd">    .. figure::  _static/fts.png</span>
@@ -71,6 +68,10 @@
 <span class="sd">        - Input: (N, *) where * means, any number of additional</span>
 <span class="sd">          dimensions</span>
 <span class="sd">        - Output: (N, *), same shape as the input</span>
+
+<span class="sd">    References:</span>
+<span class="sd">        - See Flattened T-Swish paper:</span>
+<span class="sd">        https://arxiv.org/pdf/1812.06247.pdf</span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; m = fts()</span>

@@ -29,13 +29,14 @@ class isru(nn.Module):
     .. figure::  _static/isru.png
         :align:   center
 
-    ISRU paper:
-    https://arxiv.org/pdf/1710.09967.pdf
-
     Shape:
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    References:
+        - ISRU paper:
+        https://arxiv.org/pdf/1710.09967.pdf
 
     Examples:
         >>> m = isru(alpha=1.0)

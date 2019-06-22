@@ -25,9 +25,6 @@ class sine_relu(nn.Module):
 
         SineReLU(x, \\epsilon) = \\left\\{\\begin{matrix} x , x > 0 \\\\ \\epsilon * (sin(x) - cos(x)), x \\leq  0 \\end{matrix}\\right.
 
-    See related Medium article:
-    https://medium.com/@wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d
-
     Plot:
 
     .. figure::  _static/sine_relu.png
@@ -37,6 +34,10 @@ class sine_relu(nn.Module):
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    References:
+        - See related Medium article:
+        https://medium.com/@wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d
 
     Examples:
         >>> m = sine_relu()

@@ -24,9 +24,6 @@ class fts(nn.Module):
 
         FTS(x) = \\left\\{\\begin{matrix} \\frac{x}{1 + e^{-x}} , x \\geq  0 \\\\ 0, x < 0 \\end{matrix}\\right.
 
-    See Flatten T-Swish paper:
-    https://arxiv.org/pdf/1812.06247.pdf
-
     Plot:
 
     .. figure::  _static/fts.png
@@ -36,6 +33,10 @@ class fts(nn.Module):
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    References:
+        - See Flattened T-Swish paper:
+        https://arxiv.org/pdf/1812.06247.pdf
 
     Examples:
         >>> m = fts()

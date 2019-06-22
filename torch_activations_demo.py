@@ -33,6 +33,7 @@ from Echo.Activation.Torch.sqnl import sqnl
 from Echo.Activation.Torch.isru import isru
 from Echo.Activation.Torch.isrlu import isrlu
 from Echo.Activation.Torch.bent_id import bent_id
+from Echo.Activation.Torch.soft_clipping import soft_clipping
 import Echo.Activation.Torch.functional as Func
 
 # activation names constants
@@ -52,6 +53,7 @@ SQNL = 'sqnl'
 ISRU = 'isru'
 ISRLU = 'isrlu'
 BENTID = 'bent_id'
+SC = 'soft_clipping'
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
@@ -120,6 +122,9 @@ class Classifier(nn.Module):
         if (self.activation == BENTID):
             x = Func.bent_id(self.fc1(x))
 
+        if (self.activation == SC):
+            x = Func.soft_clipping(self.fc1(x))
+
         x = F.relu(self.fc2(x))
         x = F.relu(self.fc3(x))
         x = F.log_softmax(self.fc4(x), dim=1)
@@ -136,7 +141,7 @@ def main():
     # Add argument to choose one of the activation functions
     parser.add_argument('--activation', action='store', default = WEIGHTED_TANH,
                         help='Activation function for demonstration.',
-                        choices = [WEIGHTED_TANH, MISH, SILU, ARIA2, ESWISH, SWISH, BMISH, ELISH, HELISH, MILA, SINERELU, FTS, SQNL, ISRU, ISRLU, BENTID])
+                        choices = [WEIGHTED_TANH, MISH, SILU, ARIA2, ESWISH, SWISH, BMISH, ELISH, HELISH, MILA, SINERELU, FTS, SQNL, ISRU, ISRLU, BENTID, SC])
 
     # Add argument to choose the way to initialize the model
     parser.add_argument('--model_initialization', action='store', default = 'class',
@@ -214,6 +219,9 @@ def main():
 
         if (activation == BENTID):
             activation_function = bent_id()
+
+        if (activation == SC):
+            activation_function = soft_clipping()
 
         # Initialize the model using nn.Sequential
         model = nn.Sequential(OrderedDict([

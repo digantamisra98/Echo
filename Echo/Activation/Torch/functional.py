@@ -201,3 +201,15 @@ def isrlu(input, alpha=1.0):
     See additional documentation for :mod:`Echo.Activation.Torch.isrlu`.
     '''
     return (input < 0).float() * input/(torch.sqrt(1+alpha*torch.pow(input,2))) + (input >= 0).float() * input
+
+def soft_clipping(input, alpha = 0.5):
+    '''
+    Applies the Soft Clipping function element-wise:
+
+    .. math::
+
+        SC(x) = 1 / \\alpha * log(\\frac{1 + e^{\\alpha * x}}{1 + e^{\\alpha * (x-1)}})
+
+    See additional documentation for :mod:`Echo.Activation.Torch.soft_clipping`.
+    '''
+    return (1 / alpha) * torch.log((1 + torch.exp(alpha * input))/(1 + torch.exp(alpha *(input - 1))))

@@ -80,6 +80,10 @@ The package contains implementation for following activation functions:
 
 ![equation](https://latex.codecogs.com/gif.latex?SC%28x%29%20%3D%201%20/%20%5Calpha%20*%20log%28%5Cfrac%7B1%20&plus;%20e%5E%7B%5Calpha%20*%20x%7D%7D%7B1%20&plus;%20e%5E%7B%5Calpha%20*%20%28x-1%29%7D%7D%29)
 
+* [SReLU](https://arxiv.org/pdf/1512.07030.pdf)
+
+![equation](https://latex.codecogs.com/gif.latex?SReLU%28x_i%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20t_i%5Er%20&plus;%20a_i%5Er%28x_i%20-%20t_i%5Er%29%2C%20x_i%20%5Cgeq%20t_i%5Er%20%5C%5C%20x_i%2C%20t_i%5Er%20%3E%20x_i%20%3E%20t_i%5El%5C%5C%20t_i%5El%20&plus;%20a_i%5El%28x_i%20-%20t_i%5El%29%2C%20x_i%20%5Cleq%20t_i%5El%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright.)
+
 * Mish
 * Beta Mish
 

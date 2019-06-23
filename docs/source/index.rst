@@ -44,6 +44,7 @@ List of activation functions implemented in Echo:
   * ISRLU (see :mod:`Echo.Activation.Torch.isrlu`)
   * Bent's Identity (see :mod:`Echo.Activation.Torch.bent_id`)
   * Soft Clipping (see :mod:`Echo.Activation.Torch.soft_clipping`)
+  * SReLU (see :mod:`Echo.Activation.Torch.srelu`)
   * Beta Mish (see :mod:`Echo.Activation.Torch.beta_mish`)
 
 Installation
@@ -203,6 +204,11 @@ Echo.Activation.Torch.soft_clipping
 Echo.Activation.Torch.weightedTanh
 --------------------------------
 .. automodule:: Echo.Activation.Torch.weightedTanh
+  :members:
+
+Echo.Activation.Torch.srelu
+--------------------------------
+.. automodule:: Echo.Activation.Torch.srelu
   :members:
 
 Echo.Activation.Torch.functional

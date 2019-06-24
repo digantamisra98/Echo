@@ -84,6 +84,10 @@ The package contains implementation for following activation functions:
 
 ![equation](https://latex.codecogs.com/gif.latex?SReLU%28x_i%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20t_i%5Er%20&plus;%20a_i%5Er%28x_i%20-%20t_i%5Er%29%2C%20x_i%20%5Cgeq%20t_i%5Er%20%5C%5C%20x_i%2C%20t_i%5Er%20%3E%20x_i%20%3E%20t_i%5El%5C%5C%20t_i%5El%20&plus;%20a_i%5El%28x_i%20-%20t_i%5El%29%2C%20x_i%20%5Cleq%20t_i%5El%20%5C%5C%20%5Cend%7Bmatrix%7D%5Cright.)
 
+* [BReLU](https://arxiv.org/pdf/1709.04054.pdf)
+
+![equation](https://latex.codecogs.com/gif.latex?BReLU%28x_i%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20f%28x_i%29%2C%20i%20%5Cmod%202%20%3D%200%5C%5C%20-%20f%28-x_i%29%2C%20i%20%5Cmod%202%20%5Cneq%200%20%5Cend%7Bmatrix%7D%5Cright.)
+
 * Mish
 * Beta Mish
 

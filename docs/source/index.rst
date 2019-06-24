@@ -46,6 +46,9 @@ List of activation functions implemented in Echo:
   * Soft Clipping (see :mod:`Echo.Activation.Torch.soft_clipping`)
   * SReLU (see :mod:`Echo.Activation.Torch.srelu`)
   * BReLU (see :mod:`Echo.Activation.Torch.brelu`)
+  * APL (see :mod:`Echo.Activation.Torch.apl`)
+  * APL (see :mod:`Echo.Activation.Torch.soft_exponential`)
+  * Maxout (see :mod:`Echo.Activation.Torch.maxout`)
   * Beta Mish (see :mod:`Echo.Activation.Torch.beta_mish`)
 
 Installation
@@ -215,6 +218,21 @@ Echo.Activation.Torch.srelu
 Echo.Activation.Torch.brelu
 --------------------------------
 .. automodule:: Echo.Activation.Torch.brelu
+  :members:
+
+Echo.Activation.Torch.apl
+--------------------------------
+.. automodule:: Echo.Activation.Torch.apl
+  :members:
+
+Echo.Activation.Torch.soft_exponential
+--------------------------------
+.. automodule:: Echo.Activation.Torch.soft_exponential
+  :members:
+
+Echo.Activation.Torch.maxout
+--------------------------------
+.. automodule:: Echo.Activation.Torch.maxout
   :members:
 
 Echo.Activation.Torch.functional

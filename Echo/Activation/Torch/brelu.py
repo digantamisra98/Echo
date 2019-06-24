@@ -62,7 +62,6 @@ class brelu(Function):
 
         # clone the input tensor
         output = input.clone()
-        #print(input)
 
         # apply ReLU to elements where i mod 2 == 0
         output[even_indices] = output[even_indices].clamp(min=0)
@@ -70,9 +69,6 @@ class brelu(Function):
         # apply inversed ReLU to inversed elements where i mod 2 != 0
         output[odd_indices] = 0 - output[odd_indices] # reverse elements with odd indices
         output[odd_indices] = - output[odd_indices].clamp(min = 0) # apply reversed ReLU
-
-        #print(output)
-        #print('----------------')
 
         return output
 

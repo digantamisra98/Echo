@@ -88,6 +88,18 @@ The package contains implementation for following activation functions:
 
 ![equation](https://latex.codecogs.com/gif.latex?BReLU%28x_i%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20f%28x_i%29%2C%20i%20%5Cmod%202%20%3D%200%5C%5C%20-%20f%28-x_i%29%2C%20i%20%5Cmod%202%20%5Cneq%200%20%5Cend%7Bmatrix%7D%5Cright.)
 
+* [APL](https://arxiv.org/pdf/1412.6830.pdf)
+
+![equation](https://latex.codecogs.com/gif.latex?APL%28x_i%29%20%3D%20max%280%2Cx%29%20&plus;%20%5Csum_%7Bs%3D1%7D%5E%7BS%7D%7Ba_i%5Es%20*%20max%280%2C%20-x%20&plus;%20b_i%5Es%29%7D)
+
+* [Soft Exponential](https://arxiv.org/pdf/1602.01321.pdf)
+
+![equation](https://latex.codecogs.com/gif.latex?SoftExponential%28x%2C%20%5Calpha%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20-%20%5Cfrac%7Blog%281%20-%20%5Calpha%28x%20&plus;%20%5Calpha%29%29%7D%7B%5Calpha%7D%2C%20%5Calpha%20%3C%200%5C%5C%20x%2C%20%5Calpha%20%3D%200%5C%5C%20%5Cfrac%7Be%5E%7B%5Calpha%20*%20x%7D%20-%201%7D%7B%5Calpha%7D%20&plus;%20%5Calpha%2C%20%5Calpha%20%3E%200%20%5Cend%7Bmatrix%7D%5Cright.)
+
+* [Maxout](https://arxiv.org/pdf/1302.4389.pdf)
+
+![equation](https://latex.codecogs.com/gif.latex?maxout%28%5Cvec%7Bx%7D%29%20%3D%20max_i%28x_i%29)
+
 * Mish
 * Beta Mish
 

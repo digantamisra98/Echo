@@ -45,6 +45,7 @@ List of activation functions implemented in Echo:
   * Bent's Identity (see :mod:`Echo.Activation.Torch.bent_id`)
   * Soft Clipping (see :mod:`Echo.Activation.Torch.soft_clipping`)
   * SReLU (see :mod:`Echo.Activation.Torch.srelu`)
+  * BReLU (see :mod:`Echo.Activation.Torch.brelu`)
   * Beta Mish (see :mod:`Echo.Activation.Torch.beta_mish`)
 
 Installation
@@ -209,6 +210,11 @@ Echo.Activation.Torch.weightedTanh
 Echo.Activation.Torch.srelu
 --------------------------------
 .. automodule:: Echo.Activation.Torch.srelu
+  :members:
+
+Echo.Activation.Torch.brelu
+--------------------------------
+.. automodule:: Echo.Activation.Torch.brelu
   :members:
 
 Echo.Activation.Torch.functional

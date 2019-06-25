@@ -56,9 +56,11 @@ class soft_exponential(nn.Module):
 
         # initialize alpha
         if alpha == None:
-            self.alpha = 0.0
+            self.alpha = Parameter(torch.tensor(0.0)) # create a tensor out of alpha
         else:
-            self.alpha = alpha
+            self.alpha = Parameter(torch.tensor(alpha)) # create a tensor out of alpha
+
+        self.alpha.requiresGrad = True # set requiresGrad to true!
 
     def forward(self, x):
         '''

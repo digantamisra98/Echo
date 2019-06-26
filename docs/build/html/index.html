@@ -108,7 +108,7 @@
 <li>SReLU (see <a class="reference internal" href="#module-Echo.Activation.Torch.srelu" title="Echo.Activation.Torch.srelu"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.srelu</span></code></a>)</li>
 <li>BReLU (see <a class="reference internal" href="#module-Echo.Activation.Torch.brelu" title="Echo.Activation.Torch.brelu"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.brelu</span></code></a>)</li>
 <li>APL (see <a class="reference internal" href="#module-Echo.Activation.Torch.apl" title="Echo.Activation.Torch.apl"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.apl</span></code></a>)</li>
-<li>APL (see <a class="reference internal" href="#module-Echo.Activation.Torch.soft_exponential" title="Echo.Activation.Torch.soft_exponential"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.soft_exponential</span></code></a>)</li>
+<li>Soft Exponential (see <a class="reference internal" href="#module-Echo.Activation.Torch.soft_exponential" title="Echo.Activation.Torch.soft_exponential"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.soft_exponential</span></code></a>)</li>
 <li>Maxout (see <a class="reference internal" href="#module-Echo.Activation.Torch.maxout" title="Echo.Activation.Torch.maxout"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.maxout</span></code></a>)</li>
 <li>Beta Mish (see <a class="reference internal" href="#module-Echo.Activation.Torch.beta_mish" title="Echo.Activation.Torch.beta_mish"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Echo.Activation.Torch.beta_mish</span></code></a>)</li>
 </ul>
@@ -1177,10 +1177,6 @@ dimensions</li>
 <div><div class="math notranslate nohighlight">
 \[APL(x_i) = max(0,x) + \sum_{s=1}^{S}{a_i^s * max(0, -x + b_i^s)}\]</div>
 </div></blockquote>
-<p>Plot:</p>
-<div class="figure align-center">
-<img alt="_static/apl.png" src="_static/apl.png" />
-</div>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">

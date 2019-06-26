@@ -26,11 +26,6 @@ class apl_function(Function):
 
             APL(x_i) = max(0,x) + \\sum_{s=1}^{S}{a_i^s * max(0, -x + b_i^s)}
 
-    Plot:
-
-    .. figure::  _static/apl.png
-        :align:   center
-
     Shape:
         - Input: (N, *) where * means, any number of additional
           dimensions

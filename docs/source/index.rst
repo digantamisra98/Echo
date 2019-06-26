@@ -47,7 +47,7 @@ List of activation functions implemented in Echo:
   * SReLU (see :mod:`Echo.Activation.Torch.srelu`)
   * BReLU (see :mod:`Echo.Activation.Torch.brelu`)
   * APL (see :mod:`Echo.Activation.Torch.apl`)
-  * APL (see :mod:`Echo.Activation.Torch.soft_exponential`)
+  * Soft Exponential (see :mod:`Echo.Activation.Torch.soft_exponential`)
   * Maxout (see :mod:`Echo.Activation.Torch.maxout`)
   * Beta Mish (see :mod:`Echo.Activation.Torch.beta_mish`)
 

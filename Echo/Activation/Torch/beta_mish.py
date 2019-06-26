@@ -35,6 +35,10 @@ class beta_mish(nn.Module):
     Arguments:
         - beta: hyperparameter (default = 1.5)
 
+    References
+        - β-Mish: An uni-parametric adaptive activation function derived from Mish:
+        https://github.com/digantamisra98/Beta-Mish)
+
     Examples:
         >>> m = beta_mish(beta=1.5)
         >>> input = torch.randn(2)

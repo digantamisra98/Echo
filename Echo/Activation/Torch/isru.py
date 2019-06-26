@@ -34,6 +34,9 @@ class isru(nn.Module):
           dimensions
         - Output: (N, *), same shape as the input
 
+    Arguments:
+        - alpha: A constant (default = 1.0)
+
     References:
         - ISRU paper:
         https://arxiv.org/pdf/1710.09967.pdf

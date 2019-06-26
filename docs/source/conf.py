@@ -15,15 +15,19 @@
 import os
 import sys
 
+sys.path.insert(0, '../../../venvtf/lib/python3.6/site-packages/')
+
+import keras
+
+sys.path.insert(0, '../..')
 sys.path.insert(0, os.path.abspath('../../Echo/'))
 sys.path.insert(0, os.path.abspath('../..'))
 sys.path.insert(0, os.path.abspath('../../Echo/Echo/'))
-#os.path.append('home/Projects/Python/Deep Learning Package/Echo')
-#os.path.append('home/Projects/Python/Deep Learning Package/Echo/Echo')
 
 import Echo
 import Echo.Activation
 import Echo.Activation.Torch
+import Echo.Activation.Keras
 
 
 # -- Project information -----------------------------------------------------

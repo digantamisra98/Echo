@@ -51,6 +51,13 @@ List of activation functions implemented in Echo:
   * Maxout (see :mod:`Echo.Activation.Torch.maxout`)
   * Beta Mish (see :mod:`Echo.Activation.Torch.beta_mish`)
 
+2. Keras:
+  * Swish (see :func:`Echo.Activation.Keras.custom_activations.swish`)
+  * ESwish (see :func:`Echo.Activation.Keras.custom_activations.eswish`)
+  * ISRU (see :func:`Echo.Activation.Keras.custom_activations.isru`)
+  * Beta Mish (see :func:`Echo.Activation.Keras.custom_activations.beta_mish`)
+  * Mila (see :func:`Echo.Activation.Keras.custom_activations.mila`)
+
 Installation
 ================================
 To install Echo package follow the instructions below:
@@ -66,7 +73,7 @@ To install Echo package follow the instructions below:
 Torch Examples
 ================================
 
-Activation Functions
+Simple Activation Functions
 --------------------------------
 
 The following code block contains an example of usage of an activation function
@@ -122,7 +129,8 @@ from Echo package:
                             ('logits', nn.Linear(64, 10)),
                             ('logsoftmax', nn.LogSoftmax(dim=1))]))
 
-Echo API Reference
+
+PyTorch Extensions API
 ================================
 
 Echo.Activation.Torch.aria2
@@ -238,6 +246,14 @@ Echo.Activation.Torch.maxout
 Echo.Activation.Torch.functional
 --------------------------------
 .. automodule:: Echo.Activation.Torch.functional
+   :members:
+
+Keras Extensions API
+================================
+
+Echo.Activation.Keras.custom_activations
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations
    :members:
 
 Indices and tables

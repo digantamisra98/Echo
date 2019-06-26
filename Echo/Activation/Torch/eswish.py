@@ -34,6 +34,9 @@ class eswish(nn.Module):
           dimensions
         - Output: (N, *), same shape as the input
 
+    Arguments:
+        - beta: a constant parameter (default value = 1.375)
+
     References:
         - See related paper:
         https://arxiv.org/abs/1801.07145

@@ -4,6 +4,9 @@ Applies the Mila function element-wise:
 .. math::
 
     mila(x) = x * tanh(ln(1 + e^{\\beta + x})) = x * tanh(softplus(\\beta + x))
+
+Refer to:
+https://github.com/digantamisra98/Mila
 '''
 
 # import pytorch
@@ -30,6 +33,12 @@ class mila(nn.Module):
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
+
+    Arguments:
+        - beta: scale to control the concavity of the global minima of the function (default = -0.25)
+
+    References:
+        -  https://github.com/digantamisra98/Mila
 
     Examples:
         >>> m = mila(beta=-0.25)

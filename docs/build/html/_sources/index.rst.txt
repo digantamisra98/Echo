@@ -56,7 +56,10 @@ List of activation functions implemented in Echo:
   * ESwish (see :func:`Echo.Activation.Keras.custom_activations.eswish`)
   * ISRU (see :func:`Echo.Activation.Keras.custom_activations.isru`)
   * Beta Mish (see :func:`Echo.Activation.Keras.custom_activations.beta_mish`)
+  * Mish (see :func:`Echo.Activation.Keras.custom_activations.mish`)
   * Mila (see :func:`Echo.Activation.Keras.custom_activations.mila`)
+  * SQNL (see :func:`Echo.Activation.Keras.custom_activations.sqnl`)
+  * Flatten T-Swish (see :func:`Echo.Activation.Keras.custom_activations.fts`)
 
 Installation
 ================================

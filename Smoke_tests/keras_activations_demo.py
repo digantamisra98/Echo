@@ -26,6 +26,9 @@ from Echo.Activation.Keras.custom_activations import swish
 from Echo.Activation.Keras.custom_activations import eswish
 from Echo.Activation.Keras.custom_activations import isru
 from Echo.Activation.Keras.custom_activations import beta_mish
+from Echo.Activation.Keras.custom_activations import mish
+from Echo.Activation.Keras.custom_activations import sqnl
+from Echo.Activation.Keras.custom_activations import fts
 
 # activation names constants
 RELU = 'relu'
@@ -34,6 +37,9 @@ SWISH = 'swish'
 ESWISH = 'eswish'
 ISRU = 'isru'
 BETA_MISH = 'beta_mish'
+MISH = 'mish'
+SQNL = 'sqnl'
+FTS = 'fts'
 
 def CNNModel(input_shape, activation = 'relu'):
     """
@@ -74,6 +80,15 @@ def CNNModel(input_shape, activation = 'relu'):
     if (activation == BETA_MISH):
         X = beta_mish(beta=1.5)(X)
 
+    if (activation == MISH):
+        X = mish()(X)
+
+    if (activation == SQNL):
+        X = sqnl()(X)
+
+    if (activation == FTS):
+        X = fts()(X)
+
     # MAXPOOL
     X = MaxPooling2D((2, 2), name='max_pool')(X)
 
@@ -97,7 +112,7 @@ def main():
     # Add argument to choose one of the activation functions
     parser.add_argument('--activation', action='store', default = RELU,
                         help='Activation function for demonstration.',
-                        choices = [SWISH, ESWISH, MILA, RELU, ISRU, BETA_MISH])
+                        choices = [SWISH, ESWISH, MILA, RELU, ISRU, BETA_MISH, MISH, SQNL, FTS])
 
     # Parse command line arguments
     results = parser.parse_args()

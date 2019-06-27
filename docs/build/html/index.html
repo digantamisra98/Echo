@@ -39,54 +39,54 @@
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#about" id="id103">About</a><ul>
-<li><a class="reference internal" href="#implemented-activation-functions" id="id104">Implemented Activation Functions</a></li>
+<li><a class="reference internal" href="#about" id="id109">About</a><ul>
+<li><a class="reference internal" href="#implemented-activation-functions" id="id110">Implemented Activation Functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#installation" id="id105">Installation</a></li>
-<li><a class="reference internal" href="#torch-examples" id="id106">Torch Examples</a><ul>
-<li><a class="reference internal" href="#simple-activation-functions" id="id107">Simple Activation Functions</a></li>
+<li><a class="reference internal" href="#installation" id="id111">Installation</a></li>
+<li><a class="reference internal" href="#torch-examples" id="id112">Torch Examples</a><ul>
+<li><a class="reference internal" href="#simple-activation-functions" id="id113">Simple Activation Functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#pytorch-extensions-api" id="id108">PyTorch Extensions API</a><ul>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.aria2" id="id109">Echo.Activation.Torch.aria2</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.mish" id="id110">Echo.Activation.Torch.mish</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.beta_mish" id="id111">Echo.Activation.Torch.beta_mish</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.silu" id="id112">Echo.Activation.Torch.silu</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.eswish" id="id113">Echo.Activation.Torch.eswish</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.swish" id="id114">Echo.Activation.Torch.swish</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.elish" id="id115">Echo.Activation.Torch.elish</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.hard_elish" id="id116">Echo.Activation.Torch.hard_elish</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.mila" id="id117">Echo.Activation.Torch.mila</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.sine_relu" id="id118">Echo.Activation.Torch.sine_relu</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.fts" id="id119">Echo.Activation.Torch.fts</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.sqnl" id="id120">Echo.Activation.Torch.sqnl</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.isru" id="id121">Echo.Activation.Torch.isru</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.isrlu" id="id122">Echo.Activation.Torch.isrlu</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.bent_id" id="id123">Echo.Activation.Torch.bent_id</a></li>
-<li><a class="reference internal" href="#echo-activation-torch-soft-clipping" id="id124">Echo.Activation.Torch.soft_clipping</a></li>
-<li><a class="reference internal" href="#echo-activation-torch-weightedtanh" id="id125">Echo.Activation.Torch.weightedTanh</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.srelu" id="id126">Echo.Activation.Torch.srelu</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.brelu" id="id127">Echo.Activation.Torch.brelu</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.apl" id="id128">Echo.Activation.Torch.apl</a></li>
-<li><a class="reference internal" href="#echo-activation-torch-soft-exponential" id="id129">Echo.Activation.Torch.soft_exponential</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.maxout" id="id130">Echo.Activation.Torch.maxout</a></li>
-<li><a class="reference internal" href="#module-Echo.Activation.Torch.functional" id="id131">Echo.Activation.Torch.functional</a></li>
+<li><a class="reference internal" href="#pytorch-extensions-api" id="id114">PyTorch Extensions API</a><ul>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.aria2" id="id115">Echo.Activation.Torch.aria2</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.mish" id="id116">Echo.Activation.Torch.mish</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.beta_mish" id="id117">Echo.Activation.Torch.beta_mish</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.silu" id="id118">Echo.Activation.Torch.silu</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.eswish" id="id119">Echo.Activation.Torch.eswish</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.swish" id="id120">Echo.Activation.Torch.swish</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.elish" id="id121">Echo.Activation.Torch.elish</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.hard_elish" id="id122">Echo.Activation.Torch.hard_elish</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.mila" id="id123">Echo.Activation.Torch.mila</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.sine_relu" id="id124">Echo.Activation.Torch.sine_relu</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.fts" id="id125">Echo.Activation.Torch.fts</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.sqnl" id="id126">Echo.Activation.Torch.sqnl</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.isru" id="id127">Echo.Activation.Torch.isru</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.isrlu" id="id128">Echo.Activation.Torch.isrlu</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.bent_id" id="id129">Echo.Activation.Torch.bent_id</a></li>
+<li><a class="reference internal" href="#echo-activation-torch-soft-clipping" id="id130">Echo.Activation.Torch.soft_clipping</a></li>
+<li><a class="reference internal" href="#echo-activation-torch-weightedtanh" id="id131">Echo.Activation.Torch.weightedTanh</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.srelu" id="id132">Echo.Activation.Torch.srelu</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.brelu" id="id133">Echo.Activation.Torch.brelu</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.apl" id="id134">Echo.Activation.Torch.apl</a></li>
+<li><a class="reference internal" href="#echo-activation-torch-soft-exponential" id="id135">Echo.Activation.Torch.soft_exponential</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.maxout" id="id136">Echo.Activation.Torch.maxout</a></li>
+<li><a class="reference internal" href="#module-Echo.Activation.Torch.functional" id="id137">Echo.Activation.Torch.functional</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#keras-extensions-api" id="id132">Keras Extensions API</a><ul>
-<li><a class="reference internal" href="#echo-activation-keras-custom-activations" id="id133">Echo.Activation.Keras.custom_activations</a></li>
-<li><a class="reference internal" href="#indices-and-tables" id="id134">Indices and tables</a></li>
+<li><a class="reference internal" href="#keras-extensions-api" id="id138">Keras Extensions API</a><ul>
+<li><a class="reference internal" href="#echo-activation-keras-custom-activations" id="id139">Echo.Activation.Keras.custom_activations</a></li>
+<li><a class="reference internal" href="#indices-and-tables" id="id140">Indices and tables</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="about">
-<h2><a class="toc-backref" href="#id103">About</a><a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id109">About</a><a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
 <p><strong>Echo Package</strong> is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as <a class="reference external" href="https://pytorch.org/">PyTorch</a>, <a class="reference external" href="https://keras.io/">Keras</a> and
 <a class="reference external" href="https://www.tensorflow.org/">TensorFlow</a>.</p>
 <div class="section" id="implemented-activation-functions">
-<h3><a class="toc-backref" href="#id104">Implemented Activation Functions</a><a class="headerlink" href="#implemented-activation-functions" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id110">Implemented Activation Functions</a><a class="headerlink" href="#implemented-activation-functions" title="Permalink to this headline">¶</a></h3>
 <p>List of activation functions implemented in Echo:</p>
 <ol class="arabic simple">
 <li>PyTorch:</li>
@@ -126,13 +126,16 @@
 <li>ESwish (see <a class="reference internal" href="#Echo.Activation.Keras.custom_activations.eswish" title="Echo.Activation.Keras.custom_activations.eswish"><code class="xref py py-func docutils literal notranslate"><span class="pre">Echo.Activation.Keras.custom_activations.eswish()</span></code></a>)</li>
 <li>ISRU (see <a class="reference internal" href="#Echo.Activation.Keras.custom_activations.isru" title="Echo.Activation.Keras.custom_activations.isru"><code class="xref py py-func docutils literal notranslate"><span class="pre">Echo.Activation.Keras.custom_activations.isru()</span></code></a>)</li>
 <li>Beta Mish (see <a class="reference internal" href="#Echo.Activation.Keras.custom_activations.beta_mish" title="Echo.Activation.Keras.custom_activations.beta_mish"><code class="xref py py-func docutils literal notranslate"><span class="pre">Echo.Activation.Keras.custom_activations.beta_mish()</span></code></a>)</li>
+<li>Mish (see <a class="reference internal" href="#Echo.Activation.Keras.custom_activations.mish" title="Echo.Activation.Keras.custom_activations.mish"><code class="xref py py-func docutils literal notranslate"><span class="pre">Echo.Activation.Keras.custom_activations.mish()</span></code></a>)</li>
 <li>Mila (see <a class="reference internal" href="#Echo.Activation.Keras.custom_activations.mila" title="Echo.Activation.Keras.custom_activations.mila"><code class="xref py py-func docutils literal notranslate"><span class="pre">Echo.Activation.Keras.custom_activations.mila()</span></code></a>)</li>
+<li>SQNL (see <a class="reference internal" href="#Echo.Activation.Keras.custom_activations.sqnl" title="Echo.Activation.Keras.custom_activations.sqnl"><code class="xref py py-func docutils literal notranslate"><span class="pre">Echo.Activation.Keras.custom_activations.sqnl()</span></code></a>)</li>
+<li>Flatten T-Swish (see <a class="reference internal" href="#Echo.Activation.Keras.custom_activations.fts" title="Echo.Activation.Keras.custom_activations.fts"><code class="xref py py-func docutils literal notranslate"><span class="pre">Echo.Activation.Keras.custom_activations.fts()</span></code></a>)</li>
 </ul>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="installation">
-<h2><a class="toc-backref" href="#id105">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id111">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>To install Echo package follow the instructions below:</p>
 <ol class="arabic simple">
 <li>Clone or download <a class="reference external" href="https://github.com/digantamisra98/Echo">GitHub repository</a>.</li>
@@ -149,9 +152,9 @@
 </div>
 </div>
 <div class="section" id="torch-examples">
-<h2><a class="toc-backref" href="#id106">Torch Examples</a><a class="headerlink" href="#torch-examples" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id112">Torch Examples</a><a class="headerlink" href="#torch-examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="simple-activation-functions">
-<h3><a class="toc-backref" href="#id107">Simple Activation Functions</a><a class="headerlink" href="#simple-activation-functions" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id113">Simple Activation Functions</a><a class="headerlink" href="#simple-activation-functions" title="Permalink to this headline">¶</a></h3>
 <p>The following code block contains an example of usage of an activation function
 from Echo package:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import activations from Echo</span>
@@ -205,9 +208,9 @@ from Echo package:</p>
 </div>
 </div>
 <div class="section" id="pytorch-extensions-api">
-<h2><a class="toc-backref" href="#id108">PyTorch Extensions API</a><a class="headerlink" href="#pytorch-extensions-api" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id114">PyTorch Extensions API</a><a class="headerlink" href="#pytorch-extensions-api" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-Echo.Activation.Torch.aria2">
-<span id="echo-activation-torch-aria2"></span><h3><a class="toc-backref" href="#id109">Echo.Activation.Torch.aria2</a><a class="headerlink" href="#module-Echo.Activation.Torch.aria2" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-aria2"></span><h3><a class="toc-backref" href="#id115">Echo.Activation.Torch.aria2</a><a class="headerlink" href="#module-Echo.Activation.Torch.aria2" title="Permalink to this headline">¶</a></h3>
 <p>Applies the Aria-2 function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[Aria2(x, \alpha, \beta) = (1+e^{-\beta*x})^{-\alpha}\]</div>
@@ -264,7 +267,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.mish">
-<span id="echo-activation-torch-mish"></span><h3><a class="toc-backref" href="#id110">Echo.Activation.Torch.mish</a><a class="headerlink" href="#module-Echo.Activation.Torch.mish" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-mish"></span><h3><a class="toc-backref" href="#id116">Echo.Activation.Torch.mish</a><a class="headerlink" href="#module-Echo.Activation.Torch.mish" title="Permalink to this headline">¶</a></h3>
 <p>Applies the mish function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))\]</div>
@@ -304,7 +307,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.beta_mish">
-<span id="echo-activation-torch-beta-mish"></span><h3><a class="toc-backref" href="#id111">Echo.Activation.Torch.beta_mish</a><a class="headerlink" href="#module-Echo.Activation.Torch.beta_mish" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-beta-mish"></span><h3><a class="toc-backref" href="#id117">Echo.Activation.Torch.beta_mish</a><a class="headerlink" href="#module-Echo.Activation.Torch.beta_mish" title="Permalink to this headline">¶</a></h3>
 <p>Applies the β mish function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\beta mish(x) = x * tanh(ln((1 + e^{x})^{\beta}))\]</div>
@@ -355,7 +358,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.silu">
-<span id="echo-activation-torch-silu"></span><h3><a class="toc-backref" href="#id112">Echo.Activation.Torch.silu</a><a class="headerlink" href="#module-Echo.Activation.Torch.silu" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-silu"></span><h3><a class="toc-backref" href="#id118">Echo.Activation.Torch.silu</a><a class="headerlink" href="#module-Echo.Activation.Torch.silu" title="Permalink to this headline">¶</a></h3>
 <p>Applies the Sigmoid Linear Unit (SiLU) function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[silu(x) = x * sigmoid(x)\]</div>
@@ -403,7 +406,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.eswish">
-<span id="echo-activation-torch-eswish"></span><h3><a class="toc-backref" href="#id113">Echo.Activation.Torch.eswish</a><a class="headerlink" href="#module-Echo.Activation.Torch.eswish" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-eswish"></span><h3><a class="toc-backref" href="#id119">Echo.Activation.Torch.eswish</a><a class="headerlink" href="#module-Echo.Activation.Torch.eswish" title="Permalink to this headline">¶</a></h3>
 <p>Applies the E-Swish function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[ESwish(x, \beta) = \beta*x*sigmoid(x)\]</div>
@@ -456,7 +459,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.swish">
-<span id="echo-activation-torch-swish"></span><h3><a class="toc-backref" href="#id114">Echo.Activation.Torch.swish</a><a class="headerlink" href="#module-Echo.Activation.Torch.swish" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-swish"></span><h3><a class="toc-backref" href="#id120">Echo.Activation.Torch.swish</a><a class="headerlink" href="#module-Echo.Activation.Torch.swish" title="Permalink to this headline">¶</a></h3>
 <p>Applies the Swish function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[Swish(x, \beta) = x*sigmoid(\beta*x) = \frac{x}{(1+e^{-\beta*x})}\]</div>
@@ -509,7 +512,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.elish">
-<span id="echo-activation-torch-elish"></span><h3><a class="toc-backref" href="#id115">Echo.Activation.Torch.elish</a><a class="headerlink" href="#module-Echo.Activation.Torch.elish" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-elish"></span><h3><a class="toc-backref" href="#id121">Echo.Activation.Torch.elish</a><a class="headerlink" href="#module-Echo.Activation.Torch.elish" title="Permalink to this headline">¶</a></h3>
 <p>Applies the ELiSH (Exponential Linear Sigmoid SquasHing) function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}ELiSH(x) = \left\{\begin{matrix} x / (1+e^{-x}), x \geq 0 \\ (e^{x} - 1) / (1 + e^{-x}), x &lt; 0 \end{matrix}\right.\end{split}\]</div>
@@ -557,7 +560,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.hard_elish">
-<span id="echo-activation-torch-hard-elish"></span><h3><a class="toc-backref" href="#id116">Echo.Activation.Torch.hard_elish</a><a class="headerlink" href="#module-Echo.Activation.Torch.hard_elish" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-hard-elish"></span><h3><a class="toc-backref" href="#id122">Echo.Activation.Torch.hard_elish</a><a class="headerlink" href="#module-Echo.Activation.Torch.hard_elish" title="Permalink to this headline">¶</a></h3>
 <p>Applies the HardELiSH function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}HardELiSH(x) = \left\{\begin{matrix} x \times max(0, min(1, (x + 1) / 2)), x \geq 0 \\ (e^{x} - 1)\times max(0, min(1, (x + 1) / 2)), x &lt; 0 \end{matrix}\right.\end{split}\]</div>
@@ -605,7 +608,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.mila">
-<span id="echo-activation-torch-mila"></span><h3><a class="toc-backref" href="#id117">Echo.Activation.Torch.mila</a><a class="headerlink" href="#module-Echo.Activation.Torch.mila" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-mila"></span><h3><a class="toc-backref" href="#id123">Echo.Activation.Torch.mila</a><a class="headerlink" href="#module-Echo.Activation.Torch.mila" title="Permalink to this headline">¶</a></h3>
 <p>Applies the Mila function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[mila(x) = x * tanh(ln(1 + e^{\beta + x})) = x * tanh(softplus(\beta + x))\]</div>
@@ -657,7 +660,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.sine_relu">
-<span id="echo-activation-torch-sine-relu"></span><h3><a class="toc-backref" href="#id118">Echo.Activation.Torch.sine_relu</a><a class="headerlink" href="#module-Echo.Activation.Torch.sine_relu" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-sine-relu"></span><h3><a class="toc-backref" href="#id124">Echo.Activation.Torch.sine_relu</a><a class="headerlink" href="#module-Echo.Activation.Torch.sine_relu" title="Permalink to this headline">¶</a></h3>
 <p>Applies the SineReLU function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}SineReLU(x, \epsilon) = \left\{\begin{matrix} x , x &gt; 0 \\ \epsilon * (sin(x) - cos(x)), x \leq  0 \end{matrix}\right.\end{split}\]</div>
@@ -705,7 +708,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.fts">
-<span id="echo-activation-torch-fts"></span><h3><a class="toc-backref" href="#id119">Echo.Activation.Torch.fts</a><a class="headerlink" href="#module-Echo.Activation.Torch.fts" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-fts"></span><h3><a class="toc-backref" href="#id125">Echo.Activation.Torch.fts</a><a class="headerlink" href="#module-Echo.Activation.Torch.fts" title="Permalink to this headline">¶</a></h3>
 <p>Applies the FTS (Flatten T-Swish) function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}FTS(x) = \left\{\begin{matrix} \frac{x}{1 + e^{-x}} , x \geq  0 \\ 0, x &lt; 0 \end{matrix}\right.\end{split}\]</div>
@@ -753,7 +756,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.sqnl">
-<span id="echo-activation-torch-sqnl"></span><h3><a class="toc-backref" href="#id120">Echo.Activation.Torch.sqnl</a><a class="headerlink" href="#module-Echo.Activation.Torch.sqnl" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-sqnl"></span><h3><a class="toc-backref" href="#id126">Echo.Activation.Torch.sqnl</a><a class="headerlink" href="#module-Echo.Activation.Torch.sqnl" title="Permalink to this headline">¶</a></h3>
 <p>Applies the SQNL function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}SQNL(x) = \left\{\begin{matrix} 1, x &gt; 2 \\ x - \frac{x^2}{4}, 0 \leq x \leq 2 \\  x + \frac{x^2}{4}, -2 \leq x &lt; 0 \\ -1, x &lt; -2 \end{matrix}\right.\end{split}\]</div>
@@ -801,7 +804,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.isru">
-<span id="echo-activation-torch-isru"></span><h3><a class="toc-backref" href="#id121">Echo.Activation.Torch.isru</a><a class="headerlink" href="#module-Echo.Activation.Torch.isru" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-isru"></span><h3><a class="toc-backref" href="#id127">Echo.Activation.Torch.isru</a><a class="headerlink" href="#module-Echo.Activation.Torch.isru" title="Permalink to this headline">¶</a></h3>
 <p>Applies the ISRU (Inverse Square Root Unit) function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[ISRU(x) = \frac{x}{\sqrt{1 + \alpha * x^2}}\]</div>
@@ -854,7 +857,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.isrlu">
-<span id="echo-activation-torch-isrlu"></span><h3><a class="toc-backref" href="#id122">Echo.Activation.Torch.isrlu</a><a class="headerlink" href="#module-Echo.Activation.Torch.isrlu" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-isrlu"></span><h3><a class="toc-backref" href="#id128">Echo.Activation.Torch.isrlu</a><a class="headerlink" href="#module-Echo.Activation.Torch.isrlu" title="Permalink to this headline">¶</a></h3>
 <p>Applies the ISRLU (Inverse Square Root Linear Unit) function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}ISRLU(x)=\left\{\begin{matrix} x, x\geq 0 \\  x * (\frac{1}{\sqrt{1 + \alpha*x^2}}), x &lt;0 \end{matrix}\right.\end{split}\]</div>
@@ -906,7 +909,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.bent_id">
-<span id="echo-activation-torch-bent-id"></span><h3><a class="toc-backref" href="#id123">Echo.Activation.Torch.bent_id</a><a class="headerlink" href="#module-Echo.Activation.Torch.bent_id" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-bent-id"></span><h3><a class="toc-backref" href="#id129">Echo.Activation.Torch.bent_id</a><a class="headerlink" href="#module-Echo.Activation.Torch.bent_id" title="Permalink to this headline">¶</a></h3>
 <p>Applies the Bent’s Identity function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[bentId(x) = x + \frac{\sqrt{x^{2}+1}-1}{2}\]</div>
@@ -946,7 +949,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="echo-activation-torch-soft-clipping">
-<h3><a class="toc-backref" href="#id124">Echo.Activation.Torch.soft_clipping</a><a class="headerlink" href="#echo-activation-torch-soft-clipping" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id130">Echo.Activation.Torch.soft_clipping</a><a class="headerlink" href="#echo-activation-torch-soft-clipping" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-Echo.Activation.Torch.soft_clipping"></span><p>Applies Soft Clipping function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[SC(x) = 1 / \alpha * log(\frac{1 + e^{\alpha * x}}{1 + e^{\alpha * (x-1)}})\]</div>
@@ -1002,7 +1005,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="echo-activation-torch-weightedtanh">
-<h3><a class="toc-backref" href="#id125">Echo.Activation.Torch.weightedTanh</a><a class="headerlink" href="#echo-activation-torch-weightedtanh" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id131">Echo.Activation.Torch.weightedTanh</a><a class="headerlink" href="#echo-activation-torch-weightedtanh" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-Echo.Activation.Torch.weightedTanh"></span><p>Applies the weighted tanh function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[weightedtanh(x) = tanh(x * weight)\]</div>
@@ -1047,7 +1050,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.srelu">
-<span id="echo-activation-torch-srelu"></span><h3><a class="toc-backref" href="#id126">Echo.Activation.Torch.srelu</a><a class="headerlink" href="#module-Echo.Activation.Torch.srelu" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-srelu"></span><h3><a class="toc-backref" href="#id132">Echo.Activation.Torch.srelu</a><a class="headerlink" href="#module-Echo.Activation.Torch.srelu" title="Permalink to this headline">¶</a></h3>
 <p>Script defined the SReLU (S-shaped Rectified Linear Activation Unit):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}h(x_i) = \left\{\begin{matrix} t_i^r + a_i^r(x_i - t_i^r), x_i \geq t_i^r \\  x_i, t_i^r &gt; x_i &gt; t_i^l\\  t_i^l + a_i^l(x_i - t_i^l), x_i \leq  t_i^l \\ \end{matrix}\right.\end{split}\]</div>
@@ -1100,7 +1103,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.brelu">
-<span id="echo-activation-torch-brelu"></span><h3><a class="toc-backref" href="#id127">Echo.Activation.Torch.brelu</a><a class="headerlink" href="#module-Echo.Activation.Torch.brelu" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-brelu"></span><h3><a class="toc-backref" href="#id133">Echo.Activation.Torch.brelu</a><a class="headerlink" href="#module-Echo.Activation.Torch.brelu" title="Permalink to this headline">¶</a></h3>
 <p>Script defined the BReLU (Bipolar Rectified Linear Activation Unit):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}BReLU(x_i) = \left\{\begin{matrix} f(x_i), i \mod 2 = 0\\  - f(-x_i), i \mod 2 \neq  0 \end{matrix}\right.\end{split}\]</div>
@@ -1161,7 +1164,7 @@ objects for use in the backward pass using the ctx.save_for_backward method.</p>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.apl">
-<span id="echo-activation-torch-apl"></span><h3><a class="toc-backref" href="#id128">Echo.Activation.Torch.apl</a><a class="headerlink" href="#module-Echo.Activation.Torch.apl" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-apl"></span><h3><a class="toc-backref" href="#id134">Echo.Activation.Torch.apl</a><a class="headerlink" href="#module-Echo.Activation.Torch.apl" title="Permalink to this headline">¶</a></h3>
 <p>Script defined the APL (ADAPTIVE PIECEWISE LINEAR UNITS):</p>
 <div class="math notranslate nohighlight">
 \[APL(x_i) = max(0,x) + \sum_{s=1}^{S}{a_i^s * max(0, -x + b_i^s)}\]</div>
@@ -1274,7 +1277,7 @@ objects for use in the backward pass using the ctx.save_for_backward method.</p>
 
 </div>
 <div class="section" id="echo-activation-torch-soft-exponential">
-<h3><a class="toc-backref" href="#id129">Echo.Activation.Torch.soft_exponential</a><a class="headerlink" href="#echo-activation-torch-soft-exponential" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id135">Echo.Activation.Torch.soft_exponential</a><a class="headerlink" href="#echo-activation-torch-soft-exponential" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-Echo.Activation.Torch.soft_exponential"></span><p>Script implements soft exponential activation:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}SoftExponential(x, \alpha) = \left\{\begin{matrix} - \frac{log(1 - \alpha(x + \alpha))}{\alpha}, \alpha &lt; 0\\  x, \alpha = 0\\  \frac{e^{\alpha * x} - 1}{\alpha} + \alpha, \alpha &gt; 0 \end{matrix}\right.\end{split}\]</div>
@@ -1326,7 +1329,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.maxout">
-<span id="echo-activation-torch-maxout"></span><h3><a class="toc-backref" href="#id130">Echo.Activation.Torch.maxout</a><a class="headerlink" href="#module-Echo.Activation.Torch.maxout" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-maxout"></span><h3><a class="toc-backref" href="#id136">Echo.Activation.Torch.maxout</a><a class="headerlink" href="#module-Echo.Activation.Torch.maxout" title="Permalink to this headline">¶</a></h3>
 <p>Script implements Maxout activation</p>
 <div class="math notranslate nohighlight">
 \[maxout(\vec{x}) = max_i(x_i)\]</div>
@@ -1401,7 +1404,7 @@ during the backward pass.</p>
 
 </div>
 <div class="section" id="module-Echo.Activation.Torch.functional">
-<span id="echo-activation-torch-functional"></span><h3><a class="toc-backref" href="#id131">Echo.Activation.Torch.functional</a><a class="headerlink" href="#module-Echo.Activation.Torch.functional" title="Permalink to this headline">¶</a></h3>
+<span id="echo-activation-torch-functional"></span><h3><a class="toc-backref" href="#id137">Echo.Activation.Torch.functional</a><a class="headerlink" href="#module-Echo.Activation.Torch.functional" title="Permalink to this headline">¶</a></h3>
 <p>Script provides functional interface for custom activation functions.</p>
 <dl class="function">
 <dt id="Echo.Activation.Torch.functional.aria2">
@@ -1570,9 +1573,9 @@ during the backward pass.</p>
 </div>
 </div>
 <div class="section" id="keras-extensions-api">
-<h2><a class="toc-backref" href="#id132">Keras Extensions API</a><a class="headerlink" href="#keras-extensions-api" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id138">Keras Extensions API</a><a class="headerlink" href="#keras-extensions-api" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="echo-activation-keras-custom-activations">
-<h3><a class="toc-backref" href="#id133">Echo.Activation.Keras.custom_activations</a><a class="headerlink" href="#echo-activation-keras-custom-activations" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id139">Echo.Activation.Keras.custom_activations</a><a class="headerlink" href="#echo-activation-keras-custom-activations" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-Echo.Activation.Keras.custom_activations"></span><p>Layers that act as activation functions.</p>
 <dl class="class">
 <dt id="Echo.Activation.Keras.custom_activations.beta_mish">
@@ -1757,6 +1760,92 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="Echo.Activation.Keras.custom_activations.fts">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Keras.custom_activations.</code><code class="descname">fts</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.fts" title="Permalink to this definition">¶</a></dt>
+<dd><p>FTS (Flatten T-Swish) Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}FTS(x) = \left\{\begin{matrix} \frac{x}{1 + e^{-x}} , x \geq  0 \\ 0, x &lt; 0 \end{matrix}\right.\end{split}\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/fts.png" src="_images/fts.png" />
+</div>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="last simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</dd>
+<dt>References:</dt>
+<dd><ul class="first simple">
+<li>Flatten T-Swish paper:</li>
+</ul>
+<p class="last"><a class="reference external" href="https://arxiv.org/pdf/1812.06247.pdf">https://arxiv.org/pdf/1812.06247.pdf</a></p>
+</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X_input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">fts</span><span class="p">()(</span><span class="n">X_input</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Echo.Activation.Keras.custom_activations.fts.call">
+<code class="descname">call</code><span class="sig-paren">(</span><em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.fts.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where the layer’s logic lives.</p>
+<dl class="docutils">
+<dt># Arguments</dt>
+<dd>inputs: Input tensor, or list/tuple of input tensors.
+<a href="#id97"><span class="problematic" id="id98">**</span></a>kwargs: Additional keyword arguments.</dd>
+<dt># Returns</dt>
+<dd>A tensor or list/tuple of tensors.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Echo.Activation.Keras.custom_activations.fts.compute_output_shape">
+<code class="descname">compute_output_shape</code><span class="sig-paren">(</span><em>input_shape</em><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.fts.compute_output_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the output shape of the layer.</p>
+<p>Assumes that the layer will be built
+to match that input shape provided.</p>
+<dl class="docutils">
+<dt># Arguments</dt>
+<dd><dl class="first last docutils">
+<dt>input_shape: Shape tuple (tuple of integers)</dt>
+<dd>or list of shape tuples (one per output tensor of the layer).
+Shape tuples can include None for free dimensions,
+instead of an integer.</dd>
+</dl>
+</dd>
+<dt># Returns</dt>
+<dd>An input shape tuple.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Echo.Activation.Keras.custom_activations.fts.get_config">
+<code class="descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.fts.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<dl class="docutils">
+<dt># Returns</dt>
+<dd>Python dictionary.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="Echo.Activation.Keras.custom_activations.isru">
 <em class="property">class </em><code class="descclassname">Echo.Activation.Keras.custom_activations.</code><code class="descname">isru</code><span class="sig-paren">(</span><em>alpha=1.0</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.isru" title="Permalink to this definition">¶</a></dt>
 <dd><p>ISRU (Inverse Square Root Unit) Activation Function.</p>
@@ -1802,7 +1891,7 @@ when using this layer as the first layer in a model.</p>
 <dl class="docutils">
 <dt># Arguments</dt>
 <dd>inputs: Input tensor, or list/tuple of input tensors.
-<a href="#id97"><span class="problematic" id="id98">**</span></a>kwargs: Additional keyword arguments.</dd>
+<a href="#id99"><span class="problematic" id="id100">**</span></a>kwargs: Additional keyword arguments.</dd>
 <dt># Returns</dt>
 <dd>A tensor or list/tuple of tensors.</dd>
 </dl>
@@ -1892,7 +1981,7 @@ when using this layer as the first layer in a model.</p>
 <dl class="docutils">
 <dt># Arguments</dt>
 <dd>inputs: Input tensor, or list/tuple of input tensors.
-<a href="#id99"><span class="problematic" id="id100">**</span></a>kwargs: Additional keyword arguments.</dd>
+<a href="#id101"><span class="problematic" id="id102">**</span></a>kwargs: Additional keyword arguments.</dd>
 <dt># Returns</dt>
 <dd>A tensor or list/tuple of tensors.</dd>
 </dl>
@@ -1921,6 +2010,172 @@ instead of an integer.</dd>
 <dl class="method">
 <dt id="Echo.Activation.Keras.custom_activations.mila.get_config">
 <code class="descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.mila.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<dl class="docutils">
+<dt># Returns</dt>
+<dd>Python dictionary.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Echo.Activation.Keras.custom_activations.mish">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Keras.custom_activations.</code><code class="descname">mish</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.mish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mish Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/mish.png" src="_images/mish.png" />
+</div>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="last simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X_input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">mish</span><span class="p">()(</span><span class="n">X_input</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Echo.Activation.Keras.custom_activations.mish.call">
+<code class="descname">call</code><span class="sig-paren">(</span><em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.mish.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where the layer’s logic lives.</p>
+<dl class="docutils">
+<dt># Arguments</dt>
+<dd>inputs: Input tensor, or list/tuple of input tensors.
+<a href="#id103"><span class="problematic" id="id104">**</span></a>kwargs: Additional keyword arguments.</dd>
+<dt># Returns</dt>
+<dd>A tensor or list/tuple of tensors.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Echo.Activation.Keras.custom_activations.mish.compute_output_shape">
+<code class="descname">compute_output_shape</code><span class="sig-paren">(</span><em>input_shape</em><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.mish.compute_output_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the output shape of the layer.</p>
+<p>Assumes that the layer will be built
+to match that input shape provided.</p>
+<dl class="docutils">
+<dt># Arguments</dt>
+<dd><dl class="first last docutils">
+<dt>input_shape: Shape tuple (tuple of integers)</dt>
+<dd>or list of shape tuples (one per output tensor of the layer).
+Shape tuples can include None for free dimensions,
+instead of an integer.</dd>
+</dl>
+</dd>
+<dt># Returns</dt>
+<dd>An input shape tuple.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Echo.Activation.Keras.custom_activations.mish.get_config">
+<code class="descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.mish.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<dl class="docutils">
+<dt># Returns</dt>
+<dd>Python dictionary.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="Echo.Activation.Keras.custom_activations.sqnl">
+<em class="property">class </em><code class="descclassname">Echo.Activation.Keras.custom_activations.</code><code class="descname">sqnl</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.sqnl" title="Permalink to this definition">¶</a></dt>
+<dd><p>SQNL Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}SQNL(x) = \left\{\begin{matrix} 1, x &gt; 2 \\ x - \frac{x^2}{4}, 0 \leq x \leq 2 \\  x + \frac{x^2}{4}, -2 \leq x &lt; 0 \\ -1, x &lt; -2 \end{matrix}\right.\end{split}\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/sqnl.png" src="_images/sqnl.png" />
+</div>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="last simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</dd>
+<dt>References:</dt>
+<dd><ul class="first simple">
+<li>SQNL Paper:</li>
+</ul>
+<p class="last"><a class="reference external" href="https://ieeexplore.ieee.org/document/8489043">https://ieeexplore.ieee.org/document/8489043</a></p>
+</dd>
+<dt>Examples:</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X_input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">sqnl</span><span class="p">()(</span><span class="n">X_input</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="Echo.Activation.Keras.custom_activations.sqnl.call">
+<code class="descname">call</code><span class="sig-paren">(</span><em>inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.sqnl.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where the layer’s logic lives.</p>
+<dl class="docutils">
+<dt># Arguments</dt>
+<dd>inputs: Input tensor, or list/tuple of input tensors.
+<a href="#id105"><span class="problematic" id="id106">**</span></a>kwargs: Additional keyword arguments.</dd>
+<dt># Returns</dt>
+<dd>A tensor or list/tuple of tensors.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Echo.Activation.Keras.custom_activations.sqnl.compute_output_shape">
+<code class="descname">compute_output_shape</code><span class="sig-paren">(</span><em>input_shape</em><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.sqnl.compute_output_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the output shape of the layer.</p>
+<p>Assumes that the layer will be built
+to match that input shape provided.</p>
+<dl class="docutils">
+<dt># Arguments</dt>
+<dd><dl class="first last docutils">
+<dt>input_shape: Shape tuple (tuple of integers)</dt>
+<dd>or list of shape tuples (one per output tensor of the layer).
+Shape tuples can include None for free dimensions,
+instead of an integer.</dd>
+</dl>
+</dd>
+<dt># Returns</dt>
+<dd>An input shape tuple.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="Echo.Activation.Keras.custom_activations.sqnl.get_config">
+<code class="descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Echo.Activation.Keras.custom_activations.sqnl.get_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the config of the layer.</p>
 <p>A layer config is a Python dictionary (serializable)
 containing the configuration of a layer.
@@ -1983,7 +2238,7 @@ when using this layer as the first layer in a model.</p>
 <dl class="docutils">
 <dt># Arguments</dt>
 <dd>inputs: Input tensor, or list/tuple of input tensors.
-<a href="#id101"><span class="problematic" id="id102">**</span></a>kwargs: Additional keyword arguments.</dd>
+<a href="#id107"><span class="problematic" id="id108">**</span></a>kwargs: Additional keyword arguments.</dd>
 <dt># Returns</dt>
 <dd>A tensor or list/tuple of tensors.</dd>
 </dl>
@@ -2030,7 +2285,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 
 </div>
 <div class="section" id="indices-and-tables">
-<h3><a class="toc-backref" href="#id134">Indices and tables</a><a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id140">Indices and tables</a><a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>

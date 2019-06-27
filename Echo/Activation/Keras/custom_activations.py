@@ -26,7 +26,7 @@ class mila(Layer):
         - Input: Arbitrary. Use the keyword argument `input_shape`
         (tuple of integers, does not include the samples axis)
         when using this layer as the first layer in a model.
-        
+
         - Output: Same shape as the input.
 
     Arguments:
@@ -248,6 +248,136 @@ class isru(Layer):
     def get_config(self):
         config = {'alpha': float(self.alpha)}
         base_config = super(isru, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class mish(Layer):
+    '''
+    Mish Activation Function.
+
+    .. math::
+
+        mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))
+
+    Plot:
+
+    .. figure::  _static/mish.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = mish()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(mish, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return inputs * K.tanh(K.softplus(inputs))
+
+    def get_config(self):
+        base_config = super(mish, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class sqnl(Layer):
+    '''
+    SQNL Activation Function.
+
+    .. math::
+
+        SQNL(x) = \\left\\{\\begin{matrix} 1, x > 2 \\\\ x - \\frac{x^2}{4}, 0 \\leq x \\leq 2 \\\\  x + \\frac{x^2}{4}, -2 \\leq x < 0 \\\\ -1, x < -2 \\end{matrix}\\right.
+
+    Plot:
+
+    .. figure::  _static/sqnl.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    References:
+        - SQNL Paper:
+        https://ieeexplore.ieee.org/document/8489043
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = sqnl()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(sqnl, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return K.cast(K.greater(inputs , 2), 'float32')\
+        + (inputs - K.pow(inputs,2)/4) * K.cast(K.greater_equal(inputs,0), 'float32') * K.cast(K.less_equal(inputs, 2), 'float32') \
+        + (inputs + K.pow(inputs,2)/4) * K.cast(K.less(inputs, 0), 'float32') * K.cast(K.greater_equal(inputs, -2), 'float32') - K.cast(K.less(inputs, -2), 'float32')
+
+    def get_config(self):
+        base_config = super(sqnl, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class fts(Layer):
+    '''
+    FTS (Flatten T-Swish) Activation Function.
+
+    .. math::
+
+        FTS(x) = \\left\\{\\begin{matrix} \\frac{x}{1 + e^{-x}} , x \\geq  0 \\\\ 0, x < 0 \\end{matrix}\\right.
+
+    Plot:
+
+    .. figure::  _static/fts.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    References:
+        - Flatten T-Swish paper:
+        https://arxiv.org/pdf/1812.06247.pdf
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = fts()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(fts, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs / (1 + K.exp(- inputs))
+
+    def get_config(self):
+        base_config = super(fts, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):

@@ -60,6 +60,9 @@ List of activation functions implemented in Echo:
   * Mila (see :func:`Echo.Activation.Keras.custom_activations.mila`)
   * SQNL (see :func:`Echo.Activation.Keras.custom_activations.sqnl`)
   * Flatten T-Swish (see :func:`Echo.Activation.Keras.custom_activations.fts`)
+  * ELiSH (see :func:`Echo.Activation.Keras.custom_activations.elish`)
+  * Hard ELiSH (see :func:`Echo.Activation.Keras.custom_activations.hard_elish`)
+  * Bent's Identity (see :func:`Echo.Activation.Keras.custom_activations.bent_id`)
 
 Installation
 ================================

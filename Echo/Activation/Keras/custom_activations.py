@@ -382,3 +382,132 @@ class fts(Layer):
 
     def compute_output_shape(self, input_shape):
         return input_shape
+
+class elish(Layer):
+    '''
+    ELiSH (Exponential Linear Sigmoid SquasHing) Activation Function.
+
+    .. math::
+
+        ELiSH(x) = \\left\\{\\begin{matrix} x / (1+e^{-x}), x \\geq 0 \\\\ (e^{x} - 1) / (1 + e^{-x}), x < 0 \\end{matrix}\\right.
+
+    Plot:
+
+    .. figure::  _static/elish.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    References:
+        - Related paper:
+        https://arxiv.org/pdf/1710.05941.pdf
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = elish()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(elish, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs * K.sigmoid(inputs) + K.cast(K.less(inputs, 0), 'float32') * (K.exp(inputs) - 1) / (K.exp(- inputs) + 1)
+
+    def get_config(self):
+        base_config = super(elish, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class hard_elish(Layer):
+    '''
+    Hard ELiSH Activation Function.
+
+    .. math::
+
+        HardELiSH(x) = \\left\\{\\begin{matrix} x \\times max(0, min(1, (x + 1) / 2)), x \\geq 0 \\\\ (e^{x} - 1)\\times max(0, min(1, (x + 1) / 2)), x < 0 \\end{matrix}\\right.
+
+    Plot:
+
+    .. figure::  _static/hard_elish.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    References:
+        - Related paper:
+        https://arxiv.org/pdf/1710.05941.pdf
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = hard_elish()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(hard_elish, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs * K.maximum(K.cast_to_floatx(0.0), K.minimum(K.cast_to_floatx(1.0), (inputs + 1.0)/2.0)) \
+        + K.cast(K.less(inputs, 0), 'float32') * (K.exp(inputs - 1) * K.maximum(K.cast_to_floatx(0.0), K.minimum(K.cast_to_floatx(1.0), (inputs + 1.0)/2.0)))
+
+    def get_config(self):
+        base_config = super(hard_elish, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class bent_id(Layer):
+    '''
+    Bent's Identity Activation Function.
+
+    .. math::
+
+        bentId(x) = x + \\frac{\\sqrt{x^{2}+1}-1}{2}
+
+    Plot:
+
+    .. figure::  _static/bent_id.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = bent_id()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(bent_id, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return inputs + ((K.sqrt(K.pow(inputs,2)+1)-1)/2)
+
+    def get_config(self):
+        base_config = super(bent_id, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape

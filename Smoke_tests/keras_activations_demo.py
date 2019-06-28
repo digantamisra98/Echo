@@ -29,6 +29,9 @@ from Echo.Activation.Keras.custom_activations import beta_mish
 from Echo.Activation.Keras.custom_activations import mish
 from Echo.Activation.Keras.custom_activations import sqnl
 from Echo.Activation.Keras.custom_activations import fts
+from Echo.Activation.Keras.custom_activations import elish
+from Echo.Activation.Keras.custom_activations import hard_elish
+from Echo.Activation.Keras.custom_activations import bent_id
 
 # activation names constants
 RELU = 'relu'
@@ -40,6 +43,9 @@ BETA_MISH = 'beta_mish'
 MISH = 'mish'
 SQNL = 'sqnl'
 FTS = 'fts'
+ELISH = 'elish'
+HELISH = 'hard_elish'
+BENTID  = 'bent_id'
 
 def CNNModel(input_shape, activation = 'relu'):
     """
@@ -89,6 +95,15 @@ def CNNModel(input_shape, activation = 'relu'):
     if (activation == FTS):
         X = fts()(X)
 
+    if (activation == ELISH):
+        X = elish()(X)
+
+    if (activation == HELISH):
+        X = hard_elish()(X)
+
+    if (activation == BENTID):
+        X = bent_id()(X)
+
     # MAXPOOL
     X = MaxPooling2D((2, 2), name='max_pool')(X)
 
@@ -112,7 +127,7 @@ def main():
     # Add argument to choose one of the activation functions
     parser.add_argument('--activation', action='store', default = RELU,
                         help='Activation function for demonstration.',
-                        choices = [SWISH, ESWISH, MILA, RELU, ISRU, BETA_MISH, MISH, SQNL, FTS])
+                        choices = [SWISH, ESWISH, MILA, RELU, ISRU, BETA_MISH, MISH, SQNL, FTS, ELISH, HELISH, BENTID])
 
     # Parse command line arguments
     results = parser.parse_args()

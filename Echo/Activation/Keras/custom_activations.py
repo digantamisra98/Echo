@@ -8,7 +8,6 @@ from __future__ import print_function
 from keras.engine.base_layer import Layer
 from keras import backend as K
 
-
 class mila(Layer):
     '''
     Mila Activation Function.
@@ -507,6 +506,249 @@ class bent_id(Layer):
 
     def get_config(self):
         base_config = super(bent_id, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class weighted_tanh(Layer):
+    '''
+    Weighted TanH Activation Function.
+
+    .. math::
+
+        Weighted TanH(x, weight) = tanh(x * weight)
+
+    Plot:
+
+    .. figure::  _static/weighted_tanh.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Arguments:
+        - weight: hyperparameter (default=1.0)
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = weighted_tanh(weight=1.0)(X_input)
+
+    '''
+
+    def __init__(self, weight=1.0, **kwargs):
+        super(weighted_tanh, self).__init__(**kwargs)
+        self.supports_masking = True
+        self.weight = K.cast_to_floatx(weight)
+
+    def call(self, inputs):
+        return K.tanh(inputs * self.weight)
+
+    def get_config(self):
+        config = {'weight': float(self.weight)}
+        base_config = super(weighted_tanh, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class sineReLU(Layer):
+    '''
+    Sine ReLU Activation Function.
+
+    .. math::
+
+        SineReLU(x, \\epsilon) = \\left\\{\\begin{matrix} x , x > 0 \\\\ \\epsilon * (sin(x)-cos(x)), x \\leq 0 \\end{matrix}\\right.
+
+    Plot:
+
+    .. figure::  _static/sine_relu.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    References:
+        - See related Medium article:
+        https://medium.com/@wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d
+
+    Arguments:
+        - epsilon: hyperparameter (default=0.01)
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = sineReLU(epsilon=0.01)(X_input)
+
+    '''
+
+    def __init__(self, epsilon=0.01, **kwargs):
+        super(sineReLU, self).__init__(**kwargs)
+        self.supports_masking = True
+        self.epsilon = K.cast_to_floatx(epsilon)
+
+    def call(self, inputs):
+        return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs + K.cast(K.less(inputs, 0), 'float32') * self.epsilon * (K.sin(inputs) - K.cos(inputs))
+
+    def get_config(self):
+        config = {'epsilon': float(self.epsilon)}
+        base_config = super(sineReLU, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class isrlu(Layer):
+    '''
+    ISRLU Activation Function.
+
+    .. math::
+
+        ISRLU(x)=\\left\\{\\begin{matrix} x, x\\geq 0 \\\\  x * (\\frac{1}{\\sqrt{1 + \\alpha*x^2}}), x <0 \\end{matrix}\\right.
+
+    Plot:
+
+    .. figure::  _static/isrlu.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Arguments:
+        - alpha: hyperparameter α controls the value to which an ISRLU saturates for negative inputs (default = 1)
+
+    References:
+        - ISRLU paper: https://arxiv.org/pdf/1710.09967.pdf
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = isrlu(alpha=1.0)(X_input)
+
+    '''
+
+    def __init__(self, alpha=1.0, **kwargs):
+        super(isrlu, self).__init__(**kwargs)
+        self.supports_masking = True
+        self.alpha = K.cast_to_floatx(alpha)
+
+    def call(self, inputs):
+        return K.cast(K.less(inputs, 0), 'float32') * isru(alpha=self.alpha)(inputs) + K.cast(K.greater_equal(inputs, 0), 'float32') * inputs
+
+    def get_config(self):
+        config = {'alpha': float(self.alpha)}
+        base_config = super(isrlu, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class soft_clipping(Layer):
+    '''
+    Soft Clipping Activation Function.
+
+    .. math::
+
+        SC(x) = 1 / \\alpha * log(\\frac{1 + e^{\\alpha * x}}{1 + e^{\\alpha * (x-1)}})
+
+    Plot:
+
+    .. figure::  _static/sc.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Arguments:
+        - alpha: hyper-parameter, which determines how close to linear the central region is and how sharply the linear region turns to the asymptotic values
+
+    References:
+        - See SC paper:
+            https://arxiv.org/pdf/1810.11509.pdf
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X =soft_clipping(alpha=0.5)(X_input)
+
+    '''
+
+    def __init__(self, alpha=0.5, **kwargs):
+        super(soft_clipping, self).__init__(**kwargs)
+        self.supports_masking = True
+        self.alpha = K.cast_to_floatx(alpha)
+
+    def call(self, inputs):
+        return (1 / self.alpha) * K.log((1 + K.exp(self.alpha * inputs))/(1 + K.exp(self.alpha *(inputs - 1))))
+
+    def get_config(self):
+        config = {'alpha': float(self.alpha)}
+        base_config = super(soft_clipping, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class aria2(Layer):
+    '''
+    Aria-2 Activation Function.
+
+    .. math::
+
+        Aria2(x, \\alpha, \\beta) = (1+e^{-\\beta*x})^{-\\alpha}
+
+    Plot:
+
+    .. figure::  _static/aria2.png
+        :align:   center
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Arguments:
+        - alpha: hyper-parameter which has a two-fold effect; it reduces the curvature in 3rd quadrant as well as increases the curvature in first quadrant while lowering the value of activation (default = 1)
+
+        - beta: the exponential growth rate (default = 0.5)
+
+    References:
+        - See Aria paper:
+            https://arxiv.org/abs/1805.08878
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X =aria2(alpha=1.0, beta=0.5)(X_input)
+
+    '''
+
+    def __init__(self, alpha=1.0, beta=0.5, **kwargs):
+        super(aria2, self).__init__(**kwargs)
+        self.supports_masking = True
+        self.alpha = K.cast_to_floatx(alpha)
+        self.beta = K.cast_to_floatx(beta)
+
+    def call(self, inputs):
+        return K.pow((1 + K.exp(-self.beta * inputs)), -self.alpha)
+
+    def get_config(self):
+        config = {'alpha': float(self.alpha), 'beta': float(self.beta)}
+        base_config = super(aria2, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):

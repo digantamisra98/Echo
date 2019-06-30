@@ -35,6 +35,9 @@ class sine_relu(nn.Module):
           dimensions
         - Output: (N, *), same shape as the input
 
+    Arguments:
+        - epsilon: hyperparameter (default = 0.01) used to control the wave amplitude
+
     References:
         - See related Medium article:
         https://medium.com/@wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d
@@ -45,14 +48,15 @@ class sine_relu(nn.Module):
         >>> output = m(input)
 
     '''
-    def __init__(self):
+    def __init__(self, epsilon = 0.01):
         '''
         Init method.
         '''
         super().__init__()
+        self.epsilon = epsilon
 
     def forward(self, input):
         '''
         Forward pass of the function.
         '''
-        return Func.sineReLU(input)
+        return Func.sineReLU(input, self.epsilon)

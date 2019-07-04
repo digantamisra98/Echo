@@ -1,6 +1,8 @@
 '''
 Script containing unit tests for PyTorch activation functions.
 '''
+import numpy as np
+
 import sys
 sys.path.insert(0, '../')
 
@@ -69,6 +71,30 @@ class TestTorchActivations(TestCase):
         output = torch.tensor((0.975743,0.975743))
         # checking that weighted tahn of 2.2 is 0.975743
         self.assertEqual((weighted_tanh(input)).allclose(output) , True)
+
+    def test_silu_1(self):
+        '''
+        Unit test for SiLU activation function.
+        See :mod:`Echo.Activation.Torch.silu`.
+        '''
+        fsilu = silu()
+        input = torch.tensor((0.0,0.0))
+        output = torch.tensor((0.0,0.0))
+        # checking that silu(0) == 0
+        self.assertEqual((fsilu(input)).allclose(output) , True)
+
+    def test_silu_2(self):
+        '''
+        Unit test for SiLU activation function.
+        See :mod:`Echo.Activation.Torch.silu`.
+        '''
+        fsilu = silu()
+        input = torch.tensor((1.0,1.0))
+        output = torch.tensor((0.731058,0.731058))
+
+        # checking that silu(1.0) == 0.7310
+        print(fsilu(input))
+        self.assertEqual((fsilu(input)).allclose(output) , True)
 
 # define entry point
 if __name__ == '__main__':

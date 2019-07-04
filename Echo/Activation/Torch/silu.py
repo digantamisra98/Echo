@@ -55,4 +55,4 @@ class silu(nn.Module):
         '''
         Forward pass of the function.
         '''
-        return Func.swish(input)
+        return Func.silu(input)

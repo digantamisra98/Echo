@@ -18,7 +18,7 @@ Python package containing all mathematical backend algorithms used in Machine Le
 [TensorFlow](https://www.tensorflow.org/).
 
 ### Activation Functions
-The package contains implementation for following activation functions (:white_check_mark: - implemented functions, :clock9: - functions to be implemented soon):
+The package contains implementation for following activation functions (:white_check_mark: - implemented functions, :clock9: - functions to be implemented soon, :white_large_square: - function is implemented in the original deep learning package):
 
 |#| Function | Equation | Keras | PyTorch | TensorFlow |
 | --- | --- | --- | --- | --- | --- |
@@ -43,6 +43,18 @@ The package contains implementation for following activation functions (:white_c
 |18| [Maxout](https://arxiv.org/pdf/1302.4389.pdf) | ![equation](https://latex.codecogs.com/gif.latex?maxout%28%5Cvec%7Bx%7D%29%20%3D%20max_i%28x_i%29) | :clock9: | :white_check_mark: | :clock9: |
 |19| Mish | - | :white_check_mark: | :white_check_mark: | :clock9: |
 |20| [Beta Mish](https://github.com/digantamisra98/Beta-Mish) | ![equation](https://latex.codecogs.com/gif.latex?%5Cbeta%20mish%28x%29%20%3D%20x%20*%20tanh%28ln%28%281%20&plus;%20e%5E%7Bx%7D%29%5E%7B%5Cbeta%7D%29%29)| :white_check_mark: | :white_check_mark: | :clock9: |
+|21| [RReLU](https://arxiv.org/pdf/1505.00853.pdf) | ![equation](https://latex.codecogs.com/gif.latex?RReLU_j_i%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20x_j_i%20%2C%5Cif%20%5C%20x_j_i%5Cgeq%200%5C%5C%20a_j_i%20*%20x_j_i%2C%20%5Cif%20%5C%20x_j_i%20%3C%200%20%5Cend%7Bmatrix%7D%5Cright.%20a_j_i%20%5Csim%20U%28l%2C%20u%29%2C%20%5Cl%3C%20u%20%5Cand%20%5C%20l%2C%20u%20%5Cin%20%5B0%2C1%29)| :clock9: | :white_large_square: | :clock9: |
+|22| [CELU](https://arxiv.org/pdf/1704.07483.pdf) | ![equation](https://latex.codecogs.com/gif.latex?CELU%28x%2C%20%5Calpha%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20x%20%2C%20x%20%5Cgeq%200%5C%5C%20%5Calpha%20*%20%28e%5E%7B%5Cfrac%7Bx%7D%7B%5Calpha%7D%7D%20-%201%29%2C%20x%20%3C%200%20%5Cend%7Bmatrix%7D%5Cright.)| :clock9: | :white_large_square: | :clock9: |
+|23| ReLU6 | ![equation](https://latex.codecogs.com/gif.latex?ReLU6%28x%29%3Dmin%28max%280%2Cx%29%2C6%29)| :clock9: | :white_large_square: | :clock9: |
+|24| HardTanh | ![equation](https://latex.codecogs.com/gif.latex?HardTanh%28x%29%3D%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%2C%20x%20%3E%201%5C%5C%20-1%2C%20x%20%3C%20-1%5C%5C%20x%2C%20-1%20%5Cleq%20x%20%5Cleq%201%20%5Cend%7Bmatrix%7D%5Cright.)| :clock9: | :white_large_square: | :clock9: |
+|25| [GLU](https://arxiv.org/pdf/1612.08083.pdf) | ![equation](https://latex.codecogs.com/gif.latex?GLU%28a%2Cb%29%3Da%20%5Cotimes%20%5Csigma%28b%29%2C%20%5Cotimes%20-%20element%20%5C%20wise%20%5C%20product)| :clock9: | :white_large_square: | :clock9: |
+|26| LogSigmoid | ![equation](https://latex.codecogs.com/gif.latex?LogSigmoid%28x%29%3Dlog%28%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-x%7D%7D%29)| :clock9: | :white_large_square: | :clock9: |
+|27| TanhShrink | ![equation](https://latex.codecogs.com/gif.latex?TanhShrink%28x%29%3Dx%20-%20Tanh%28x%29)| :clock9: | :white_large_square: | :clock9: |
+|28| HardShrink | ![equation](https://latex.codecogs.com/gif.latex?HardShrink%28x%29%3D%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20x%2C%20x%20%3E%20%5Clambda%20%5C%5C%20x%2C%20x%20%3C%20-%20%5Clambda%20%5C%5C%200%2C%20-%20%5Clambda%20%5Cleq%20x%20%5Cleq%20%5Clambda%20%5Cend%7Bmatrix%7D%5Cright.)| :clock9: | :white_large_square: | :clock9: |
+|29| SoftShrink | ![equation](https://latex.codecogs.com/gif.latex?SoftShrinkage%28x%29%3D%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20x%20-%20%5Clambda%2C%20x%20%3E%20%5Clambda%20%5C%5C%20x%20&plus;%20%5Clambda%2C%20x%20%3C%20-%20%5Clambda%20%5C%5C%200%2C%20-%20%5Clambda%20%5Cleq%20x%20%5Cleq%20%5Clambda%20%5Cend%7Bmatrix%7D%5Cright.)| :clock9: | :white_large_square: | :clock9: |
+|30| SoftMin | ![equation](https://latex.codecogs.com/gif.latex?Softmin%28x_i%29%3D%5Cfrac%7Be%5E%7B-x_i%7D%7D%7B%5Csum%20_j%20e%5E%7B-x_j%7D%7D)| :clock9: | :white_large_square: | :clock9: |
+|31| LogSoftmax | ![equation](https://latex.codecogs.com/gif.latex?LogSoftmax%28x_i%29%3Dlog%28%5Cfrac%7Be%5E%7Bx_i%7D%7D%7B%5Csum%20_j%20e%5E%7Bx_j%7D%7D%29)| :clock9: | :white_large_square: | :clock9: |
+|32| [Gumbel-Softmax](https://arxiv.org/pdf/1611.01144.pdf) | | :clock9: | :white_large_square: | :clock9: |
 
 ## Repository Structure
 The repository has the following structure:
@@ -64,11 +76,12 @@ The repository has the following structure:
 - LICENSE # license file
 - README.md
 - setup.py # package setup file
-- torch_activations_demo.py # script, which contains the demonstration of PyTorch activations usage
+- Smoke_tests # folder, which contains scripts with demonstration of activation functions usage
+- Unit_tests # folder, which contains unit test scripts
 ```
 
 ## Setup Instructions
-To install Echo package follow the instructions below:
+### To install Echo package follow the instructions below:
 
 1. Clone or download [GitHub repository](https://github.com/digantamisra98/Echo).
 
@@ -79,3 +92,23 @@ To install Echo package follow the instructions below:
 3. Install the package with pip:
   
   ```$ pip install . ```
+
+### To run the demo scripts:
+
+1. From root folder navigate to **Smoke_tests** folder:
+
+```$ cd Smoke_tests ```
+
+2. Run demo script:
+
+```$ python keras_activations_demo.py --activation aria2 ```
+
+### To run unit tests:
+
+1. From root folder navigate to **Unit_tests** folder:
+
+```$ cd Unit_tests ```
+
+2. Run unit test script:
+
+```$ python ython -m unittest torch_activation_tests ```

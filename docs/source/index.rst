@@ -63,6 +63,11 @@ List of activation functions implemented in Echo:
   * ELiSH (see :func:`Echo.Activation.Keras.custom_activations.elish`)
   * Hard ELiSH (see :func:`Echo.Activation.Keras.custom_activations.hard_elish`)
   * Bent's Identity (see :func:`Echo.Activation.Keras.custom_activations.bent_id`)
+  * Weighted Tanh (see :func:`Echo.Activation.Keras.custom_activations.weighted_tanh`)
+  * Sine ReLU (see :func:`Echo.Activation.Keras.custom_activations.sineReLU`)
+  * ISRLU (see :func:`Echo.Activation.Keras.custom_activations.isrlu`)
+  * Soft Clipping (see :func:`Echo.Activation.Keras.custom_activations.soft_clipping`)
+  * Aria2 (see :func:`Echo.Activation.Keras.custom_activations.aria2`)
 
 Installation
 ================================
@@ -263,7 +268,7 @@ Echo.Activation.Keras.custom_activations
    :members:
 
 Indices and tables
---------------------------------
+================================
 
 * :ref:`genindex`
 * :ref:`modindex`

@@ -31,7 +31,7 @@ def mish(input):
     '''
     return input * torch.tanh(F.softplus(input))
 
-def silu(input):
+def silu(input, inplace = False):
     '''
     Applies the Sigmoid Linear Unit (SiLU) function element-wise:
 
@@ -41,7 +41,12 @@ def silu(input):
 
     See additional documentation for :mod:`Echo.Activation.Torch.silu`.
     '''
-    return input * torch.sigmoid(input)
+    if inplace:
+        result = input.clone()
+        torch.sigmoid_(input)
+        input *= result
+    else:
+        return input * torch.sigmoid(input)
 
 
 def aria2(input, beta=1, alpha=1.5):

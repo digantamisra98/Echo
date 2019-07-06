@@ -93,8 +93,23 @@ class TestTorchActivations(TestCase):
         output = torch.tensor((0.731058,0.731058))
 
         # checking that silu(1.0) == 0.7310
-        print(fsilu(input))
         self.assertEqual((fsilu(input)).allclose(output) , True)
+
+    def test_silu_2(self):
+        '''
+        Unit test for SiLU activation function.
+        See :mod:`Echo.Activation.Torch.silu`.
+        '''
+        # checking an inplace implementation
+        fsilu = silu(inplace = True)
+        input = torch.tensor((1.0,1.0))
+        output = torch.tensor((0.731058,0.731058))
+
+        # performing the inplace operation
+        fsilu(input)
+
+        # checking that value of an input is SiLU(input) == 0.7310 now
+        self.assertEqual((input).allclose(output) , True)
 
 # define entry point
 if __name__ == '__main__':

@@ -35,24 +35,28 @@ class silu(nn.Module):
           dimensions
         - Output: (N, *), same shape as the input
 
+    Arguments:
+        - inplace - (bool) if inplace == True operation is performed inplace
+
     References:
         -  Related paper:
         https://arxiv.org/pdf/1606.08415.pdf
 
     Examples:
-        >>> m = silu()
+        >>> m = silu(inplace = False)
         >>> input = torch.randn(2)
         >>> output = m(input)
 
     '''
-    def __init__(self):
+    def __init__(self, inplace = False):
         '''
         Init method.
         '''
         super().__init__()
+        self.inplace = inplace
 
     def forward(self, input):
         '''
         Forward pass of the function.
         '''
-        return Func.silu(input)
+        return Func.silu(input, self.inplace)

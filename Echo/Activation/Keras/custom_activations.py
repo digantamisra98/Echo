@@ -753,3 +753,282 @@ class aria2(Layer):
 
     def compute_output_shape(self, input_shape):
         return input_shape
+
+
+class celu(Layer):
+    '''
+    CELU Activation Function.
+
+    .. math::
+
+        CELU(x, \\alpha) = max(0,x) + min(0,\\alpha * (exp(x/ \\alpha)-1))
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Arguments:
+        - alpha: the α value for the CELU formulation (default=1.0)
+
+    References:
+        - See CELU paper:
+            https://arxiv.org/abs/1704.07483
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = celu(alpha=1.0)(X_input)
+
+    '''
+
+    def __init__(self, alpha=1.0, **kwargs):
+        super(celu, self).__init__(**kwargs)
+        self.supports_masking = True
+        self.alpha = K.cast_to_floatx(alpha)
+
+    def call(self, inputs):
+        return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs + K.cast(K.less(inputs, 0), 'float32') * self.alpha * (K.exp (inputs / self.alpha) - 1)
+
+    def get_config(self):
+        config = {'alpha': float(self.alpha)}
+        base_config = super(celu, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+
+class relu6(Layer):
+    '''
+    RELU6 Activation Function.
+
+    .. math::
+
+        RELU6(x) = min(max(0,x),6)
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    References:
+        - See RELU6 paper:
+            http://www.cs.utoronto.ca/~kriz/conv-cifar10-aug2010.pdf
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = relu6()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(relu6, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return K.cast(K.greater_equal(inputs, 6), 'float32') * 6 + K.cast(K.less(inputs, 6), 'float32') * K.relu(inputs)
+
+    def get_config(self):
+        base_config = super(relu6, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+
+class hard_tanh(Layer):
+    '''
+    Hard-TanH Activation Function.
+
+    .. math::
+
+        Hard-TanH(x) = \\left\\{\\begin{matrix} 1, x > 1 \\\\   x , -1 \\leq x \\leq 1 \\\\ -1, x <- 1 \\end{matrix}\\right.
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = hard_tanh()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(hard_tanh, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return K.cast(K.greater(inputs , 1), 'float32')\
+        + inputs * K.cast(K.less_equal(inputs, 1), 'float32') * K.cast(K.greater_equal(inputs, -1), 'float32') - K.cast(K.less(inputs, -1), 'float32')
+
+    def get_config(self):
+        base_config = super(hard_tanh, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+
+class log_sigmoid(Layer):
+    '''
+    Log-Sigmoid Activation Function.
+
+    .. math::
+
+        Log-Sigmoid(x) = log (\\frac{1}{1+e^{-x}})
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = log_sigmoid()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(log_sigmoid, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return K.log(K.sigmoid(inputs))
+
+    def get_config(self):
+        base_config = super(log_sigmoid, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+
+class tanh_shrink(Layer):
+    '''
+    TanH-Shrink Activation Function.
+
+    .. math::
+
+        TanH-Shrink(x) = x - tanh(x)
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = tanh_shrink()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(tanh_shrink, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return inputs - K.tanh(inputs)
+
+    def get_config(self):
+        base_config = super(tanh_shrink, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+
+class hard_shrink(Layer):
+    '''
+    Hard-Shrink Activation Function.
+
+    .. math::
+
+        Hard-Shrink(x) = \\left\\{\\begin{matrix} x, x > \\lambda \\\\   0 , - \\lambda \\leq x \\leq \\lambda \\\\ x, x <- \\lambda \\end{matrix}\\right.
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Arguments:
+        - lambda: the λ value for the Hardshrink formulation (default=0.5)
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = hard_shrink()(X_input)
+
+    '''
+
+    def __init__(self, lambda= 0.5, **kwargs):
+        super(hard_shrink, self).__init__(**kwargs)
+        self.supports_masking = True
+        self.lambda = K.cast_to_floatx(lambda)
+
+    def call(self, inputs):
+        return K.cast(K.greater(inputs , self.lambda), 'float32') * inputs \
+        + 0 * K.cast(K.less_equal(inputs, self.lambda), 'float32') * K.cast(K.greater_equal(inputs, -self.lambda), 'float32') + inputs *  K.cast(K.less(inputs, -self.lambda), 'float32')
+
+    def get_config(self):
+        config = {'lambda': float(self.lambda)}
+        base_config = super(hard_shrink, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+
+class soft_shrink(Layer):
+    '''
+    Soft-Shrink Activation Function.
+
+    .. math::
+
+        Soft-Shrink(x) = \\left\\{\\begin{matrix} x - \\lambda , x > \\lambda \\\\   0 , - \\lambda \\leq x \\leq \\lambda \\\\ x + \\lambda , x <- \\lambda \\end{matrix}\\right.
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Arguments:
+        - lambda: the λ value for the Softshrink formulation (default=0.5)
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = soft_shrink()(X_input)
+
+    '''
+
+    def __init__(self, lambda= 0.5, **kwargs):
+        super(soft_shrink, self).__init__(**kwargs)
+        self.supports_masking = True
+        self.lambda = K.cast_to_floatx(lambda)
+
+    def call(self, inputs):
+        return (K.cast(K.greater(inputs , self.lambda), 'float32') * (inputs - self.lambda)) \
+        + (0 * K.cast(K.less_equal(inputs, self.lambda), 'float32') * K.cast(K.greater_equal(inputs, -self.lambda), 'float32')) \
+        + ((inputs + self.lambda) *  K.cast(K.less(inputs, -self.lambda), 'float32'))
+
+    def get_config(self):
+        config = {'lambda': float(self.lambda)}
+        base_config = super(soft_shrink, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape

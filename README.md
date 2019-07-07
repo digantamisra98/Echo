@@ -52,8 +52,8 @@ The package contains implementation for following activation functions (:white_c
 |27| TanhShrink | ![equation](https://latex.codecogs.com/gif.latex?TanhShrink%28x%29%3Dx%20-%20Tanh%28x%29)|  :white_check_mark:  | :white_large_square: | :clock9: |
 |28| HardShrink | ![equation](https://latex.codecogs.com/gif.latex?HardShrink%28x%29%3D%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20x%2C%20x%20%3E%20%5Clambda%20%5C%5C%20x%2C%20x%20%3C%20-%20%5Clambda%20%5C%5C%200%2C%20-%20%5Clambda%20%5Cleq%20x%20%5Cleq%20%5Clambda%20%5Cend%7Bmatrix%7D%5Cright.)|  :white_check_mark:  | :white_large_square: | :clock9: |
 |29| SoftShrink | ![equation](https://latex.codecogs.com/gif.latex?SoftShrinkage%28x%29%3D%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20x%20-%20%5Clambda%2C%20x%20%3E%20%5Clambda%20%5C%5C%20x%20&plus;%20%5Clambda%2C%20x%20%3C%20-%20%5Clambda%20%5C%5C%200%2C%20-%20%5Clambda%20%5Cleq%20x%20%5Cleq%20%5Clambda%20%5Cend%7Bmatrix%7D%5Cright.)|  :white_check_mark:  | :white_large_square: | :clock9: |
-|30| SoftMin | ![equation](https://latex.codecogs.com/gif.latex?Softmin%28x_i%29%3D%5Cfrac%7Be%5E%7B-x_i%7D%7D%7B%5Csum%20_j%20e%5E%7B-x_j%7D%7D)| :clock9: | :white_large_square: | :clock9: |
-|31| LogSoftmax | ![equation](https://latex.codecogs.com/gif.latex?LogSoftmax%28x_i%29%3Dlog%28%5Cfrac%7Be%5E%7Bx_i%7D%7D%7B%5Csum%20_j%20e%5E%7Bx_j%7D%7D%29)| :clock9: | :white_large_square: | :clock9: |
+|30| SoftMin | ![equation](https://latex.codecogs.com/gif.latex?Softmin%28x_i%29%3D%5Cfrac%7Be%5E%7B-x_i%7D%7D%7B%5Csum%20_j%20e%5E%7B-x_j%7D%7D)| :white_check_mark: | :white_large_square: | :clock9: |
+|31| LogSoftmax | ![equation](https://latex.codecogs.com/gif.latex?LogSoftmax%28x_i%29%3Dlog%28%5Cfrac%7Be%5E%7Bx_i%7D%7D%7B%5Csum%20_j%20e%5E%7Bx_j%7D%7D%29)| :white_check_mark: | :white_large_square: | :clock9: |
 |32| [Gumbel-Softmax](https://arxiv.org/pdf/1611.01144.pdf) | | :clock9: | :white_large_square: | :clock9: |
 
 ## Repository Structure

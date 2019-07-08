@@ -7,6 +7,7 @@ from __future__ import print_function
 
 from keras.engine.base_layer import Layer
 from keras import backend as K
+from keras import initializers
 
 class mila(Layer):
     '''
@@ -1151,6 +1152,8 @@ class soft_exponential(Layer):
 
         SoftExponential(x, \\alpha) = \\left\\{\\begin{matrix} - \\frac{log(1 - \\alpha(x + \\alpha))}{\\alpha}, \\alpha < 0\\\\  x, \\alpha = 0\\\\  \\frac{e^{\\alpha * x} - 1}{\\alpha} + \\alpha, \\alpha > 0 \\end{matrix}\\right.
 
+    with 1 trainable parameter.
+
     Shape:
         - Input: Arbitrary. Use the keyword argument `input_shape`
         (tuple of integers, does not include the samples axis)
@@ -1191,8 +1194,98 @@ class soft_exponential(Layer):
             return (K.exp(self.alpha * inputs) - 1)/(self.alpha) + self.alpha
 
     def get_config(self):
-        base_config = super(log_softmax, self).get_config()
+        base_config = super(soft_exponential, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
+
+
+
+class srelu(Layer):
+    '''
+    SReLU (S-shaped Rectified Linear Activation Unit): a combination of three linear functions, which perform mapping R → R with the following formulation:
+
+    .. math::
+
+        h(x_i) = \\left\\{\\begin{matrix} t_i^r + a_i^r(x_i - t_i^r), x_i \\geq t_i^r \\\\  x_i, t_i^r > x_i > t_i^l\\\\  t_i^l + a_i^l(x_i - t_i^l), x_i \\leq  t_i^l \\\\ \\end{matrix}\\right.
+
+    with 4 trainable parameters.
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Parameters:
+
+        .. math:: \\{t_i^r, a_i^r, t_i^l, a_i^l\\}
+
+    4 trainable parameters, which model an individual SReLU activation unit. The subscript i indicates that we allow SReLU to vary in different channels. Parameters can be initialized manually or randomly.
+
+    References:
+        - See SReLU paper:
+        https://arxiv.org/pdf/1512.07030.pdf
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = srelu(params=None)(X_input)
+
+    '''
+
+    def __init__(self, params=None, **kwargs):
+        super(srelu, self).__init__(**kwargs)
+        self.params = params
+        self.supports_masking = True
+
+    def build(self, input_shape):
+        '''
+        Adding Trainable Parameters.
+            - parameters: (tr, tl, ar, al) parameters for manual initialization, default value is None. If None is passed, parameters are initialized randomly.
+        '''
+        if (self.params = None):
+            self.tr = self.add_weight(name='tr',
+                                     initializer='random_uniform',
+                                     trainable=True)
+            self.tl = self.add_weight(name='tl',
+                                     initializer='random_uniform',
+                                     trainable=True)
+            self.ar = self.add_weight(name='ar',
+                                     initializer='random_uniform',
+                                     trainable=True)
+            self.al = self.add_weight(name='al',
+                                     initializer='random_uniform',
+                                     trainable=True)
+        else:
+            self.params = initializers.get(self.params)
+            self.tr = self.add_weight(name='tr',
+                                     initializer=self.params,
+                                     trainable=True)
+            self.tl = self.add_weight(name='tl',
+                                     initializer=self.params,
+                                     trainable=True)
+            self.ar = self.add_weight(name='ar',
+                                     initializer=self.params,
+                                     trainable=True)
+            self.al = self.add_weight(name='al',
+                                     initializer=self.params,
+                                     trainable=True)
+
+        super(srelu, self).build(input_shape)
+
+    def call(self, inputs):
+        return K.cast(K.greater_equal(inputs, self.tr), 'float32') * (self.tr + self.ar * (inputs + self.tr)) + K.cast(K.less(inputs, self.tr), 'float32') \
+               * K.cast(K.greater(inputs, self.tl), 'float32') * inputs + K.cast(K.less_equal(inputs, self.tl), 'float32') * (self.tl + self.al * (inputs + self.tl))
+
+    def get_config(self):
+        config = {'params': self.params}
+        base_config = super(srelu, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+
+    

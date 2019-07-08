@@ -1104,3 +1104,95 @@ class log_softmax(Layer):
 
     def compute_output_shape(self, input_shape):
         return input_shape
+
+
+
+class softmin(Layer):
+    '''
+    SoftMin Activation Function.
+
+    .. math::
+
+        SoftMin(x) = Softmax(-x)
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = softmin()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(softmin, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return K.softmax(-inputs)
+
+    def get_config(self):
+        base_config = super(softmin, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+
+class soft_exponential(Layer):
+    '''
+    Soft-Exponential Activation Function.
+
+    .. math::
+
+        SoftExponential(x, \\alpha) = \\left\\{\\begin{matrix} - \\frac{log(1 - \\alpha(x + \\alpha))}{\\alpha}, \\alpha < 0\\\\  x, \\alpha = 0\\\\  \\frac{e^{\\alpha * x} - 1}{\\alpha} + \\alpha, \\alpha > 0 \\end{matrix}\\right.
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Parameters:
+        - alpha - trainable parameter
+
+    References:
+        - See Soft-Exponential paper:
+        https://arxiv.org/pdf/1602.01321.pdf
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = soft_exponential()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(soft_exponential, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def build(self, input_shape):
+        # Create a trainable weight for alpha parameter. Alpha by default is initialized with 0.
+        self.alpha = self.add_weight(name='alpha',
+                                     initializer='zeros',
+                                     trainable=True)
+        super(soft_exponential, self).build(input_shape)
+
+    def call(self, inputs):
+        if (self.alpha == 0):
+            return inputs
+        if (self.alpha < 0):
+            return - (K.log(1 - self.alpha * (inputs + self.alpha))) / self.alpha
+        if (self.alpha > 0):
+            return (K.exp(self.alpha * inputs) - 1)/(self.alpha) + self.alpha
+
+    def get_config(self):
+        base_config = super(log_softmax, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape

@@ -7,7 +7,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
-def weighted_tanh(input, weight = 1):
+def weighted_tanh(input, weight = 1, inplace = False):
     '''
     Applies the weighted tanh function element-wise:
 
@@ -17,7 +17,12 @@ def weighted_tanh(input, weight = 1):
 
     See additional documentation for :mod:`Echo.Activation.Torch.weightedTanh`.
     '''
-    return torch.tanh(weight * input)
+    if inplace == False:
+        return torch.tanh(weight * input)
+    else:
+        input *= weight
+        torch.tanh_(input)
+        return input
 
 def mish(input):
     '''

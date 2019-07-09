@@ -33,6 +33,7 @@ class weightedTanh(nn.Module):
 
     Arguments:
         - weight: hyperparameter (default = 1.0)
+        - inplace: perform inplace operation (default = False)
 
     Examples:
         >>> m = weightedTanh(weight = 1)
@@ -40,7 +41,7 @@ class weightedTanh(nn.Module):
         >>> output = m(input)
 
     '''
-    def __init__(self, weight = 1):
+    def __init__(self, weight = 1, inplace = False):
         '''
         Init method.
         INPUT:
@@ -48,9 +49,10 @@ class weightedTanh(nn.Module):
         '''
         super().__init__()
         self.weight = weight
+        self.inplace = inplace
 
     def forward(self, input):
         '''
         Forward pass of the function.
         '''
-        return Func.weighted_tanh(input, self.weight)
+        return Func.weighted_tanh(input, self.weight, inplace = self.inplace)

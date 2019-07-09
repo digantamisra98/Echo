@@ -72,6 +72,20 @@ class TestTorchActivations(TestCase):
         # checking that weighted tahn of 2.2 is 0.975743
         self.assertEqual((weighted_tanh(input)).allclose(output) , True)
 
+    def test_weightedTanh_4(self):
+        '''
+        Unit test for weighted tanh activation function.
+        See :mod:`Echo.Activation.Torch.weightedTanh`.
+        '''
+        weighted_tanh = weightedTanh(weight = 2.0, inplace = True)
+        input = torch.tensor((1.1,1.1))
+        output = torch.tensor((0.975743,0.975743))
+        # check the inplace implementation
+        # checking that weighted tahn of 2.2 is 0.975743
+        weighted_tanh(input)
+        print(input)
+        self.assertEqual((input).allclose(output) , True)
+
     def test_silu_1(self):
         '''
         Unit test for SiLU activation function.
@@ -95,7 +109,7 @@ class TestTorchActivations(TestCase):
         # checking that silu(1.0) == 0.7310
         self.assertEqual((fsilu(input)).allclose(output) , True)
 
-    def test_silu_2(self):
+    def test_silu_3(self):
         '''
         Unit test for SiLU activation function.
         See :mod:`Echo.Activation.Torch.silu`.

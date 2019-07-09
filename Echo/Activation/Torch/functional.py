@@ -162,7 +162,7 @@ def fts(input):
 
     See additional documentation for :mod:`Echo.Activation.Torch.fts`.
     '''
-    return (input > 0).float() * input / (1 + torch.exp(- input))
+    return torch.clamp(input / (1 + torch.exp(- input)), min = 0)
 
 def sqnl(input):
     '''

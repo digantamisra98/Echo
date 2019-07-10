@@ -59,11 +59,14 @@ SC = 'soft_clipping'
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
-    def __init__(self, activation = 'weighted_tanh'):
+    def __init__(self, activation = 'weighted_tanh', inplace = False):
         super().__init__()
 
         # get activation the function to use
         self.activation = activation
+
+        # set version of function to use
+        self.inplace = inplace
 
         # initialize layers
         self.fc1 = nn.Linear(784, 256)
@@ -77,13 +80,21 @@ class Classifier(nn.Module):
 
         # apply custom activation function
         if (self.activation == WEIGHTED_TANH):
-            x = Func.weighted_tanh(self.fc1(x), weight = 1)
+            x = self.fc1(x)
+            if self.inplace:
+                Func.weighted_tanh(x, weight = 1, inplace = self.inplace)
+            else:
+                x = Func.weighted_tanh(self.fc1(x), weight = 1, inplace = self.inplace)
 
         if (self.activation == MISH):
             x = Func.mish(self.fc1(x))
 
         if (self.activation == SILU):
-            x = Func.silu(self.fc1(x))
+            x = self.fc1(x)
+            if self.inplace:
+                Func.silu(x, inplace = self.inplace)
+            else:
+                x = Func.silu(self.fc1(x), inplace = self.inplace)
 
         if (self.activation == ARIA2):
             x = Func.aria2(self.fc1(x))
@@ -150,10 +161,15 @@ def main():
                         help='Model initialization mode: use custom class or use Sequential.',
                         choices = ['class', 'sequential'])
 
+    # Add argument to choose the way to initialize the model
+    parser.add_argument('--inplace', action="store_true", default = False,
+                        help='Use in-place of out-of-place version of activation function.')
+
     # Parse command line arguments
     results = parser.parse_args()
     activation = results.activation
     model_initialization = results.model_initialization
+    inplace = results.inplace
 
     # Define a transform
     transform = transforms.Compose([transforms.ToTensor()])
@@ -171,11 +187,11 @@ def main():
     # Initialize the model
     if (model_initialization == 'class'):
         # Initialize the model using defined Classifier class
-        model = Classifier(activation = activation)
+        model = Classifier(activation = activation, inplace = inplace)
     else:
         # Setup the activation function
         if (activation == WEIGHTED_TANH):
-            activation_function = weightedTanh(weight = 1)
+            activation_function = weightedTanh(weight = 1, inplace = inplace)
 
         if (activation == MISH):
             activation_function = mish()

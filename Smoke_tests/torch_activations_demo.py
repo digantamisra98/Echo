@@ -84,17 +84,21 @@ class Classifier(nn.Module):
             if self.inplace:
                 Func.weighted_tanh(x, weight = 1, inplace = self.inplace)
             else:
-                x = Func.weighted_tanh(self.fc1(x), weight = 1, inplace = self.inplace)
+                x = Func.weighted_tanh(x, weight = 1, inplace = self.inplace)
 
         if (self.activation == MISH):
-            x = Func.mish(self.fc1(x))
+            x = self.fc1(x)
+            if self.inplace:
+                Func.mish(x, inplace = self.inplace)
+            else:
+                x = Func.mish(x, inplace = self.inplace)
 
         if (self.activation == SILU):
             x = self.fc1(x)
             if self.inplace:
                 Func.silu(x, inplace = self.inplace)
             else:
-                x = Func.silu(self.fc1(x), inplace = self.inplace)
+                x = Func.silu(x, inplace = self.inplace)
 
         if (self.activation == ARIA2):
             x = Func.aria2(self.fc1(x))
@@ -194,10 +198,10 @@ def main():
             activation_function = weightedTanh(weight = 1, inplace = inplace)
 
         if (activation == MISH):
-            activation_function = mish()
+            activation_function = mish(inplace = inplace)
 
         if (activation == SILU):
-            activation_function = silu()
+            activation_function = silu(inplace = inplace)
 
         if (activation == ARIA2):
             activation_function = aria2()

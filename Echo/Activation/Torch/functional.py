@@ -24,7 +24,7 @@ def weighted_tanh(input, weight = 1, inplace = False):
         torch.tanh_(input)
         return input
 
-def mish(input):
+def mish(input, inplace = False):
     '''
     Applies the mish function element-wise:
 
@@ -34,7 +34,15 @@ def mish(input):
 
     See additional documentation for :mod:`Echo.Activation.Torch.mish`.
     '''
-    return input * torch.tanh(F.softplus(input))
+    if inplace:
+        inp = input.clone()
+        torch.exp_(input)
+        input += 1
+        torch.tanh_(torch.log_(input))
+        input *= inp
+        return input
+    else:
+        return input * torch.tanh(F.softplus(input))
 
 def silu(input, inplace = False):
     '''

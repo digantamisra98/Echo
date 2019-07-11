@@ -83,7 +83,6 @@ class TestTorchActivations(TestCase):
         # check the inplace implementation
         # checking that weighted tahn of 2.2 is 0.975743
         weighted_tanh(input)
-        print(input)
         self.assertEqual((input).allclose(output) , True)
 
     def test_silu_1(self):
@@ -123,6 +122,46 @@ class TestTorchActivations(TestCase):
         fsilu(input)
 
         # checking that value of an input is SiLU(input) == 0.7310 now
+        self.assertEqual((input).allclose(output) , True)
+
+    def test_mish_1(self):
+        '''
+        Unit test for Mish activation function.
+        See :mod:`Echo.Activation.Torch.mish`.
+        '''
+        # checking that mish(0) == 0
+        fmish = mish()
+        input = torch.tensor((0.0,0.0))
+        output = torch.tensor((0.0,0.0))
+
+        self.assertEqual((fmish(input)).allclose(output) , True)
+
+    def test_mish_2(self):
+        '''
+        Unit test for Mish activation function.
+        See :mod:`Echo.Activation.Torch.mish`.
+        '''
+        # checking that mish(1) == 0.865098
+        fmish = mish()
+        input = torch.tensor((1.0,1.0))
+        output = torch.tensor((0.865098,0.865098))
+
+        self.assertEqual((fmish(input)).allclose(output) , True)
+
+    def test_mish_3(self):
+        '''
+        Unit test for Mish activation function.
+        See :mod:`Echo.Activation.Torch.mish`.
+        '''
+        # checking the in-place implementation of mish
+        # checking that mish(1) == 0.865098
+        fmish = mish(inplace = True)
+        input = torch.tensor((1.0,1.0))
+        output = torch.tensor((0.865098,0.865098))
+        fmish(input)
+
+        print(input)
+
         self.assertEqual((input).allclose(output) , True)
 
 # define entry point

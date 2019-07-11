@@ -32,20 +32,24 @@ class mish(nn.Module):
           dimensions
         - Output: (N, *), same shape as the input
 
+    Arguments:
+        - inplace: (bool) perform the operation in-place
+
     Examples:
         >>> m = mish()
         >>> input = torch.randn(2)
         >>> output = m(input)
 
     '''
-    def __init__(self):
+    def __init__(self, inplace = False):
         '''
         Init method.
         '''
         super().__init__()
+        self.inplace = inplace
 
     def forward(self, input):
         '''
         Forward pass of the function.
         '''
-        return Func.mish(input)
+        return Func.mish(input, inplace = self.inplace)

@@ -974,17 +974,17 @@ class hard_shrink(Layer):
 
     '''
 
-    def __init__(self, lambda= 0.5, **kwargs):
+    def __init__(self, lambd = 0.5, **kwargs):
         super(hard_shrink, self).__init__(**kwargs)
         self.supports_masking = True
-        self.lambda = K.cast_to_floatx(lambda)
+        self.lambd = K.cast_to_floatx(lambd)
 
     def call(self, inputs):
-        return K.cast(K.greater(inputs , self.lambda), 'float32') * inputs \
-        + 0 * K.cast(K.less_equal(inputs, self.lambda), 'float32') * K.cast(K.greater_equal(inputs, -self.lambda), 'float32') + inputs *  K.cast(K.less(inputs, -self.lambda), 'float32')
+        return K.cast(K.greater(inputs , self.lambd), 'float32') * inputs \
+        + 0 * K.cast(K.less_equal(inputs, self.lambd), 'float32') * K.cast(K.greater_equal(inputs, -self.lambd), 'float32') + inputs *  K.cast(K.less(inputs, -self.lambd), 'float32')
 
     def get_config(self):
-        config = {'lambda': float(self.lambda)}
+        config = {'lambd': float(self.lambd)}
         base_config = super(hard_shrink, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
@@ -1016,18 +1016,18 @@ class soft_shrink(Layer):
 
     '''
 
-    def __init__(self, lambda= 0.5, **kwargs):
+    def __init__(self, lambd= 0.5, **kwargs):
         super(soft_shrink, self).__init__(**kwargs)
         self.supports_masking = True
-        self.lambda = K.cast_to_floatx(lambda)
+        self.lambd = K.cast_to_floatx(lambd)
 
     def call(self, inputs):
-        return (K.cast(K.greater(inputs , self.lambda), 'float32') * (inputs - self.lambda)) \
-        + (0 * K.cast(K.less_equal(inputs, self.lambda), 'float32') * K.cast(K.greater_equal(inputs, -self.lambda), 'float32')) \
-        + ((inputs + self.lambda) *  K.cast(K.less(inputs, -self.lambda), 'float32'))
+        return (K.cast(K.greater(inputs , self.lambd), 'float32') * (inputs - self.lambd)) \
+        + (0 * K.cast(K.less_equal(inputs, self.lambd), 'float32') * K.cast(K.greater_equal(inputs, -self.lambd), 'float32')) \
+        + ((inputs + self.lambd) *  K.cast(K.less(inputs, -self.lambd), 'float32'))
 
     def get_config(self):
-        config = {'lambda': float(self.lambda)}
+        config = {'lambd': float(self.lambd)}
         base_config = super(soft_shrink, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
@@ -1208,7 +1208,7 @@ class srelu(Layer):
         Adding Trainable Parameters.
             - parameters: (tr, tl, ar, al) parameters for manual initialization, default value is None. If None is passed, parameters are initialized randomly.
         '''
-        if (self.params = None):
+        if (self.params == None):
             self.tr = self.add_weight(name='tr',
                                      initializer='random_uniform',
                                      trainable=True)

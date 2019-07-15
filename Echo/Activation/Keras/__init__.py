@@ -18,7 +18,7 @@ from .custom_activations import elish
 from .custom_activations import hard_elish
 from .custom_activations import bent_id
 from .custom_activations import weighted_tanh
-from .custom_activations import sine_relu
+from .custom_activations import sineReLU
 from .custom_activations import isrlu
 from .custom_activations import soft_clipping
 from .custom_activations import aria2

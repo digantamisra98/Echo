@@ -39,6 +39,9 @@ from Echo.Activation.Keras.custom_activations import soft_clipping
 from Echo.Activation.Keras.custom_activations import aria2
 from Echo.Activation.Keras.custom_activations import celu
 from Echo.Activation.Keras.custom_activations import relu6
+from Echo.Activation.Keras.custom_activations import hard_tanh
+from Echo.Activation.Keras.custom_activations import log_sigmoid
+from Echo.Activation.Keras.custom_activations import tanh_shrink
 
 # activation names constants
 RELU = 'relu'
@@ -60,6 +63,9 @@ SC = 'soft_clipping'
 ARIA2 = 'aria2'
 CELU = 'celu'
 RELU6 = 'relu6'
+HTANH = 'hard_tanh'
+LSIG = 'log_sigmoid'
+TANHSH = 'tanh_shrink'
 
 def CNNModel(input_shape, activation = 'relu'):
     """
@@ -139,6 +145,15 @@ def CNNModel(input_shape, activation = 'relu'):
     if (activation == RELU6):
         X = relu6()(X)
 
+    if (activation == HTANH):
+        X = hard_tanh()(X)
+
+    if (activation == LSIG):
+        X = log_sigmoid()(X)
+
+    if (activation == TANHSH):
+        X = tanh_shrink()(X)
+
     # MAXPOOL
     X = MaxPooling2D((2, 2), name='max_pool')(X)
 
@@ -163,7 +178,7 @@ def main():
     parser.add_argument('--activation', action='store', default = RELU,
                         help='Activation function for demonstration.',
                         choices = [SWISH, ESWISH, MILA, RELU, ISRU, BETA_MISH, MISH, SQNL, FTS, ELISH, HELISH, BENTID,
-                        WTANH, SINERELU, ISRLU, SC, ARIA2, CELU, RELU6])
+                        WTANH, SINERELU, ISRLU, SC, ARIA2, CELU, RELU6, HTANH, LSIG, TANHSH])
 
     # Parse command line arguments
     results = parser.parse_args()

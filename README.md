@@ -86,11 +86,11 @@ The repository has the following structure:
 1. Clone or download [GitHub repository](https://github.com/digantamisra98/Echo).
 
 2. Navigate to **Echo** folder:
-  
+
   ```$ cd Echo```
 
 3. Install the package with pip:
-  
+
   ```$ pip install . ```
 
 ### To run the demo scripts:
@@ -111,4 +111,4 @@ The repository has the following structure:
 
 2. Run unit test script:
 
-```$ python ython -m unittest torch_activation_tests ```
+```$ python -m unittest torch_activation_tests ```

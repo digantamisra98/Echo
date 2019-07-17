@@ -1142,19 +1142,19 @@ class soft_exponential(Layer):
         self.supports_masking = True
 
     def build(self, input_shape):
-        # Create a trainable weight for alpha parameter. Alpha by default is initialized with 0.
+        # Create a trainable weight for alpha parameter. Alpha by default is initialized with random normal distribution.
         self.alpha = self.add_weight(name='alpha',
-                                     initializer='zeros',
-                                     trainable=True)
+                                     initializer='random_normal',
+                                     trainable=True,
+                                     shape = (1,))
         super(soft_exponential, self).build(input_shape)
 
     def call(self, inputs):
-        if (self.alpha == 0):
-            return inputs
-        if (self.alpha < 0):
-            return - (K.log(1 - self.alpha * (inputs + self.alpha))) / self.alpha
-        if (self.alpha > 0):
-            return (K.exp(self.alpha * inputs) - 1)/(self.alpha) + self.alpha
+        output =  K.cast(K.greater(self.alpha, 0), 'float32') * (K.exp(self.alpha * inputs) - 1)/(self.alpha) + \
+        self.alpha + K.cast(K.less(self.alpha, 0), 'float32') * (- (K.log(1 - self.alpha * (inputs + self.alpha))) / self.alpha) + \
+        K.cast(K.equal(self.alpha, 0), 'float32') * inputs
+
+        return output
 
     def get_config(self):
         base_config = super(soft_exponential, self).get_config()
@@ -1162,8 +1162,6 @@ class soft_exponential(Layer):
 
     def compute_output_shape(self, input_shape):
         return input_shape
-
-
 
 class srelu(Layer):
     '''
@@ -1198,43 +1196,31 @@ class srelu(Layer):
 
     '''
 
-    def __init__(self, params=None, **kwargs):
+    def __init__(self, **kwargs):
         super(srelu, self).__init__(**kwargs)
-        self.params = params
         self.supports_masking = True
 
     def build(self, input_shape):
         '''
         Adding Trainable Parameters.
-            - parameters: (tr, tl, ar, al) parameters for manual initialization, default value is None. If None is passed, parameters are initialized randomly.
+            - parameters: (tr, tl, ar, al) initialized randomly.
         '''
-        if (self.params == None):
-            self.tr = self.add_weight(name='tr',
-                                     initializer='random_uniform',
-                                     trainable=True)
-            self.tl = self.add_weight(name='tl',
-                                     initializer='random_uniform',
-                                     trainable=True)
-            self.ar = self.add_weight(name='ar',
-                                     initializer='random_uniform',
-                                     trainable=True)
-            self.al = self.add_weight(name='al',
-                                     initializer='random_uniform',
-                                     trainable=True)
-        else:
-            self.params = initializers.get(self.params)
-            self.tr = self.add_weight(name='tr',
-                                     initializer=self.params,
-                                     trainable=True)
-            self.tl = self.add_weight(name='tl',
-                                     initializer=self.params,
-                                     trainable=True)
-            self.ar = self.add_weight(name='ar',
-                                     initializer=self.params,
-                                     trainable=True)
-            self.al = self.add_weight(name='al',
-                                     initializer=self.params,
-                                     trainable=True)
+        self.tr = self.add_weight(name='tr',
+                                 initializer='random_uniform',
+                                 trainable=True,
+                                 shape = (input_shape[-1],))
+        self.tl = self.add_weight(name='tl',
+                                 initializer='random_uniform',
+                                 trainable=True,
+                                 shape = (input_shape[-1],))
+        self.ar = self.add_weight(name='ar',
+                                 initializer='random_uniform',
+                                 trainable=True,
+                                 shape = (input_shape[-1],))
+        self.al = self.add_weight(name='al',
+                                 initializer='random_uniform',
+                                 trainable=True,
+                                 shape = (input_shape[-1],))
 
         super(srelu, self).build(input_shape)
 
@@ -1243,7 +1229,6 @@ class srelu(Layer):
                * K.cast(K.greater(inputs, self.tl), 'float32') * inputs + K.cast(K.less_equal(inputs, self.tl), 'float32') * (self.tl + self.al * (inputs + self.tl))
 
     def get_config(self):
-        config = {'params': self.params}
         base_config = super(srelu, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 

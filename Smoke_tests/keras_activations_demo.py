@@ -42,6 +42,12 @@ from Echo.Activation.Keras.custom_activations import relu6
 from Echo.Activation.Keras.custom_activations import hard_tanh
 from Echo.Activation.Keras.custom_activations import log_sigmoid
 from Echo.Activation.Keras.custom_activations import tanh_shrink
+from Echo.Activation.Keras.custom_activations import hard_shrink
+from Echo.Activation.Keras.custom_activations import soft_shrink
+from Echo.Activation.Keras.custom_activations import softmin
+from Echo.Activation.Keras.custom_activations import log_softmax
+from Echo.Activation.Keras.custom_activations import soft_exponential
+from Echo.Activation.Keras.custom_activations import srelu
 
 # activation names constants
 RELU = 'relu'
@@ -66,6 +72,12 @@ RELU6 = 'relu6'
 HTANH = 'hard_tanh'
 LSIG = 'log_sigmoid'
 TANHSH = 'tanh_shrink'
+HSHRINK = 'hard_shrink'
+SSHRINK = 'soft_shrink'
+SOFTMIN = 'softmin'
+LSOFTMAX = 'log_softmax'
+SEXP = 'soft_exponential'
+SRELU = 'srelu'
 
 def CNNModel(input_shape, activation = 'relu'):
     """
@@ -154,6 +166,24 @@ def CNNModel(input_shape, activation = 'relu'):
     if (activation == TANHSH):
         X = tanh_shrink()(X)
 
+    if (activation == HSHRINK):
+        X = hard_shrink()(X)
+
+    if (activation == SSHRINK):
+        X = soft_shrink()(X)
+
+    if (activation == SOFTMIN):
+        X = softmin()(X)
+
+    if (activation == LSOFTMAX):
+        X = log_softmax()(X)
+
+    if (activation == SEXP):
+        X = soft_exponential()(X)
+
+    if (activation == SRELU):
+        X = srelu()(X)
+
     # MAXPOOL
     X = MaxPooling2D((2, 2), name='max_pool')(X)
 
@@ -178,7 +208,8 @@ def main():
     parser.add_argument('--activation', action='store', default = RELU,
                         help='Activation function for demonstration.',
                         choices = [SWISH, ESWISH, MILA, RELU, ISRU, BETA_MISH, MISH, SQNL, FTS, ELISH, HELISH, BENTID,
-                        WTANH, SINERELU, ISRLU, SC, ARIA2, CELU, RELU6, HTANH, LSIG, TANHSH])
+                        WTANH, SINERELU, ISRLU, SC, ARIA2, CELU, RELU6, HTANH, LSIG, TANHSH, HSHRINK, SSHRINK, SOFTMIN,
+                        LSOFTMAX, SEXP, SRELU])
 
     # Parse command line arguments
     results = parser.parse_args()

@@ -28,23 +28,23 @@ The list of activation functions implemented in Echo:
 ====   ====================   =========================================   ==============================================================   ============
 #      Activation             PyTorch                                     Keras                                                            TensorFlow
 ====   ====================   =========================================   ==============================================================   ============
-1      Weighted Tanh          :ref:`Torch.weightedTanh`                   :func:`Echo.Activation.Keras.custom_activations.weighted_tanh`   -
-2      Aria2                  :ref:`Torch.aria2`                          :func:`Echo.Activation.Keras.custom_activations.aria2`           -
+1      Weighted Tanh          :ref:`Torch.weightedTanh`                   :ref:`Keras.weighted_tanh`                                       -
+2      Aria2                  :ref:`Torch.aria2`                          :ref:`Keras.aria2`                                               -
 3      SiLU                   :ref:`Torch.silu`                           -                                                                -
-4      E-Swish                :ref:`Torch.eswish`                         :func:`Echo.Activation.Keras.custom_activations.eswish`          -
-5      Swish                  :ref:`Torch.swish`                          :func:`Echo.Activation.Keras.custom_activations.swish`           -
-6      ELiSH                  :ref:`Torch.elish`                          :func:`Echo.Activation.Keras.custom_activations.elish`           -
-7      Hard ELiSH             :ref:`Torch.hard_elish`                     :func:`Echo.Activation.Keras.custom_activations.hard_elish`      -
-8      Mila                   :ref:`Torch.mila`                           :func:`Echo.Activation.Keras.custom_activations.mila`            -
-9      SineReLU               :ref:`Torch.sine_relu`                      :func:`Echo.Activation.Keras.custom_activations.sineReLU`        -
-10     Flatten T-Swish        :ref:`Torch.fts`                            :func:`Echo.Activation.Keras.custom_activations.fts`             -
-11     SQNL                   :ref:`Torch.sqnl`                           :func:`Echo.Activation.Keras.custom_activations.sqnl`            -
-12     Mish                   :ref:`Torch.mish`                           :func:`Echo.Activation.Keras.custom_activations.mish`            -
-13     Beta Mish              :ref:`Torch.beta_mish`                      :func:`Echo.Activation.Keras.custom_activations.beta_mish`       -
-14     ISRU                   :ref:`Torch.isru`                           :func:`Echo.Activation.Keras.custom_activations.isru`            -
-15     ISRLU                  :ref:`Torch.isrlu`                          :func:`Echo.Activation.Keras.custom_activations.isrlu`           -
-16     Bent's Identity        :ref:`Torch.bent_id`                        :func:`Echo.Activation.Keras.custom_activations.bent_id`         -
-17     Soft Clipping          :ref:`Torch.soft_clipping`                  :func:`Echo.Activation.Keras.custom_activations.soft_clipping`   -
+4      E-Swish                :ref:`Torch.eswish`                         :ref:`Keras.eswish`                                              -
+5      Swish                  :ref:`Torch.swish`                          :ref:`Keras.swish`                                               -
+6      ELiSH                  :ref:`Torch.elish`                          :ref:`Keras.elish`                                               -
+7      Hard ELiSH             :ref:`Torch.hard_elish`                     :ref:`Keras.hard_elish`                                          -
+8      Mila                   :ref:`Torch.mila`                           :ref:`Keras.mila`                                                -
+9      SineReLU               :ref:`Torch.sine_relu`                      :ref:`Keras.sineReLU`                                            -
+10     Flatten T-Swish        :ref:`Torch.fts`                            :ref:`Keras.fts`                                                 -
+11     SQNL                   :ref:`Torch.sqnl`                           :ref:`Keras.sqnl`                                                -
+12     Mish                   :ref:`Torch.mish`                           :ref:`Keras.mish`                                                -
+13     Beta Mish              :ref:`Torch.beta_mish`                      :ref:`Keras.beta_mish`                                           -
+14     ISRU                   :ref:`Torch.isru`                           :ref:`Keras.isru`                                                -
+15     ISRLU                  :ref:`Torch.isrlu`                          :ref:`Keras.isrlu`                                               -
+16     Bent's Identity        :ref:`Torch.bent_id`                        :ref:`Keras.bent_id`                                             -
+17     Soft Clipping          :ref:`Torch.soft_clipping`                  :ref:`Keras.soft_clipping`                                       -
 18     SReLU                  :ref:`Torch.srelu`                          -                                                                -
 19     BReLU                  :ref:`Torch.brelu`                          -                                                                -
 20     APL                    :ref:`Torch.apl`                            -                                                                -
@@ -344,10 +344,117 @@ Echo.Activation.Torch.functional
 Keras Extensions
 ================================
 
-Echo.Activation.Keras.custom_activations
+.. _Keras.mish:
+
+Keras.mish
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations
-   :members:
+.. automodule:: Echo.Activation.Keras.custom_activations.mish
+  :members:
+
+.. _Keras.weighted_tanh:
+
+Keras.weighted_tanh
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.weighted_tanh
+  :members:
+
+.. _Keras.aria2:
+
+Keras.aria2
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.aria2
+  :members:
+
+.. _Keras.eswish:
+
+Keras.eswish
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.eswish
+  :members:
+
+.. _Keras.swish:
+
+Keras.swish
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.swish
+  :members:
+
+.. _Keras.elish:
+
+Keras.elish
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.elish
+  :members:
+
+.. _Keras.hard_elish:
+
+Keras.hard_elish
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.hard_elish
+  :members:
+
+.. _Keras.mila:
+
+Keras.mila
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.mila
+  :members:
+
+.. _Keras.sineReLU:
+
+Keras.sineReLU
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.sineReLU
+  :members:
+
+.. _Keras.fts:
+
+Keras.fts
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.fts
+  :members:
+
+.. _Keras.sqnl:
+
+Keras.sqnl
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.sqnl
+  :members:
+
+.. _Keras.beta_mish:
+
+Keras.beta_mish
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.beta_mish
+  :members:
+
+.. _Keras.isru:
+
+Keras.isru
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.isru
+  :members:
+
+.. _Keras.isrlu:
+
+Keras.isrlu
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.isrlu
+  :members:
+
+.. _Keras.bent_id:
+
+Keras.bent_id
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.bent_id
+  :members:
+
+.. _Keras.soft_clipping:
+
+Keras.soft_clipping
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.soft_clipping
+  :members:
 
 Indices and tables
 ================================

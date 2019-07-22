@@ -14,6 +14,7 @@ Welcome to Echo's documentation!
 
 .. contents:: Table of Contents
  :local:
+ :depth: 1
 
 
 About
@@ -25,49 +26,34 @@ About
 Implemented Activation Functions
 --------------------------------
 
-List of activation functions implemented in Echo:
+The list of activation functions implemented in Echo:
 
-1. PyTorch:
-  * Weighted Tanh (see :mod:`Echo.Activation.Torch.weightedTanh`)
-  * Aria2 (see :mod:`Echo.Activation.Torch.aria2`)
-  * SiLU (see :mod:`Echo.Activation.Torch.silu`)
-  * E-Swish (see :mod:`Echo.Activation.Torch.eswish`)
-  * Swish (see :mod:`Echo.Activation.Torch.swish`)
-  * ELiSH (see :mod:`Echo.Activation.Torch.elish`)
-  * Hard ELiSH (see :mod:`Echo.Activation.Torch.hard_elish`)
-  * Mila (see :mod:`Echo.Activation.Torch.mila`)
-  * SineReLU (see :mod:`Echo.Activation.Torch.sine_relu`)
-  * Flatten T-Swish (see :mod:`Echo.Activation.Torch.fts`)
-  * SQNL (see :mod:`Echo.Activation.Torch.sqnl`)
-  * Mish (see :mod:`Echo.Activation.Torch.mish`)
-  * ISRU (see :mod:`Echo.Activation.Torch.isru`)
-  * ISRLU (see :mod:`Echo.Activation.Torch.isrlu`)
-  * Bent's Identity (see :mod:`Echo.Activation.Torch.bent_id`)
-  * Soft Clipping (see :mod:`Echo.Activation.Torch.soft_clipping`)
-  * SReLU (see :mod:`Echo.Activation.Torch.srelu`)
-  * BReLU (see :mod:`Echo.Activation.Torch.brelu`)
-  * APL (see :mod:`Echo.Activation.Torch.apl`)
-  * Soft Exponential (see :mod:`Echo.Activation.Torch.soft_exponential`)
-  * Maxout (see :mod:`Echo.Activation.Torch.maxout`)
-  * Beta Mish (see :mod:`Echo.Activation.Torch.beta_mish`)
-
-2. Keras:
-  * Swish (see :func:`Echo.Activation.Keras.custom_activations.swish`)
-  * ESwish (see :func:`Echo.Activation.Keras.custom_activations.eswish`)
-  * ISRU (see :func:`Echo.Activation.Keras.custom_activations.isru`)
-  * Beta Mish (see :func:`Echo.Activation.Keras.custom_activations.beta_mish`)
-  * Mish (see :func:`Echo.Activation.Keras.custom_activations.mish`)
-  * Mila (see :func:`Echo.Activation.Keras.custom_activations.mila`)
-  * SQNL (see :func:`Echo.Activation.Keras.custom_activations.sqnl`)
-  * Flatten T-Swish (see :func:`Echo.Activation.Keras.custom_activations.fts`)
-  * ELiSH (see :func:`Echo.Activation.Keras.custom_activations.elish`)
-  * Hard ELiSH (see :func:`Echo.Activation.Keras.custom_activations.hard_elish`)
-  * Bent's Identity (see :func:`Echo.Activation.Keras.custom_activations.bent_id`)
-  * Weighted Tanh (see :func:`Echo.Activation.Keras.custom_activations.weighted_tanh`)
-  * Sine ReLU (see :func:`Echo.Activation.Keras.custom_activations.sineReLU`)
-  * ISRLU (see :func:`Echo.Activation.Keras.custom_activations.isrlu`)
-  * Soft Clipping (see :func:`Echo.Activation.Keras.custom_activations.soft_clipping`)
-  * Aria2 (see :func:`Echo.Activation.Keras.custom_activations.aria2`)
+====   ====================   =========================================   ==============================================================   ============
+#      Activation             PyTorch                                     Keras                                                            TensorFlow
+====   ====================   =========================================   ==============================================================   ============
+1      Weighted Tanh          :ref:`Torch.weightedTanh`                   :func:`Echo.Activation.Keras.custom_activations.weighted_tanh`   -
+2      Aria2                  :ref:`Torch.aria2`                          :func:`Echo.Activation.Keras.custom_activations.aria2`           -
+3      SiLU                   :ref:`Torch.silu`                           -                                                                -
+4      E-Swish                :ref:`Torch.eswish`                         :func:`Echo.Activation.Keras.custom_activations.eswish`          -
+5      Swish                  :ref:`Torch.swish`                          :func:`Echo.Activation.Keras.custom_activations.swish`           -
+6      ELiSH                  :ref:`Torch.elish`                          :func:`Echo.Activation.Keras.custom_activations.elish`           -
+7      Hard ELiSH             :ref:`Torch.hard_elish`                     :func:`Echo.Activation.Keras.custom_activations.hard_elish`      -
+8      Mila                   :ref:`Torch.mila`                           :func:`Echo.Activation.Keras.custom_activations.mila`            -
+9      SineReLU               :ref:`Torch.sine_relu`                      :func:`Echo.Activation.Keras.custom_activations.sineReLU`        -
+10     Flatten T-Swish        :ref:`Torch.fts`                            :func:`Echo.Activation.Keras.custom_activations.fts`             -
+11     SQNL                   :ref:`Torch.sqnl`                           :func:`Echo.Activation.Keras.custom_activations.sqnl`            -
+12     Mish                   :ref:`Torch.mish`                           :func:`Echo.Activation.Keras.custom_activations.mish`            -
+13     Beta Mish              :ref:`Torch.beta_mish`                      :func:`Echo.Activation.Keras.custom_activations.beta_mish`       -
+14     ISRU                   :ref:`Torch.isru`                           :func:`Echo.Activation.Keras.custom_activations.isru`            -
+15     ISRLU                  :ref:`Torch.isrlu`                          :func:`Echo.Activation.Keras.custom_activations.isrlu`           -
+16     Bent's Identity        :ref:`Torch.bent_id`                        :func:`Echo.Activation.Keras.custom_activations.bent_id`         -
+17     Soft Clipping          :ref:`Torch.soft_clipping`                  :func:`Echo.Activation.Keras.custom_activations.soft_clipping`   -
+18     SReLU                  :ref:`Torch.srelu`                          -                                                                -
+19     BReLU                  :ref:`Torch.brelu`                          -                                                                -
+20     APL                    :ref:`Torch.apl`                            -                                                                -
+21     Soft Exponential       :ref:`Torch.soft_exponential`               -                                                                -
+22     Maxout                 :ref:`Torch.maxout`                         -                                                                -
+====   ====================   =========================================   ==============================================================   ============
 
 Installation
 ================================
@@ -81,13 +67,13 @@ To install Echo package follow the instructions below:
 3. Install the package with pip:
   >>> $ pip install .
 
-Torch Examples
+Examples
 ================================
 
-Simple Activation Functions
+Torch Activation Functions
 --------------------------------
 
-The following code block contains an example of usage of an activation function
+The following code block contains an example of usage of a PyTorch activation function
 from Echo package:
 
 .. code-block:: python
@@ -144,112 +130,156 @@ from Echo package:
 PyTorch Extensions API
 ================================
 
-Echo.Activation.Torch.aria2
+.. _Torch.aria2:
+
+Torch.aria2
 --------------------------------
 .. automodule:: Echo.Activation.Torch.aria2
   :members:
 
-Echo.Activation.Torch.mish
+.. _Torch.mish:
+
+Torch.mish
 --------------------------------
 .. automodule:: Echo.Activation.Torch.mish
   :members:
 
-Echo.Activation.Torch.beta_mish
+.. _Torch.beta_mish:
+
+Torch.beta_mish
 --------------------------------
 .. automodule:: Echo.Activation.Torch.beta_mish
   :members:
 
-Echo.Activation.Torch.silu
+.. _Torch.silu:
+
+Torch.silu
 --------------------------------
 .. automodule:: Echo.Activation.Torch.silu
   :members:
 
-Echo.Activation.Torch.eswish
+.. _Torch.eswish:
+
+Torch.eswish
 --------------------------------
 .. automodule:: Echo.Activation.Torch.eswish
   :members:
 
-Echo.Activation.Torch.swish
+.. _Torch.swish:
+
+Torch.swish
 --------------------------------
 .. automodule:: Echo.Activation.Torch.swish
   :members:
 
-Echo.Activation.Torch.elish
+.. _Torch.elish:
+
+Torch.elish
 --------------------------------
 .. automodule:: Echo.Activation.Torch.elish
   :members:
 
-Echo.Activation.Torch.hard_elish
+.. _Torch.hard_elish:
+
+Torch.hard_elish
 --------------------------------
 .. automodule:: Echo.Activation.Torch.hard_elish
   :members:
 
-Echo.Activation.Torch.mila
+.. _Torch.mila:
+
+Torch.mila
 --------------------------------
 .. automodule:: Echo.Activation.Torch.mila
   :members:
 
-Echo.Activation.Torch.sine_relu
+.. _Torch.sine_relu:
+
+Torch.sine_relu
 --------------------------------
 .. automodule:: Echo.Activation.Torch.sine_relu
   :members:
 
-Echo.Activation.Torch.fts
+.. _Torch.fts:
+
+Torch.fts
 --------------------------------
 .. automodule:: Echo.Activation.Torch.fts
   :members:
 
-Echo.Activation.Torch.sqnl
+.. _Torch.sqnl:
+
+Torch.sqnl
 --------------------------------
 .. automodule:: Echo.Activation.Torch.sqnl
   :members:
 
-Echo.Activation.Torch.isru
+.. _Torch.isru:
+
+Torch.isru
 --------------------------------
 .. automodule:: Echo.Activation.Torch.isru
   :members:
 
-Echo.Activation.Torch.isrlu
+.. _Torch.isrlu:
+
+Torch.isrlu
 --------------------------------
 .. automodule:: Echo.Activation.Torch.isrlu
   :members:
 
-Echo.Activation.Torch.bent_id
+.. _Torch.bent_id:
+
+Torch.bent_id
 --------------------------------
 .. automodule:: Echo.Activation.Torch.bent_id
   :members:
 
-Echo.Activation.Torch.soft_clipping
+.. _Torch.soft_clipping:
+
+Torch.soft_clipping
 --------------------------------
 .. automodule:: Echo.Activation.Torch.soft_clipping
   :members:
 
-Echo.Activation.Torch.weightedTanh
+.. _Torch.weightedTanh:
+
+Torch.weightedTanh
 --------------------------------
 .. automodule:: Echo.Activation.Torch.weightedTanh
   :members:
 
-Echo.Activation.Torch.srelu
+.. _Torch.srelu:
+
+Torch.srelu
 --------------------------------
 .. automodule:: Echo.Activation.Torch.srelu
   :members:
 
-Echo.Activation.Torch.brelu
+.. _Torch.brelu:
+
+Torch.brelu
 --------------------------------
 .. automodule:: Echo.Activation.Torch.brelu
   :members:
 
-Echo.Activation.Torch.apl
+.. _Torch.apl:
+
+Torch.apl
 --------------------------------
 .. automodule:: Echo.Activation.Torch.apl
   :members:
 
-Echo.Activation.Torch.soft_exponential
+.. _Torch.soft_exponential:
+
+Torch.soft_exponential
 --------------------------------
 .. automodule:: Echo.Activation.Torch.soft_exponential
   :members:
 
-Echo.Activation.Torch.maxout
+.. _Torch.maxout:
+
+Torch.maxout
 --------------------------------
 .. automodule:: Echo.Activation.Torch.maxout
   :members:

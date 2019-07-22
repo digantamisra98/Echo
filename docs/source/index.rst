@@ -1,7 +1,4 @@
-.. Echo documentation master file, created by
-   sphinx-quickstart on Tue Jun 11 10:55:29 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. Echo documentation master file, created on Tue Jun 11 10:55:29 2019.
 
 ################################
 Welcome to Echo's documentation!
@@ -126,8 +123,63 @@ from Echo package:
                             ('logits', nn.Linear(64, 10)),
                             ('logsoftmax', nn.LogSoftmax(dim=1))]))
 
+Keras Activation Functions
+--------------------------------
 
-PyTorch Extensions API
+The following code block contains an example of usage of a Keras activation function
+from Echo package:
+
+.. code-block:: python
+   :emphasize-lines: 2,27
+
+   # Import the activation function from Echo package
+   from Echo.Activation.Keras.custom_activations import weighted_tanh
+
+   # Define the CNN model
+   def CNNModel(input_shape):
+       """
+       Implementation of the simple CNN.
+
+       INPUT:
+           input_shape -- shape of the images of the dataset
+
+       OUTPUT::
+           model -- a Model() instance in Keras
+       """
+
+       # Define the input placeholder as a tensor with shape input_shape.
+       X_input = Input(input_shape)
+
+       # Zero-Padding: pads the border of X_input with zeroes
+       X = ZeroPadding2D((3, 3))(X_input)
+
+       # CONV -> BN -> Activation Block applied to X
+       X = Conv2D(32, (3, 3), strides = (1, 1), name = 'conv0')(X)
+       X = BatchNormalization(axis = 3, name = 'bn0')(X)
+
+       # Use custom activation function from Echo package
+       X = weighted_tanh()(X)
+
+       # MAXPOOL
+       X = MaxPooling2D((2, 2), name='max_pool')(X)
+
+       # FLATTEN X (means convert it to a vector) + FULLYCONNECTED
+       X = Flatten()(X)
+       X = Dense(10, activation='softmax', name='fc')(X)
+
+       # Create model
+       model = Model(inputs = X_input, outputs = X, name='CNNModel')
+
+       return model
+
+   # Create the model
+   model = CNNModel((28,28,1))
+
+   # Compile the model
+   model.compile(optimizer = "adam", loss = "mean_squared_error", metrics = ["accuracy"])
+
+
+PyTorch Extensions
 ================================
 
 .. _Torch.aria2:
@@ -289,7 +341,7 @@ Echo.Activation.Torch.functional
 .. automodule:: Echo.Activation.Torch.functional
    :members:
 
-Keras Extensions API
+Keras Extensions
 ================================
 
 Echo.Activation.Keras.custom_activations

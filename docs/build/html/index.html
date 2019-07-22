@@ -42,8 +42,8 @@
 <li><a class="reference internal" href="#about" id="id169">About</a></li>
 <li><a class="reference internal" href="#installation" id="id170">Installation</a></li>
 <li><a class="reference internal" href="#examples" id="id171">Examples</a></li>
-<li><a class="reference internal" href="#pytorch-extensions-api" id="id172">PyTorch Extensions API</a></li>
-<li><a class="reference internal" href="#keras-extensions-api" id="id173">Keras Extensions API</a></li>
+<li><a class="reference internal" href="#pytorch-extensions" id="id172">PyTorch Extensions</a></li>
+<li><a class="reference internal" href="#keras-extensions" id="id173">Keras Extensions</a></li>
 <li><a class="reference internal" href="#indices-and-tables" id="id174">Indices and tables</a></li>
 </ul>
 </div>
@@ -363,9 +363,61 @@ from Echo package:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="keras-activation-functions">
+<h3>Keras Activation Functions<a class="headerlink" href="#keras-activation-functions" title="Permalink to this headline">¶</a></h3>
+<p>The following code block contains an example of usage of a Keras activation function
+from Echo package:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the activation function from Echo package</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">Echo.Activation.Keras.custom_activations</span> <span class="kn">import</span> <span class="n">weighted_tanh</span>
+</span>
+<span class="c1"># Define the CNN model</span>
+<span class="k">def</span> <span class="nf">CNNModel</span><span class="p">(</span><span class="n">input_shape</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Implementation of the simple CNN.</span>
+
+<span class="sd">    INPUT:</span>
+<span class="sd">        input_shape -- shape of the images of the dataset</span>
+
+<span class="sd">    OUTPUT::</span>
+<span class="sd">        model -- a Model() instance in Keras</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Define the input placeholder as a tensor with shape input_shape.</span>
+    <span class="n">X_input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+
+    <span class="c1"># Zero-Padding: pads the border of X_input with zeroes</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">ZeroPadding2D</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))(</span><span class="n">X_input</span><span class="p">)</span>
+
+    <span class="c1"># CONV -&gt; BN -&gt; Activation Block applied to X</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">strides</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;conv0&#39;</span><span class="p">)(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">BatchNormalization</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;bn0&#39;</span><span class="p">)(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="c1"># Use custom activation function from Echo package</span>
+<span class="hll">    <span class="n">X</span> <span class="o">=</span> <span class="n">weighted_tanh</span><span class="p">()(</span><span class="n">X</span><span class="p">)</span>
+</span>
+    <span class="c1"># MAXPOOL</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;max_pool&#39;</span><span class="p">)(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="c1"># FLATTEN X (means convert it to a vector) + FULLYCONNECTED</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">Flatten</span><span class="p">()(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;fc&#39;</span><span class="p">)(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="c1"># Create model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span> <span class="o">=</span> <span class="n">X_input</span><span class="p">,</span> <span class="n">outputs</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;CNNModel&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="c1"># Create the model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">CNNModel</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Compile the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span> <span class="o">=</span> <span class="s2">&quot;adam&quot;</span><span class="p">,</span> <span class="n">loss</span> <span class="o">=</span> <span class="s2">&quot;mean_squared_error&quot;</span><span class="p">,</span> <span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+</pre></div>
 </div>
-<div class="section" id="pytorch-extensions-api">
-<h2><a class="toc-backref" href="#id172">PyTorch Extensions API</a><a class="headerlink" href="#pytorch-extensions-api" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="pytorch-extensions">
+<h2><a class="toc-backref" href="#id172">PyTorch Extensions</a><a class="headerlink" href="#pytorch-extensions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="torch-aria2">
 <span id="id1"></span><h3>Torch.aria2<a class="headerlink" href="#torch-aria2" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-Echo.Activation.Torch.aria2"></span><p>Applies the Aria-2 function element-wise:</p>
@@ -1745,8 +1797,8 @@ during the backward pass.</p>
 
 </div>
 </div>
-<div class="section" id="keras-extensions-api">
-<h2><a class="toc-backref" href="#id173">Keras Extensions API</a><a class="headerlink" href="#keras-extensions-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="keras-extensions">
+<h2><a class="toc-backref" href="#id173">Keras Extensions</a><a class="headerlink" href="#keras-extensions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="echo-activation-keras-custom-activations">
 <h3>Echo.Activation.Keras.custom_activations<a class="headerlink" href="#echo-activation-keras-custom-activations" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-Echo.Activation.Keras.custom_activations"></span><p>Layers that act as activation functions.</p>

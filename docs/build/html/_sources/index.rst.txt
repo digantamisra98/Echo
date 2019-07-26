@@ -45,11 +45,20 @@ The list of activation functions implemented in Echo:
 15     ISRLU                  :ref:`Torch.isrlu`                          :ref:`Keras.isrlu`                                               -
 16     Bent's Identity        :ref:`Torch.bent_id`                        :ref:`Keras.bent_id`                                             -
 17     Soft Clipping          :ref:`Torch.soft_clipping`                  :ref:`Keras.soft_clipping`                                       -
-18     SReLU                  :ref:`Torch.srelu`                          -                                                                -
+18     SReLU                  :ref:`Torch.srelu`                          :ref:`Keras.srelu`                                               -
 19     BReLU                  :ref:`Torch.brelu`                          -                                                                -
 20     APL                    :ref:`Torch.apl`                            -                                                                -
-21     Soft Exponential       :ref:`Torch.soft_exponential`               -                                                                -
+21     Soft Exponential       :ref:`Torch.soft_exponential`               :ref:`Keras.soft_exponential`                                    -
 22     Maxout                 :ref:`Torch.maxout`                         -                                                                -
+23     CELU                   -                                           :ref:`Keras.celu`                                                -
+23     ReLU6                  -                                           :ref:`Keras.relu6`                                               -
+24     Hard Tanh              -                                           :ref:`Keras.hard_tanh`                                           -
+25     Log Sigmoid            -                                           :ref:`Keras.log_sigmoid`                                         -
+26     Tanh Shrink            -                                           :ref:`Keras.tanh_shrink`                                         -
+27     Hard Shrink            -                                           :ref:`Keras.hard_shrink`                                         -
+28     Soft Shrink            -                                           :ref:`Keras.soft_shrink`                                         -
+29     Softmin                -                                           :ref:`Keras.softmin`                                             -
+30     LogSoftmax             -                                           :ref:`Keras.log_softmax`                                         -
 ====   ====================   =========================================   ==============================================================   ============
 
 Installation
@@ -454,6 +463,83 @@ Keras.bent_id
 Keras.soft_clipping
 --------------------------------
 .. automodule:: Echo.Activation.Keras.custom_activations.soft_clipping
+  :members:
+
+.. _Keras.celu:
+
+Keras.celu
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.celu
+  :members:
+
+.. _Keras.relu6:
+
+Keras.relu6
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.relu6
+  :members:
+
+.. _Keras.hard_tanh:
+
+Keras.hard_tanh
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.hard_tanh
+  :members:
+
+.. _Keras.log_sigmoid:
+
+Keras.log_sigmoid
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.log_sigmoid
+  :members:
+
+.. _Keras.tanh_shrink:
+
+Keras.tanh_shrink
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.tanh_shrink
+  :members:
+
+.. _Keras.hard_shrink:
+
+Keras.hard_shrink
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.hard_shrink
+  :members:
+
+.. _Keras.soft_shrink:
+
+Keras.soft_shrink
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.soft_shrink
+  :members:
+
+.. _Keras.softmin:
+
+Keras.softmin
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.softmin
+  :members:
+
+.. _Keras.log_softmax:
+
+Keras.log_softmax
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.log_softmax
+  :members:
+
+.. _Keras.soft_exponential:
+
+Keras.soft_exponential
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.soft_exponential
+  :members:
+
+.. _Keras.srelu:
+
+Keras.srelu
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations.srelu
   :members:
 
 Indices and tables

@@ -62,7 +62,7 @@ def silu(input, inplace = False):
         return input * torch.sigmoid(input)
 
 
-def aria2(input, beta=1, alpha=1.5):
+def aria2(input, beta=1., alpha=1.5):
     '''
     Applies the Aria-2 function element-wise:
 

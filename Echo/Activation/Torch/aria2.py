@@ -49,7 +49,7 @@ class aria2(nn.Module):
         >>> output = m(input)
 
     '''
-    def __init__(self, beta = 1, alpha = 1.5):
+    def __init__(self, beta = 1., alpha = 1.5):
         '''
         Init method.
         '''
@@ -62,4 +62,4 @@ class aria2(nn.Module):
         '''
         Forward pass of the function.
         '''
-        return Func.aria2(input, self.alpha, self.beta)
+        return Func.aria2(input, self.beta, self.alpha)

@@ -160,9 +160,33 @@ class TestTorchActivations(TestCase):
         output = torch.tensor((0.865098,0.865098))
         fmish(input)
 
-        print(input)
-
         self.assertEqual((input).allclose(output) , True)
+
+    def test_aria2_1(self):
+        '''
+        Unit test for Aria2 activation function.
+        See :mod:`Echo.Activation.Torch.aria2`.
+        '''
+        # checking that aria2(0, 0) = (0.5, 0.5)
+        input = torch.tensor((.0,.0))
+        aria = aria2(beta=1., alpha=1.)
+        output = aria(input)
+
+        self.assertEqual(output.allclose(torch.tensor((.5,.5))), True)
+
+    def test_aria2_2(self):
+        '''
+        Unit test for Aria2 activation function.
+        See :mod:`Echo.Activation.Torch.aria2`.
+        '''
+        # checking that aria2(1., 1.) = (0.73105, 0.73105)
+        input = torch.tensor((1.0,1.0))
+        aria = aria2(beta=1., alpha=1.)
+        output = aria(input)
+
+        print(output)
+
+        self.assertEqual(output.allclose(torch.tensor((0.7310585786,0.7310585786))), True)
 
 # define entry point
 if __name__ == '__main__':

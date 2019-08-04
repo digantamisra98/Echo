@@ -184,9 +184,31 @@ class TestTorchActivations(TestCase):
         aria = aria2(beta=1., alpha=1.)
         output = aria(input)
 
-        print(output)
-
         self.assertEqual(output.allclose(torch.tensor((0.7310585786,0.7310585786))), True)
+
+    def test_beta_mish_1(self):
+        '''
+        Unit test for Beta Mish activation function.
+        See :mod:`Echo.Activation.Torch.beta_mish`.
+        '''
+        # checking that beta_mish(0., 0.) = (0. , 0.)
+        input = torch.tensor((0.0,0.0))
+        beta_mish_activation = beta_mish(beta=1.)
+        output = beta_mish_activation(input)
+
+        self.assertEqual(output.allclose(torch.tensor((0.0,0.0))), True)
+
+    def test_beta_mish_2(self):
+        '''
+        Unit test for Beta Mish activation function.
+        See :mod:`Echo.Activation.Torch.beta_mish`.
+        '''
+        # checking that beta_mish(1., 1.) = (0.865098, 0.865098) beta = 1.0
+        input = torch.tensor((1.0,1.0))
+        beta_mish_activation = beta_mish(beta=1.)
+        output = beta_mish_activation(input)
+
+        self.assertEqual(output.allclose(torch.tensor((0.865098,0.865098))), True)
 
 # define entry point
 if __name__ == '__main__':

@@ -2,7 +2,6 @@ absl-py==0.7.1
 astor==0.8.0
 Augmentor==0.2.5
 cycler==0.10.0
-Echo==1.0
 future==0.17.1
 gast==0.2.2
 google-pasta==0.1.7

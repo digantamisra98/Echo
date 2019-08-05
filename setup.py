@@ -11,5 +11,4 @@ setup(
     download_url = 'https://github.com/digantamisra98/Echo/archive/0.1.1.tar.gz',
     keywords = ['machine learning', 'deep learning', 'algorithms', 'mathematics'],
     classifiers = [],
-    zip_safe=False
 )

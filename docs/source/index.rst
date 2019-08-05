@@ -1,0 +1,275 @@
+.. Echo documentation master file, created by
+   sphinx-quickstart on Tue Jun 11 10:55:29 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+################################
+Welcome to Echo's documentation!
+################################
+
+.. toctree::
+   :maxdepth: 5
+   :caption: Contents:
+
+
+.. contents:: Table of Contents
+ :local:
+
+
+About
+================================
+
+**Echo Package** is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as `PyTorch <https://pytorch.org/>`_, `Keras <https://keras.io/>`_ and
+`TensorFlow <https://www.tensorflow.org/>`_.
+
+Implemented Activation Functions
+--------------------------------
+
+List of activation functions implemented in Echo:
+
+1. PyTorch:
+  * Weighted Tanh (see :mod:`Echo.Activation.Torch.weightedTanh`)
+  * Aria2 (see :mod:`Echo.Activation.Torch.aria2`)
+  * SiLU (see :mod:`Echo.Activation.Torch.silu`)
+  * E-Swish (see :mod:`Echo.Activation.Torch.eswish`)
+  * Swish (see :mod:`Echo.Activation.Torch.swish`)
+  * ELiSH (see :mod:`Echo.Activation.Torch.elish`)
+  * Hard ELiSH (see :mod:`Echo.Activation.Torch.hard_elish`)
+  * Mila (see :mod:`Echo.Activation.Torch.mila`)
+  * SineReLU (see :mod:`Echo.Activation.Torch.sine_relu`)
+  * Flatten T-Swish (see :mod:`Echo.Activation.Torch.fts`)
+  * SQNL (see :mod:`Echo.Activation.Torch.sqnl`)
+  * Mish (see :mod:`Echo.Activation.Torch.mish`)
+  * ISRU (see :mod:`Echo.Activation.Torch.isru`)
+  * ISRLU (see :mod:`Echo.Activation.Torch.isrlu`)
+  * Bent's Identity (see :mod:`Echo.Activation.Torch.bent_id`)
+  * Soft Clipping (see :mod:`Echo.Activation.Torch.soft_clipping`)
+  * SReLU (see :mod:`Echo.Activation.Torch.srelu`)
+  * BReLU (see :mod:`Echo.Activation.Torch.brelu`)
+  * APL (see :mod:`Echo.Activation.Torch.apl`)
+  * Soft Exponential (see :mod:`Echo.Activation.Torch.soft_exponential`)
+  * Maxout (see :mod:`Echo.Activation.Torch.maxout`)
+  * Beta Mish (see :mod:`Echo.Activation.Torch.beta_mish`)
+
+2. Keras:
+  * Swish (see :func:`Echo.Activation.Keras.custom_activations.swish`)
+  * ESwish (see :func:`Echo.Activation.Keras.custom_activations.eswish`)
+  * ISRU (see :func:`Echo.Activation.Keras.custom_activations.isru`)
+  * Beta Mish (see :func:`Echo.Activation.Keras.custom_activations.beta_mish`)
+  * Mish (see :func:`Echo.Activation.Keras.custom_activations.mish`)
+  * Mila (see :func:`Echo.Activation.Keras.custom_activations.mila`)
+  * SQNL (see :func:`Echo.Activation.Keras.custom_activations.sqnl`)
+  * Flatten T-Swish (see :func:`Echo.Activation.Keras.custom_activations.fts`)
+  * ELiSH (see :func:`Echo.Activation.Keras.custom_activations.elish`)
+  * Hard ELiSH (see :func:`Echo.Activation.Keras.custom_activations.hard_elish`)
+  * Bent's Identity (see :func:`Echo.Activation.Keras.custom_activations.bent_id`)
+  * Weighted Tanh (see :func:`Echo.Activation.Keras.custom_activations.weighted_tanh`)
+  * Sine ReLU (see :func:`Echo.Activation.Keras.custom_activations.sineReLU`)
+  * ISRLU (see :func:`Echo.Activation.Keras.custom_activations.isrlu`)
+  * Soft Clipping (see :func:`Echo.Activation.Keras.custom_activations.soft_clipping`)
+  * Aria2 (see :func:`Echo.Activation.Keras.custom_activations.aria2`)
+
+Installation
+================================
+To install Echo package follow the instructions below:
+
+1. Clone or download `GitHub repository <https://github.com/digantamisra98/Echo>`_.
+
+2. Navigate to **Echo** folder:
+  >>> $ cd Echo
+
+3. Install the package with pip:
+  >>> $ pip install .
+
+Torch Examples
+================================
+
+Simple Activation Functions
+--------------------------------
+
+The following code block contains an example of usage of an activation function
+from Echo package:
+
+.. code-block:: python
+   :emphasize-lines: 2,3,21,37
+
+   # import activations from Echo
+   from Echo.Activation.Torch.weightedTanh import weightedTanh
+   import Echo.Activation.Torch.functional as Func
+
+   # use activations in layers of model defined in class
+   class Classifier(nn.Module):
+       def __init__(self):
+           super().__init__()
+
+           # initialize layers
+           self.fc1 = nn.Linear(784, 256)
+           self.fc2 = nn.Linear(256, 128)
+           self.fc3 = nn.Linear(128, 64)
+           self.fc4 = nn.Linear(64, 10)
+
+       def forward(self, x):
+           # make sure the input tensor is flattened
+           x = x.view(x.shape[0], -1)
+
+           # apply activation function from Echo
+           x = Func.weighted_tanh(self.fc1(x), weight = 1)
+
+           x = F.relu(self.fc2(x))
+           x = F.relu(self.fc3(x))
+           x = F.log_softmax(self.fc4(x), dim=1)
+
+           return x
+
+   def main():
+       # Initialize the model using defined Classifier class
+       model = Classifier()
+
+       # Create model with Sequential
+       model = nn.Sequential(OrderedDict([
+                            ('fc1', nn.Linear(784, 256)),
+                            # use activation function from Echo
+                            ('wtahn1',  weightedTanh(weight = 1)),
+                            ('fc2', nn.Linear(256, 128)),
+                            ('bn2', nn.BatchNorm1d(num_features=128)),
+                            ('relu2', nn.ReLU()),
+                            ('dropout', nn.Dropout(0.3)),
+                            ('fc3', nn.Linear(128, 64)),
+                            ('bn3', nn.BatchNorm1d(num_features=64)),
+                            ('relu3', nn.ReLU()),
+                            ('logits', nn.Linear(64, 10)),
+                            ('logsoftmax', nn.LogSoftmax(dim=1))]))
+
+
+PyTorch Extensions API
+================================
+
+Echo.Activation.Torch.aria2
+--------------------------------
+.. automodule:: Echo.Activation.Torch.aria2
+  :members:
+
+Echo.Activation.Torch.mish
+--------------------------------
+.. automodule:: Echo.Activation.Torch.mish
+  :members:
+
+Echo.Activation.Torch.beta_mish
+--------------------------------
+.. automodule:: Echo.Activation.Torch.beta_mish
+  :members:
+
+Echo.Activation.Torch.silu
+--------------------------------
+.. automodule:: Echo.Activation.Torch.silu
+  :members:
+
+Echo.Activation.Torch.eswish
+--------------------------------
+.. automodule:: Echo.Activation.Torch.eswish
+  :members:
+
+Echo.Activation.Torch.swish
+--------------------------------
+.. automodule:: Echo.Activation.Torch.swish
+  :members:
+
+Echo.Activation.Torch.elish
+--------------------------------
+.. automodule:: Echo.Activation.Torch.elish
+  :members:
+
+Echo.Activation.Torch.hard_elish
+--------------------------------
+.. automodule:: Echo.Activation.Torch.hard_elish
+  :members:
+
+Echo.Activation.Torch.mila
+--------------------------------
+.. automodule:: Echo.Activation.Torch.mila
+  :members:
+
+Echo.Activation.Torch.sine_relu
+--------------------------------
+.. automodule:: Echo.Activation.Torch.sine_relu
+  :members:
+
+Echo.Activation.Torch.fts
+--------------------------------
+.. automodule:: Echo.Activation.Torch.fts
+  :members:
+
+Echo.Activation.Torch.sqnl
+--------------------------------
+.. automodule:: Echo.Activation.Torch.sqnl
+  :members:
+
+Echo.Activation.Torch.isru
+--------------------------------
+.. automodule:: Echo.Activation.Torch.isru
+  :members:
+
+Echo.Activation.Torch.isrlu
+--------------------------------
+.. automodule:: Echo.Activation.Torch.isrlu
+  :members:
+
+Echo.Activation.Torch.bent_id
+--------------------------------
+.. automodule:: Echo.Activation.Torch.bent_id
+  :members:
+
+Echo.Activation.Torch.soft_clipping
+--------------------------------
+.. automodule:: Echo.Activation.Torch.soft_clipping
+  :members:
+
+Echo.Activation.Torch.weightedTanh
+--------------------------------
+.. automodule:: Echo.Activation.Torch.weightedTanh
+  :members:
+
+Echo.Activation.Torch.srelu
+--------------------------------
+.. automodule:: Echo.Activation.Torch.srelu
+  :members:
+
+Echo.Activation.Torch.brelu
+--------------------------------
+.. automodule:: Echo.Activation.Torch.brelu
+  :members:
+
+Echo.Activation.Torch.apl
+--------------------------------
+.. automodule:: Echo.Activation.Torch.apl
+  :members:
+
+Echo.Activation.Torch.soft_exponential
+--------------------------------
+.. automodule:: Echo.Activation.Torch.soft_exponential
+  :members:
+
+Echo.Activation.Torch.maxout
+--------------------------------
+.. automodule:: Echo.Activation.Torch.maxout
+  :members:
+
+Echo.Activation.Torch.functional
+--------------------------------
+.. automodule:: Echo.Activation.Torch.functional
+   :members:
+
+Keras Extensions API
+================================
+
+Echo.Activation.Keras.custom_activations
+--------------------------------
+.. automodule:: Echo.Activation.Keras.custom_activations
+   :members:
+
+Indices and tables
+================================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

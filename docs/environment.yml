@@ -1,0 +1,12 @@
+name: echo-ai
+
+channels:
+    - anaconda
+    - pytorch
+
+dependencies:
+    - python==3.7
+    - pytorch
+    - pip:
+        - Keras==2.2.4
+        - tensorflow==1.14.0

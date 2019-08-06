@@ -15,20 +15,10 @@
 import os
 import sys
 
-sys.path.insert(0, '../../../venvtf/lib/python3.6/site-packages/')
-
-import keras
-
 sys.path.insert(0, '../..')
 sys.path.insert(0, os.path.abspath('../../Echo/'))
 sys.path.insert(0, os.path.abspath('../..'))
 sys.path.insert(0, os.path.abspath('../../Echo/Echo/'))
-
-import Echo
-import Echo.Activation
-import Echo.Activation.Torch
-import Echo.Activation.Keras
-
 
 # -- Project information -----------------------------------------------------
 
@@ -212,3 +202,10 @@ epub_exclude_files = ['search.html']
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
+
+# Exclude imports
+autodoc_mock_imports = [
+    "torch",
+    "Keras",
+    "tensorflow"
+]

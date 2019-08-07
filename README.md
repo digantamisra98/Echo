@@ -7,6 +7,7 @@
 # Echo
 
 Python package containing all mathematical backend algorithms used in Machine Learning.
+The full documentation for Echo is provided [here](https://echo-ai.readthedocs.io/en/latest/).
 
 ## Table of Contents
 * [About the Project](#about)

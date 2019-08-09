@@ -61,3 +61,12 @@ class ISRU(Layer):
     
     def call(self, inputs):
         return inputs / tf.math.sqrt(1 + self.alpha * tf.math.pow(inputs, 2))
+
+
+class BentIdentity(Layer):
+
+    def __init__(self):
+        super(BentIdentity, self).__init__()
+    
+    def call(self, inputs):
+        return inputs + (tf.math.sqrt(tf.math.pow(inputs, 2) + 1) - 1) / 2

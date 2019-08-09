@@ -80,3 +80,12 @@ class SoftClipping(Layer):
     
     def call(self, inputs):
         return tf.math.log((1 + tf.math.exp(self.alpha * inputs)) * tf.math.sigmoid(self.alpha * (1 - inputs)))
+
+
+class Mish(Layer):
+
+    def __init__(self):
+        super(Mish, self).__init__()
+    
+    def call(self, inputs):
+        return inputs * tf.math.tanh(tf.math.log(1 + tf.math.exp(inputs)))

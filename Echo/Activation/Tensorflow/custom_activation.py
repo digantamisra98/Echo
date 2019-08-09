@@ -70,3 +70,13 @@ class BentIdentity(Layer):
     
     def call(self, inputs):
         return inputs + (tf.math.sqrt(tf.math.pow(inputs, 2) + 1) - 1) / 2
+
+
+class SoftClipping(Layer):
+
+    def __init__(self, alpha):
+        super(SoftClipping, self).__init__()
+        self.alpha = alpha
+    
+    def call(self, inputs):
+        return tf.math.log((1 + tf.math.exp(self.alpha * inputs)) * tf.math.sigmoid(self.alpha * (1 - inputs)))

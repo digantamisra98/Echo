@@ -1,5 +1,5 @@
 import tensorflow as tf
-import tensorflow.keras.layers as Layer
+from tensorflow.keras.layers import Layer
 
 
 class WeightedTanh(Layer):

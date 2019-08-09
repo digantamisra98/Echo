@@ -30,3 +30,14 @@ class ESwish(Layer):
     
     def call(self, inputs):
         return self.beta * inputs * tf.math.sigmoid(inputs)
+
+
+class Aria2(Layer):
+
+    def __init__(self, alpha, beta):
+        super(Aria2, self).__init__()
+        self.alpha = alpha
+        self.beta = beta
+    
+    def call(self, inputs):
+        return tf.math.pow(1 + tf.math.exp(-self.beta * inputs), -self.alpha)

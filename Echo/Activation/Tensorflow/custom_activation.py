@@ -89,3 +89,13 @@ class Mish(Layer):
     
     def call(self, inputs):
         return inputs * tf.math.tanh(tf.math.log(1 + tf.math.exp(inputs)))
+
+
+class BetaMish(Layer):
+
+    def __init__(self, beta):
+        super(BetaMish, self).__init__()
+        self.beta = beta
+    
+    def call(self, inputs):
+        return inputs * tf.math.tanh(tf.math.log(tf.math.pow(1 + tf.math.exp(inputs), self.beta)))

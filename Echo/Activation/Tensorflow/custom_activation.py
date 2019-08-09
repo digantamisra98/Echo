@@ -51,3 +51,13 @@ class Mila(Layer):
     
     def call(self, inputs):
         return inputs * tf.math.tanh(tf.math.log(1 + tf.math.exp(self.beta + inputs)))
+
+
+class ISRU(Layer):
+
+    def __init__(self, alpha):
+        super(ISRU, self).__init__()
+        self.alpha = alpha
+    
+    def call(self, inputs):
+        return inputs / tf.math.sqrt(1 + self.alpha * tf.math.pow(inputs, 2))

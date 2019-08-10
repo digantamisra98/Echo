@@ -110,3 +110,15 @@ class ELiSH(Layer):
         case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs * tf.math.sigmoid(inputs)
         case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * (tf.math.exp(inputs) - 1) * tf.math.sigmoid(inputs)
         return case_1 + case_2
+
+
+class HardELiSH(Layer):
+
+    def __init__(self):
+        super(HardELiSH, self).__init__()
+    
+    def call(self, inputs):
+        common = tf.math.maximum(tf.cast(0, 'float32'), tf.math.minimum(tf.cast(1, 'float32'), (inputs + 1) / 2))
+        case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs * common
+        case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * (tf.math.exp(inputs) - 1) * common
+        return case_1 + case_2

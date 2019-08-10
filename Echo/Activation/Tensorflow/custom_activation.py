@@ -1,5 +1,6 @@
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
+from tensorflow.keras import backend as K
 
 
 class WeightedTanh(Layer):
@@ -268,3 +269,12 @@ class LogSoftMax(Layer):
     
     def call(self, inputs):
         return tf.math.log(tf.math.softmax(inputs))
+
+
+class MaxOut(Layer):
+
+    def __init__(self):
+        super(MaxOut, self).__init__()
+    
+    def call(self, inputs):
+        return K.max(inputs)

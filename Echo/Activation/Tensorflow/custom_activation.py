@@ -196,3 +196,15 @@ class CELU(Layer):
         case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs
         case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * self.alpha * (tf.math.exp(inputs / self.alpha) - 1)
         return case_1 + case_2
+
+
+class HardTanh(Layer):
+
+    def __init__(self):
+        super(HardTanh, self).__init__()
+    
+    def call(self, inputs):
+        case_1 = tf.cast(tf.math.greater(inputs, 1), 'float32')
+        case_2 = tf.cast(tf.math.less(inputs, -1), 'float32') * -1
+        case_3 = tf.cast(tf.math.greater_equal(inputs, -1), 'float32') * tf.cast(tf.math.less_equal(inputs, 1), 'float32') * inputs
+        return case_1 + case_2 + case_3

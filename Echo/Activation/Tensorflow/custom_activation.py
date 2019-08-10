@@ -208,3 +208,12 @@ class HardTanh(Layer):
         case_2 = tf.cast(tf.math.less(inputs, -1), 'float32') * -1
         case_3 = tf.cast(tf.math.greater_equal(inputs, -1), 'float32') * tf.cast(tf.math.less_equal(inputs, 1), 'float32') * inputs
         return case_1 + case_2 + case_3
+
+
+class LogSigmoid(Layer):
+
+    def __init__(self):
+        super(LogSigmoid, self).__init__()
+    
+    def call(self, inputs):
+        return tf.math.log(tf.math.sigmoid(inputs))

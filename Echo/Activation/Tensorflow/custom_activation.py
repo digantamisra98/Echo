@@ -226,3 +226,15 @@ class TanhShrink(Layer):
     
     def call(self, inputs):
         return inputs - tf.math.tanh(inputs)
+
+
+class HardShrink(Layer):
+
+    def __init__(self, _lambda = 0.5):
+        super(HardShrink, self).__init__()
+        self._lambda = _lambda
+    
+    def call(self, inputs):
+        case_1 = tf.cast(tf.math.greater(inputs, self._lambda), 'float32') * inputs
+        case_2 = tf.cast(tf.math.less(inputs, -1 * self._lambda), 'float32') * inputs
+        return case_1 + case_2

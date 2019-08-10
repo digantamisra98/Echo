@@ -14,9 +14,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class hard_elish(nn.Module):
+class HardElish(nn.Module):
     '''
     Applies the HardELiSH function element-wise:
 
@@ -39,7 +39,7 @@ class hard_elish(nn.Module):
         https://arxiv.org/pdf/1710.05941.pdf
 
     Examples:
-        >>> m = hard_elish()
+        >>> m = HardElish()
         >>> input = torch.randn(2)
         >>> output = m(input)
 

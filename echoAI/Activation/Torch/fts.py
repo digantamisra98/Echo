@@ -14,9 +14,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class fts(nn.Module):
+class FTS(nn.Module):
     '''
     Applies the FTS (Flatten T-Swish) function element-wise:
 
@@ -39,7 +39,7 @@ class fts(nn.Module):
         https://arxiv.org/pdf/1812.06247.pdf
 
     Examples:
-        >>> m = fts()
+        >>> m = FTS()
         >>> input = torch.randn(2)
         >>> output = m(input)
 

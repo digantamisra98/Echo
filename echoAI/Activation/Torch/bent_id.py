@@ -1,9 +1,9 @@
 '''
-Applies the mish function element-wise:
+Applies the Bent's Identity function element-wise:
 
 .. math::
 
-    mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))
+    bentId(x) = x + \\frac{\\sqrt{x^{2}+1}-1}{2}
 '''
 
 # import pytorch
@@ -11,45 +11,40 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class mish(nn.Module):
+class BentID(nn.Module):
     '''
-    Applies the mish function element-wise:
+    Applies the Bent's Identity function element-wise:
 
     .. math::
 
-        mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))
+        bentId(x) = x + \\frac{\\sqrt{x^{2}+1}-1}{2}
 
     Plot:
 
-    .. figure::  _static/mish.png
+    .. figure::  _static/bent_id.png
         :align:   center
-
 
     Shape:
         - Input: (N, *) where * means, any number of additional
           dimensions
         - Output: (N, *), same shape as the input
 
-    Arguments:
-        - inplace: (bool) perform the operation in-place
-
     Examples:
-        >>> m = mish()
+        >>> m = BentID()
         >>> input = torch.randn(2)
         >>> output = m(input)
 
     '''
-    def __init__(self, inplace = False):
+    def __init__(self):
         '''
         Init method.
         '''
         super().__init__()
-        self.inplace = inplace
 
     def forward(self, input):
         '''
         Forward pass of the function.
         '''
-        return Func.mish(input, inplace = self.inplace)
+        return Func.bent_id(input)

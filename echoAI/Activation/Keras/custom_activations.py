@@ -9,13 +9,13 @@ from keras.engine.base_layer import Layer
 from keras import backend as K
 from keras import initializers
 
-class mila(Layer):
+class Mila(Layer):
     '''
     Mila Activation Function.
 
     .. math::
 
-        mila(x) = x * tanh(ln(1 + e^{\\beta + x})) = x * tanh(softplus(\\beta + x)
+        Mila(x) = x * tanh(ln(1 + e^{\\beta + x})) = x * tanh(softplus(\\beta + x)
 
     Plot:
 
@@ -37,12 +37,12 @@ class mila(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = mila(beta=0.5)(X_input)
+        >>> X = Mila(beta=0.5)(X_input)
 
     '''
 
     def __init__(self, beta=-0.25, **kwargs):
-        super(mila, self).__init__(**kwargs)
+        super(Mila, self).__init__(**kwargs)
         self.supports_masking = True
         self.beta = K.cast_to_floatx(beta)
 
@@ -51,13 +51,13 @@ class mila(Layer):
 
     def get_config(self):
         config = {'beta': float(self.beta)}
-        base_config = super(mila, self).get_config()
+        base_config = super(Mila, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class swish(Layer):
+class Swish(Layer):
     '''
     Swish Activation Function.
 
@@ -86,12 +86,12 @@ class swish(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = swish(beta=0.5)(X_input)
+        >>> X = Swish(beta=0.5)(X_input)
 
     '''
 
     def __init__(self, beta=1.0, **kwargs):
-        super(swish, self).__init__(**kwargs)
+        super(Swish, self).__init__(**kwargs)
         self.supports_masking = True
         self.beta = K.cast_to_floatx(beta)
 
@@ -100,13 +100,13 @@ class swish(Layer):
 
     def get_config(self):
         config = {'beta': float(self.beta)}
-        base_config = super(swish, self).get_config()
+        base_config = super(Swish, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class eswish(Layer):
+class Eswish(Layer):
     '''
     E-Swish Activation Function.
 
@@ -135,12 +135,12 @@ class eswish(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = eswish(beta=0.5)(X_input)
+        >>> X = Eswish(beta=0.5)(X_input)
 
     '''
 
     def __init__(self, beta=1.375, **kwargs):
-        super(eswish, self).__init__(**kwargs)
+        super(Eswish, self).__init__(**kwargs)
         self.supports_masking = True
         self.beta = K.cast_to_floatx(beta)
 
@@ -149,13 +149,13 @@ class eswish(Layer):
 
     def get_config(self):
         config = {'beta': float(self.beta)}
-        base_config = super(eswish, self).get_config()
+        base_config = super(Eswish, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class beta_mish(Layer):
+class BetaMish(Layer):
     '''
     β mish activation function.
 
@@ -184,12 +184,12 @@ class beta_mish(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = beta_mish(beta=1.5)(X_input)
+        >>> X = BetaMish(beta=1.5)(X_input)
 
     '''
 
     def __init__(self, beta=1.5, **kwargs):
-        super(beta_mish, self).__init__(**kwargs)
+        super(BetaMish, self).__init__(**kwargs)
         self.supports_masking = True
         self.beta = K.cast_to_floatx(beta)
 
@@ -198,13 +198,13 @@ class beta_mish(Layer):
 
     def get_config(self):
         config = {'beta': float(self.beta)}
-        base_config = super(beta_mish, self).get_config()
+        base_config = super(BetaMish, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class isru(Layer):
+class ISRU(Layer):
     '''
     ISRU (Inverse Square Root Unit) Activation Function.
 
@@ -233,12 +233,12 @@ class isru(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = isru(alpha=0.5)(X_input)
+        >>> X = ISRU(alpha=0.5)(X_input)
 
     '''
 
     def __init__(self, alpha=1.0, **kwargs):
-        super(isru, self).__init__(**kwargs)
+        super(ISRU, self).__init__(**kwargs)
         self.supports_masking = True
         self.alpha = K.cast_to_floatx(alpha)
 
@@ -247,13 +247,13 @@ class isru(Layer):
 
     def get_config(self):
         config = {'alpha': float(self.alpha)}
-        base_config = super(isru, self).get_config()
+        base_config = super(ISRU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class mish(Layer):
+class Mish(Layer):
     '''
     Mish Activation Function.
 
@@ -275,25 +275,25 @@ class mish(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = mish()(X_input)
+        >>> X = Mish()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(mish, self).__init__(**kwargs)
+        super(Mish, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
         return inputs * K.tanh(K.softplus(inputs))
 
     def get_config(self):
-        base_config = super(mish, self).get_config()
+        base_config = super(Mish, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class sqnl(Layer):
+class SQNL(Layer):
     '''
     SQNL Activation Function.
 
@@ -319,12 +319,12 @@ class sqnl(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = sqnl()(X_input)
+        >>> X = SQNL()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(sqnl, self).__init__(**kwargs)
+        super(SQNL, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
@@ -333,13 +333,13 @@ class sqnl(Layer):
         + (inputs + K.pow(inputs,2)/4) * K.cast(K.less(inputs, 0), 'float32') * K.cast(K.greater_equal(inputs, -2), 'float32') - K.cast(K.less(inputs, -2), 'float32')
 
     def get_config(self):
-        base_config = super(sqnl, self).get_config()
+        base_config = super(SQNL, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class fts(Layer):
+class FTS(Layer):
     '''
     FTS (Flatten T-Swish) Activation Function.
 
@@ -365,25 +365,25 @@ class fts(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = fts()(X_input)
+        >>> X = FTS()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(fts, self).__init__(**kwargs)
+        super(FTS, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
         return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs / (1 + K.exp(- inputs))
 
     def get_config(self):
-        base_config = super(fts, self).get_config()
+        base_config = super(FTS, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class elish(Layer):
+class Elish(Layer):
     '''
     ELiSH (Exponential Linear Sigmoid SquasHing) Activation Function.
 
@@ -409,25 +409,25 @@ class elish(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = elish()(X_input)
+        >>> X = Elish()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(elish, self).__init__(**kwargs)
+        super(Elish, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
         return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs * K.sigmoid(inputs) + K.cast(K.less(inputs, 0), 'float32') * (K.exp(inputs) - 1) / (K.exp(- inputs) + 1)
 
     def get_config(self):
-        base_config = super(elish, self).get_config()
+        base_config = super(Elish, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class hard_elish(Layer):
+class HardElish(Layer):
     '''
     Hard ELiSH Activation Function.
 
@@ -453,12 +453,12 @@ class hard_elish(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = hard_elish()(X_input)
+        >>> X = HardElish()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(hard_elish, self).__init__(**kwargs)
+        super(HardElish, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
@@ -466,13 +466,13 @@ class hard_elish(Layer):
         + K.cast(K.less(inputs, 0), 'float32') * (K.exp(inputs - 1) * K.maximum(K.cast_to_floatx(0.0), K.minimum(K.cast_to_floatx(1.0), (inputs + 1.0)/2.0)))
 
     def get_config(self):
-        base_config = super(hard_elish, self).get_config()
+        base_config = super(HardElish, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class bent_id(Layer):
+class BentID(Layer):
     '''
     Bent's Identity Activation Function.
 
@@ -494,25 +494,25 @@ class bent_id(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = bent_id()(X_input)
+        >>> X = BentID()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(bent_id, self).__init__(**kwargs)
+        super(BentID, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
         return inputs + ((K.sqrt(K.pow(inputs,2)+1)-1)/2)
 
     def get_config(self):
-        base_config = super(bent_id, self).get_config()
+        base_config = super(BentID, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class weighted_tanh(Layer):
+class WeightedTanh(Layer):
     '''
     Weighted TanH Activation Function.
 
@@ -537,12 +537,12 @@ class weighted_tanh(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = weighted_tanh(weight=1.0)(X_input)
+        >>> X = WeightedTanh(weight=1.0)(X_input)
 
     '''
 
     def __init__(self, weight=1.0, **kwargs):
-        super(weighted_tanh, self).__init__(**kwargs)
+        super(WeightedTanh, self).__init__(**kwargs)
         self.supports_masking = True
         self.weight = K.cast_to_floatx(weight)
 
@@ -551,13 +551,13 @@ class weighted_tanh(Layer):
 
     def get_config(self):
         config = {'weight': float(self.weight)}
-        base_config = super(weighted_tanh, self).get_config()
+        base_config = super(WeightedTanh, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class sineReLU(Layer):
+class SineReLU(Layer):
     '''
     Sine ReLU Activation Function.
 
@@ -586,12 +586,12 @@ class sineReLU(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = sineReLU(epsilon=0.01)(X_input)
+        >>> X = SineReLU(epsilon=0.01)(X_input)
 
     '''
 
     def __init__(self, epsilon=0.01, **kwargs):
-        super(sineReLU, self).__init__(**kwargs)
+        super(SineReLU, self).__init__(**kwargs)
         self.supports_masking = True
         self.epsilon = K.cast_to_floatx(epsilon)
 
@@ -600,13 +600,13 @@ class sineReLU(Layer):
 
     def get_config(self):
         config = {'epsilon': float(self.epsilon)}
-        base_config = super(sineReLU, self).get_config()
+        base_config = super(SineReLU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class isrlu(Layer):
+class ISRLU(Layer):
     '''
     ISRLU Activation Function.
 
@@ -634,27 +634,27 @@ class isrlu(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = isrlu(alpha=1.0)(X_input)
+        >>> X = ISRLU(alpha=1.0)(X_input)
 
     '''
 
     def __init__(self, alpha=1.0, **kwargs):
-        super(isrlu, self).__init__(**kwargs)
+        super(ISRLU, self).__init__(**kwargs)
         self.supports_masking = True
         self.alpha = K.cast_to_floatx(alpha)
 
     def call(self, inputs):
-        return K.cast(K.less(inputs, 0), 'float32') * isru(alpha=self.alpha)(inputs) + K.cast(K.greater_equal(inputs, 0), 'float32') * inputs
+        return K.cast(K.less(inputs, 0), 'float32') * ISRU(alpha=self.alpha)(inputs) + K.cast(K.greater_equal(inputs, 0), 'float32') * inputs
 
     def get_config(self):
         config = {'alpha': float(self.alpha)}
-        base_config = super(isrlu, self).get_config()
+        base_config = super(ISRLU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class soft_clipping(Layer):
+class SoftClipping(Layer):
     '''
     Soft Clipping Activation Function.
 
@@ -683,12 +683,12 @@ class soft_clipping(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X =soft_clipping(alpha=0.5)(X_input)
+        >>> X = SoftClipping(alpha=0.5)(X_input)
 
     '''
 
     def __init__(self, alpha=0.5, **kwargs):
-        super(soft_clipping, self).__init__(**kwargs)
+        super(SoftClipping, self).__init__(**kwargs)
         self.supports_masking = True
         self.alpha = K.cast_to_floatx(alpha)
 
@@ -697,13 +697,13 @@ class soft_clipping(Layer):
 
     def get_config(self):
         config = {'alpha': float(self.alpha)}
-        base_config = super(soft_clipping, self).get_config()
+        base_config = super(SoftClipping, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class aria2(Layer):
+class Aria2(Layer):
     '''
     Aria-2 Activation Function.
 
@@ -734,12 +734,12 @@ class aria2(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X =aria2(alpha=1.0, beta=0.5)(X_input)
+        >>> X =Aria2(alpha=1.0, beta=0.5)(X_input)
 
     '''
 
     def __init__(self, alpha=1.0, beta=0.5, **kwargs):
-        super(aria2, self).__init__(**kwargs)
+        super(Aria2, self).__init__(**kwargs)
         self.supports_masking = True
         self.alpha = K.cast_to_floatx(alpha)
         self.beta = K.cast_to_floatx(beta)
@@ -749,14 +749,14 @@ class aria2(Layer):
 
     def get_config(self):
         config = {'alpha': float(self.alpha), 'beta': float(self.beta)}
-        base_config = super(aria2, self).get_config()
+        base_config = super(Aria2, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
-class celu(Layer):
+class Celu(Layer):
     '''
     CELU Activation Function.
 
@@ -780,12 +780,12 @@ class celu(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = celu(alpha=1.0)(X_input)
+        >>> X = Celu(alpha=1.0)(X_input)
 
     '''
 
     def __init__(self, alpha=1.0, **kwargs):
-        super(celu, self).__init__(**kwargs)
+        super(Celu, self).__init__(**kwargs)
         self.supports_masking = True
         self.alpha = K.cast_to_floatx(alpha)
 
@@ -794,14 +794,14 @@ class celu(Layer):
 
     def get_config(self):
         config = {'alpha': float(self.alpha)}
-        base_config = super(celu, self).get_config()
+        base_config = super(Celu, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
-class relu6(Layer):
+class ReLU6(Layer):
     '''
     RELU6 Activation Function.
 
@@ -822,26 +822,26 @@ class relu6(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = relu6()(X_input)
+        >>> X = ReLU6()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(relu6, self).__init__(**kwargs)
+        super(ReLU6, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
         return K.cast(K.greater_equal(inputs, 6), 'float32') * 6 + K.cast(K.less(inputs, 6), 'float32') * K.relu(inputs)
 
     def get_config(self):
-        base_config = super(relu6, self).get_config()
+        base_config = super(ReLU6, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
-class hard_tanh(Layer):
+class HardTanh(Layer):
     '''
     Hard-TanH Activation Function.
 
@@ -858,12 +858,12 @@ class hard_tanh(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = hard_tanh()(X_input)
+        >>> X = HardTanh()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(hard_tanh, self).__init__(**kwargs)
+        super(HardTanh, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
@@ -871,14 +871,14 @@ class hard_tanh(Layer):
         + inputs * K.cast(K.less_equal(inputs, 1), 'float32') * K.cast(K.greater_equal(inputs, -1), 'float32') - K.cast(K.less(inputs, -1), 'float32')
 
     def get_config(self):
-        base_config = super(hard_tanh, self).get_config()
+        base_config = super(HardTanh, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
-class log_sigmoid(Layer):
+class LogSigmoid(Layer):
     '''
     Log-Sigmoid Activation Function.
 
@@ -900,21 +900,21 @@ class log_sigmoid(Layer):
     '''
 
     def __init__(self, **kwargs):
-        super(log_sigmoid, self).__init__(**kwargs)
+        super(LogSigmoid, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
         return K.log(K.sigmoid(inputs))
 
     def get_config(self):
-        base_config = super(log_sigmoid, self).get_config()
+        base_config = super(LogSigmoid, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
-class tanh_shrink(Layer):
+class TanhShrink(Layer):
     '''
     TanH-Shrink Activation Function.
 
@@ -931,26 +931,26 @@ class tanh_shrink(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = tanh_shrink()(X_input)
+        >>> X = TanhShrink()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(tanh_shrink, self).__init__(**kwargs)
+        super(TanhShrink, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
         return inputs - K.tanh(inputs)
 
     def get_config(self):
-        base_config = super(tanh_shrink, self).get_config()
+        base_config = super(TanhShrink, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
-class hard_shrink(Layer):
+class HardShrink(Layer):
     '''
     Hard-Shrink Activation Function.
 
@@ -970,12 +970,12 @@ class hard_shrink(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = hard_shrink()(X_input)
+        >>> X = HardShrink(lambd = 0.5)(X_input)
 
     '''
 
     def __init__(self, lambd = 0.5, **kwargs):
-        super(hard_shrink, self).__init__(**kwargs)
+        super(HardShrink, self).__init__(**kwargs)
         self.supports_masking = True
         self.lambd = K.cast_to_floatx(lambd)
 
@@ -985,14 +985,14 @@ class hard_shrink(Layer):
 
     def get_config(self):
         config = {'lambd': float(self.lambd)}
-        base_config = super(hard_shrink, self).get_config()
+        base_config = super(HardShrink, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
-class soft_shrink(Layer):
+class SoftShrink(Layer):
     '''
     Soft-Shrink Activation Function.
 
@@ -1012,12 +1012,12 @@ class soft_shrink(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = soft_shrink()(X_input)
+        >>> X = SoftShrink(lambd = 0.5)(X_input)
 
     '''
 
     def __init__(self, lambd= 0.5, **kwargs):
-        super(soft_shrink, self).__init__(**kwargs)
+        super(SoftShrink, self).__init__(**kwargs)
         self.supports_masking = True
         self.lambd = K.cast_to_floatx(lambd)
 
@@ -1028,14 +1028,14 @@ class soft_shrink(Layer):
 
     def get_config(self):
         config = {'lambd': float(self.lambd)}
-        base_config = super(soft_shrink, self).get_config()
+        base_config = super(SoftShrink, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
-class softmin(Layer):
+class SoftMin(Layer):
     '''
     SoftMin Activation Function.
 
@@ -1052,26 +1052,26 @@ class softmin(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = softmin()(X_input)
+        >>> X = SoftMin()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(softmin, self).__init__(**kwargs)
+        super(SoftMin, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
         return K.softmax(-inputs)
 
     def get_config(self):
-        base_config = super(softmin, self).get_config()
+        base_config = super(SoftMin, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
-class log_softmax(Layer):
+class LogSoftmax(Layer):
     '''
     Log-SoftMax Activation Function.
 
@@ -1088,26 +1088,26 @@ class log_softmax(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = log_softmax()(X_input)
+        >>> X = LogSoftmax()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(log_softmax, self).__init__(**kwargs)
+        super(LogSoftmax, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
         return K.log(K.softmax(inputs))
 
     def get_config(self):
-        base_config = super(log_softmax, self).get_config()
+        base_config = super(LogSoftmax, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
-class soft_exponential(Layer):
+class SoftExponential(Layer):
     '''
     Soft-Exponential Activation Function.
 
@@ -1133,12 +1133,12 @@ class soft_exponential(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = soft_exponential()(X_input)
+        >>> X = SoftExponential()(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(soft_exponential, self).__init__(**kwargs)
+        super(SoftExponential, self).__init__(**kwargs)
         self.supports_masking = True
 
     def build(self, input_shape):
@@ -1147,7 +1147,7 @@ class soft_exponential(Layer):
                                      initializer='random_normal',
                                      trainable=True,
                                      shape = (1,))
-        super(soft_exponential, self).build(input_shape)
+        super(SoftExponential, self).build(input_shape)
 
     def call(self, inputs):
         output =  K.cast(K.greater(self.alpha, 0), 'float32') * (K.exp(self.alpha * inputs) - 1)/(self.alpha) + \
@@ -1157,13 +1157,13 @@ class soft_exponential(Layer):
         return output
 
     def get_config(self):
-        base_config = super(soft_exponential, self).get_config()
+        base_config = super(SoftExponential, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
-class srelu(Layer):
+class SReLU(Layer):
     '''
     SReLU (S-shaped Rectified Linear Activation Unit): a combination of three linear functions, which perform mapping R → R with the following formulation:
 
@@ -1192,12 +1192,12 @@ class srelu(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = srelu(params=None)(X_input)
+        >>> X = SReLU(params=None)(X_input)
 
     '''
 
     def __init__(self, **kwargs):
-        super(srelu, self).__init__(**kwargs)
+        super(SReLU, self).__init__(**kwargs)
         self.supports_masking = True
 
     def build(self, input_shape):
@@ -1222,14 +1222,14 @@ class srelu(Layer):
                                  trainable=True,
                                  shape = (input_shape[-1],))
 
-        super(srelu, self).build(input_shape)
+        super(SReLU, self).build(input_shape)
 
     def call(self, inputs):
         return K.cast(K.greater_equal(inputs, self.tr), 'float32') * (self.tr + self.ar * (inputs + self.tr)) + K.cast(K.less(inputs, self.tr), 'float32') \
                * K.cast(K.greater(inputs, self.tl), 'float32') * inputs + K.cast(K.less_equal(inputs, self.tl), 'float32') * (self.tl + self.al * (inputs + self.tl))
 
     def get_config(self):
-        base_config = super(srelu, self).get_config()
+        base_config = super(SReLU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):

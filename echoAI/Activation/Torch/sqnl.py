@@ -14,9 +14,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class sqnl(nn.Module):
+class SQNL(nn.Module):
     '''
     Applies the SQNL function element-wise:
 
@@ -39,7 +39,7 @@ class sqnl(nn.Module):
         https://ieeexplore.ieee.org/document/8489043
 
     Examples:
-        >>> m = sqnl()
+        >>> m = SQNL()
         >>> input = torch.randn(2)
         >>> output = m(input)
 

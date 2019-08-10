@@ -15,9 +15,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class silu(nn.Module):
+class Silu(nn.Module):
     '''
     Applies the Sigmoid Linear Unit (SiLU) function element-wise:
 
@@ -43,7 +43,7 @@ class silu(nn.Module):
         https://arxiv.org/pdf/1606.08415.pdf
 
     Examples:
-        >>> m = silu(inplace = False)
+        >>> m = Silu(inplace = False)
         >>> input = torch.randn(2)
         >>> output = m(input)
 

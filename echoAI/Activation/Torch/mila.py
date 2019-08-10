@@ -14,9 +14,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class mila(nn.Module):
+class Mila(nn.Module):
     '''
     Applies the Mila function element-wise:
 
@@ -41,7 +41,7 @@ class mila(nn.Module):
         -  https://github.com/digantamisra98/Mila
 
     Examples:
-        >>> m = mila(beta=-0.25)
+        >>> m = Mila(beta=-0.25)
         >>> input = torch.randn(2)
         >>> output = m(input)
 

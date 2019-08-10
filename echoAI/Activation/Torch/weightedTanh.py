@@ -11,9 +11,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class weightedTanh(nn.Module):
+class WeightedTanh(nn.Module):
     '''
     Applies the weighted tanh function element-wise:
 
@@ -36,7 +36,7 @@ class weightedTanh(nn.Module):
         - inplace: perform inplace operation (default = False)
 
     Examples:
-        >>> m = weightedTanh(weight = 1)
+        >>> m = WeightedTanh(weight = 1)
         >>> input = torch.randn(2)
         >>> output = m(input)
 

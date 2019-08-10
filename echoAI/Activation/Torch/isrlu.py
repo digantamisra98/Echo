@@ -14,9 +14,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class isrlu(nn.Module):
+class ISRLU(nn.Module):
     '''
     Applies the ISRLU function element-wise:
 
@@ -41,7 +41,7 @@ class isrlu(nn.Module):
         - ISRLU paper: https://arxiv.org/pdf/1710.09967.pdf
 
     Examples:
-        >>> m = isrlu(alpha=1.0)
+        >>> m = ISRLU(alpha=1.0)
         >>> input = torch.randn(2)
         >>> output = m(input)
 

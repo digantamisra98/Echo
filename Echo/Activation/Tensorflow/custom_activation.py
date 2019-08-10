@@ -122,3 +122,24 @@ class HardELiSH(Layer):
         case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs * common
         case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * (tf.math.exp(inputs) - 1) * common
         return case_1 + case_2
+
+
+class SineReLU(Layer):
+
+    def __init__(self, epsilon):
+        super(SineReLU, self).__init__()
+        self.epsilon = epsilon
+    
+    def call(self, inputs):
+        case_1 = tf.cast(tf.math.greater(inputs, 0), 'float32') * inputs
+        case_2 = tf.cast(tf.math.less_equal(self.epsilon * (tf.math.sin(inputs) - tf.math.cos(inputs)), 0), 'float32')
+        return case_1 + case_2
+
+
+class FlattenTSwish(Layer):
+
+    def __init__(self):
+        super(FlattenTSwish, self).__init__()
+    
+    def call(self, inputs):
+        return tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs * tf.math.sigmoid(inputs)

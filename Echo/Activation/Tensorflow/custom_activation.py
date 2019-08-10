@@ -156,3 +156,15 @@ class SQNL(Layer):
         case_3 = tf.cast(tf.math.greater_equal(inputs, -2), 'float32') * tf.cast(tf.math.less(inputs, 0), 'float32') * (inputs + tf.math.pow(inputs, 2) / tf.cast(4, 'float32'))
         case_4 = tf.cast(tf.math.less(inputs, -2), 'float32') * tf.cast(-1, 'float32')
         return case_1 + case_2 + case_3 + case_4
+
+
+class ISRLU(Layer):
+
+    def __init__(self, alpha):
+        super(ISRLU, self).__init__()
+        self.alpha = alpha
+    
+    def call(self, inputs):
+        case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs
+        case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * inputs  / tf.math.sqrt(1 + self.alpha * tf.math.pow(inputs, 2))
+        return case_1 + case_2

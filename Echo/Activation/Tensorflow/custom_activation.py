@@ -240,13 +240,31 @@ class HardShrink(Layer):
         return case_1 + case_2
 
 
-    class SoftShrink(Layer):
+class SoftShrink(Layer):
 
-        def __init__(self, _lambda = 0.5):
-            super(HardShrink, self).__init__()
-            self._lambda = _lambda
-        
-        def call(self, inputs):
-            case_1 = tf.cast(tf.math.greater(inputs, self._lambda), 'float32') * (inputs - self._lambda)
-            case_2 = tf.cast(tf.math.less(inputs, -1 * self._lambda), 'float32') * (inputs - self._lambda)
-            return case_1 + case_2
+    def __init__(self, _lambda = 0.5):
+        super(HardShrink, self).__init__()
+        self._lambda = _lambda
+    
+    def call(self, inputs):
+        case_1 = tf.cast(tf.math.greater(inputs, self._lambda), 'float32') * (inputs - self._lambda)
+        case_2 = tf.cast(tf.math.less(inputs, -1 * self._lambda), 'float32') * (inputs - self._lambda)
+        return case_1 + case_2
+
+
+class SoftMin(Layer):
+
+    def __init__(self):
+        super(SoftMin, self).__init__()
+    
+    def call(self, inputs):
+        return tf.math.softmax(-inputs)
+
+
+class LogSoftMax(Layer):
+
+    def __init__(self):
+        super(LogSoftMax, self).__init__()
+    
+    def call(self, inputs):
+        return tf.math.log(tf.math.softmax(inputs))

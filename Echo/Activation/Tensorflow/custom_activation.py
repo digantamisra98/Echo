@@ -184,3 +184,15 @@ class SoftExponential(Layer):
         case_2 = condition_2 * inputs
         case_3 = condition_3 * (self.alpha + (1 / self.alpha) * (tf.math.exp(self.alpha * inputs) - 1))
         return case_1 + case_2 + case_3
+
+
+class CELU(Layer):
+
+    def __init__(self, alpha):
+        super(CELU, self).__init__()
+        self.alpha = alpha
+    
+    def call(self, inputs):
+        case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs
+        case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * self.alpha * (tf.math.exp(inputs / self.alpha) - 1)
+        return case_1 + case_2

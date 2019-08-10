@@ -143,3 +143,16 @@ class FlattenTSwish(Layer):
     
     def call(self, inputs):
         return tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs * tf.math.sigmoid(inputs)
+
+
+class SQNL(Layer):
+
+    def __init__(self):
+        super(SQNL, self).__init__()
+    
+    def call(self, inputs):
+        case_1 = tf.cast(tf.math.greater(inputs, 2), 'float32')
+        case_2 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * tf.cast(tf.math.less_equal(inputs, 2), 'float32') * (inputs - tf.math.pow(inputs, 2) / tf.cast(4, 'float32'))
+        case_3 = tf.cast(tf.math.greater_equal(inputs, -2), 'float32') * tf.cast(tf.math.less(inputs, 0), 'float32') * (inputs + tf.math.pow(inputs, 2) / tf.cast(4, 'float32'))
+        case_4 = tf.cast(tf.math.less(inputs, -2), 'float32') * tf.cast(-1, 'float32')
+        return case_1 + case_2 + case_3 + case_4

@@ -168,3 +168,19 @@ class ISRLU(Layer):
         case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs
         case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * inputs  / tf.math.sqrt(1 + self.alpha * tf.math.pow(inputs, 2))
         return case_1 + case_2
+
+
+class SoftExponential(Layer):
+
+    def __init__(self, alpha):
+        super(SoftExponential, self).__init__()
+        self.alpha = alpha
+    
+    def call(self, inputs):
+        condition_1 = tf.cast(tf.math.less(self.alpha, 0), 'float32')
+        condition_2 = tf.cast(tf.math.equal(self.alpha, 0), 'float32')
+        condition_3 = tf.cast(tf.math.greater(self.alpha, 0), 'float32')
+        case_1 = condition_1 * (-1 / self.alpha) * tf.math.log(1 - self.alpha * (inputs + self.alpha))
+        case_2 = condition_2 * inputs
+        case_3 = condition_3 * (self.alpha + (1 / self.alpha) * (tf.math.exp(self.alpha * inputs) - 1))
+        return case_1 + case_2 + case_3

@@ -217,3 +217,12 @@ class LogSigmoid(Layer):
     
     def call(self, inputs):
         return tf.math.log(tf.math.sigmoid(inputs))
+
+
+class TanhShrink(Layer):
+
+    def __init__(self):
+        super(TanhShrink, self).__init__()
+    
+    def call(self, inputs):
+        return inputs - tf.math.tanh(inputs)

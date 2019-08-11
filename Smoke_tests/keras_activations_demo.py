@@ -21,50 +21,50 @@ from keras.datasets import fashion_mnist
 from keras.utils import np_utils
 
 # import activation functions from Echo
-from Echo.Activation.Keras.custom_activations import mila
-from Echo.Activation.Keras.custom_activations import swish
-from Echo.Activation.Keras.custom_activations import eswish
-from Echo.Activation.Keras.custom_activations import isru
-from Echo.Activation.Keras.custom_activations import beta_mish
-from Echo.Activation.Keras.custom_activations import mish
-from Echo.Activation.Keras.custom_activations import sqnl
-from Echo.Activation.Keras.custom_activations import fts
-from Echo.Activation.Keras.custom_activations import elish
-from Echo.Activation.Keras.custom_activations import hard_elish
-from Echo.Activation.Keras.custom_activations import bent_id
-from Echo.Activation.Keras.custom_activations import weighted_tanh
-from Echo.Activation.Keras.custom_activations import sineReLU
-from Echo.Activation.Keras.custom_activations import isrlu
-from Echo.Activation.Keras.custom_activations import soft_clipping
-from Echo.Activation.Keras.custom_activations import aria2
-from Echo.Activation.Keras.custom_activations import celu
-from Echo.Activation.Keras.custom_activations import relu6
-from Echo.Activation.Keras.custom_activations import hard_tanh
-from Echo.Activation.Keras.custom_activations import log_sigmoid
-from Echo.Activation.Keras.custom_activations import tanh_shrink
-from Echo.Activation.Keras.custom_activations import hard_shrink
-from Echo.Activation.Keras.custom_activations import soft_shrink
-from Echo.Activation.Keras.custom_activations import softmin
-from Echo.Activation.Keras.custom_activations import log_softmax
-from Echo.Activation.Keras.custom_activations import soft_exponential
-from Echo.Activation.Keras.custom_activations import srelu
+from echoAI.Activation.Keras.custom_activations import Mila
+from echoAI.Activation.Keras.custom_activations import Swish
+from echoAI.Activation.Keras.custom_activations import Eswish
+from echoAI.Activation.Keras.custom_activations import ISRU
+from echoAI.Activation.Keras.custom_activations import BetaMish
+from echoAI.Activation.Keras.custom_activations import Mish
+from echoAI.Activation.Keras.custom_activations import SQNL
+from echoAI.Activation.Keras.custom_activations import FTS
+from echoAI.Activation.Keras.custom_activations import Elish
+from echoAI.Activation.Keras.custom_activations import HardElish
+from echoAI.Activation.Keras.custom_activations import BentID
+from echoAI.Activation.Keras.custom_activations import WeightedTanh
+from echoAI.Activation.Keras.custom_activations import SineReLU
+from echoAI.Activation.Keras.custom_activations import ISRLU
+from echoAI.Activation.Keras.custom_activations import SoftClipping
+from echoAI.Activation.Keras.custom_activations import Aria2
+from echoAI.Activation.Keras.custom_activations import Celu
+from echoAI.Activation.Keras.custom_activations import ReLU6
+from echoAI.Activation.Keras.custom_activations import HardTanh
+from echoAI.Activation.Keras.custom_activations import LogSigmoid
+from echoAI.Activation.Keras.custom_activations import TanhShrink
+from echoAI.Activation.Keras.custom_activations import HardShrink
+from echoAI.Activation.Keras.custom_activations import SoftShrink
+from echoAI.Activation.Keras.custom_activations import SoftMin
+from echoAI.Activation.Keras.custom_activations import LogSoftmax
+from echoAI.Activation.Keras.custom_activations import SoftExponential
+from echoAI.Activation.Keras.custom_activations import SReLU
 
 # activation names constants
 RELU = 'relu'
 MILA = 'mila'
 SWISH = 'swish'
 ESWISH = 'eswish'
-ISRU = 'isru'
+S_ISRU = 'isru'
 BETA_MISH = 'beta_mish'
 MISH = 'mish'
-SQNL = 'sqnl'
-FTS = 'fts'
+S_SQNL = 'sqnl'
+S_FTS = 'fts'
 ELISH = 'elish'
 HELISH = 'hard_elish'
 BENTID  = 'bent_id'
 WTANH = 'weighted_tanh'
 SINERELU = 'sine_relu'
-ISRLU = 'isrlu'
+S_ISRLU = 'isrlu'
 SC = 'soft_clipping'
 ARIA2 = 'aria2'
 CELU = 'celu'
@@ -104,85 +104,85 @@ def CNNModel(input_shape, activation = 'relu'):
         X = Activation('relu')(X)
 
     if (activation == SWISH):
-        X = swish(beta=0.5)(X)
+        X = Swish(beta=0.5)(X)
 
     if (activation == ESWISH):
-        X = eswish(beta=0.5)(X)
+        X = Eswish(beta=0.5)(X)
 
     if (activation == MILA):
-        X = mila(beta=0.5)(X)
+        X = Mila(beta=0.5)(X)
 
-    if (activation == ISRU):
-        X = isru(alpha=0.5)(X)
+    if (activation == S_ISRU):
+        X = ISRU(alpha=0.5)(X)
 
     if (activation == BETA_MISH):
-        X = beta_mish(beta=1.5)(X)
+        X = BetaMish(beta=1.5)(X)
 
     if (activation == MISH):
-        X = mish()(X)
+        X = Mish()(X)
 
-    if (activation == SQNL):
-        X = sqnl()(X)
+    if (activation == S_SQNL):
+        X = SQNL()(X)
 
-    if (activation == FTS):
-        X = fts()(X)
+    if (activation == S_FTS):
+        X = FTS()(X)
 
     if (activation == ELISH):
-        X = elish()(X)
+        X = Elish()(X)
 
     if (activation == HELISH):
-        X = hard_elish()(X)
+        X = HardElish()(X)
 
     if (activation == BENTID):
-        X = bent_id()(X)
+        X = BentID()(X)
 
     if (activation == WTANH):
-        X = weighted_tanh()(X)
+        X = WeightedTanh()(X)
 
     if (activation == SINERELU):
-        X = sineReLU()(X)
+        X = SineReLU()(X)
 
-    if (activation == ISRLU):
-        X = isrlu()(X)
+    if (activation == S_ISRLU):
+        X = ISRLU()(X)
 
     if (activation == SC):
-        X = soft_clipping()(X)
+        X = SoftClipping()(X)
 
     if (activation == ARIA2):
-        X = aria2()(X)
+        X = Aria2()(X)
 
     if (activation == CELU):
         X = celu()(X)
 
     if (activation == RELU6):
-        X = relu6()(X)
+        X = ReLU6()(X)
 
     if (activation == HTANH):
-        X = hard_tanh()(X)
+        X = HardTanh()(X)
 
     if (activation == LSIG):
-        X = log_sigmoid()(X)
+        X = LogSigmoid()(X)
 
     if (activation == TANHSH):
-        X = tanh_shrink()(X)
+        X = TanhShrink()(X)
 
     if (activation == HSHRINK):
-        X = hard_shrink()(X)
+        X = HardShrink()(X)
 
     if (activation == SSHRINK):
-        X = soft_shrink()(X)
+        X = SoftShrink()(X)
 
     if (activation == SOFTMIN):
-        X = softmin()(X)
+        X = Softmin()(X)
 
     if (activation == LSOFTMAX):
-        X = log_softmax()(X)
+        X = LogSoftmax()(X)
 
     if (activation == SEXP):
-        X = soft_exponential()(X)
+        X = SoftExponential()(X)
 
     if (activation == SRELU):
-        X = srelu()(X)
+        X = SReLU()(X)
 
     # MAXPOOL
     X = MaxPooling2D((2, 2), name='max_pool')(X)
@@ -207,8 +207,8 @@ def main():
     # Add argument to choose one of the activation functions
     parser.add_argument('--activation', action='store', default = RELU,
                         help='Activation function for demonstration.',
-                        choices = [SWISH, ESWISH, MILA, RELU, ISRU, BETA_MISH, MISH, SQNL, FTS, ELISH, HELISH, BENTID,
-                        WTANH, SINERELU, ISRLU, SC, ARIA2, CELU, RELU6, HTANH, LSIG, TANHSH, HSHRINK, SSHRINK, SOFTMIN,
+                        choices = [SWISH, ESWISH, MILA, RELU, S_ISRU, BETA_MISH, MISH, S_SQNL, S_FTS, ELISH, HELISH, BENTID,
+                        WTANH, SINERELU, S_ISRLU, SC, ARIA2, CELU, RELU6, HTANH, LSIG, TANHSH, HSHRINK, SSHRINK, SOFTMIN,
                         LSOFTMAX, SEXP, SRELU])
 
     # Parse command line arguments

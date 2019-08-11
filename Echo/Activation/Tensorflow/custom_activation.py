@@ -278,3 +278,22 @@ class MaxOut(Layer):
     
     def call(self, inputs):
         return K.max(inputs)
+
+
+class SReLU(Layer):
+
+    def __init__(self, t, a, r, l):
+        super(SReLU, self).__init__()
+        self.t = tf.cast(t, 'float32')
+        self.a = tf.cast(a, 'float32')
+        self.r = tf.cast(r, 'float32')
+        self.l = tf.cast(l, 'float32')
+    
+    def call(self, inputs):
+        condition_1 = tf.cast(tf.math.greater_equal(inputs, tf.math.pow(self.t, self.r)), 'float32')
+        condition_2 = tf.cast(tf.math.greater(tf.math.pow(self.t, self.r), inputs), 'float32') + tf.cast(tf.math.greater(inputs, tf.math.pow(self.t, self.l)), 'float32')
+        condition_3 = tf.cast(tf.math.less_equal(inputs, tf.math.pow(self.t, self.l)), 'float32')
+        case_1 = condition_1 * (tf.math.pow(self.t, self.r) + tf.math.pow(self.a, self.r) * (inputs - tf.math.pow(self.t, self.r)))
+        case_2 = condition_2 * inputs
+        case_3 = condition_3 * (tf.math.pow(self.t, self.l) + tf.math.pow(self.a, self.l) * (inputs - tf.math.pow(self.t, self.l)))
+        return case_1 + case_2 + case_3

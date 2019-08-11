@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Echo.Activation.Torch.apl &#8212; EchoAI 2019 documentation</title>
+    <title>echoAI.Activation.Torch.apl &#8212; EchoAI 2019 documentation</title>
     <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
@@ -32,7 +32,7 @@
 
           <div class="body" role="main">
             
-  <h1>Source code for Echo.Activation.Torch.apl</h1><div class="highlight"><pre>
+  <h1>Source code for echoAI.Activation.Torch.apl</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Script defined the APL (ADAPTIVE PIECEWISE LINEAR UNITS):</span>
 
@@ -53,7 +53,7 @@
 <span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="k">import</span> <span class="n">Function</span>
 <span class="kn">from</span> <span class="nn">torch.nn.parameter</span> <span class="k">import</span> <span class="n">Parameter</span>
 
-<div class="viewcode-block" id="apl_function"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.apl.apl_function">[docs]</a><span class="k">class</span> <span class="nc">apl_function</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+<div class="viewcode-block" id="apl_function"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.apl.apl_function">[docs]</a><span class="k">class</span> <span class="nc">apl_function</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of APL (ADAPTIVE PIECEWISE LINEAR UNITS) activation function:</span>
 
@@ -84,7 +84,7 @@
 <span class="sd">        &gt;&gt;&gt; t = apl_func(t, a, b)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1">#both forward and backward are @staticmethods</span>
-<div class="viewcode-block" id="apl_function.forward"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.apl.apl_function.forward">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="apl_function.forward"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.apl.apl_function.forward">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        In the forward pass we receive a Tensor containing the input and return</span>
@@ -103,7 +103,7 @@
 
         <span class="k">return</span> <span class="n">output</span></div>
 
-<div class="viewcode-block" id="apl_function.backward"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.apl.apl_function.backward">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="apl_function.backward"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.apl.apl_function.backward">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        In the backward pass we receive a Tensor containing the gradient of the loss</span>
@@ -139,7 +139,7 @@
 
         <span class="k">return</span> <span class="n">grad_input</span><span class="p">,</span> <span class="n">grad_a</span><span class="p">,</span> <span class="n">grad_b</span></div></div>
 
-<div class="viewcode-block" id="apl"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.apl.apl">[docs]</a><span class="k">class</span> <span class="nc">apl</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="apl"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.apl.apl">[docs]</a><span class="k">class</span> <span class="nc">apl</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of APL (ADAPTIVE PIECEWISE LINEAR UNITS) unit:</span>
 
@@ -193,7 +193,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">b</span>
 
-<div class="viewcode-block" id="apl.forward"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.apl.apl.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<div class="viewcode-block" id="apl.forward"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.apl.apl.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Forward pass of the function</span>
 <span class="sd">        &#39;&#39;&#39;</span>

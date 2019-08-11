@@ -1,7 +1,7 @@
 .. Echo documentation master file, created on Tue Jun 11 10:55:29 2019.
 
 ################################
-Welcome to Echo's documentation!
+Welcome to Echo AI documentation!
 ################################
 
 .. toctree::
@@ -17,7 +17,7 @@ Welcome to Echo's documentation!
 About
 ================================
 
-**Echo Package** is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as `PyTorch <https://pytorch.org/>`_, `Keras <https://keras.io/>`_ and
+**EchoAI Package** is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as `PyTorch <https://pytorch.org/>`_, `Keras <https://keras.io/>`_ and
 `TensorFlow <https://www.tensorflow.org/>`_.
 
 Implemented Activation Functions
@@ -63,15 +63,19 @@ The list of activation functions implemented in Echo:
 
 Installation
 ================================
-To install Echo package follow the instructions below:
+To install EchoAI package from source follow the instructions below:
 
 1. Clone or download `GitHub repository <https://github.com/digantamisra98/Echo>`_.
 
-2. Navigate to **Echo** folder:
+2. Navigate to **echoAI** folder:
   >>> $ cd Echo
 
 3. Install the package with pip:
   >>> $ pip install .
+
+To install EchoAI package from PyPI follow the instructions below:
+
+1. >>> $ pip install echoAI
 
 Examples
 ================================
@@ -85,9 +89,9 @@ from Echo package:
 .. code-block:: python
    :emphasize-lines: 2,3,21,37
 
-   # import activations from Echo
-   from Echo.Activation.Torch.weightedTanh import weightedTanh
-   import Echo.Activation.Torch.functional as Func
+   # import activations from EchoAI
+   from echoAI.Activation.Torch.weightedTanh import WeightedTanh
+   import echoAI.Activation.Torch.functional as Func
 
    # use activations in layers of model defined in class
    class Classifier(nn.Module):
@@ -121,7 +125,7 @@ from Echo package:
        model = nn.Sequential(OrderedDict([
                             ('fc1', nn.Linear(784, 256)),
                             # use activation function from Echo
-                            ('wtahn1',  weightedTanh(weight = 1)),
+                            ('wtahn1',  WeightedTanh(weight = 1)),
                             ('fc2', nn.Linear(256, 128)),
                             ('bn2', nn.BatchNorm1d(num_features=128)),
                             ('relu2', nn.ReLU()),
@@ -142,7 +146,7 @@ from Echo package:
    :emphasize-lines: 2,27
 
    # Import the activation function from Echo package
-   from Echo.Activation.Keras.custom_activations import weighted_tanh
+   from echoAI.Activation.Keras.custom_activations import WeightedTanh
 
    # Define the CNN model
    def CNNModel(input_shape):
@@ -167,7 +171,7 @@ from Echo package:
        X = BatchNormalization(axis = 3, name = 'bn0')(X)
 
        # Use custom activation function from Echo package
-       X = weighted_tanh()(X)
+       X = WeightedTanh()(X)
 
        # MAXPOOL
        X = MaxPooling2D((2, 2), name='max_pool')(X)
@@ -195,159 +199,159 @@ PyTorch Extensions
 
 Torch.aria2
 --------------------------------
-.. automodule:: Echo.Activation.Torch.aria2
+.. automodule:: echoAI.Activation.Torch.aria2
   :members:
 
 .. _Torch.mish:
 
 Torch.mish
 --------------------------------
-.. automodule:: Echo.Activation.Torch.mish
+.. automodule:: echoAI.Activation.Torch.mish
   :members:
 
 .. _Torch.beta_mish:
 
 Torch.beta_mish
 --------------------------------
-.. automodule:: Echo.Activation.Torch.beta_mish
+.. automodule:: echoAI.Activation.Torch.beta_mish
   :members:
 
 .. _Torch.silu:
 
 Torch.silu
 --------------------------------
-.. automodule:: Echo.Activation.Torch.silu
+.. automodule:: echoAI.Activation.Torch.silu
   :members:
 
 .. _Torch.eswish:
 
 Torch.eswish
 --------------------------------
-.. automodule:: Echo.Activation.Torch.eswish
+.. automodule:: echoAI.Activation.Torch.eswish
   :members:
 
 .. _Torch.swish:
 
 Torch.swish
 --------------------------------
-.. automodule:: Echo.Activation.Torch.swish
+.. automodule:: echoAI.Activation.Torch.swish
   :members:
 
 .. _Torch.elish:
 
 Torch.elish
 --------------------------------
-.. automodule:: Echo.Activation.Torch.elish
+.. automodule:: echoAI.Activation.Torch.elish
   :members:
 
 .. _Torch.hard_elish:
 
 Torch.hard_elish
 --------------------------------
-.. automodule:: Echo.Activation.Torch.hard_elish
+.. automodule:: echoAI.Activation.Torch.hard_elish
   :members:
 
 .. _Torch.mila:
 
 Torch.mila
 --------------------------------
-.. automodule:: Echo.Activation.Torch.mila
+.. automodule:: echoAI.Activation.Torch.mila
   :members:
 
 .. _Torch.sine_relu:
 
 Torch.sine_relu
 --------------------------------
-.. automodule:: Echo.Activation.Torch.sine_relu
+.. automodule:: echoAI.Activation.Torch.sine_relu
   :members:
 
 .. _Torch.fts:
 
 Torch.fts
 --------------------------------
-.. automodule:: Echo.Activation.Torch.fts
+.. automodule:: echoAI.Activation.Torch.fts
   :members:
 
 .. _Torch.sqnl:
 
 Torch.sqnl
 --------------------------------
-.. automodule:: Echo.Activation.Torch.sqnl
+.. automodule:: echoAI.Activation.Torch.sqnl
   :members:
 
 .. _Torch.isru:
 
 Torch.isru
 --------------------------------
-.. automodule:: Echo.Activation.Torch.isru
+.. automodule:: echoAI.Activation.Torch.isru
   :members:
 
 .. _Torch.isrlu:
 
 Torch.isrlu
 --------------------------------
-.. automodule:: Echo.Activation.Torch.isrlu
+.. automodule:: echoAI.Activation.Torch.isrlu
   :members:
 
 .. _Torch.bent_id:
 
 Torch.bent_id
 --------------------------------
-.. automodule:: Echo.Activation.Torch.bent_id
+.. automodule:: echoAI.Activation.Torch.bent_id
   :members:
 
 .. _Torch.soft_clipping:
 
 Torch.soft_clipping
 --------------------------------
-.. automodule:: Echo.Activation.Torch.soft_clipping
+.. automodule:: echoAI.Activation.Torch.soft_clipping
   :members:
 
 .. _Torch.weightedTanh:
 
 Torch.weightedTanh
 --------------------------------
-.. automodule:: Echo.Activation.Torch.weightedTanh
+.. automodule:: echoAI.Activation.Torch.weightedTanh
   :members:
 
 .. _Torch.srelu:
 
 Torch.srelu
 --------------------------------
-.. automodule:: Echo.Activation.Torch.srelu
+.. automodule:: echoAI.Activation.Torch.srelu
   :members:
 
 .. _Torch.brelu:
 
 Torch.brelu
 --------------------------------
-.. automodule:: Echo.Activation.Torch.brelu
+.. automodule:: echoAI.Activation.Torch.brelu
   :members:
 
 .. _Torch.apl:
 
 Torch.apl
 --------------------------------
-.. automodule:: Echo.Activation.Torch.apl
+.. automodule:: echoAI.Activation.Torch.apl
   :members:
 
 .. _Torch.soft_exponential:
 
 Torch.soft_exponential
 --------------------------------
-.. automodule:: Echo.Activation.Torch.soft_exponential
+.. automodule:: echoAI.Activation.Torch.soft_exponential
   :members:
 
 .. _Torch.maxout:
 
 Torch.maxout
 --------------------------------
-.. automodule:: Echo.Activation.Torch.maxout
+.. automodule:: echoAI.Activation.Torch.maxout
   :members:
 
-Echo.Activation.Torch.functional
+echoAI.Activation.Torch.functional
 --------------------------------
-.. automodule:: Echo.Activation.Torch.functional
+.. automodule:: echoAI.Activation.Torch.functional
    :members:
 
 Keras Extensions
@@ -355,191 +359,191 @@ Keras Extensions
 
 .. _Keras.mish:
 
-Keras.mish
+Keras.Mish
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.mish
+.. automodule:: echoAI.Activation.Keras.custom_activations.Mish
   :members:
 
 .. _Keras.weighted_tanh:
 
-Keras.weighted_tanh
+Keras.WeightedTanh
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.weighted_tanh
+.. automodule:: echoAI.Activation.Keras.custom_activations.WeightedTanh
   :members:
 
 .. _Keras.aria2:
 
-Keras.aria2
+Keras.Aria2
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.aria2
+.. automodule:: echoAI.Activation.Keras.custom_activations.Aria2
   :members:
 
 .. _Keras.eswish:
 
-Keras.eswish
+Keras.Eswish
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.eswish
+.. automodule:: echoAI.Activation.Keras.custom_activations.Eswish
   :members:
 
 .. _Keras.swish:
 
-Keras.swish
+Keras.Swish
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.swish
+.. automodule:: echoAI.Activation.Keras.custom_activations.Swish
   :members:
 
 .. _Keras.elish:
 
-Keras.elish
+Keras.Elish
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.elish
+.. automodule:: echoAI.Activation.Keras.custom_activations.Elish
   :members:
 
 .. _Keras.hard_elish:
 
-Keras.hard_elish
+Keras.HardElish
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.hard_elish
+.. automodule:: echoAI.Activation.Keras.custom_activations.HardElish
   :members:
 
 .. _Keras.mila:
 
-Keras.mila
+Keras.Mila
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.mila
+.. automodule:: echoAI.Activation.Keras.custom_activations.Mila
   :members:
 
 .. _Keras.sineReLU:
 
-Keras.sineReLU
+Keras.SineReLU
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.sineReLU
+.. automodule:: echoAI.Activation.Keras.custom_activations.SineReLU
   :members:
 
 .. _Keras.fts:
 
-Keras.fts
+Keras.FTS
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.fts
+.. automodule:: echoAI.Activation.Keras.custom_activations.FTS
   :members:
 
 .. _Keras.sqnl:
 
-Keras.sqnl
+Keras.SQNL
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.sqnl
+.. automodule:: echoAI.Activation.Keras.custom_activations.SQNL
   :members:
 
 .. _Keras.beta_mish:
 
-Keras.beta_mish
+Keras.BetaMish
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.beta_mish
+.. automodule:: echoAI.Activation.Keras.custom_activations.BetaMish
   :members:
 
 .. _Keras.isru:
 
-Keras.isru
+Keras.ISRU
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.isru
+.. automodule:: echoAI.Activation.Keras.custom_activations.ISRU
   :members:
 
 .. _Keras.isrlu:
 
-Keras.isrlu
+Keras.ISRLU
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.isrlu
+.. automodule:: echoAI.Activation.Keras.custom_activations.ISRLU
   :members:
 
 .. _Keras.bent_id:
 
-Keras.bent_id
+Keras.BentID
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.bent_id
+.. automodule:: echoAI.Activation.Keras.custom_activations.BentID
   :members:
 
 .. _Keras.soft_clipping:
 
-Keras.soft_clipping
+Keras.SoftClipping
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.soft_clipping
+.. automodule:: echoAI.Activation.Keras.custom_activations.SoftClipping
   :members:
 
 .. _Keras.celu:
 
-Keras.celu
+Keras.Celu
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.celu
+.. automodule:: echoAI.Activation.Keras.custom_activations.Celu
   :members:
 
 .. _Keras.relu6:
 
-Keras.relu6
+Keras.ReLU6
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.relu6
+.. automodule:: echoAI.Activation.Keras.custom_activations.ReLU6
   :members:
 
 .. _Keras.hard_tanh:
 
-Keras.hard_tanh
+Keras.HardTanh
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.hard_tanh
+.. automodule:: echoAI.Activation.Keras.custom_activations.HardTanh
   :members:
 
 .. _Keras.log_sigmoid:
 
-Keras.log_sigmoid
+Keras.LogSigmoid
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.log_sigmoid
+.. automodule:: echoAI.Activation.Keras.custom_activations.LogSigmoid
   :members:
 
 .. _Keras.tanh_shrink:
 
-Keras.tanh_shrink
+Keras.TanhShrink
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.tanh_shrink
+.. automodule:: echoAI.Activation.Keras.custom_activations.TanhShrink
   :members:
 
 .. _Keras.hard_shrink:
 
-Keras.hard_shrink
+Keras.HardShrink
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.hard_shrink
+.. automodule:: echoAI.Activation.Keras.custom_activations.HardShrink
   :members:
 
 .. _Keras.soft_shrink:
 
-Keras.soft_shrink
+Keras.SoftShrink
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.soft_shrink
+.. automodule:: echoAI.Activation.Keras.custom_activations.SoftShrink
   :members:
 
 .. _Keras.softmin:
 
-Keras.softmin
+Keras.SoftMin
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.softmin
+.. automodule:: echoAI.Activation.Keras.custom_activations.SoftMin
   :members:
 
 .. _Keras.log_softmax:
 
-Keras.log_softmax
+Keras.LogSoftmax
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.log_softmax
+.. automodule:: echoAI.Activation.Keras.custom_activations.LogSoftmax
   :members:
 
 .. _Keras.soft_exponential:
 
-Keras.soft_exponential
+Keras.SoftExponential
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.soft_exponential
+.. automodule:: echoAI.Activation.Keras.custom_activations.SoftExponential
   :members:
 
 .. _Keras.srelu:
 
-Keras.srelu
+Keras.SReLU
 --------------------------------
-.. automodule:: Echo.Activation.Keras.custom_activations.srelu
+.. automodule:: echoAI.Activation.Keras.custom_activations.SReLU
   :members:
 
 Indices and tables

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Echo.Activation.Torch.srelu &#8212; EchoAI 2019 documentation</title>
+    <title>echoAI.Activation.Torch.srelu &#8212; EchoAI 2019 documentation</title>
     <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
@@ -32,7 +32,7 @@
 
           <div class="body" role="main">
             
-  <h1>Source code for Echo.Activation.Torch.srelu</h1><div class="highlight"><pre>
+  <h1>Source code for echoAI.Activation.Torch.srelu</h1><div class="highlight"><pre>
 <span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Script defined the SReLU (S-shaped Rectified Linear Activation Unit):</span>
 
@@ -49,7 +49,7 @@
 <span class="kn">from</span> <span class="nn">torch</span> <span class="k">import</span> <span class="n">nn</span>
 <span class="kn">from</span> <span class="nn">torch.nn.parameter</span> <span class="k">import</span> <span class="n">Parameter</span>
 
-<div class="viewcode-block" id="srelu"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.srelu.srelu">[docs]</a><span class="k">class</span> <span class="nc">srelu</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="srelu"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.srelu.srelu">[docs]</a><span class="k">class</span> <span class="nc">srelu</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    SReLU (S-shaped Rectified Linear Activation Unit): a combination of three linear functions, which perform mapping R → R with the following formulation:</span>
 
@@ -97,7 +97,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">al</span> <span class="o">=</span> <span class="n">parameters</span>
 
-<div class="viewcode-block" id="srelu.forward"><a class="viewcode-back" href="../../../../index.html#Echo.Activation.Torch.srelu.srelu.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<div class="viewcode-block" id="srelu.forward"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.srelu.srelu.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Forward pass of the function</span>
 <span class="sd">        &#39;&#39;&#39;</span>

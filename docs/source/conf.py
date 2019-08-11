@@ -18,16 +18,16 @@ import sys
 sys.path.insert(0, '../..')
 sys.path.insert(0, os.path.abspath('../../Echo/'))
 sys.path.insert(0, os.path.abspath('../..'))
-sys.path.insert(0, os.path.abspath('../../Echo/Echo/'))
+sys.path.insert(0, os.path.abspath('../../Echo/echoAI/'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Echo'
+project = 'EchoAI'
 copyright = '2019, Diganta Misra, Aleksandra Deis'
 author = 'Diganta Misra, Aleksandra Deis'
 
 # The short X.Y version
-version = ''
+version = '1.1.0'
 # The full version, including alpha/beta/rc tags
 release = '2019'
 
@@ -151,7 +151,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Echo.tex', 'Echo Documentation',
+    (master_doc, 'EchoAI.tex', 'EchoAI Documentation',
      'Diganta Misra, Aleksandra Deis', 'manual'),
 ]
 
@@ -161,7 +161,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'echo', 'Echo Documentation',
+    (master_doc, 'echoAI', 'EchoAI Documentation',
      [author], 1)
 ]
 
@@ -172,8 +172,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Echo', 'Echo Documentation',
-     author, 'Echo', 'One line description of project.',
+    (master_doc, 'EchoAI', 'EchoAI Documentation',
+     author, 'EchoAI', 'Python package containing all mathematical backend algorithms used in Machine Learning.',
      'Miscellaneous'),
 ]
 
@@ -207,5 +207,6 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 autodoc_mock_imports = [
     "torch",
     "Keras",
-    "tensorflow"
+    "tensorflow",
+    "keras"
 ]

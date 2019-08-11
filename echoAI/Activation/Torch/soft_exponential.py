@@ -16,7 +16,7 @@ import torch
 import torch.nn as nn
 from torch.nn.parameter import Parameter
 
-class soft_exponential(nn.Module):
+class SoftExponential(nn.Module):
     '''
     Implementation of soft exponential activation:
 
@@ -51,7 +51,7 @@ class soft_exponential(nn.Module):
             - aplha: learnable parameter
             aplha is initialized with zero value by default
         '''
-        super(soft_exponential,self).__init__()
+        super(SoftExponential,self).__init__()
         self.in_features = in_features
 
         # initialize alpha

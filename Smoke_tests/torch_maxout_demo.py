@@ -14,18 +14,18 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms
 
 # import Maxout from Echo
-from Echo.Activation.Torch.maxout import maxout
+from echoAI.Activation.Torch.maxout import Maxout
 
 #This is an example for image reconstruction but you can modify it as you want.
 class CNN(nn.Module):
     def __init__(self):
         super(CNN, self).__init__()
         self.layer1 = nn.Conv2d(1, 64, kernel_size=9, padding=4)
-        self.mo1=maxout.apply
+        self.mo1=Maxout.apply
         self.layer2 = nn.Conv2d(16, 32, kernel_size=5, padding=2)
-        self.mo2 = maxout.apply
+        self.mo2 = Maxout.apply
         self.layer3 = nn.Conv2d(8, 4, kernel_size=3, padding=1)
-        self.mo3 = maxout.apply #max_out on line 8 if class Maxout is 4, it will output 1 feature map here
+        self.mo3 = Maxout.apply #max_out on line 8 if class Maxout is 4, it will output 1 feature map here
         self.fc = nn.Linear(1*28*28, 10)
 
     def forward(self, x):

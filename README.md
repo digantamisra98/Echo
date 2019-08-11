@@ -61,7 +61,7 @@ The package contains implementation for following activation functions (:white_c
 ## Repository Structure
 The repository has the following structure:
 ```python
-- Echo # main package directory
+- echoAI # main package directory
 | - Activation # sub-package containing activation functions implementation
 | |- Torch  # sub-package containing implementation for PyTorch
 | | | - functional.py # script which contains implementation of activation functions
@@ -87,7 +87,7 @@ The repository has the following structure:
 
 1. Clone or download [GitHub repository](https://github.com/digantamisra98/Echo).
 
-2. Navigate to **Echo** folder:
+2. Navigate to **echoAI** folder:
 
   ```$ cd Echo```
 

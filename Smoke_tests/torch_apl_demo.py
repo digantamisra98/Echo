@@ -13,9 +13,9 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms
 
 # import APL function from Echo
-from Echo.Activation.Torch.apl import apl_function
+from echoAI.Activation.Torch.apl import apl_function
 # import APL module from Echo
-from Echo.Activation.Torch.apl import apl
+from echoAI.Activation.Torch.apl import APL
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
@@ -32,9 +32,9 @@ class Classifier(nn.Module):
         self.fc4 = nn.Linear(64, 10)
 
         # initialize SReLU
-        self.a1 = apl(256, S = 2)
-        self.a2 = apl(128, S = 2)
-        self.a3 = apl(64, S = 2)
+        self.a1 = APL(256, S = 2)
+        self.a2 = APL(128, S = 2)
+        self.a3 = APL(64, S = 2)
 
     def forward(self, x):
         # make sure the input tensor is flattened

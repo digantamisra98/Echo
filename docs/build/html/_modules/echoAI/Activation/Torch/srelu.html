@@ -49,7 +49,7 @@
 <span class="kn">from</span> <span class="nn">torch</span> <span class="k">import</span> <span class="n">nn</span>
 <span class="kn">from</span> <span class="nn">torch.nn.parameter</span> <span class="k">import</span> <span class="n">Parameter</span>
 
-<div class="viewcode-block" id="srelu"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.srelu.srelu">[docs]</a><span class="k">class</span> <span class="nc">srelu</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="viewcode-block" id="SReLU"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.srelu.SReLU">[docs]</a><span class="k">class</span> <span class="nc">SReLU</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    SReLU (S-shaped Rectified Linear Activation Unit): a combination of three linear functions, which perform mapping R → R with the following formulation:</span>
 
@@ -86,7 +86,7 @@
 <span class="sd">            - in_features: shape of the input</span>
 <span class="sd">            - parameters: (tr, tl, ar, al) parameters for manual initialization, default value is None. If None is passed, parameters are initialized randomly.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">srelu</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SReLU</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">in_features</span> <span class="o">=</span> <span class="n">in_features</span>
 
         <span class="k">if</span> <span class="n">parameters</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
@@ -97,7 +97,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ar</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">al</span> <span class="o">=</span> <span class="n">parameters</span>
 
-<div class="viewcode-block" id="srelu.forward"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.srelu.srelu.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<div class="viewcode-block" id="SReLU.forward"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.srelu.SReLU.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Forward pass of the function</span>
 <span class="sd">        &#39;&#39;&#39;</span>

@@ -14,7 +14,7 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms
 
 # import BReLU from Echo
-from Echo.Activation.Torch.brelu import brelu
+from echoAI.Activation.Torch.brelu import BReLU
 
 class CNN(nn.Module):
     '''
@@ -27,14 +27,14 @@ class CNN(nn.Module):
             nn.Conv2d(1, 16, kernel_size=5, padding=2),
             nn.BatchNorm2d(16))
 
-        self.brelu1 = brelu.apply
+        self.brelu1 = BReLU.apply
         self.pool1 = nn.MaxPool2d(2)
 
         self.layer2 = nn.Sequential(
             nn.Conv2d(16, 32, kernel_size=5, padding=2),
             nn.BatchNorm2d(32))
 
-        self.brelu2 = brelu.apply
+        self.brelu2 = BReLU.apply
         self.pool2 = nn.MaxPool2d(2)
 
         self.fc = nn.Linear(7*7*32, 10)
@@ -68,9 +68,9 @@ class Classifier(nn.Module):
         self.fc4 = nn.Linear(64, 10)
 
         # initialize SReLU
-        self.a1 = brelu.apply
-        self.a2 = brelu.apply
-        self.a3 = brelu.apply
+        self.a1 = BReLU.apply
+        self.a2 = BReLU.apply
+        self.a3 = BReLU.apply
 
     def forward(self, x):
         # make sure the input tensor is flattened
@@ -101,7 +101,7 @@ def main():
     architecture = results.model
 
     # apply BReLU to random tensor
-    brelu_activation = brelu.apply
+    brelu_activation = BReLU.apply
     t = torch.randn((5,5), dtype=torch.float, requires_grad = True)
     t = brelu_activation(t)
 

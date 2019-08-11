@@ -13,7 +13,7 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms
 
 # import APL function from Echo
-from Echo.Activation.Torch.soft_exponential import soft_exponential
+from echoAI.Activation.Torch.soft_exponential import SoftExponential
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
@@ -30,9 +30,9 @@ class Classifier(nn.Module):
         self.fc4 = nn.Linear(64, 10)
 
         # initialize SReLU
-        self.a1 = soft_exponential(256)
-        self.a2 = soft_exponential(128)
-        self.a3 = soft_exponential(64)
+        self.a1 = SoftExponential(256)
+        self.a2 = SoftExponential(128)
+        self.a3 = SoftExponential(64)
 
     def forward(self, x):
         # make sure the input tensor is flattened

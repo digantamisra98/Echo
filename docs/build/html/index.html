@@ -1391,8 +1391,8 @@ dimensions</li>
 <p>See SReLU paper:
 <a class="reference external" href="https://arxiv.org/pdf/1512.07030.pdf">https://arxiv.org/pdf/1512.07030.pdf</a></p>
 <dl class="class">
-<dt id="echoAI.Activation.Torch.srelu.srelu">
-<em class="property">class </em><code class="descclassname">echoAI.Activation.Torch.srelu.</code><code class="descname">srelu</code><span class="sig-paren">(</span><em>in_features</em>, <em>parameters=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/srelu.html#srelu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.srelu.srelu" title="Permalink to this definition">¶</a></dt>
+<dt id="echoAI.Activation.Torch.srelu.SReLU">
+<em class="property">class </em><code class="descclassname">echoAI.Activation.Torch.srelu.</code><code class="descname">SReLU</code><span class="sig-paren">(</span><em>in_features</em>, <em>parameters=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/srelu.html#SReLU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.srelu.SReLU" title="Permalink to this definition">¶</a></dt>
 <dd><p>SReLU (S-shaped Rectified Linear Activation Unit): a combination of three linear functions, which perform mapping R → R with the following formulation:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}h(x_i) = \left\{\begin{matrix} t_i^r + a_i^r(x_i - t_i^r), x_i \geq t_i^r \\  x_i, t_i^r &gt; x_i &gt; t_i^l\\  t_i^l + a_i^l(x_i - t_i^l), x_i \leq  t_i^l \\ \end{matrix}\right.\end{split}\]</div>
@@ -1428,8 +1428,8 @@ dimensions</li>
 </dd>
 </dl>
 <dl class="method">
-<dt id="echoAI.Activation.Torch.srelu.srelu.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/srelu.html#srelu.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.srelu.srelu.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="echoAI.Activation.Torch.srelu.SReLU.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/srelu.html#SReLU.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.srelu.SReLU.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Forward pass of the function</p>
 </dd></dl>
 
@@ -1444,8 +1444,8 @@ dimensions</li>
 <p>See BReLU paper:
 <a class="reference external" href="https://arxiv.org/pdf/1709.04054.pdf">https://arxiv.org/pdf/1709.04054.pdf</a></p>
 <dl class="class">
-<dt id="echoAI.Activation.Torch.brelu.brelu">
-<em class="property">class </em><code class="descclassname">echoAI.Activation.Torch.brelu.</code><code class="descname">brelu</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/brelu.html#brelu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.brelu.brelu" title="Permalink to this definition">¶</a></dt>
+<dt id="echoAI.Activation.Torch.brelu.BReLU">
+<em class="property">class </em><code class="descclassname">echoAI.Activation.Torch.brelu.</code><code class="descname">BReLU</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/brelu.html#BReLU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.brelu.BReLU" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of BReLU activation function:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
@@ -1478,16 +1478,16 @@ dimensions</li>
 </dd>
 </dl>
 <dl class="staticmethod">
-<dt id="echoAI.Activation.Torch.brelu.brelu.backward">
-<em class="property">static </em><code class="descname">backward</code><span class="sig-paren">(</span><em>ctx</em>, <em>grad_output</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/brelu.html#brelu.backward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.brelu.brelu.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="echoAI.Activation.Torch.brelu.BReLU.backward">
+<em class="property">static </em><code class="descname">backward</code><span class="sig-paren">(</span><em>ctx</em>, <em>grad_output</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/brelu.html#BReLU.backward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.brelu.BReLU.backward" title="Permalink to this definition">¶</a></dt>
 <dd><p>In the backward pass we receive a Tensor containing the gradient of the loss
 with respect to the output, and we need to compute the gradient of the loss
 with respect to the input.</p>
 </dd></dl>
 
 <dl class="staticmethod">
-<dt id="echoAI.Activation.Torch.brelu.brelu.forward">
-<em class="property">static </em><code class="descname">forward</code><span class="sig-paren">(</span><em>ctx</em>, <em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/brelu.html#brelu.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.brelu.brelu.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="echoAI.Activation.Torch.brelu.BReLU.forward">
+<em class="property">static </em><code class="descname">forward</code><span class="sig-paren">(</span><em>ctx</em>, <em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/brelu.html#BReLU.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.brelu.BReLU.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>In the forward pass we receive a Tensor containing the input and return
 a Tensor containing the output. ctx is a context object that can be used
 to stash information for backward computation. You can cache arbitrary
@@ -1505,8 +1505,8 @@ objects for use in the backward pass using the ctx.save_for_backward method.</p>
 <p>See APL paper:
 <a class="reference external" href="https://arxiv.org/pdf/1412.6830.pdf">https://arxiv.org/pdf/1412.6830.pdf</a></p>
 <dl class="class">
-<dt id="echoAI.Activation.Torch.apl.apl">
-<em class="property">class </em><code class="descclassname">echoAI.Activation.Torch.apl.</code><code class="descname">apl</code><span class="sig-paren">(</span><em>in_features</em>, <em>S</em>, <em>a=None</em>, <em>b=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/apl.html#apl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.apl.apl" title="Permalink to this definition">¶</a></dt>
+<dt id="echoAI.Activation.Torch.apl.APL">
+<em class="property">class </em><code class="descclassname">echoAI.Activation.Torch.apl.</code><code class="descname">APL</code><span class="sig-paren">(</span><em>in_features</em>, <em>S</em>, <em>a=None</em>, <em>b=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/apl.html#APL"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.apl.APL" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of APL (ADAPTIVE PIECEWISE LINEAR UNITS) unit:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
@@ -1543,8 +1543,8 @@ dimensions</li>
 </dd>
 </dl>
 <dl class="method">
-<dt id="echoAI.Activation.Torch.apl.apl.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/apl.html#apl.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.apl.apl.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="echoAI.Activation.Torch.apl.APL.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/apl.html#APL.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.apl.APL.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Forward pass of the function</p>
 </dd></dl>
 
@@ -1618,8 +1618,8 @@ objects for use in the backward pass using the ctx.save_for_backward method.</p>
 <p>See related paper:
 <a class="reference external" href="https://arxiv.org/pdf/1602.01321.pdf">https://arxiv.org/pdf/1602.01321.pdf</a></p>
 <dl class="class">
-<dt id="echoAI.Activation.Torch.soft_exponential.soft_exponential">
-<em class="property">class </em><code class="descclassname">echoAI.Activation.Torch.soft_exponential.</code><code class="descname">soft_exponential</code><span class="sig-paren">(</span><em>in_features</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/soft_exponential.html#soft_exponential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.soft_exponential.soft_exponential" title="Permalink to this definition">¶</a></dt>
+<dt id="echoAI.Activation.Torch.soft_exponential.SoftExponential">
+<em class="property">class </em><code class="descclassname">echoAI.Activation.Torch.soft_exponential.</code><code class="descname">SoftExponential</code><span class="sig-paren">(</span><em>in_features</em>, <em>alpha=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/soft_exponential.html#SoftExponential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.soft_exponential.SoftExponential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of soft exponential activation:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
@@ -1654,8 +1654,8 @@ dimensions</li>
 </dd>
 </dl>
 <dl class="method">
-<dt id="echoAI.Activation.Torch.soft_exponential.soft_exponential.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/soft_exponential.html#soft_exponential.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.soft_exponential.soft_exponential.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="echoAI.Activation.Torch.soft_exponential.SoftExponential.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/soft_exponential.html#SoftExponential.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.soft_exponential.SoftExponential.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Forward pass of the function</p>
 </dd></dl>
 
@@ -1672,8 +1672,8 @@ dimensions</li>
 <p>See implementation:
 <a class="reference external" href="https://github.com/Usama113/Maxout-PyTorch/blob/master/Maxout.ipynb">https://github.com/Usama113/Maxout-PyTorch/blob/master/Maxout.ipynb</a></p>
 <dl class="class">
-<dt id="echoAI.Activation.Torch.maxout.maxout">
-<em class="property">class </em><code class="descclassname">echoAI.Activation.Torch.maxout.</code><code class="descname">maxout</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/maxout.html#maxout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.maxout.maxout" title="Permalink to this definition">¶</a></dt>
+<dt id="echoAI.Activation.Torch.maxout.Maxout">
+<em class="property">class </em><code class="descclassname">echoAI.Activation.Torch.maxout.</code><code class="descname">Maxout</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/echoAI/Activation/Torch/maxout.html#Maxout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#echoAI.Activation.Torch.maxout.Maxout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of Maxout:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">

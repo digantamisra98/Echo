@@ -13,7 +13,7 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms
 
 # import SReLU from Echo
-from Echo.Activation.Torch.srelu import srelu
+from echoAI.Activation.Torch.srelu import SReLU
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
@@ -27,9 +27,9 @@ class Classifier(nn.Module):
         self.fc4 = nn.Linear(64, 10)
 
         # initialize SReLU
-        self.a1 = srelu(256)
-        self.a2 = srelu(128)
-        self.a3 = srelu(64)
+        self.a1 = SReLU(256)
+        self.a2 = SReLU(128)
+        self.a3 = SReLU(64)
 
     def forward(self, x):
         # make sure the input tensor is flattened
@@ -48,7 +48,7 @@ def main():
     Script for SReLU demonstration.
     '''
     # check that we can initialize class and perform forward pass
-    srelu_activation = srelu((2,2))
+    srelu_activation = SReLU((2,2))
     t = torch.randn((2,2), dtype=torch.float, requires_grad = True)
     output = srelu_activation(t)
 

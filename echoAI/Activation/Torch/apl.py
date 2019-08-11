@@ -104,7 +104,7 @@ class apl_function(Function):
 
         return grad_input, grad_a, grad_b
 
-class apl(nn.Module):
+class APL(nn.Module):
     '''
     Implementation of APL (ADAPTIVE PIECEWISE LINEAR UNITS) unit:
 
@@ -143,7 +143,7 @@ class apl(nn.Module):
             - b - value for initialization of parameter, which determines the locations of the hinges
             a, b are initialized randomly by default
         '''
-        super(apl,self).__init__()
+        super(APL,self).__init__()
         self.in_features = in_features
         self.S = S
 

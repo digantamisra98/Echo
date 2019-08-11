@@ -17,7 +17,7 @@ from torch.autograd import Variable
 import torch.nn as nn
 from torch.autograd import Function
 
-class brelu(Function):
+class BReLU(Function):
     '''
     Implementation of BReLU activation function:
 

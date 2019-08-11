@@ -18,7 +18,7 @@ from torch.autograd import Variable
 import torch.nn as nn
 from torch.autograd import Function
 
-class maxout(Function):
+class Maxout(Function):
     '''
     Implementation of Maxout:
 
@@ -34,7 +34,7 @@ class maxout(Function):
     References:
         - See Maxout paper:
         https://arxiv.org/pdf/1302.4389.pdf
-        
+
         - Reference to the implementation:
         https://github.com/Usama113/Maxout-PyTorch/blob/master/Maxout.ipynb
 

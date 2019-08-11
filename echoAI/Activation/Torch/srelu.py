@@ -14,7 +14,7 @@ import torch
 from torch import nn
 from torch.nn.parameter import Parameter
 
-class srelu(nn.Module):
+class SReLU(nn.Module):
     '''
     SReLU (S-shaped Rectified Linear Activation Unit): a combination of three linear functions, which perform mapping R → R with the following formulation:
 
@@ -51,7 +51,7 @@ class srelu(nn.Module):
             - in_features: shape of the input
             - parameters: (tr, tl, ar, al) parameters for manual initialization, default value is None. If None is passed, parameters are initialized randomly.
         '''
-        super(srelu,self).__init__()
+        super(SReLU,self).__init__()
         self.in_features = in_features
 
         if parameters == None:

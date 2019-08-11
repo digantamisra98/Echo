@@ -1,6 +1,6 @@
 '''
 Script for demonstration of the custom activation functions
-implemented in the Echo package for classification of Fashion MNIST dataset.
+implemented in the EchoAI package for classification of Fashion MNIST dataset.
 '''
 
 # import basic libraries
@@ -19,24 +19,24 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms
 
 # import custom activations
-from Echo.Activation.Torch.weightedTanh import weightedTanh
-from Echo.Activation.Torch.mish import mish
-from Echo.Activation.Torch.silu import silu
-from Echo.Activation.Torch.aria2 import aria2
-from Echo.Activation.Torch.eswish import eswish
-from Echo.Activation.Torch.swish import swish
-from Echo.Activation.Torch.beta_mish import beta_mish
-from Echo.Activation.Torch.elish import elish
-from Echo.Activation.Torch.hard_elish import hard_elish
-from Echo.Activation.Torch.mila import mila
-from Echo.Activation.Torch.sine_relu import sine_relu
-from Echo.Activation.Torch.fts import fts
-from Echo.Activation.Torch.sqnl import sqnl
-from Echo.Activation.Torch.isru import isru
-from Echo.Activation.Torch.isrlu import isrlu
-from Echo.Activation.Torch.bent_id import bent_id
-from Echo.Activation.Torch.soft_clipping import soft_clipping
-import Echo.Activation.Torch.functional as Func
+from echoAI.Activation.Torch.weightedTanh import WeightedTanh
+from echoAI.Activation.Torch.mish import Mish
+from echoAI.Activation.Torch.silu import Silu
+from echoAI.Activation.Torch.aria2 import Aria2
+from echoAI.Activation.Torch.eswish import Eswish
+from echoAI.Activation.Torch.swish import Swish
+from echoAI.Activation.Torch.beta_mish import BetaMish
+from echoAI.Activation.Torch.elish import Elish
+from echoAI.Activation.Torch.hard_elish import HardElish
+from echoAI.Activation.Torch.mila import Mila
+from echoAI.Activation.Torch.sine_relu import SineReLU
+from echoAI.Activation.Torch.fts import FTS
+from echoAI.Activation.Torch.sqnl import SQNL
+from echoAI.Activation.Torch.isru import ISRU
+from echoAI.Activation.Torch.isrlu import ISRLU
+from echoAI.Activation.Torch.bent_id import BentID
+from echoAI.Activation.Torch.soft_clipping import SoftClipping
+import echoAI.Activation.Torch.functional as Func
 
 # activation names constants
 WEIGHTED_TANH = 'weighted_tanh'
@@ -195,55 +195,55 @@ def main():
     else:
         # Setup the activation function
         if (activation == WEIGHTED_TANH):
-            activation_function = weightedTanh(weight = 1, inplace = inplace)
+            activation_function = WeightedTanh(weight = 1, inplace = inplace)
 
         if (activation == MISH):
-            activation_function = mish(inplace = inplace)
+            activation_function = Mish(inplace = inplace)
 
         if (activation == SILU):
-            activation_function = silu(inplace = inplace)
+            activation_function = Silu(inplace = inplace)
 
         if (activation == ARIA2):
-            activation_function = aria2()
+            activation_function = Aria2()
 
         if (activation == ESWISH):
-            activation_function = eswish()
+            activation_function = Eswish()
 
         if (activation == SWISH):
-            activation_function = swish()
+            activation_function = Swish()
 
         if (activation == BMISH):
-            activation_function = beta_mish()
+            activation_function = BetaMish()
 
         if (activation == ELISH):
-            activation_function = elish()
+            activation_function = Elish()
 
         if (activation == HELISH):
-            activation_function = hard_elish()
+            activation_function = HardElish()
 
         if (activation == MILA):
-            activation_function = mila()
+            activation_function = Mila()
 
         if (activation == SINERELU):
-            activation_function = sine_relu()
+            activation_function = SineReLU()
 
         if (activation == FTS):
-            activation_function = fts()
+            activation_function = FTS()
 
         if (activation == SQNL):
-            activation_function = sqnl()
+            activation_function = SQNL()
 
         if (activation == ISRU):
-            activation_function = isru()
+            activation_function = ISRU()
 
         if (activation == ISRLU):
-            activation_function = isrlu()
+            activation_function = ISRLU()
 
         if (activation == BENTID):
-            activation_function = bent_id()
+            activation_function = BentID()
 
         if (activation == SC):
-            activation_function = soft_clipping()
+            activation_function = SoftClipping()
 
         # Initialize the model using nn.Sequential
         model = nn.Sequential(OrderedDict([

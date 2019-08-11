@@ -52,7 +52,7 @@
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="k">import</span> <span class="n">Function</span>
 
-<div class="viewcode-block" id="brelu"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.brelu.brelu">[docs]</a><span class="k">class</span> <span class="nc">brelu</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
+<div class="viewcode-block" id="BReLU"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.brelu.BReLU">[docs]</a><span class="k">class</span> <span class="nc">BReLU</span><span class="p">(</span><span class="n">Function</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of BReLU activation function:</span>
 
@@ -80,7 +80,7 @@
 <span class="sd">        &gt;&gt;&gt; t = brelu_activation(t)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1">#both forward and backward are @staticmethods</span>
-<div class="viewcode-block" id="brelu.forward"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.brelu.brelu.forward">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="BReLU.forward"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.brelu.BReLU.forward">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        In the forward pass we receive a Tensor containing the input and return</span>
@@ -107,7 +107,7 @@
 
         <span class="k">return</span> <span class="n">output</span></div>
 
-<div class="viewcode-block" id="brelu.backward"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.brelu.brelu.backward">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="BReLU.backward"><a class="viewcode-back" href="../../../../index.html#echoAI.Activation.Torch.brelu.BReLU.backward">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        In the backward pass we receive a Tensor containing the gradient of the loss</span>

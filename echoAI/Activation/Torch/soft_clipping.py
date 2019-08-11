@@ -14,9 +14,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class soft_clipping(nn.Module):
+class SoftClipping(nn.Module):
     '''
     Applies the Soft Clipping function element-wise:
 
@@ -42,7 +42,7 @@ class soft_clipping(nn.Module):
             https://arxiv.org/pdf/1810.11509.pdf
 
     Examples:
-        >>> m = soft_clipping(alpha=0.5)
+        >>> m = SoftClipping(alpha=0.5)
         >>> input = torch.randn(2)
         >>> output = m(input)
 

@@ -11,9 +11,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class beta_mish(nn.Module):
+class BetaMish(nn.Module):
     '''
     Applies the β mish function element-wise:
 
@@ -40,7 +40,7 @@ class beta_mish(nn.Module):
         https://github.com/digantamisra98/Beta-Mish)
 
     Examples:
-        >>> m = beta_mish(beta=1.5)
+        >>> m = BetaMish(beta=1.5)
         >>> input = torch.randn(2)
         >>> output = m(input)
 

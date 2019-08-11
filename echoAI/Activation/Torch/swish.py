@@ -14,9 +14,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class swish(nn.Module):
+class Swish(nn.Module):
     '''
     Applies the Swish function element-wise:
 
@@ -42,7 +42,7 @@ class swish(nn.Module):
         https://arxiv.org/pdf/1710.05941.pdf
 
     Examples:
-        >>> m = swish(beta=1.25)
+        >>> m = Swish(beta=1.25)
         >>> input = torch.randn(2)
         >>> output = m(input)
 

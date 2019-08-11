@@ -14,9 +14,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class aria2(nn.Module):
+class Aria2(nn.Module):
     '''
     Applies the Aria-2 function element-wise:
 
@@ -44,7 +44,7 @@ class aria2(nn.Module):
             https://arxiv.org/abs/1805.08878
 
     Examples:
-        >>> m = aria2(beta=0.5, alpha=1)
+        >>> m = Aria2(beta=0.5, alpha=1)
         >>> input = torch.randn(2)
         >>> output = m(input)
 

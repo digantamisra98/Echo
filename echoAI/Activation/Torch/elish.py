@@ -15,9 +15,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class elish(nn.Module):
+class Elish(nn.Module):
     '''
     Applies the ELiSH (Exponential Linear Sigmoid SquasHing) function element-wise:
 
@@ -40,7 +40,7 @@ class elish(nn.Module):
         https://arxiv.org/pdf/1710.05941.pdf
 
     Examples:
-        >>> m = elish()
+        >>> m = Elish()
         >>> input = torch.randn(2)
         >>> output = m(input)
 

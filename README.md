@@ -4,9 +4,10 @@
 
 [![Donate](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 
-# Echo
+# Echo-AI
 
 Python package containing all mathematical backend algorithms used in Machine Learning.
+The full documentation for Echo is provided [here](https://echo-ai.readthedocs.io/en/latest/).
 
 ## Table of Contents
 * [About the Project](#about)
@@ -15,7 +16,7 @@ Python package containing all mathematical backend algorithms used in Machine Le
 * [Setup Instructions](#setup-instructions)
 
 ## About
-**Echo Package** is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as [PyTorch](https://pytorch.org/), [Keras](https://keras.io/) and
+**Echo-AI Package** is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as [PyTorch](https://pytorch.org/), [Keras](https://keras.io/) and
 [TensorFlow](https://www.tensorflow.org/).
 
 ### Activation Functions

@@ -15,9 +15,9 @@ import torch
 from torch import nn
 
 # import activation functions
-import Echo.Activation.Torch.functional as Func
+import echoAI.Activation.Torch.functional as Func
 
-class sine_relu(nn.Module):
+class SineReLU(nn.Module):
     '''
     Applies the SineReLU function element-wise:
 
@@ -43,7 +43,7 @@ class sine_relu(nn.Module):
         https://medium.com/@wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d
 
     Examples:
-        >>> m = sine_relu()
+        >>> m = SineReLU()
         >>> input = torch.randn(2)
         >>> output = m(input)
 

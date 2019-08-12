@@ -39,16 +39,16 @@
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#about" id="id130">About</a></li>
-<li><a class="reference internal" href="#installation" id="id131">Installation</a></li>
-<li><a class="reference internal" href="#examples" id="id132">Examples</a></li>
-<li><a class="reference internal" href="#pytorch-extensions" id="id133">PyTorch Extensions</a></li>
-<li><a class="reference internal" href="#keras-extensions" id="id134">Keras Extensions</a></li>
-<li><a class="reference internal" href="#indices-and-tables" id="id135">Indices and tables</a></li>
+<li><a class="reference internal" href="#about" id="id124">About</a></li>
+<li><a class="reference internal" href="#installation" id="id125">Installation</a></li>
+<li><a class="reference internal" href="#examples" id="id126">Examples</a></li>
+<li><a class="reference internal" href="#pytorch-extensions" id="id127">PyTorch Extensions</a></li>
+<li><a class="reference internal" href="#keras-extensions" id="id128">Keras Extensions</a></li>
+<li><a class="reference internal" href="#indices-and-tables" id="id129">Indices and tables</a></li>
 </ul>
 </div>
 <div class="section" id="about">
-<h2><a class="toc-backref" href="#id130">About</a><a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id124">About</a><a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
 <p><strong>EchoAI Package</strong> is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as <a class="reference external" href="https://pytorch.org/">PyTorch</a>, <a class="reference external" href="https://keras.io/">Keras</a> and
 <a class="reference external" href="https://www.tensorflow.org/">TensorFlow</a>.</p>
 <div class="section" id="implemented-activation-functions">
@@ -59,21 +59,21 @@
 <col width="3%" />
 <col width="14%" />
 <col width="29%" />
-<col width="45%" />
-<col width="9%" />
+<col width="43%" />
+<col width="11%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">#</th>
 <th class="head">Activation</th>
 <th class="head">PyTorch</th>
 <th class="head">Keras</th>
-<th class="head">TensorFlow</th>
+<th class="head">TensorFlow Keras</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>1</td>
 <td>Weighted Tanh</td>
-<td><a class="reference internal" href="#torch-weightedtanh"><span class="std std-ref">Torch.weightedTanh</span></a></td>
+<td><a class="reference internal" href="#torch-weightedtanh"><span class="std std-ref">Torch.WeightedTanh</span></a></td>
 <td><a class="reference internal" href="#keras-weighted-tanh"><span class="std std-ref">Keras.WeightedTanh</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -91,7 +91,7 @@
 </tr>
 <tr class="row-even"><td>3</td>
 <td>SiLU</td>
-<td><a class="reference internal" href="#torch-silu"><span class="std std-ref">Torch.silu</span></a></td>
+<td><a class="reference internal" href="#torch-silu"><span class="std std-ref">Torch.Silu</span></a></td>
 <td><ul class="first last simple">
 <li></li>
 </ul>
@@ -103,7 +103,7 @@
 </tr>
 <tr class="row-odd"><td>4</td>
 <td>E-Swish</td>
-<td><a class="reference internal" href="#torch-eswish"><span class="std std-ref">Torch.eswish</span></a></td>
+<td><a class="reference internal" href="#torch-eswish"><span class="std std-ref">Torch.Eswish</span></a></td>
 <td><a class="reference internal" href="#keras-eswish"><span class="std std-ref">Keras.Eswish</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -112,7 +112,7 @@
 </tr>
 <tr class="row-even"><td>5</td>
 <td>Swish</td>
-<td><a class="reference internal" href="#torch-swish"><span class="std std-ref">Torch.swish</span></a></td>
+<td><a class="reference internal" href="#torch-swish"><span class="std std-ref">Torch.Swish</span></a></td>
 <td><a class="reference internal" href="#keras-swish"><span class="std std-ref">Keras.Swish</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -121,7 +121,7 @@
 </tr>
 <tr class="row-odd"><td>6</td>
 <td>ELiSH</td>
-<td><a class="reference internal" href="#torch-elish"><span class="std std-ref">Torch.elish</span></a></td>
+<td><a class="reference internal" href="#torch-elish"><span class="std std-ref">Torch.Elish</span></a></td>
 <td><a class="reference internal" href="#keras-elish"><span class="std std-ref">Keras.Elish</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -130,7 +130,7 @@
 </tr>
 <tr class="row-even"><td>7</td>
 <td>Hard ELiSH</td>
-<td><a class="reference internal" href="#torch-hard-elish"><span class="std std-ref">Torch.hard_elish</span></a></td>
+<td><a class="reference internal" href="#torch-hard-elish"><span class="std std-ref">Torch.HardElish</span></a></td>
 <td><a class="reference internal" href="#keras-hard-elish"><span class="std std-ref">Keras.HardElish</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -139,7 +139,7 @@
 </tr>
 <tr class="row-odd"><td>8</td>
 <td>Mila</td>
-<td><a class="reference internal" href="#torch-mila"><span class="std std-ref">Torch.mila</span></a></td>
+<td><a class="reference internal" href="#torch-mila"><span class="std std-ref">Torch.Mila</span></a></td>
 <td><a class="reference internal" href="#keras-mila"><span class="std std-ref">Keras.Mila</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -148,7 +148,7 @@
 </tr>
 <tr class="row-even"><td>9</td>
 <td>SineReLU</td>
-<td><a class="reference internal" href="#torch-sine-relu"><span class="std std-ref">Torch.sine_relu</span></a></td>
+<td><a class="reference internal" href="#torch-sine-relu"><span class="std std-ref">Torch.SineReLU</span></a></td>
 <td><a class="reference internal" href="#keras-sinerelu"><span class="std std-ref">Keras.SineReLU</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -157,7 +157,7 @@
 </tr>
 <tr class="row-odd"><td>10</td>
 <td>Flatten T-Swish</td>
-<td><a class="reference internal" href="#torch-fts"><span class="std std-ref">Torch.fts</span></a></td>
+<td><a class="reference internal" href="#torch-fts"><span class="std std-ref">Torch.FTS</span></a></td>
 <td><a class="reference internal" href="#keras-fts"><span class="std std-ref">Keras.FTS</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -166,7 +166,7 @@
 </tr>
 <tr class="row-even"><td>11</td>
 <td>SQNL</td>
-<td><a class="reference internal" href="#torch-sqnl"><span class="std std-ref">Torch.sqnl</span></a></td>
+<td><a class="reference internal" href="#torch-sqnl"><span class="std std-ref">Torch.SQNL</span></a></td>
 <td><a class="reference internal" href="#keras-sqnl"><span class="std std-ref">Keras.SQNL</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -175,7 +175,7 @@
 </tr>
 <tr class="row-odd"><td>12</td>
 <td>Mish</td>
-<td><a class="reference internal" href="#torch-mish"><span class="std std-ref">Torch.mish</span></a></td>
+<td><a class="reference internal" href="#torch-mish"><span class="std std-ref">Torch.Mish</span></a></td>
 <td><a class="reference internal" href="#keras-mish"><span class="std std-ref">Keras.Mish</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -184,7 +184,7 @@
 </tr>
 <tr class="row-even"><td>13</td>
 <td>Beta Mish</td>
-<td><a class="reference internal" href="#torch-beta-mish"><span class="std std-ref">Torch.beta_mish</span></a></td>
+<td><a class="reference internal" href="#torch-beta-mish"><span class="std std-ref">Torch.BetaMish</span></a></td>
 <td><a class="reference internal" href="#keras-beta-mish"><span class="std std-ref">Keras.BetaMish</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -193,7 +193,7 @@
 </tr>
 <tr class="row-odd"><td>14</td>
 <td>ISRU</td>
-<td><a class="reference internal" href="#torch-isru"><span class="std std-ref">Torch.isru</span></a></td>
+<td><a class="reference internal" href="#torch-isru"><span class="std std-ref">Torch.ISRU</span></a></td>
 <td><a class="reference internal" href="#keras-isru"><span class="std std-ref">Keras.ISRU</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -202,7 +202,7 @@
 </tr>
 <tr class="row-even"><td>15</td>
 <td>ISRLU</td>
-<td><a class="reference internal" href="#torch-isrlu"><span class="std std-ref">Torch.isrlu</span></a></td>
+<td><a class="reference internal" href="#torch-isrlu"><span class="std std-ref">Torch.ISRLU</span></a></td>
 <td><a class="reference internal" href="#keras-isrlu"><span class="std std-ref">Keras.ISRLU</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -211,7 +211,7 @@
 </tr>
 <tr class="row-odd"><td>16</td>
 <td>Bent’s Identity</td>
-<td><a class="reference internal" href="#torch-bent-id"><span class="std std-ref">Torch.bent_id</span></a></td>
+<td><a class="reference internal" href="#torch-bent-id"><span class="std std-ref">Torch.BentID</span></a></td>
 <td><a class="reference internal" href="#keras-bent-id"><span class="std std-ref">Keras.BentID</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -220,7 +220,7 @@
 </tr>
 <tr class="row-even"><td>17</td>
 <td>Soft Clipping</td>
-<td><a class="reference internal" href="#torch-soft-clipping"><span class="std std-ref">Torch.soft_clipping</span></a></td>
+<td><a class="reference internal" href="#torch-soft-clipping"><span class="std std-ref">Torch.SoftClipping</span></a></td>
 <td><a class="reference internal" href="#keras-soft-clipping"><span class="std std-ref">Keras.SoftClipping</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -229,7 +229,7 @@
 </tr>
 <tr class="row-odd"><td>18</td>
 <td>SReLU</td>
-<td><a class="reference internal" href="#torch-srelu"><span class="std std-ref">Torch.srelu</span></a></td>
+<td><a class="reference internal" href="#torch-srelu"><span class="std std-ref">Torch.SReLU</span></a></td>
 <td><a class="reference internal" href="#keras-srelu"><span class="std std-ref">Keras.SReLU</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -238,7 +238,7 @@
 </tr>
 <tr class="row-even"><td>19</td>
 <td>BReLU</td>
-<td><a class="reference internal" href="#torch-brelu"><span class="std std-ref">Torch.brelu</span></a></td>
+<td><a class="reference internal" href="#torch-brelu"><span class="std std-ref">Torch.BReLU</span></a></td>
 <td><ul class="first last simple">
 <li></li>
 </ul>
@@ -250,7 +250,7 @@
 </tr>
 <tr class="row-odd"><td>20</td>
 <td>APL</td>
-<td><a class="reference internal" href="#torch-apl"><span class="std std-ref">Torch.apl</span></a></td>
+<td><a class="reference internal" href="#torch-apl"><span class="std std-ref">Torch.APL</span></a></td>
 <td><ul class="first last simple">
 <li></li>
 </ul>
@@ -262,7 +262,7 @@
 </tr>
 <tr class="row-even"><td>21</td>
 <td>Soft Exponential</td>
-<td><a class="reference internal" href="#torch-soft-exponential"><span class="std std-ref">Torch.soft_exponential</span></a></td>
+<td><a class="reference internal" href="#torch-soft-exponential"><span class="std std-ref">Torch.SoftExponential</span></a></td>
 <td><a class="reference internal" href="#keras-soft-exponential"><span class="std std-ref">Keras.SoftExponential</span></a></td>
 <td><ul class="first last simple">
 <li></li>
@@ -271,7 +271,7 @@
 </tr>
 <tr class="row-odd"><td>22</td>
 <td>Maxout</td>
-<td><a class="reference internal" href="#torch-maxout"><span class="std std-ref">Torch.maxout</span></a></td>
+<td><a class="reference internal" href="#torch-maxout"><span class="std std-ref">Torch.Maxout</span></a></td>
 <td><ul class="first last simple">
 <li></li>
 </ul>
@@ -394,7 +394,7 @@
 </div>
 </div>
 <div class="section" id="installation">
-<h2><a class="toc-backref" href="#id131">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id125">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>To install EchoAI package from source follow the instructions below:</p>
 <ol class="arabic simple">
 <li>Clone or download <a class="reference external" href="https://github.com/digantamisra98/Echo">GitHub repository</a>.</li>
@@ -410,15 +410,12 @@
 </pre></div>
 </div>
 <p>To install EchoAI package from PyPI follow the instructions below:</p>
-<ol class="arabic">
-<li><div class="first highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ pip install echoAI
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; $ pip install echoAI
 </pre></div>
 </div>
-</li>
-</ol>
 </div>
 <div class="section" id="examples">
-<h2><a class="toc-backref" href="#id132">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id126">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="torch-activation-functions">
 <h3>Torch Activation Functions<a class="headerlink" href="#torch-activation-functions" title="Permalink to this headline">¶</a></h3>
 <p>The following code block contains an example of usage of a PyTorch activation function
@@ -526,7 +523,7 @@ from Echo package:</p>
 </div>
 </div>
 <div class="section" id="pytorch-extensions">
-<h2><a class="toc-backref" href="#id133">PyTorch Extensions</a><a class="headerlink" href="#pytorch-extensions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id127">PyTorch Extensions</a><a class="headerlink" href="#pytorch-extensions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="torch-aria2">
 <span id="id1"></span><h3>Torch.aria2<a class="headerlink" href="#torch-aria2" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.aria2"></span><p>Applies the Aria-2 function element-wise:</p>
@@ -585,7 +582,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-mish">
-<span id="id6"></span><h3>Torch.mish<a class="headerlink" href="#torch-mish" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>Torch.Mish<a class="headerlink" href="#torch-mish" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.mish"></span><p>Applies the mish function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))\]</div>
@@ -629,9 +626,9 @@ dimensions</li>
 </dd></dl>
 
 </div>
-<div class="section" id="torch-beta-mish">
-<span id="id11"></span><h3>Torch.beta_mish<a class="headerlink" href="#torch-beta-mish" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-echoAI.Activation.Torch.beta_mish"></span><p>Applies the β mish function element-wise:</p>
+<div class="section" id="module-echoAI.Activation.Torch.beta_mish">
+<span id="torch-betamish"></span><span id="torch-beta-mish"></span><h3>Torch.BetaMish<a class="headerlink" href="#module-echoAI.Activation.Torch.beta_mish" title="Permalink to this headline">¶</a></h3>
+<p>Applies the β mish function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\beta mish(x) = x * tanh(ln((1 + e^{x})^{\beta}))\]</div>
 <dl class="class">
@@ -647,9 +644,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id12"><span class="problematic" id="id13">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id11"><span class="problematic" id="id12">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id14"><span class="problematic" id="id15">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id13"><span class="problematic" id="id14">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -681,7 +678,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-silu">
-<span id="id16"></span><h3>Torch.silu<a class="headerlink" href="#torch-silu" title="Permalink to this headline">¶</a></h3>
+<span id="id15"></span><h3>Torch.Silu<a class="headerlink" href="#torch-silu" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.silu"></span><p>Applies the Sigmoid Linear Unit (SiLU) function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[silu(x) = x * sigmoid(x)\]</div>
@@ -700,9 +697,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id17"><span class="problematic" id="id18">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id16"><span class="problematic" id="id17">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id19"><span class="problematic" id="id20">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id18"><span class="problematic" id="id19">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -734,7 +731,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-eswish">
-<span id="id21"></span><h3>Torch.eswish<a class="headerlink" href="#torch-eswish" title="Permalink to this headline">¶</a></h3>
+<span id="id20"></span><h3>Torch.Eswish<a class="headerlink" href="#torch-eswish" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.eswish"></span><p>Applies the E-Swish function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[ESwish(x, \beta) = \beta*x*sigmoid(x)\]</div>
@@ -753,9 +750,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id22"><span class="problematic" id="id23">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id21"><span class="problematic" id="id22">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id24"><span class="problematic" id="id25">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id23"><span class="problematic" id="id24">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -787,7 +784,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-swish">
-<span id="id26"></span><h3>Torch.swish<a class="headerlink" href="#torch-swish" title="Permalink to this headline">¶</a></h3>
+<span id="id25"></span><h3>Torch.Swish<a class="headerlink" href="#torch-swish" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.swish"></span><p>Applies the Swish function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[Swish(x, \beta) = x*sigmoid(\beta*x) = \frac{x}{(1+e^{-\beta*x})}\]</div>
@@ -806,9 +803,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id27"><span class="problematic" id="id28">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id26"><span class="problematic" id="id27">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id29"><span class="problematic" id="id30">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id28"><span class="problematic" id="id29">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -840,7 +837,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-elish">
-<span id="id31"></span><h3>Torch.elish<a class="headerlink" href="#torch-elish" title="Permalink to this headline">¶</a></h3>
+<span id="id30"></span><h3>Torch.Elish<a class="headerlink" href="#torch-elish" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.elish"></span><p>Applies the ELiSH (Exponential Linear Sigmoid SquasHing) function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}ELiSH(x) = \left\{\begin{matrix} x / (1+e^{-x}), x \geq 0 \\ (e^{x} - 1) / (1 + e^{-x}), x &lt; 0 \end{matrix}\right.\end{split}\]</div>
@@ -859,9 +856,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id32"><span class="problematic" id="id33">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id31"><span class="problematic" id="id32">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id34"><span class="problematic" id="id35">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id33"><span class="problematic" id="id34">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>References:</dt>
@@ -887,9 +884,9 @@ dimensions</li>
 </dd></dl>
 
 </div>
-<div class="section" id="torch-hard-elish">
-<span id="id36"></span><h3>Torch.hard_elish<a class="headerlink" href="#torch-hard-elish" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-echoAI.Activation.Torch.hard_elish"></span><p>Applies the HardELiSH function element-wise:</p>
+<div class="section" id="module-echoAI.Activation.Torch.hard_elish">
+<span id="torch-hardelish"></span><span id="torch-hard-elish"></span><h3>Torch.HardElish<a class="headerlink" href="#module-echoAI.Activation.Torch.hard_elish" title="Permalink to this headline">¶</a></h3>
+<p>Applies the HardELiSH function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}HardELiSH(x) = \left\{\begin{matrix} x \times max(0, min(1, (x + 1) / 2)), x \geq 0 \\ (e^{x} - 1)\times max(0, min(1, (x + 1) / 2)), x &lt; 0 \end{matrix}\right.\end{split}\]</div>
 <p>See HardELiSH paper:
@@ -907,9 +904,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id37"><span class="problematic" id="id38">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id35"><span class="problematic" id="id36">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id39"><span class="problematic" id="id40">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id37"><span class="problematic" id="id38">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>References:</dt>
@@ -936,7 +933,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-mila">
-<span id="id41"></span><h3>Torch.mila<a class="headerlink" href="#torch-mila" title="Permalink to this headline">¶</a></h3>
+<span id="id39"></span><h3>Torch.Mila<a class="headerlink" href="#torch-mila" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.mila"></span><p>Applies the Mila function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[mila(x) = x * tanh(ln(1 + e^{\beta + x})) = x * tanh(softplus(\beta + x))\]</div>
@@ -955,9 +952,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id42"><span class="problematic" id="id43">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id40"><span class="problematic" id="id41">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id44"><span class="problematic" id="id45">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id42"><span class="problematic" id="id43">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -987,9 +984,9 @@ dimensions</li>
 </dd></dl>
 
 </div>
-<div class="section" id="torch-sine-relu">
-<span id="id46"></span><h3>Torch.sine_relu<a class="headerlink" href="#torch-sine-relu" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-echoAI.Activation.Torch.sine_relu"></span><p>Applies the SineReLU function element-wise:</p>
+<div class="section" id="module-echoAI.Activation.Torch.sine_relu">
+<span id="torch-sinerelu"></span><span id="torch-sine-relu"></span><h3>Torch.SineReLU<a class="headerlink" href="#module-echoAI.Activation.Torch.sine_relu" title="Permalink to this headline">¶</a></h3>
+<p>Applies the SineReLU function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}SineReLU(x, \epsilon) = \left\{\begin{matrix} x , x &gt; 0 \\ \epsilon * (sin(x) - cos(x)), x \leq  0 \end{matrix}\right.\end{split}\]</div>
 <p>See related Medium article:
@@ -1007,9 +1004,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id47"><span class="problematic" id="id48">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id44"><span class="problematic" id="id45">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id49"><span class="problematic" id="id50">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id46"><span class="problematic" id="id47">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -1041,7 +1038,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-fts">
-<span id="id51"></span><h3>Torch.fts<a class="headerlink" href="#torch-fts" title="Permalink to this headline">¶</a></h3>
+<span id="id48"></span><h3>Torch.FTS<a class="headerlink" href="#torch-fts" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.fts"></span><p>Applies the FTS (Flatten T-Swish) function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}FTS(x) = \left\{\begin{matrix} \frac{x}{1 + e^{-x}} , x \geq  0 \\ 0, x &lt; 0 \end{matrix}\right.\end{split}\]</div>
@@ -1060,9 +1057,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id52"><span class="problematic" id="id53">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id49"><span class="problematic" id="id50">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id54"><span class="problematic" id="id55">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id51"><span class="problematic" id="id52">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>References:</dt>
@@ -1089,7 +1086,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-sqnl">
-<span id="id56"></span><h3>Torch.sqnl<a class="headerlink" href="#torch-sqnl" title="Permalink to this headline">¶</a></h3>
+<span id="id53"></span><h3>Torch.SQNL<a class="headerlink" href="#torch-sqnl" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.sqnl"></span><p>Applies the SQNL function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}SQNL(x) = \left\{\begin{matrix} 1, x &gt; 2 \\ x - \frac{x^2}{4}, 0 \leq x \leq 2 \\  x + \frac{x^2}{4}, -2 \leq x &lt; 0 \\ -1, x &lt; -2 \end{matrix}\right.\end{split}\]</div>
@@ -1108,9 +1105,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id57"><span class="problematic" id="id58">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id54"><span class="problematic" id="id55">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id59"><span class="problematic" id="id60">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id56"><span class="problematic" id="id57">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>References:</dt>
@@ -1137,7 +1134,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-isru">
-<span id="id61"></span><h3>Torch.isru<a class="headerlink" href="#torch-isru" title="Permalink to this headline">¶</a></h3>
+<span id="id58"></span><h3>Torch.ISRU<a class="headerlink" href="#torch-isru" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.isru"></span><p>Applies the ISRU (Inverse Square Root Unit) function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[ISRU(x) = \frac{x}{\sqrt{1 + \alpha * x^2}}\]</div>
@@ -1156,9 +1153,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id62"><span class="problematic" id="id63">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id59"><span class="problematic" id="id60">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id64"><span class="problematic" id="id65">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id61"><span class="problematic" id="id62">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -1190,7 +1187,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-isrlu">
-<span id="id66"></span><h3>Torch.isrlu<a class="headerlink" href="#torch-isrlu" title="Permalink to this headline">¶</a></h3>
+<span id="id63"></span><h3>Torch.ISRLU<a class="headerlink" href="#torch-isrlu" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.isrlu"></span><p>Applies the ISRLU (Inverse Square Root Linear Unit) function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}ISRLU(x)=\left\{\begin{matrix} x, x\geq 0 \\  x * (\frac{1}{\sqrt{1 + \alpha*x^2}}), x &lt;0 \end{matrix}\right.\end{split}\]</div>
@@ -1209,9 +1206,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id67"><span class="problematic" id="id68">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id64"><span class="problematic" id="id65">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id69"><span class="problematic" id="id70">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id66"><span class="problematic" id="id67">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -1241,9 +1238,9 @@ dimensions</li>
 </dd></dl>
 
 </div>
-<div class="section" id="torch-bent-id">
-<span id="id71"></span><h3>Torch.bent_id<a class="headerlink" href="#torch-bent-id" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-echoAI.Activation.Torch.bent_id"></span><p>Applies the Bent’s Identity function element-wise:</p>
+<div class="section" id="module-echoAI.Activation.Torch.bent_id">
+<span id="torch-bentid"></span><span id="torch-bent-id"></span><h3>Torch.BentID<a class="headerlink" href="#module-echoAI.Activation.Torch.bent_id" title="Permalink to this headline">¶</a></h3>
+<p>Applies the Bent’s Identity function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[bentId(x) = x + \frac{\sqrt{x^{2}+1}-1}{2}\]</div>
 <dl class="class">
@@ -1259,9 +1256,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id72"><span class="problematic" id="id73">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id68"><span class="problematic" id="id69">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id74"><span class="problematic" id="id75">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id70"><span class="problematic" id="id71">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Examples:</dt>
@@ -1281,9 +1278,9 @@ dimensions</li>
 </dd></dl>
 
 </div>
-<div class="section" id="torch-soft-clipping">
-<span id="id76"></span><h3>Torch.soft_clipping<a class="headerlink" href="#torch-soft-clipping" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-echoAI.Activation.Torch.soft_clipping"></span><p>Applies Soft Clipping function element-wise:</p>
+<div class="section" id="module-echoAI.Activation.Torch.soft_clipping">
+<span id="torch-softclipping"></span><span id="torch-soft-clipping"></span><h3>Torch.SoftClipping<a class="headerlink" href="#module-echoAI.Activation.Torch.soft_clipping" title="Permalink to this headline">¶</a></h3>
+<p>Applies Soft Clipping function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[SC(x) = 1 / \alpha * log(\frac{1 + e^{\alpha * x}}{1 + e^{\alpha * (x-1)}})\]</div>
 <p>See SC paper:
@@ -1301,9 +1298,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id77"><span class="problematic" id="id78">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id72"><span class="problematic" id="id73">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id79"><span class="problematic" id="id80">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id74"><span class="problematic" id="id75">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -1338,7 +1335,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-weightedtanh">
-<span id="id81"></span><h3>Torch.weightedTanh<a class="headerlink" href="#torch-weightedtanh" title="Permalink to this headline">¶</a></h3>
+<span id="id76"></span><h3>Torch.WeightedTanh<a class="headerlink" href="#torch-weightedtanh" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.weightedTanh"></span><p>Applies the weighted tanh function element-wise:</p>
 <div class="math notranslate nohighlight">
 \[weightedtanh(x) = tanh(x * weight)\]</div>
@@ -1355,9 +1352,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id82"><span class="problematic" id="id83">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id77"><span class="problematic" id="id78">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id84"><span class="problematic" id="id85">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id79"><span class="problematic" id="id80">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -1384,7 +1381,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-srelu">
-<span id="id86"></span><h3>Torch.srelu<a class="headerlink" href="#torch-srelu" title="Permalink to this headline">¶</a></h3>
+<span id="id81"></span><h3>Torch.SReLU<a class="headerlink" href="#torch-srelu" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.srelu"></span><p>Script defined the SReLU (S-shaped Rectified Linear Activation Unit):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}h(x_i) = \left\{\begin{matrix} t_i^r + a_i^r(x_i - t_i^r), x_i \geq t_i^r \\  x_i, t_i^r &gt; x_i &gt; t_i^l\\  t_i^l + a_i^l(x_i - t_i^l), x_i \leq  t_i^l \\ \end{matrix}\right.\end{split}\]</div>
@@ -1400,9 +1397,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id87"><span class="problematic" id="id88">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id82"><span class="problematic" id="id83">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id89"><span class="problematic" id="id90">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id84"><span class="problematic" id="id85">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 </dl>
@@ -1437,7 +1434,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-brelu">
-<span id="id91"></span><h3>Torch.brelu<a class="headerlink" href="#torch-brelu" title="Permalink to this headline">¶</a></h3>
+<span id="id86"></span><h3>Torch.BReLU<a class="headerlink" href="#torch-brelu" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.brelu"></span><p>Script defined the BReLU (Bipolar Rectified Linear Activation Unit):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}BReLU(x_i) = \left\{\begin{matrix} f(x_i), i \mod 2 = 0\\  - f(-x_i), i \mod 2 \neq  0 \end{matrix}\right.\end{split}\]</div>
@@ -1458,9 +1455,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id92"><span class="problematic" id="id93">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id87"><span class="problematic" id="id88">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id94"><span class="problematic" id="id95">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id89"><span class="problematic" id="id90">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>References:</dt>
@@ -1498,7 +1495,7 @@ objects for use in the backward pass using the ctx.save_for_backward method.</p>
 
 </div>
 <div class="section" id="torch-apl">
-<span id="id96"></span><h3>Torch.apl<a class="headerlink" href="#torch-apl" title="Permalink to this headline">¶</a></h3>
+<span id="id91"></span><h3>Torch.APL<a class="headerlink" href="#torch-apl" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.apl"></span><p>Script defined the APL (ADAPTIVE PIECEWISE LINEAR UNITS):</p>
 <div class="math notranslate nohighlight">
 \[APL(x_i) = max(0,x) + \sum_{s=1}^{S}{a_i^s * max(0, -x + b_i^s)}\]</div>
@@ -1516,9 +1513,9 @@ objects for use in the backward pass using the ctx.save_for_backward method.</p>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id97"><span class="problematic" id="id98">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id92"><span class="problematic" id="id93">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id99"><span class="problematic" id="id100">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id94"><span class="problematic" id="id95">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Parameters:</dt>
@@ -1561,9 +1558,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id101"><span class="problematic" id="id102">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id96"><span class="problematic" id="id97">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id103"><span class="problematic" id="id104">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id98"><span class="problematic" id="id99">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Arguments:</dt>
@@ -1610,9 +1607,9 @@ objects for use in the backward pass using the ctx.save_for_backward method.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="torch-soft-exponential">
-<span id="id105"></span><h3>Torch.soft_exponential<a class="headerlink" href="#torch-soft-exponential" title="Permalink to this headline">¶</a></h3>
-<span class="target" id="module-echoAI.Activation.Torch.soft_exponential"></span><p>Script implements soft exponential activation:</p>
+<div class="section" id="module-echoAI.Activation.Torch.soft_exponential">
+<span id="torch-softexponential"></span><span id="torch-soft-exponential"></span><h3>Torch.SoftExponential<a class="headerlink" href="#module-echoAI.Activation.Torch.soft_exponential" title="Permalink to this headline">¶</a></h3>
+<p>Script implements soft exponential activation:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}SoftExponential(x, \alpha) = \left\{\begin{matrix} - \frac{log(1 - \alpha(x + \alpha))}{\alpha}, \alpha &lt; 0\\  x, \alpha = 0\\  \frac{e^{\alpha * x} - 1}{\alpha} + \alpha, \alpha &gt; 0 \end{matrix}\right.\end{split}\]</div>
 <p>See related paper:
@@ -1629,9 +1626,9 @@ objects for use in the backward pass using the ctx.save_for_backward method.</p>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id106"><span class="problematic" id="id107">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id100"><span class="problematic" id="id101">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id108"><span class="problematic" id="id109">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id102"><span class="problematic" id="id103">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>Parameters:</dt>
@@ -1663,7 +1660,7 @@ dimensions</li>
 
 </div>
 <div class="section" id="torch-maxout">
-<span id="id110"></span><h3>Torch.maxout<a class="headerlink" href="#torch-maxout" title="Permalink to this headline">¶</a></h3>
+<span id="id104"></span><h3>Torch.Maxout<a class="headerlink" href="#torch-maxout" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.maxout"></span><p>Script implements Maxout activation</p>
 <div class="math notranslate nohighlight">
 \[maxout(\vec{x}) = max_i(x_i)\]</div>
@@ -1682,9 +1679,9 @@ dimensions</li>
 <dl class="docutils">
 <dt>Shape:</dt>
 <dd><ul class="first last simple">
-<li>Input: (N, <a href="#id111"><span class="problematic" id="id112">*</span></a>) where * means, any number of additional
+<li>Input: (N, <a href="#id105"><span class="problematic" id="id106">*</span></a>) where * means, any number of additional
 dimensions</li>
-<li>Output: (N, <a href="#id113"><span class="problematic" id="id114">*</span></a>), same shape as the input</li>
+<li>Output: (N, <a href="#id107"><span class="problematic" id="id108">*</span></a>), same shape as the input</li>
 </ul>
 </dd>
 <dt>References:</dt>
@@ -1878,9 +1875,9 @@ dimensions</li>
 </div>
 </div>
 <div class="section" id="keras-extensions">
-<h2><a class="toc-backref" href="#id134">Keras Extensions</a><a class="headerlink" href="#keras-extensions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id128">Keras Extensions</a><a class="headerlink" href="#keras-extensions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="keras-mish">
-<span id="id115"></span><h3>Keras.Mish<a class="headerlink" href="#keras-mish" title="Permalink to this headline">¶</a></h3>
+<span id="id109"></span><h3>Keras.Mish<a class="headerlink" href="#keras-mish" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.Mish"></span><p>Mish Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))\]</div>
@@ -1941,7 +1938,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-aria2">
-<span id="id116"></span><h3>Keras.Aria2<a class="headerlink" href="#keras-aria2" title="Permalink to this headline">¶</a></h3>
+<span id="id110"></span><h3>Keras.Aria2<a class="headerlink" href="#keras-aria2" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.Aria2"></span><p>Aria-2 Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[Aria2(x, \alpha, \beta) = (1+e^{-\beta*x})^{-\alpha}\]</div>
@@ -1984,7 +1981,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-eswish">
-<span id="id117"></span><h3>Keras.Eswish<a class="headerlink" href="#keras-eswish" title="Permalink to this headline">¶</a></h3>
+<span id="id111"></span><h3>Keras.Eswish<a class="headerlink" href="#keras-eswish" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.Eswish"></span><p>E-Swish Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[ESwish(x, \beta) = \beta*x*sigmoid(x)\]</div>
@@ -2023,7 +2020,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-swish">
-<span id="id118"></span><h3>Keras.Swish<a class="headerlink" href="#keras-swish" title="Permalink to this headline">¶</a></h3>
+<span id="id112"></span><h3>Keras.Swish<a class="headerlink" href="#keras-swish" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.Swish"></span><p>Swish Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[Swish(x, \beta) = x*sigmoid(\beta*x) = \frac{x}{(1+e^{-\beta*x})}\]</div>
@@ -2062,7 +2059,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-elish">
-<span id="id119"></span><h3>Keras.Elish<a class="headerlink" href="#keras-elish" title="Permalink to this headline">¶</a></h3>
+<span id="id113"></span><h3>Keras.Elish<a class="headerlink" href="#keras-elish" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.Elish"></span><p>ELiSH (Exponential Linear Sigmoid SquasHing) Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}ELiSH(x) = \left\{\begin{matrix} x / (1+e^{-x}), x \geq 0 \\ (e^{x} - 1) / (1 + e^{-x}), x &lt; 0 \end{matrix}\right.\end{split}\]</div>
@@ -2130,7 +2127,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-mila">
-<span id="id120"></span><h3>Keras.Mila<a class="headerlink" href="#keras-mila" title="Permalink to this headline">¶</a></h3>
+<span id="id114"></span><h3>Keras.Mila<a class="headerlink" href="#keras-mila" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.Mila"></span><p>Mila Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[Mila(x) = x * tanh(ln(1 + e^{\beta + x})) = x * tanh(softplus(\beta + x)\]</div>
@@ -2168,7 +2165,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-sinerelu">
-<span id="id121"></span><h3>Keras.SineReLU<a class="headerlink" href="#keras-sinerelu" title="Permalink to this headline">¶</a></h3>
+<span id="id115"></span><h3>Keras.SineReLU<a class="headerlink" href="#keras-sinerelu" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.SineReLU"></span><p>Sine ReLU Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}SineReLU(x, \epsilon) = \left\{\begin{matrix} x , x &gt; 0 \\ \epsilon * (sin(x)-cos(x)), x \leq 0 \end{matrix}\right.\end{split}\]</div>
@@ -2207,7 +2204,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-fts">
-<span id="id122"></span><h3>Keras.FTS<a class="headerlink" href="#keras-fts" title="Permalink to this headline">¶</a></h3>
+<span id="id116"></span><h3>Keras.FTS<a class="headerlink" href="#keras-fts" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.FTS"></span><p>FTS (Flatten T-Swish) Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}FTS(x) = \left\{\begin{matrix} \frac{x}{1 + e^{-x}} , x \geq  0 \\ 0, x &lt; 0 \end{matrix}\right.\end{split}\]</div>
@@ -2241,7 +2238,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-sqnl">
-<span id="id123"></span><h3>Keras.SQNL<a class="headerlink" href="#keras-sqnl" title="Permalink to this headline">¶</a></h3>
+<span id="id117"></span><h3>Keras.SQNL<a class="headerlink" href="#keras-sqnl" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.SQNL"></span><p>SQNL Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}SQNL(x) = \left\{\begin{matrix} 1, x &gt; 2 \\ x - \frac{x^2}{4}, 0 \leq x \leq 2 \\  x + \frac{x^2}{4}, -2 \leq x &lt; 0 \\ -1, x &lt; -2 \end{matrix}\right.\end{split}\]</div>
@@ -2314,7 +2311,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-isru">
-<span id="id124"></span><h3>Keras.ISRU<a class="headerlink" href="#keras-isru" title="Permalink to this headline">¶</a></h3>
+<span id="id118"></span><h3>Keras.ISRU<a class="headerlink" href="#keras-isru" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.ISRU"></span><p>ISRU (Inverse Square Root Unit) Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[ISRU(x) = \frac{x}{\sqrt{1 + \alpha * x^2}}\]</div>
@@ -2353,7 +2350,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-isrlu">
-<span id="id125"></span><h3>Keras.ISRLU<a class="headerlink" href="#keras-isrlu" title="Permalink to this headline">¶</a></h3>
+<span id="id119"></span><h3>Keras.ISRLU<a class="headerlink" href="#keras-isrlu" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.ISRLU"></span><p>ISRLU Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}ISRLU(x)=\left\{\begin{matrix} x, x\geq 0 \\  x * (\frac{1}{\sqrt{1 + \alpha*x^2}}), x &lt;0 \end{matrix}\right.\end{split}\]</div>
@@ -2461,7 +2458,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-celu">
-<span id="id126"></span><h3>Keras.Celu<a class="headerlink" href="#keras-celu" title="Permalink to this headline">¶</a></h3>
+<span id="id120"></span><h3>Keras.Celu<a class="headerlink" href="#keras-celu" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.Celu"></span><p>CELU Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[CELU(x, \alpha) = max(0,x) + min(0,\alpha * (exp(x/ \alpha)-1))\]</div>
@@ -2499,7 +2496,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-relu6">
-<span id="id127"></span><h3>Keras.ReLU6<a class="headerlink" href="#keras-relu6" title="Permalink to this headline">¶</a></h3>
+<span id="id121"></span><h3>Keras.ReLU6<a class="headerlink" href="#keras-relu6" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.ReLU6"></span><p>RELU6 Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[RELU6(x) = min(max(0,x),6)\]</div>
@@ -2662,7 +2659,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-softmin">
-<span id="id128"></span><h3>Keras.SoftMin<a class="headerlink" href="#keras-softmin" title="Permalink to this headline">¶</a></h3>
+<span id="id122"></span><h3>Keras.SoftMin<a class="headerlink" href="#keras-softmin" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.SoftMin"></span><p>SoftMin Activation Function.</p>
 <div class="math notranslate nohighlight">
 \[SoftMin(x) = Softmax(-x)\]</div>
@@ -2746,7 +2743,7 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 <div class="section" id="keras-srelu">
-<span id="id129"></span><h3>Keras.SReLU<a class="headerlink" href="#keras-srelu" title="Permalink to this headline">¶</a></h3>
+<span id="id123"></span><h3>Keras.SReLU<a class="headerlink" href="#keras-srelu" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.SReLU"></span><p>SReLU (S-shaped Rectified Linear Activation Unit): a combination of three linear functions, which perform mapping R → R with the following formulation:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}h(x_i) = \left\{\begin{matrix} t_i^r + a_i^r(x_i - t_i^r), x_i \geq t_i^r \\  x_i, t_i^r &gt; x_i &gt; t_i^l\\  t_i^l + a_i^l(x_i - t_i^l), x_i \leq  t_i^l \\ \end{matrix}\right.\end{split}\]</div>
@@ -2786,7 +2783,7 @@ when using this layer as the first layer in a model.</p>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
-<h2><a class="toc-backref" href="#id135">Indices and tables</a><a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id129">Indices and tables</a><a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>

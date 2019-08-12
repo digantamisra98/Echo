@@ -25,10 +25,10 @@ Implemented Activation Functions
 
 The list of activation functions implemented in Echo:
 
-====   ====================   =========================================   ==============================================================   ============
-#      Activation             PyTorch                                     Keras                                                            TensorFlow
-====   ====================   =========================================   ==============================================================   ============
-1      Weighted Tanh          :ref:`Torch.weightedTanh`                   :ref:`Keras.weighted_tanh`                                       -
+====   ====================   =========================================   ==============================================================   ================
+#      Activation             PyTorch                                     Keras                                                            TensorFlow Keras
+====   ====================   =========================================   ==============================================================   ================
+1      Weighted Tanh          :ref:`Torch.WeightedTanh`                   :ref:`Keras.weighted_tanh`                                       -
 2      Aria2                  :ref:`Torch.aria2`                          :ref:`Keras.aria2`                                               -
 3      SiLU                   :ref:`Torch.silu`                           -                                                                -
 4      E-Swish                :ref:`Torch.eswish`                         :ref:`Keras.eswish`                                              -
@@ -59,7 +59,7 @@ The list of activation functions implemented in Echo:
 28     Soft Shrink            -                                           :ref:`Keras.soft_shrink`                                         -
 29     Softmin                -                                           :ref:`Keras.softmin`                                             -
 30     LogSoftmax             -                                           :ref:`Keras.log_softmax`                                         -
-====   ====================   =========================================   ==============================================================   ============
+====   ====================   =========================================   ==============================================================   ================
 
 Installation
 ================================
@@ -75,7 +75,7 @@ To install EchoAI package from source follow the instructions below:
 
 To install EchoAI package from PyPI follow the instructions below:
 
-1. >>> $ pip install echoAI
+>>> $ pip install echoAI
 
 Examples
 ================================
@@ -204,147 +204,147 @@ Torch.aria2
 
 .. _Torch.mish:
 
-Torch.mish
+Torch.Mish
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.mish
   :members:
 
 .. _Torch.beta_mish:
 
-Torch.beta_mish
+Torch.BetaMish
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.beta_mish
   :members:
 
 .. _Torch.silu:
 
-Torch.silu
+Torch.Silu
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.silu
   :members:
 
 .. _Torch.eswish:
 
-Torch.eswish
+Torch.Eswish
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.eswish
   :members:
 
 .. _Torch.swish:
 
-Torch.swish
+Torch.Swish
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.swish
   :members:
 
 .. _Torch.elish:
 
-Torch.elish
+Torch.Elish
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.elish
   :members:
 
 .. _Torch.hard_elish:
 
-Torch.hard_elish
+Torch.HardElish
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.hard_elish
   :members:
 
 .. _Torch.mila:
 
-Torch.mila
+Torch.Mila
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.mila
   :members:
 
 .. _Torch.sine_relu:
 
-Torch.sine_relu
+Torch.SineReLU
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.sine_relu
   :members:
 
 .. _Torch.fts:
 
-Torch.fts
+Torch.FTS
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.fts
   :members:
 
 .. _Torch.sqnl:
 
-Torch.sqnl
+Torch.SQNL
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.sqnl
   :members:
 
 .. _Torch.isru:
 
-Torch.isru
+Torch.ISRU
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.isru
   :members:
 
 .. _Torch.isrlu:
 
-Torch.isrlu
+Torch.ISRLU
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.isrlu
   :members:
 
 .. _Torch.bent_id:
 
-Torch.bent_id
+Torch.BentID
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.bent_id
   :members:
 
 .. _Torch.soft_clipping:
 
-Torch.soft_clipping
+Torch.SoftClipping
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.soft_clipping
   :members:
 
-.. _Torch.weightedTanh:
+.. _Torch.WeightedTanh:
 
-Torch.weightedTanh
+Torch.WeightedTanh
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.weightedTanh
   :members:
 
 .. _Torch.srelu:
 
-Torch.srelu
+Torch.SReLU
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.srelu
   :members:
 
 .. _Torch.brelu:
 
-Torch.brelu
+Torch.BReLU
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.brelu
   :members:
 
 .. _Torch.apl:
 
-Torch.apl
+Torch.APL
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.apl
   :members:
 
 .. _Torch.soft_exponential:
 
-Torch.soft_exponential
+Torch.SoftExponential
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.soft_exponential
   :members:
 
 .. _Torch.maxout:
 
-Torch.maxout
+Torch.Maxout
 --------------------------------
 .. automodule:: echoAI.Activation.Torch.maxout
   :members:

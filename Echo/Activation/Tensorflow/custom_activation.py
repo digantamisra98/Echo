@@ -409,5 +409,5 @@ class APL(Layer):
             'b_constraint': constraints.serialize(self.b_constraint),
             'shared_axes': self.shared_axes
         }
-        base_config = super(APLUnit, self).get_config()
+        base_config = super(APL, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))

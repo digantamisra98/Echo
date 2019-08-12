@@ -1,5 +1,5 @@
 import tensorflow as tf
-from tensorflow.keras.layers import Layer
+from tensorflow.keras.layers import Layer, Lambda
 from tensorflow.keras import backend as K
 
 
@@ -297,3 +297,29 @@ class SReLU(Layer):
         case_2 = condition_2 * inputs
         case_3 = condition_3 * (tf.math.pow(self.t, self.l) + tf.math.pow(self.a, self.l) * (inputs - tf.math.pow(self.t, self.l)))
         return case_1 + case_2 + case_3
+
+
+class BReLU(Layer):
+
+    def __init__(self):
+        super(BReLU, self).__init__()
+    
+    def call(self, inputs):
+        def brelu(x):
+            #get shape of X, we are interested in the last axis, which is constant
+            shape = K.int_shape(x)
+            #last axis
+            dim = shape[-1]
+            #half of the last axis (+1 if necessary)
+            dim2 = dim // 2
+            if dim % 2 != 0:
+                dim2 += 1
+            #multiplier will be a tensor of alternated +1 and -1
+            multiplier = K.ones((dim2,))
+            multiplier = K.stack([multiplier, -multiplier], axis = -1)
+            if dim % 2 != 0:
+                multiplier = multiplier[:-1]
+            #adjust multiplier shape to the shape of x
+            multiplier = K.reshape(multiplier, tuple(1 for _ in shape[:-1]) + (-1,))
+            return multiplier * tf.nn.relu(multiplier * x)
+        return Lambda(brelu)(inputs)

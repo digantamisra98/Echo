@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 setup(
     name = 'echoAI',
     packages = setuptools.find_packages(),
-    version = '0.1.2',  # Ideally should be same as your GitHub release tag varsion
+    version = '0.1.3',  # Ideally should be same as your GitHub release tag varsion
     description = 'Python package containing all custom and SOTA mathematical backend algorithms used in Machine Learning.',
     author = 'Diganta Misra and Aleksandra Deis',
     author_email = 'mishradiganta91@gmail.com',

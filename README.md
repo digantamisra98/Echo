@@ -69,6 +69,8 @@ The repository has the following structure:
 | | | - ... # PyTorch activation functions wrappers
 | |- Keras  # sub-package containing implementation for Keras
 | | | - custom_activations.py # script which contains implementation of activation functions
+| |- TF_Keras  # sub-package containing implementation for Tensorflow-Keras
+| | | - custom_activation.py # script which contains implementation of activation functions
 | - __init__.py
 
 - Observations # Folder containing other assets

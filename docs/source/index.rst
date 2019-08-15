@@ -28,37 +28,37 @@ The list of activation functions implemented in Echo:
 ====   ====================   =========================================   ==============================================================   ================
 #      Activation             PyTorch                                     Keras                                                            TensorFlow Keras
 ====   ====================   =========================================   ==============================================================   ================
-1      Weighted Tanh          :ref:`Torch.WeightedTanh`                   :ref:`Keras.weighted_tanh`                                       -
-2      Aria2                  :ref:`Torch.aria2`                          :ref:`Keras.aria2`                                               -
+1      Weighted Tanh          :ref:`Torch.WeightedTanh`                   :ref:`Keras.weighted_tanh`                                       :ref:`TF_Keras.weighted_tanh`
+2      Aria2                  :ref:`Torch.aria2`                          :ref:`Keras.aria2`                                               :ref:`TF_Keras.aria2`
 3      SiLU                   :ref:`Torch.silu`                           -                                                                -
-4      E-Swish                :ref:`Torch.eswish`                         :ref:`Keras.eswish`                                              -
-5      Swish                  :ref:`Torch.swish`                          :ref:`Keras.swish`                                               -
-6      ELiSH                  :ref:`Torch.elish`                          :ref:`Keras.elish`                                               -
-7      Hard ELiSH             :ref:`Torch.hard_elish`                     :ref:`Keras.hard_elish`                                          -
-8      Mila                   :ref:`Torch.mila`                           :ref:`Keras.mila`                                                -
-9      SineReLU               :ref:`Torch.sine_relu`                      :ref:`Keras.sineReLU`                                            -
-10     Flatten T-Swish        :ref:`Torch.fts`                            :ref:`Keras.fts`                                                 -
-11     SQNL                   :ref:`Torch.sqnl`                           :ref:`Keras.sqnl`                                                -
-12     Mish                   :ref:`Torch.mish`                           :ref:`Keras.mish`                                                -
-13     Beta Mish              :ref:`Torch.beta_mish`                      :ref:`Keras.beta_mish`                                           -
-14     ISRU                   :ref:`Torch.isru`                           :ref:`Keras.isru`                                                -
-15     ISRLU                  :ref:`Torch.isrlu`                          :ref:`Keras.isrlu`                                               -
-16     Bent's Identity        :ref:`Torch.bent_id`                        :ref:`Keras.bent_id`                                             -
-17     Soft Clipping          :ref:`Torch.soft_clipping`                  :ref:`Keras.soft_clipping`                                       -
-18     SReLU                  :ref:`Torch.srelu`                          :ref:`Keras.srelu`                                               -
-19     BReLU                  :ref:`Torch.brelu`                          -                                                                -
-20     APL                    :ref:`Torch.apl`                            -                                                                -
-21     Soft Exponential       :ref:`Torch.soft_exponential`               :ref:`Keras.soft_exponential`                                    -
-22     Maxout                 :ref:`Torch.maxout`                         -                                                                -
-23     CELU                   -                                           :ref:`Keras.celu`                                                -
+4      E-Swish                :ref:`Torch.eswish`                         :ref:`Keras.eswish`                                              :ref:`TF_Keras.eswish`
+5      Swish                  :ref:`Torch.swish`                          :ref:`Keras.swish`                                               :ref:`TF_Keras.swish`
+6      ELiSH                  :ref:`Torch.elish`                          :ref:`Keras.elish`                                               :ref:`TF_Keras.elish`
+7      Hard ELiSH             :ref:`Torch.hard_elish`                     :ref:`Keras.hard_elish`                                          :ref:`TF_Keras.hard_elish`
+8      Mila                   :ref:`Torch.mila`                           :ref:`Keras.mila`                                                :ref:`TF_Keras.mila`
+9      SineReLU               :ref:`Torch.sine_relu`                      :ref:`Keras.sineReLU`                                            :ref:`TF_Keras.sine_relu`
+10     Flatten T-Swish        :ref:`Torch.fts`                            :ref:`Keras.fts`                                                 :ref:`TF_Keras.fts`
+11     SQNL                   :ref:`Torch.sqnl`                           :ref:`Keras.sqnl`                                                :ref:`TF_Keras.sqnl`
+12     Mish                   :ref:`Torch.mish`                           :ref:`Keras.mish`                                                :ref:`TF_Keras.mish`
+13     Beta Mish              :ref:`Torch.beta_mish`                      :ref:`Keras.beta_mish`                                           :ref:`TF_Keras.beta_mish`
+14     ISRU                   :ref:`Torch.isru`                           :ref:`Keras.isru`                                                :ref:`TF_Keras.isru`
+15     ISRLU                  :ref:`Torch.isrlu`                          :ref:`Keras.isrlu`                                               :ref:`TF_Keras.isrlu`
+16     Bent's Identity        :ref:`Torch.bent_id`                        :ref:`Keras.bent_id`                                             :ref:`TF_Keras.bent_id`
+17     Soft Clipping          :ref:`Torch.soft_clipping`                  :ref:`Keras.soft_clipping`                                       :ref:`TF_Keras.soft_clipping`
+18     SReLU                  :ref:`Torch.srelu`                          :ref:`Keras.srelu`                                               :ref:`TF_Keras.srelu`
+19     BReLU                  :ref:`Torch.brelu`                          -                                                                :ref:`TF_Keras.brelu`
+20     APL                    :ref:`Torch.apl`                            -                                                                :ref:`TF_Keras.apl`
+21     Soft Exponential       :ref:`Torch.soft_exponential`               :ref:`Keras.soft_exponential`                                    :ref:`TF_Keras.soft_exponential`
+22     Maxout                 :ref:`Torch.maxout`                         -                                                                :ref:`TF_Keras.maxout`
+23     CELU                   -                                           :ref:`Keras.celu`                                                :ref:`TF_Keras.celu`
 23     ReLU6                  -                                           :ref:`Keras.relu6`                                               -
-24     Hard Tanh              -                                           :ref:`Keras.hard_tanh`                                           -
-25     Log Sigmoid            -                                           :ref:`Keras.log_sigmoid`                                         -
-26     Tanh Shrink            -                                           :ref:`Keras.tanh_shrink`                                         -
-27     Hard Shrink            -                                           :ref:`Keras.hard_shrink`                                         -
-28     Soft Shrink            -                                           :ref:`Keras.soft_shrink`                                         -
-29     Softmin                -                                           :ref:`Keras.softmin`                                             -
-30     LogSoftmax             -                                           :ref:`Keras.log_softmax`                                         -
+24     Hard Tanh              -                                           :ref:`Keras.hard_tanh`                                           :ref:`TF_Keras.hard_tanh`
+25     Log Sigmoid            -                                           :ref:`Keras.log_sigmoid`                                         :ref:`TF_Keras.log_sigmoid`
+26     Tanh Shrink            -                                           :ref:`Keras.tanh_shrink`                                         :ref:`TF_Keras.tanh_shrink`
+27     Hard Shrink            -                                           :ref:`Keras.hard_shrink`                                         :ref:`TF_Keras.hard_shrink`
+28     Soft Shrink            -                                           :ref:`Keras.soft_shrink`                                         :ref:`TF_Keras.soft_shrink`
+29     Softmin                -                                           :ref:`Keras.softmin`                                             :ref:`TF_Keras.softmin`
+30     LogSoftmax             -                                           :ref:`Keras.log_softmax`                                         :ref:`TF_Keras.log_softmax`
 ====   ====================   =========================================   ==============================================================   ================
 
 Installation
@@ -544,6 +544,212 @@ Keras.SoftExponential
 Keras.SReLU
 --------------------------------
 .. automodule:: echoAI.Activation.Keras.custom_activations.SReLU
+  :members:
+
+Tensorflow Keras Extensions
+================================
+
+.. _TF_Keras.mish:
+
+Tensorflow_Keras.Mish
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.Mish
+  :members:
+
+.. _TF_Keras.weighted_tanh:
+
+Tensorflow_Keras.WeightedTanh
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.WeightedTanh
+  :members:
+
+.. _TF_Keras.swish:
+
+Tensorflow_Keras.Swish
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.Swish
+  :members:
+
+.. _TF_Keras.eswish:
+
+Tensorflow_Keras.ESwish
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.ESwish
+  :members:
+
+.. _TF_Keras.aria2:
+
+Tensorflow_Keras.Aria2
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.Aria2
+  :members:
+
+.. _TF_Keras.mila:
+
+Tensorflow_Keras.Mila
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.Mila
+  :members:
+
+.. _TF_Keras.isru:
+
+Tensorflow_Keras.ISRU
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.ISRU
+  :members:
+
+.. _TF_Keras.bent_id:
+
+Tensorflow_Keras.BentIdentity
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.BentIdentity
+  :members:
+
+.. _TF_Keras.soft_clipping:
+
+Tensorflow_Keras.SoftClipping
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.SoftClipping
+  :members:
+
+.. _TF_Keras.beta_mish:
+
+Tensorflow_Keras.BetaMish
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.BetaMish
+  :members:
+
+.. _TF_Keras.elish:
+
+Tensorflow_Keras.ELiSH
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.ELiSH
+  :members:
+
+.. _TF_Keras.hard_elish:
+
+Tensorflow_Keras.HardELiSH
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.HardELiSH
+  :members:
+
+.. _TF_Keras.sine_relu:
+
+Tensorflow_Keras.SineReLU
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.SineReLU
+  :members:
+
+.. _TF_Keras.fts:
+
+Tensorflow_Keras.FlattenTSwish
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.FlattenTSwish
+  :members:
+
+.. _TF_Keras.sqnl:
+
+Tensorflow_Keras.SQNL
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.SQNL
+  :members:
+
+.. _TF_Keras.isrlu:
+
+Tensorflow_Keras.ISRLU
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.ISRLU
+  :members:
+
+.. _TF_Keras.soft_exponential:
+
+Tensorflow_Keras.SoftExponential
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.SoftExponential
+  :members:
+
+.. _TF_Keras.celu:
+
+Tensorflow_Keras.CELU
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.CELU
+  :members:
+
+.. _TF_Keras.hard_tanh:
+
+Tensorflow_Keras.HardTanh
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.HardTanh
+  :members:
+
+.. _TF_Keras.log_sigmoid:
+
+Tensorflow_Keras.LogSigmoid
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.LogSigmoid
+  :members:
+
+.. _TF_Keras.tanh_shrink:
+
+Tensorflow_Keras.TanhShrink
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.TanhShrink
+  :members:
+
+.. _TF_Keras.hard_shrink:
+
+Tensorflow_Keras.HardShrink
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.HardShrink
+  :members:
+
+.. _TF_Keras.soft_shrink:
+
+Tensorflow_Keras.SoftShrink
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.SoftShrink
+  :members:
+
+.. _TF_Keras.softmin:
+
+Tensorflow_Keras.SoftMin
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.SoftMin
+  :members:
+
+.. _TF_Keras.log_softmax:
+
+Tensorflow_Keras.LogSoftMax
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.LogSoftMax
+  :members:
+
+.. _TF_Keras.maxout:
+
+Tensorflow_Keras.MaxOut
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.MaxOut
+  :members:
+
+.. _TF_Keras.srelu:
+
+Tensorflow_Keras.SReLU
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.SReLU
+  :members:
+
+.. _TF_Keras.brelu:
+
+Tensorflow_Keras.BReLU
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.BReLU
+  :members:
+
+.. _TF_Keras.apl:
+
+Tensorflow_Keras.APL
+--------------------------------
+.. automodule:: echoAI.Activation.TF_Keras.custom_activation.APL
   :members:
 
 Indices and tables

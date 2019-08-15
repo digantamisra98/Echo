@@ -39,16 +39,17 @@
 <div class="contents local topic" id="table-of-contents">
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#about" id="id124">About</a></li>
-<li><a class="reference internal" href="#installation" id="id125">Installation</a></li>
-<li><a class="reference internal" href="#examples" id="id126">Examples</a></li>
-<li><a class="reference internal" href="#pytorch-extensions" id="id127">PyTorch Extensions</a></li>
-<li><a class="reference internal" href="#keras-extensions" id="id128">Keras Extensions</a></li>
-<li><a class="reference internal" href="#indices-and-tables" id="id129">Indices and tables</a></li>
+<li><a class="reference internal" href="#about" id="id140">About</a></li>
+<li><a class="reference internal" href="#installation" id="id141">Installation</a></li>
+<li><a class="reference internal" href="#examples" id="id142">Examples</a></li>
+<li><a class="reference internal" href="#pytorch-extensions" id="id143">PyTorch Extensions</a></li>
+<li><a class="reference internal" href="#keras-extensions" id="id144">Keras Extensions</a></li>
+<li><a class="reference internal" href="#tensorflow-keras-extensions" id="id145">Tensorflow Keras Extensions</a></li>
+<li><a class="reference internal" href="#indices-and-tables" id="id146">Indices and tables</a></li>
 </ul>
 </div>
 <div class="section" id="about">
-<h2><a class="toc-backref" href="#id124">About</a><a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id140">About</a><a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
 <p><strong>EchoAI Package</strong> is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as <a class="reference external" href="https://pytorch.org/">PyTorch</a>, <a class="reference external" href="https://keras.io/">Keras</a> and
 <a class="reference external" href="https://www.tensorflow.org/">TensorFlow</a>.</p>
 <div class="section" id="implemented-activation-functions">
@@ -57,10 +58,10 @@
 <table border="1" class="docutils">
 <colgroup>
 <col width="3%" />
-<col width="14%" />
-<col width="29%" />
-<col width="43%" />
-<col width="11%" />
+<col width="13%" />
+<col width="26%" />
+<col width="39%" />
+<col width="20%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">#</th>
@@ -75,19 +76,13 @@
 <td>Weighted Tanh</td>
 <td><a class="reference internal" href="#torch-weightedtanh"><span class="std std-ref">Torch.WeightedTanh</span></a></td>
 <td><a class="reference internal" href="#keras-weighted-tanh"><span class="std std-ref">Keras.WeightedTanh</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-weighted-tanh"><span class="std std-ref">Tensorflow_Keras.WeightedTanh</span></a></td>
 </tr>
 <tr class="row-odd"><td>2</td>
 <td>Aria2</td>
 <td><a class="reference internal" href="#torch-aria2"><span class="std std-ref">Torch.aria2</span></a></td>
 <td><a class="reference internal" href="#keras-aria2"><span class="std std-ref">Keras.Aria2</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-aria2"><span class="std std-ref">Tensorflow_Keras.Aria2</span></a></td>
 </tr>
 <tr class="row-even"><td>3</td>
 <td>SiLU</td>
@@ -105,136 +100,91 @@
 <td>E-Swish</td>
 <td><a class="reference internal" href="#torch-eswish"><span class="std std-ref">Torch.Eswish</span></a></td>
 <td><a class="reference internal" href="#keras-eswish"><span class="std std-ref">Keras.Eswish</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-eswish"><span class="std std-ref">Tensorflow_Keras.ESwish</span></a></td>
 </tr>
 <tr class="row-even"><td>5</td>
 <td>Swish</td>
 <td><a class="reference internal" href="#torch-swish"><span class="std std-ref">Torch.Swish</span></a></td>
 <td><a class="reference internal" href="#keras-swish"><span class="std std-ref">Keras.Swish</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-swish"><span class="std std-ref">Tensorflow_Keras.Swish</span></a></td>
 </tr>
 <tr class="row-odd"><td>6</td>
 <td>ELiSH</td>
 <td><a class="reference internal" href="#torch-elish"><span class="std std-ref">Torch.Elish</span></a></td>
 <td><a class="reference internal" href="#keras-elish"><span class="std std-ref">Keras.Elish</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-elish"><span class="std std-ref">Tensorflow_Keras.ELiSH</span></a></td>
 </tr>
 <tr class="row-even"><td>7</td>
 <td>Hard ELiSH</td>
 <td><a class="reference internal" href="#torch-hard-elish"><span class="std std-ref">Torch.HardElish</span></a></td>
 <td><a class="reference internal" href="#keras-hard-elish"><span class="std std-ref">Keras.HardElish</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-hard-elish"><span class="std std-ref">Tensorflow_Keras.HardELiSH</span></a></td>
 </tr>
 <tr class="row-odd"><td>8</td>
 <td>Mila</td>
 <td><a class="reference internal" href="#torch-mila"><span class="std std-ref">Torch.Mila</span></a></td>
 <td><a class="reference internal" href="#keras-mila"><span class="std std-ref">Keras.Mila</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-mila"><span class="std std-ref">Tensorflow_Keras.Mila</span></a></td>
 </tr>
 <tr class="row-even"><td>9</td>
 <td>SineReLU</td>
 <td><a class="reference internal" href="#torch-sine-relu"><span class="std std-ref">Torch.SineReLU</span></a></td>
 <td><a class="reference internal" href="#keras-sinerelu"><span class="std std-ref">Keras.SineReLU</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-sine-relu"><span class="std std-ref">Tensorflow_Keras.SineReLU</span></a></td>
 </tr>
 <tr class="row-odd"><td>10</td>
 <td>Flatten T-Swish</td>
 <td><a class="reference internal" href="#torch-fts"><span class="std std-ref">Torch.FTS</span></a></td>
 <td><a class="reference internal" href="#keras-fts"><span class="std std-ref">Keras.FTS</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-fts"><span class="std std-ref">Tensorflow_Keras.FlattenTSwish</span></a></td>
 </tr>
 <tr class="row-even"><td>11</td>
 <td>SQNL</td>
 <td><a class="reference internal" href="#torch-sqnl"><span class="std std-ref">Torch.SQNL</span></a></td>
 <td><a class="reference internal" href="#keras-sqnl"><span class="std std-ref">Keras.SQNL</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-sqnl"><span class="std std-ref">Tensorflow_Keras.SQNL</span></a></td>
 </tr>
 <tr class="row-odd"><td>12</td>
 <td>Mish</td>
 <td><a class="reference internal" href="#torch-mish"><span class="std std-ref">Torch.Mish</span></a></td>
 <td><a class="reference internal" href="#keras-mish"><span class="std std-ref">Keras.Mish</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-mish"><span class="std std-ref">Tensorflow_Keras.Mish</span></a></td>
 </tr>
 <tr class="row-even"><td>13</td>
 <td>Beta Mish</td>
 <td><a class="reference internal" href="#torch-beta-mish"><span class="std std-ref">Torch.BetaMish</span></a></td>
 <td><a class="reference internal" href="#keras-beta-mish"><span class="std std-ref">Keras.BetaMish</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-beta-mish"><span class="std std-ref">Tensorflow_Keras.BetaMish</span></a></td>
 </tr>
 <tr class="row-odd"><td>14</td>
 <td>ISRU</td>
 <td><a class="reference internal" href="#torch-isru"><span class="std std-ref">Torch.ISRU</span></a></td>
 <td><a class="reference internal" href="#keras-isru"><span class="std std-ref">Keras.ISRU</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-isru"><span class="std std-ref">Tensorflow_Keras.ISRU</span></a></td>
 </tr>
 <tr class="row-even"><td>15</td>
 <td>ISRLU</td>
 <td><a class="reference internal" href="#torch-isrlu"><span class="std std-ref">Torch.ISRLU</span></a></td>
 <td><a class="reference internal" href="#keras-isrlu"><span class="std std-ref">Keras.ISRLU</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-isrlu"><span class="std std-ref">Tensorflow_Keras.ISRLU</span></a></td>
 </tr>
 <tr class="row-odd"><td>16</td>
 <td>Bent’s Identity</td>
 <td><a class="reference internal" href="#torch-bent-id"><span class="std std-ref">Torch.BentID</span></a></td>
 <td><a class="reference internal" href="#keras-bent-id"><span class="std std-ref">Keras.BentID</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-bent-id"><span class="std std-ref">Tensorflow_Keras.BentIdentity</span></a></td>
 </tr>
 <tr class="row-even"><td>17</td>
 <td>Soft Clipping</td>
 <td><a class="reference internal" href="#torch-soft-clipping"><span class="std std-ref">Torch.SoftClipping</span></a></td>
 <td><a class="reference internal" href="#keras-soft-clipping"><span class="std std-ref">Keras.SoftClipping</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-soft-clipping"><span class="std std-ref">Tensorflow_Keras.SoftClipping</span></a></td>
 </tr>
 <tr class="row-odd"><td>18</td>
 <td>SReLU</td>
 <td><a class="reference internal" href="#torch-srelu"><span class="std std-ref">Torch.SReLU</span></a></td>
 <td><a class="reference internal" href="#keras-srelu"><span class="std std-ref">Keras.SReLU</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-srelu"><span class="std std-ref">Tensorflow_Keras.SReLU</span></a></td>
 </tr>
 <tr class="row-even"><td>19</td>
 <td>BReLU</td>
@@ -243,10 +193,7 @@
 <li></li>
 </ul>
 </td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-brelu"><span class="std std-ref">Tensorflow_Keras.BReLU</span></a></td>
 </tr>
 <tr class="row-odd"><td>20</td>
 <td>APL</td>
@@ -255,19 +202,13 @@
 <li></li>
 </ul>
 </td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-apl"><span class="std std-ref">Tensorflow_Keras.APL</span></a></td>
 </tr>
 <tr class="row-even"><td>21</td>
 <td>Soft Exponential</td>
 <td><a class="reference internal" href="#torch-soft-exponential"><span class="std std-ref">Torch.SoftExponential</span></a></td>
 <td><a class="reference internal" href="#keras-soft-exponential"><span class="std std-ref">Keras.SoftExponential</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-soft-exponential"><span class="std std-ref">Tensorflow_Keras.SoftExponential</span></a></td>
 </tr>
 <tr class="row-odd"><td>22</td>
 <td>Maxout</td>
@@ -276,10 +217,7 @@
 <li></li>
 </ul>
 </td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-maxout"><span class="std std-ref">Tensorflow_Keras.MaxOut</span></a></td>
 </tr>
 <tr class="row-even"><td>23</td>
 <td>CELU</td>
@@ -288,10 +226,7 @@
 </ul>
 </td>
 <td><a class="reference internal" href="#keras-celu"><span class="std std-ref">Keras.Celu</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-celu"><span class="std std-ref">Tensorflow_Keras.CELU</span></a></td>
 </tr>
 <tr class="row-odd"><td>23</td>
 <td>ReLU6</td>
@@ -312,10 +247,7 @@
 </ul>
 </td>
 <td><a class="reference internal" href="#keras-hard-tanh"><span class="std std-ref">Keras.HardTanh</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-hard-tanh"><span class="std std-ref">Tensorflow_Keras.HardTanh</span></a></td>
 </tr>
 <tr class="row-odd"><td>25</td>
 <td>Log Sigmoid</td>
@@ -324,10 +256,7 @@
 </ul>
 </td>
 <td><a class="reference internal" href="#keras-log-sigmoid"><span class="std std-ref">Keras.LogSigmoid</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-log-sigmoid"><span class="std std-ref">Tensorflow_Keras.LogSigmoid</span></a></td>
 </tr>
 <tr class="row-even"><td>26</td>
 <td>Tanh Shrink</td>
@@ -336,10 +265,7 @@
 </ul>
 </td>
 <td><a class="reference internal" href="#keras-tanh-shrink"><span class="std std-ref">Keras.TanhShrink</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-tanh-shrink"><span class="std std-ref">Tensorflow_Keras.TanhShrink</span></a></td>
 </tr>
 <tr class="row-odd"><td>27</td>
 <td>Hard Shrink</td>
@@ -348,10 +274,7 @@
 </ul>
 </td>
 <td><a class="reference internal" href="#keras-hard-shrink"><span class="std std-ref">Keras.HardShrink</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-hard-shrink"><span class="std std-ref">Tensorflow_Keras.HardShrink</span></a></td>
 </tr>
 <tr class="row-even"><td>28</td>
 <td>Soft Shrink</td>
@@ -360,10 +283,7 @@
 </ul>
 </td>
 <td><a class="reference internal" href="#keras-soft-shrink"><span class="std std-ref">Keras.SoftShrink</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-soft-shrink"><span class="std std-ref">Tensorflow_Keras.SoftShrink</span></a></td>
 </tr>
 <tr class="row-odd"><td>29</td>
 <td>Softmin</td>
@@ -372,10 +292,7 @@
 </ul>
 </td>
 <td><a class="reference internal" href="#keras-softmin"><span class="std std-ref">Keras.SoftMin</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-softmin"><span class="std std-ref">Tensorflow_Keras.SoftMin</span></a></td>
 </tr>
 <tr class="row-even"><td>30</td>
 <td>LogSoftmax</td>
@@ -384,17 +301,14 @@
 </ul>
 </td>
 <td><a class="reference internal" href="#keras-log-softmax"><span class="std std-ref">Keras.LogSoftmax</span></a></td>
-<td><ul class="first last simple">
-<li></li>
-</ul>
-</td>
+<td><a class="reference internal" href="#tf-keras-log-softmax"><span class="std std-ref">Tensorflow_Keras.LogSoftMax</span></a></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="section" id="installation">
-<h2><a class="toc-backref" href="#id125">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id141">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>To install EchoAI package from source follow the instructions below:</p>
 <ol class="arabic simple">
 <li>Clone or download <a class="reference external" href="https://github.com/digantamisra98/Echo">GitHub repository</a>.</li>
@@ -415,7 +329,7 @@
 </div>
 </div>
 <div class="section" id="examples">
-<h2><a class="toc-backref" href="#id126">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id142">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="torch-activation-functions">
 <h3>Torch Activation Functions<a class="headerlink" href="#torch-activation-functions" title="Permalink to this headline">¶</a></h3>
 <p>The following code block contains an example of usage of a PyTorch activation function
@@ -523,7 +437,7 @@ from Echo package:</p>
 </div>
 </div>
 <div class="section" id="pytorch-extensions">
-<h2><a class="toc-backref" href="#id127">PyTorch Extensions</a><a class="headerlink" href="#pytorch-extensions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id143">PyTorch Extensions</a><a class="headerlink" href="#pytorch-extensions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="torch-aria2">
 <span id="id1"></span><h3>Torch.aria2<a class="headerlink" href="#torch-aria2" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Torch.aria2"></span><p>Applies the Aria-2 function element-wise:</p>
@@ -1875,7 +1789,7 @@ dimensions</li>
 </div>
 </div>
 <div class="section" id="keras-extensions">
-<h2><a class="toc-backref" href="#id128">Keras Extensions</a><a class="headerlink" href="#keras-extensions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id144">Keras Extensions</a><a class="headerlink" href="#keras-extensions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="keras-mish">
 <span id="id109"></span><h3>Keras.Mish<a class="headerlink" href="#keras-mish" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="module-echoAI.Activation.Keras.custom_activations.Mish"></span><p>Mish Activation Function.</p>
@@ -2782,8 +2696,842 @@ when using this layer as the first layer in a model.</p>
 </dl>
 </div>
 </div>
+<div class="section" id="tensorflow-keras-extensions">
+<h2><a class="toc-backref" href="#id145">Tensorflow Keras Extensions</a><a class="headerlink" href="#tensorflow-keras-extensions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.Mish">
+<span id="tensorflow-keras-mish"></span><span id="tf-keras-mish"></span><h3>Tensorflow_Keras.Mish<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.Mish" title="Permalink to this headline">¶</a></h3>
+<p>Mish Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/mish.png" src="_images/mish.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>See Mish Repository:</dt>
+<dd><a class="reference external" href="https://github.com/digantamisra98/Mish">https://github.com/digantamisra98/Mish</a></dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.WeightedTanh">
+<span id="tensorflow-keras-weightedtanh"></span><span id="tf-keras-weighted-tanh"></span><h3>Tensorflow_Keras.WeightedTanh<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.WeightedTanh" title="Permalink to this headline">¶</a></h3>
+<p>Weighted TanH Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[Weighted TanH(x, weight) = tanh(x * weight)\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/weighted_tanh.png" src="_images/weighted_tanh.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>weight: hyperparameter (default=1.0)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.Swish">
+<span id="tensorflow-keras-swish"></span><span id="tf-keras-swish"></span><h3>Tensorflow_Keras.Swish<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.Swish" title="Permalink to this headline">¶</a></h3>
+<p>Swish Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[Swish(x, \beta) = x*sigmoid(\beta*x) = \frac{x}{(1+e^{-\beta*x})}\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/swish.png" src="_images/swish.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>a constant or a trainable parameter (default=1; which is equivalent to  Sigmoid-weighted Linear Unit (SiL))</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>See Swish paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.ESwish">
+<span id="tensorflow-keras-eswish"></span><span id="tf-keras-eswish"></span><h3>Tensorflow_Keras.ESwish<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.ESwish" title="Permalink to this headline">¶</a></h3>
+<p>E-Swish Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[ESwish(x, \beta) = \beta*x*sigmoid(x)\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/eswish.png" src="_images/eswish.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>beta: a constant parameter (default value = 1.375)</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>See related paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/abs/1801.07145">https://arxiv.org/abs/1801.07145</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.Aria2">
+<span id="tensorflow-keras-aria2"></span><span id="tf-keras-aria2"></span><h3>Tensorflow_Keras.Aria2<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.Aria2" title="Permalink to this headline">¶</a></h3>
+<p>Aria-2 Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[Aria2(x, \alpha, \beta) = (1+e^{-\beta*x})^{-\alpha}\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/aria2.png" src="_images/aria2.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>alpha: hyper-parameter which has a two-fold effect; it reduces the curvature in 3rd quadrant as well as increases the curvature in first quadrant while lowering the value of activation (default = 1)</li>
+<li>beta: the exponential growth rate (default = 0.5)</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>See Aria paper:</dt>
+<dd><a class="reference external" href="https://arxiv.org/abs/1805.08878">https://arxiv.org/abs/1805.08878</a></dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.Mila">
+<span id="tensorflow-keras-mila"></span><span id="tf-keras-mila"></span><h3>Tensorflow_Keras.Mila<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.Mila" title="Permalink to this headline">¶</a></h3>
+<p>Mila Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[Mila(x) = x * tanh(ln(1 + e^{\beta + x})) = x * tanh(softplus(\beta + x)\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/mila.png" src="_images/mila.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>beta: scale to control the concavity of the global minima of the function (default = -0.25)</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://github.com/digantamisra98/Mila">https://github.com/digantamisra98/Mila</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.ISRU">
+<span id="tensorflow-keras-isru"></span><span id="tf-keras-isru"></span><h3>Tensorflow_Keras.ISRU<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.ISRU" title="Permalink to this headline">¶</a></h3>
+<p>ISRU (Inverse Square Root Unit) Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[ISRU(x) = \frac{x}{\sqrt{1 + \alpha * x^2}}\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/isru.png" src="_images/isru.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>alpha: A constant (default = 1.0)</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>ISRU paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/pdf/1710.09967.pdf">https://arxiv.org/pdf/1710.09967.pdf</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.BentIdentity">
+<span id="tensorflow-keras-bentidentity"></span><span id="tf-keras-bent-id"></span><h3>Tensorflow_Keras.BentIdentity<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.BentIdentity" title="Permalink to this headline">¶</a></h3>
+<p>Bent’s Identity Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[bentId(x) = x + \frac{\sqrt{x^{2}+1}-1}{2}\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/bent_id.png" src="_images/bent_id.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.SoftClipping">
+<span id="tensorflow-keras-softclipping"></span><span id="tf-keras-soft-clipping"></span><h3>Tensorflow_Keras.SoftClipping<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.SoftClipping" title="Permalink to this headline">¶</a></h3>
+<p>Soft Clipping Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[SC(x) = 1 / \alpha * log(\frac{1 + e^{\alpha * x}}{1 + e^{\alpha * (x-1)}})\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/sc.png" src="_images/sc.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>alpha: hyper-parameter, which determines how close to linear the central region is and how sharply the linear region turns to the asymptotic values</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>See SC paper:</dt>
+<dd><a class="reference external" href="https://arxiv.org/pdf/1810.11509.pdf">https://arxiv.org/pdf/1810.11509.pdf</a></dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.BetaMish">
+<span id="tensorflow-keras-betamish"></span><span id="tf-keras-beta-mish"></span><h3>Tensorflow_Keras.BetaMish<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.BetaMish" title="Permalink to this headline">¶</a></h3>
+<p>β mish activation function.</p>
+<div class="math notranslate nohighlight">
+\[\beta mish(x) = x * tanh(ln((1 + e^{x})^{\beta}))\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/beta_mish.png" src="_images/beta_mish.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>beta: A constant or a trainable parameter (default = 1.5)</li>
+</ul>
+</div></blockquote>
+<p>References</p>
+<blockquote>
+<div><ul class="simple">
+<li>β-Mish: An uni-parametric adaptive activation function derived from Mish:</li>
+</ul>
+<p><a class="reference external" href="https://github.com/digantamisra98/Beta-Mish">https://github.com/digantamisra98/Beta-Mish</a>)</p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.ELiSH">
+<span id="tensorflow-keras-elish"></span><span id="tf-keras-elish"></span><h3>Tensorflow_Keras.ELiSH<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.ELiSH" title="Permalink to this headline">¶</a></h3>
+<p>ELiSH (Exponential Linear Sigmoid SquasHing) Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}ELiSH(x) = \left\{\begin{matrix} x / (1+e^{-x}), x \geq 0 \\ (e^{x} - 1) / (1 + e^{-x}), x &lt; 0 \end{matrix}\right.\end{split}\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/elish.png" src="_images/elish.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Related paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.HardELiSH">
+<span id="tensorflow-keras-hardelish"></span><span id="tf-keras-hard-elish"></span><h3>Tensorflow_Keras.HardELiSH<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.HardELiSH" title="Permalink to this headline">¶</a></h3>
+<p>Hard ELiSH Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}HardELiSH(x) = \left\{\begin{matrix} x \times max(0, min(1, (x + 1) / 2)), x \geq 0 \\ (e^{x} - 1)\times max(0, min(1, (x + 1) / 2)), x &lt; 0 \end{matrix}\right.\end{split}\]</div>
+<p>Plot:
+.. figure::  _static/hard_elish.png</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">align:</th><td class="field-body">center</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Related paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/pdf/1710.05941.pdf">https://arxiv.org/pdf/1710.05941.pdf</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.SineReLU">
+<span id="tensorflow-keras-sinerelu"></span><span id="tf-keras-sine-relu"></span><h3>Tensorflow_Keras.SineReLU<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.SineReLU" title="Permalink to this headline">¶</a></h3>
+<p>Sine ReLU Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}SineReLU(x, \epsilon) = \left\{\begin{matrix} x , x &gt; 0 \\ \epsilon * (sin(x)-cos(x)), x \leq 0 \end{matrix}\right.\end{split}\]</div>
+<p>Plot:
+.. figure::  _static/sine_relu.png</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">align:</th><td class="field-body">center</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>See related Medium article:</li>
+</ul>
+<p><a class="reference external" href="https://medium.com/&#64;wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d">https://medium.com/&#64;wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d</a></p>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>epsilon: hyperparameter (default=0.01)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.FlattenTSwish">
+<span id="tensorflow-keras-flattentswish"></span><span id="tf-keras-fts"></span><h3>Tensorflow_Keras.FlattenTSwish<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.FlattenTSwish" title="Permalink to this headline">¶</a></h3>
+<p>FTS (Flatten T-Swish) Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}FTS(x) = \left\{\begin{matrix} \frac{x}{1 + e^{-x}} , x \geq  0 \\ 0, x &lt; 0 \end{matrix}\right.\end{split}\]</div>
+<p>Plot:
+.. figure::  _static/fts.png</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">align:</th><td class="field-body">center</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Flatten T-Swish paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/pdf/1812.06247.pdf">https://arxiv.org/pdf/1812.06247.pdf</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.SQNL">
+<span id="tensorflow-keras-sqnl"></span><span id="tf-keras-sqnl"></span><h3>Tensorflow_Keras.SQNL<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.SQNL" title="Permalink to this headline">¶</a></h3>
+<p>SQNL Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}SQNL(x) = \left\{\begin{matrix} 1, x &gt; 2 \\ x - \frac{x^2}{4}, 0 \leq x \leq 2 \\  x + \frac{x^2}{4}, -2 \leq x &lt; 0 \\ -1, x &lt; -2 \end{matrix}\right.\end{split}\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/sqnl.png" src="_images/sqnl.png" />
+</div>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="last simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</dd>
+</dl>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>SQNL Paper:</li>
+</ul>
+<p><a class="reference external" href="https://ieeexplore.ieee.org/document/8489043">https://ieeexplore.ieee.org/document/8489043</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.ISRLU">
+<span id="tensorflow-keras-isrlu"></span><span id="tf-keras-isrlu"></span><h3>Tensorflow_Keras.ISRLU<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.ISRLU" title="Permalink to this headline">¶</a></h3>
+<p>ISRLU Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}ISRLU(x)=\left\{\begin{matrix} x, x\geq 0 \\  x * (\frac{1}{\sqrt{1 + \alpha*x^2}}), x &lt;0 \end{matrix}\right.\end{split}\]</div>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/isrlu.png" src="_images/isrlu.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>alpha: hyperparameter α controls the value to which an ISRLU saturates for negative inputs (default = 1)</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>ISRLU paper: <a class="reference external" href="https://arxiv.org/pdf/1710.09967.pdf">https://arxiv.org/pdf/1710.09967.pdf</a></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.SoftExponential">
+<span id="tensorflow-keras-softexponential"></span><span id="tf-keras-soft-exponential"></span><h3>Tensorflow_Keras.SoftExponential<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.SoftExponential" title="Permalink to this headline">¶</a></h3>
+<p>Soft-Exponential Activation Function with 1 trainable parameter..</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}SoftExponential(x, \alpha) = \left\{\begin{matrix} - \frac{log(1 - \alpha(x + \alpha))}{\alpha}, \alpha &lt; 0\\  x, \alpha = 0\\  \frac{e^{\alpha * x} - 1}{\alpha} + \alpha, \alpha &gt; 0 \end{matrix}\right.\end{split}\]</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li>alpha - trainable parameter</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>See Soft-Exponential paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/pdf/1602.01321.pdf">https://arxiv.org/pdf/1602.01321.pdf</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.CELU">
+<span id="tensorflow-keras-celu"></span><span id="tf-keras-celu"></span><h3>Tensorflow_Keras.CELU<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.CELU" title="Permalink to this headline">¶</a></h3>
+<p>CELU Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[CELU(x, \alpha) = max(0,x) + min(0,\alpha * (exp(x/ \alpha)-1))\]</div>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="last simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</dd>
+</dl>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>alpha: the α value for the CELU formulation (default=1.0)</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>See CELU paper:</dt>
+<dd><a class="reference external" href="https://arxiv.org/abs/1704.07483">https://arxiv.org/abs/1704.07483</a></dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.HardTanh">
+<span id="tensorflow-keras-hardtanh"></span><span id="tf-keras-hard-tanh"></span><h3>Tensorflow_Keras.HardTanh<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.HardTanh" title="Permalink to this headline">¶</a></h3>
+<p>Hard-TanH Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Hard-TanH(x) = \left\{\begin{matrix} 1, x &gt; 1 \\   x , -1 \leq x \leq 1 \\ -1, x &lt;- 1 \end{matrix}\right.\end{split}\]</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.LogSigmoid">
+<span id="tensorflow-keras-logsigmoid"></span><span id="tf-keras-log-sigmoid"></span><h3>Tensorflow_Keras.LogSigmoid<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.LogSigmoid" title="Permalink to this headline">¶</a></h3>
+<p>Log-Sigmoid Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[Log-Sigmoid(x) = log (\frac{1}{1+e^{-x}})\]</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.TanhShrink">
+<span id="tensorflow-keras-tanhshrink"></span><span id="tf-keras-tanh-shrink"></span><h3>Tensorflow_Keras.TanhShrink<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.TanhShrink" title="Permalink to this headline">¶</a></h3>
+<p>TanH-Shrink Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[TanH-Shrink(x) = x - tanh(x)\]</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.HardShrink">
+<span id="tensorflow-keras-hardshrink"></span><span id="tf-keras-hard-shrink"></span><h3>Tensorflow_Keras.HardShrink<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.HardShrink" title="Permalink to this headline">¶</a></h3>
+<p>Hard-Shrink Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Hard-Shrink(x) = \left\{\begin{matrix} x, x &gt; \lambda \\   0 , - \lambda \leq x \leq \lambda \\ x, x &lt;- \lambda \end{matrix}\right.\end{split}\]</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>lambda: the λ value for the Hardshrink formulation (default=0.5)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.SoftShrink">
+<span id="tensorflow-keras-softshrink"></span><span id="tf-keras-soft-shrink"></span><h3>Tensorflow_Keras.SoftShrink<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.SoftShrink" title="Permalink to this headline">¶</a></h3>
+<p>Soft-Shrink Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Soft-Shrink(x) = \left\{\begin{matrix} x - \lambda , x &gt; \lambda \\   0 , - \lambda \leq x \leq \lambda \\ x + \lambda , x &lt;- \lambda \end{matrix}\right.\end{split}\]</div>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="last simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</dd>
+</dl>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>lambda: the λ value for the Softshrink formulation (default=0.5)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.SoftMin">
+<span id="tensorflow-keras-softmin"></span><span id="tf-keras-softmin"></span><h3>Tensorflow_Keras.SoftMin<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.SoftMin" title="Permalink to this headline">¶</a></h3>
+<p>SoftMin Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[SoftMin(x) = Softmax(-x)\]</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.LogSoftMax">
+<span id="tensorflow-keras-logsoftmax"></span><span id="tf-keras-log-softmax"></span><h3>Tensorflow_Keras.LogSoftMax<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.LogSoftMax" title="Permalink to this headline">¶</a></h3>
+<p>Log-SoftMax Activation Function.</p>
+<div class="math notranslate nohighlight">
+\[Log-SoftMax(x) = log(Softmax(-x))\]</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: Arbitrary. Use the keyword argument <cite>input_shape</cite></li>
+</ul>
+<p>(tuple of integers, does not include the samples axis)
+when using this layer as the first layer in a model.</p>
+<ul class="simple">
+<li>Output: Same shape as the input.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.MaxOut">
+<span id="tensorflow-keras-maxout"></span><span id="tf-keras-maxout"></span><h3>Tensorflow_Keras.MaxOut<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.MaxOut" title="Permalink to this headline">¶</a></h3>
+<p>Implementation of Maxout:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[maxout(\vec{x}) = max_i(x_i)\]</div>
+</div></blockquote>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: (N, <a href="#id124"><span class="problematic" id="id125">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id126"><span class="problematic" id="id127">*</span></a>), same shape as the input</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>See Maxout paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/pdf/1302.4389.pdf">https://arxiv.org/pdf/1302.4389.pdf</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.SReLU">
+<span id="tensorflow-keras-srelu"></span><span id="tf-keras-srelu"></span><h3>Tensorflow_Keras.SReLU<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.SReLU" title="Permalink to this headline">¶</a></h3>
+<p>SReLU (S-shaped Rectified Linear Activation Unit): a combination of three linear functions, which perform mapping R → R with the following formulation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}h(x_i) = \left\{\begin{matrix} t_i^r + a_i^r(x_i - t_i^r), x_i \geq t_i^r \\  x_i, t_i^r &gt; x_i &gt; t_i^l\\  t_i^l + a_i^l(x_i - t_i^l), x_i \leq  t_i^l \\ \end{matrix}\right.\end{split}\]</div>
+<dl class="docutils">
+<dt>Shape:</dt>
+<dd><ul class="first last simple">
+<li>Input: (N, <a href="#id128"><span class="problematic" id="id129">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id130"><span class="problematic" id="id131">*</span></a>), same shape as the input</li>
+</ul>
+</dd>
+</dl>
+<p>Parameters:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\{t_i^r, a_i^r, t_i^l, a_i^l\}\]</div>
+</div></blockquote>
+<p>4 trainable parameters, which model an individual SReLU activation unit. The subscript i indicates that we allow SReLU to vary in different channels. Parameters can be initialized manually or randomly.</p>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>See SReLU paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/pdf/1512.07030.pdf">https://arxiv.org/pdf/1512.07030.pdf</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.BReLU">
+<span id="tensorflow-keras-brelu"></span><span id="tf-keras-brelu"></span><h3>Tensorflow_Keras.BReLU<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.BReLU" title="Permalink to this headline">¶</a></h3>
+<p>Implementation of BReLU activation function:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}BReLU(x_i) = \left\{\begin{matrix} f(x_i), i \mod 2 = 0\\  - f(-x_i), i \mod 2 \neq  0 \end{matrix}\right.\end{split}\]</div>
+</div></blockquote>
+<p>Plot:</p>
+<div class="figure align-center">
+<img alt="_images/brelu.png" src="_images/brelu.png" />
+</div>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: (N, <a href="#id132"><span class="problematic" id="id133">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id134"><span class="problematic" id="id135">*</span></a>), same shape as the input</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>See BReLU paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/pdf/1709.04054.pdf">https://arxiv.org/pdf/1709.04054.pdf</a></p>
+</div></blockquote>
+</div>
+<div class="section" id="module-echoAI.Activation.TF_Keras.custom_activation.APL">
+<span id="tensorflow-keras-apl"></span><span id="tf-keras-apl"></span><h3>Tensorflow_Keras.APL<a class="headerlink" href="#module-echoAI.Activation.TF_Keras.custom_activation.APL" title="Permalink to this headline">¶</a></h3>
+<p>Implementation of APL (ADAPTIVE PIECEWISE LINEAR UNITS) activation function:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[APL(x_i) = max(0,x) + \sum_{s=1}^{S}{a_i^s * max(0, -x + b_i^s)}\]</div>
+</div></blockquote>
+<p>Shape:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Input: (N, <a href="#id136"><span class="problematic" id="id137">*</span></a>) where * means, any number of additional
+dimensions</li>
+<li>Output: (N, <a href="#id138"><span class="problematic" id="id139">*</span></a>), same shape as the input</li>
+</ul>
+</div></blockquote>
+<p>Arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>a: variables control the slopes of the linear segments</li>
+<li>b: variables determine the locations of the hinges</li>
+</ul>
+</div></blockquote>
+<p>References:</p>
+<blockquote>
+<div><ul class="simple">
+<li>See APL paper:</li>
+</ul>
+<p><a class="reference external" href="https://arxiv.org/pdf/1412.6830.pdf">https://arxiv.org/pdf/1412.6830.pdf</a></p>
+</div></blockquote>
+</div>
+</div>
 <div class="section" id="indices-and-tables">
-<h2><a class="toc-backref" href="#id129">Indices and tables</a><a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id146">Indices and tables</a><a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>

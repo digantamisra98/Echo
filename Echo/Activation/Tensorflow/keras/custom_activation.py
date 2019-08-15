@@ -411,3 +411,12 @@ class APL(Layer):
         }
         base_config = super(APL, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
+
+
+class ReLU6(Layer):
+
+    def __init__(self):
+        super(ReLU6, self).__init__()
+    
+    def call(inputs):
+        return tf.math.minimum(tf.math.maximum(tf.cast(0, 'float32'), inputs), 6)

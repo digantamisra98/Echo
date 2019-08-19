@@ -92,7 +92,8 @@ To install __echoAI__ package from PyPI run the following command:
 ### Code Examples:
 
 Sample scripts are provided in [Smoke_tests](/Smoke_tests) folder.
-You can use activation functions from echoAI as simple as this:
+
+__PyTorch__:
 
 ```python
 # import PyTorch
@@ -105,5 +106,64 @@ from echoAI.Activation.Torch.mish import Mish
 mish = Mish()
 t = torch.tensor(0.1)
 t_mish = mish(t)
+
+```
+
+__Keras__:
+
+```python
+# import Keras
+from keras import layers
+from keras.models import Model
+from keras.layers import Input, Dense, Activation, ZeroPadding2D, BatchNormalization, Flatten, Conv2D
+
+# import activation function from echoAI
+from echoAI.Activation.Keras.custom_activations import Mish
+
+def CNNModel(input_shape):
+    X_input = Input(input_shape)
+    X = ZeroPadding2D((3, 3))(X_input)X
+    X = Conv2D(32, (3, 3), strides = (1, 1), name = 'conv0')(X)
+    X = BatchNormalization(axis = 3, name = 'bn0')(X)
+
+    # apply the activation function
+    X = Mish()(X)
+
+    # MAXPOOL
+    X = MaxPooling2D((2, 2), name='max_pool')(X)
+
+    # FLATTEN X (means convert it to a vector) + FULLYCONNECTED
+    X = Flatten()(X)
+    X = Dense(10, activation='softmax', name='fc')(X)
+
+    # Create model
+    model = Model(inputs = X_input, outputs = X, name='CNNModel')
+
+    return model
+```
+
+__TensorFlow Keras__:
+
+```python
+#import tensorflow
+import tensorflow as tf
+from tensorflow.keras import layers
+from tensorflow.keras.layers import Dense, Flatten
+
+# import activation function from echoAI
+from echoAI.Activation.TF_Keras.custom_activation import Mish
+
+model = tf.keras.Sequential([
+    layers.Flatten(),
+    layers.Dense(128, input_shape=(784,)),
+    Mish(), # use the activation function
+    layers.Dense(64, activation='relu'),
+    layers.Dense(10, activation='softmax')])
+
+# Compile the model
+model.compile(optimizer = "adam", loss = "mean_squared_error", metrics = ["accuracy"])
+
+# Fit the model
+model.fit(x = X_train, y = y_train, epochs = 3, batch_size = 128)
 
 ```

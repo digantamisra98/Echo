@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Welcome to Echo AI documentation! &#8212; EchoAI 2019 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -15,21 +15,24 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="search" title="Search" href="search.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">EchoAI 2019 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="welcome-to-echo-ai-documentation">
@@ -3542,41 +3545,123 @@ dimensions</li>
 
 
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="#">
-    <img class="logo" src="_static/echo_logo.png" alt="Logo"/>
-    
-  </a>
-</p>
-
-
-
-
-
-
-<p>
-<iframe src="https://ghbtns.com/github-btn.html?user=digantamisra98&repo=Echo&type=watch&count=true&size=large&v=2"
-  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
-</p>
-
-
-
-
-
-<h3>Navigation</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="#">Documentation overview</a><ul>
-  </ul></li>
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to Echo AI documentation!</a><ul>
+<li><a class="reference internal" href="#about">About</a><ul>
+<li><a class="reference internal" href="#implemented-activation-functions">Implemented Activation Functions</a></li>
 </ul>
-</div>
+</li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#examples">Examples</a><ul>
+<li><a class="reference internal" href="#torch-activation-functions">Torch Activation Functions</a></li>
+<li><a class="reference internal" href="#keras-activation-functions">Keras Activation Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pytorch-extensions">PyTorch Extensions</a><ul>
+<li><a class="reference internal" href="#torch-aria2">Torch.aria2</a></li>
+<li><a class="reference internal" href="#torch-mish">Torch.Mish</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Torch.beta_mish">Torch.BetaMish</a></li>
+<li><a class="reference internal" href="#torch-silu">Torch.Silu</a></li>
+<li><a class="reference internal" href="#torch-eswish">Torch.Eswish</a></li>
+<li><a class="reference internal" href="#torch-swish">Torch.Swish</a></li>
+<li><a class="reference internal" href="#torch-elish">Torch.Elish</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Torch.hard_elish">Torch.HardElish</a></li>
+<li><a class="reference internal" href="#torch-mila">Torch.Mila</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Torch.sine_relu">Torch.SineReLU</a></li>
+<li><a class="reference internal" href="#torch-fts">Torch.FTS</a></li>
+<li><a class="reference internal" href="#torch-sqnl">Torch.SQNL</a></li>
+<li><a class="reference internal" href="#torch-isru">Torch.ISRU</a></li>
+<li><a class="reference internal" href="#torch-isrlu">Torch.ISRLU</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Torch.bent_id">Torch.BentID</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Torch.soft_clipping">Torch.SoftClipping</a></li>
+<li><a class="reference internal" href="#torch-weightedtanh">Torch.WeightedTanh</a></li>
+<li><a class="reference internal" href="#torch-srelu">Torch.SReLU</a></li>
+<li><a class="reference internal" href="#torch-brelu">Torch.BReLU</a></li>
+<li><a class="reference internal" href="#torch-apl">Torch.APL</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Torch.soft_exponential">Torch.SoftExponential</a></li>
+<li><a class="reference internal" href="#torch-maxout">Torch.Maxout</a></li>
+<li><a class="reference internal" href="#echoai-activation-torch-functional">echoAI.Activation.Torch.functional</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#keras-extensions">Keras Extensions</a><ul>
+<li><a class="reference internal" href="#keras-mish">Keras.Mish</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.WeightedTanh">Keras.WeightedTanh</a></li>
+<li><a class="reference internal" href="#keras-aria2">Keras.Aria2</a></li>
+<li><a class="reference internal" href="#keras-eswish">Keras.Eswish</a></li>
+<li><a class="reference internal" href="#keras-swish">Keras.Swish</a></li>
+<li><a class="reference internal" href="#keras-elish">Keras.Elish</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.HardElish">Keras.HardElish</a></li>
+<li><a class="reference internal" href="#keras-mila">Keras.Mila</a></li>
+<li><a class="reference internal" href="#keras-sinerelu">Keras.SineReLU</a></li>
+<li><a class="reference internal" href="#keras-fts">Keras.FTS</a></li>
+<li><a class="reference internal" href="#keras-sqnl">Keras.SQNL</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.BetaMish">Keras.BetaMish</a></li>
+<li><a class="reference internal" href="#keras-isru">Keras.ISRU</a></li>
+<li><a class="reference internal" href="#keras-isrlu">Keras.ISRLU</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.BentID">Keras.BentID</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.SoftClipping">Keras.SoftClipping</a></li>
+<li><a class="reference internal" href="#keras-celu">Keras.Celu</a></li>
+<li><a class="reference internal" href="#keras-relu6">Keras.ReLU6</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.HardTanh">Keras.HardTanh</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.LogSigmoid">Keras.LogSigmoid</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.TanhShrink">Keras.TanhShrink</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.HardShrink">Keras.HardShrink</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.SoftShrink">Keras.SoftShrink</a></li>
+<li><a class="reference internal" href="#keras-softmin">Keras.SoftMin</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.LogSoftmax">Keras.LogSoftmax</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.Keras.custom_activations.SoftExponential">Keras.SoftExponential</a></li>
+<li><a class="reference internal" href="#keras-srelu">Keras.SReLU</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tensorflow-keras-extensions">Tensorflow Keras Extensions</a><ul>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.Mish">Tensorflow_Keras.Mish</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.WeightedTanh">Tensorflow_Keras.WeightedTanh</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.Swish">Tensorflow_Keras.Swish</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.ESwish">Tensorflow_Keras.ESwish</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.Aria2">Tensorflow_Keras.Aria2</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.Mila">Tensorflow_Keras.Mila</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.ISRU">Tensorflow_Keras.ISRU</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.BentIdentity">Tensorflow_Keras.BentIdentity</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.SoftClipping">Tensorflow_Keras.SoftClipping</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.BetaMish">Tensorflow_Keras.BetaMish</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.ELiSH">Tensorflow_Keras.ELiSH</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.HardELiSH">Tensorflow_Keras.HardELiSH</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.SineReLU">Tensorflow_Keras.SineReLU</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.FlattenTSwish">Tensorflow_Keras.FlattenTSwish</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.SQNL">Tensorflow_Keras.SQNL</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.ISRLU">Tensorflow_Keras.ISRLU</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.SoftExponential">Tensorflow_Keras.SoftExponential</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.CELU">Tensorflow_Keras.CELU</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.HardTanh">Tensorflow_Keras.HardTanh</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.LogSigmoid">Tensorflow_Keras.LogSigmoid</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.TanhShrink">Tensorflow_Keras.TanhShrink</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.HardShrink">Tensorflow_Keras.HardShrink</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.SoftShrink">Tensorflow_Keras.SoftShrink</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.SoftMin">Tensorflow_Keras.SoftMin</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.LogSoftMax">Tensorflow_Keras.LogSoftMax</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.MaxOut">Tensorflow_Keras.MaxOut</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.SReLU">Tensorflow_Keras.SReLU</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.BReLU">Tensorflow_Keras.BReLU</a></li>
+<li><a class="reference internal" href="#module-echoAI.Activation.TF_Keras.custom_activation.APL">Tensorflow_Keras.APL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
@@ -3589,32 +3674,25 @@ dimensions</li>
     </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2019, Diganta Misra, Aleksandra Deis.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/index.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">EchoAI 2019 documentation</a> &#187;</li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Diganta Misra, Aleksandra Deis.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
   </body>
 </html>

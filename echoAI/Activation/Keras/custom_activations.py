@@ -288,7 +288,7 @@ class Mish(Layer):
 
     def get_config(self):
         base_config = super(Mish, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -334,7 +334,7 @@ class SQNL(Layer):
 
     def get_config(self):
         base_config = super(SQNL, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -378,7 +378,7 @@ class FTS(Layer):
 
     def get_config(self):
         base_config = super(FTS, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -422,7 +422,7 @@ class Elish(Layer):
 
     def get_config(self):
         base_config = super(Elish, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -467,7 +467,7 @@ class HardElish(Layer):
 
     def get_config(self):
         base_config = super(HardElish, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items()) 
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -507,7 +507,7 @@ class BentID(Layer):
 
     def get_config(self):
         base_config = super(BentID, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -835,7 +835,7 @@ class ReLU6(Layer):
 
     def get_config(self):
         base_config = super(ReLU6, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -872,7 +872,7 @@ class HardTanh(Layer):
 
     def get_config(self):
         base_config = super(HardTanh, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -908,7 +908,7 @@ class LogSigmoid(Layer):
 
     def get_config(self):
         base_config = super(LogSigmoid, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -944,7 +944,7 @@ class TanhShrink(Layer):
 
     def get_config(self):
         base_config = super(TanhShrink, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -1065,7 +1065,7 @@ class SoftMin(Layer):
 
     def get_config(self):
         base_config = super(SoftMin, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -1101,7 +1101,7 @@ class LogSoftmax(Layer):
 
     def get_config(self):
         base_config = super(LogSoftmax, self).get_config()
-        return dict(list(base_config.items()) + list(config.items()))
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape
@@ -1157,6 +1157,7 @@ class SoftExponential(Layer):
         return output
 
     def get_config(self):
+        config = {'alpha': float(self.alpha)}
         base_config = super(SoftExponential, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
@@ -1229,6 +1230,7 @@ class SReLU(Layer):
                * K.cast(K.greater(inputs, self.tl), 'float32') * inputs + K.cast(K.less_equal(inputs, self.tl), 'float32') * (self.tl + self.al * (inputs + self.tl))
 
     def get_config(self):
+        config = {'tr': float(self.tr), 't1': float(self.t1), 'ar': float(self.ar), 'a1': float(self.a1)}
         base_config = super(SReLU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 

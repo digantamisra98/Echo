@@ -35,12 +35,8 @@ def mish(input, inplace = False):
     See additional documentation for :mod:`echoAIAI.Activation.Torch.mish`.
     '''
     if inplace:
-        inp = input.clone()
-        torch.exp_(input)
-        input += 1
-        torch.tanh_(torch.log_(input))
-        input *= inp
-        return input
+        inner = F.softplus(input).tanh()
+        return input.mul_(inner)
     else:
         return input * torch.tanh(F.softplus(input))
 

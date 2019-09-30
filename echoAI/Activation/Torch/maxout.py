@@ -39,7 +39,7 @@ class Maxout(Function):
         https://github.com/Usama113/Maxout-PyTorch/blob/master/Maxout.ipynb
 
     Examples:
-        >>> a1 = maxout.apply
+        >>> a1 = Maxout.apply
         >>> x = torch.randn(256)
         >>> x = a1(x)
     '''

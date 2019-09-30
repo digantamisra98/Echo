@@ -130,7 +130,8 @@ def hard_elish(input):
 
     See additional documentation for :mod:`echoAI.Activation.Torch.hard_elish`.
     '''
-    return (input >= 0).float() * input * torch.max(torch.tensor(0.0), torch.min(torch.tensor(1.0), (input + 1.0)/2.0)) + (input < 0).float() * (torch.exp(input - 1) * torch.max(torch.tensor(0.0), torch.min(torch.tensor(1.0), (input + 1.0)/2.0)))
+    device = torch.device('cuda:0' if torch.cuda.is_available() else "cpu")
+    return (input >= 0).float() * input * torch.max(torch.tensor(0.0, device = device), torch.min(torch.tensor(1.0, device = device), (input + 1.0)/2.0)) + (input < 0).float() * (torch.exp(input - 1) * torch.max(torch.tensor(0.0, device = device), torch.min(torch.tensor(1.0, device = device), (input + 1.0)/2.0)))
 
 def mila(input, beta=-0.25):
     '''
@@ -227,3 +228,15 @@ def soft_clipping(input, alpha = 0.5):
     See additional documentation for :mod:`echoAI.Activation.Torch.soft_clipping`.
     '''
     return (1 / alpha) * torch.log((1 + torch.exp(alpha * input))/(1 + torch.exp(alpha *(input - 1))))
+
+def lecun_tanh(input):
+    '''
+    Applies the Le Cun's Tanh function element-wise:
+
+    .. math::
+
+        lecun_tanh(x) = 1.7159 * tanh((2/3) * input)
+
+    See additional documentation for :mod:`echoAI.Activation.Torch.lecun_tanh`.
+    '''
+    return 1.7159 * torch.tanh((2 * input)/ 3)

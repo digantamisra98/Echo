@@ -57,7 +57,7 @@ The package contains implementation for following activation functions (✅ - im
 |30| SoftMin | ![equation](https://latex.codecogs.com/gif.latex?Softmin%28x_i%29%3D%5Cfrac%7Be%5E%7B-x_i%7D%7D%7B%5Csum%20_j%20e%5E%7B-x_j%7D%7D)| ✅ | ⬜ | ✅ |🕑 |
 |31| LogSoftmax | ![equation](https://latex.codecogs.com/gif.latex?LogSoftmax%28x_i%29%3Dlog%28%5Cfrac%7Be%5E%7Bx_i%7D%7D%7B%5Csum%20_j%20e%5E%7Bx_j%7D%7D%29)| ✅ | ⬜ | ✅ | 🕑|
 |32| [Gumbel-Softmax](https://arxiv.org/pdf/1611.01144.pdf) | | 🕑 | ⬜ | 🕑 |🕑 |
-|33| [LeCun's Tanh](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf) | | 🕑 |✅ | 🕑 |🕑 |
+|33| [LeCun's Tanh](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf) | | ✅ |✅ | ✅ |🕑 |
 
 ## Repository Structure
 The repository has the following structure:

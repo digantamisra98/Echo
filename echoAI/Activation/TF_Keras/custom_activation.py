@@ -1065,3 +1065,30 @@ class APL(Layer):
         }
         base_config = super(APL, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
+
+class LeCunTanh(Layer):
+    '''
+    LeCun's Tanh Activation Function.
+
+    .. math::
+
+        LeCun's Tanh(x) = 1.7159 * tanh (\\frac{2*x}{3})
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = LeCunTanh()(X_input)
+
+    '''
+
+    def __init__(self):
+        super(LeCunTanh, self).__init__()
+
+    def call(self, inputs):
+        return 1.7159 * tf.math.tanh((2 * inputs)/3)

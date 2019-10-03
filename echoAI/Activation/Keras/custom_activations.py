@@ -895,7 +895,7 @@ class LogSigmoid(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = log_sigmoid()(X_input)
+        >>> X = LogSigmoid()(X_input)
 
     '''
 
@@ -1233,6 +1233,41 @@ class SReLU(Layer):
         config = {'tr': float(self.tr), 't1': float(self.t1), 'ar': float(self.ar), 'a1': float(self.a1)}
         base_config = super(SReLU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class LeCunTanh(Layer):
+    '''
+    LeCun's Tanh Activation Function.
+
+    .. math::
+
+        LeCun's Tanh(x) = 1.7159 * tanh (\\frac{2*x}{3})
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = LeCunTanh()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(LeCunTanh, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return 1.7159 * K.tanh((2 * inputs)/3)
+
+    def get_config(self):
+        base_config = super(LeCunTanh, self).get_config()
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape

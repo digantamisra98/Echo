@@ -35,6 +35,10 @@ class Mish(nn.Module):
     Arguments:
         - inplace: (bool) perform the operation in-place
 
+    References:
+        - Mish paper:
+        https://arxiv.org/abs/1908.08681
+
     Examples:
         >>> m = Mish()
         >>> input = torch.randn(2)

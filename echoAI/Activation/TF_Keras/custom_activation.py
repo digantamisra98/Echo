@@ -323,9 +323,8 @@ class Mish(Layer):
         - Output: Same shape as the input.
 
     References:
-
-        - See Mish Repository:
-            https://github.com/digantamisra98/Mish
+        - Mish paper:
+        https://arxiv.org/abs/1908.08681
     '''
 
     def __init__(self):

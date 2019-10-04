@@ -273,6 +273,10 @@ class Mish(Layer):
 
         - Output: Same shape as the input.
 
+    References:
+        - Mish paper:
+        https://arxiv.org/abs/1908.08681
+
     Examples:
         >>> X_input = Input(input_shape)
         >>> X = Mish()(X_input)

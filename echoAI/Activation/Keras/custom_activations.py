@@ -1275,3 +1275,48 @@ class LeCunTanh(Layer):
 
     def compute_output_shape(self, input_shape):
         return input_shape
+
+class TaLU(Layer):
+    '''
+    TaLU Activation Function.
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    References:
+        - https://github.com/mjain72/TaLuActivationFunction
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = TaLU()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(TaLU, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        cond = K.less_equal(inputs, inputs*0.0)
+        t = K.tanh(inputs)
+        tanH = K.tanh(-0.05)
+        cond1 = K.less_equal(inputs, -0.05*(1 - inputs*0.0))
+        if cond1 == True:
+            y = tanH*(1 - inputs*0.0)
+        else:
+            y = t
+        if cond == True:
+            return y
+        else:
+            return inputs
+
+    def get_config(self):
+        base_config = super(TaLU, self).get_config()
+        return dict(list(base_config.items())
+
+    def compute_output_shape(self, input_shape):
+        return input_shape

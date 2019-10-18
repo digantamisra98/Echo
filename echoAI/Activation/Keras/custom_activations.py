@@ -273,6 +273,10 @@ class Mish(Layer):
 
         - Output: Same shape as the input.
 
+    References:
+        - Mish paper:
+        https://arxiv.org/abs/1908.08681
+
     Examples:
         >>> X_input = Input(input_shape)
         >>> X = Mish()(X_input)
@@ -895,7 +899,7 @@ class LogSigmoid(Layer):
 
     Examples:
         >>> X_input = Input(input_shape)
-        >>> X = log_sigmoid()(X_input)
+        >>> X = LogSigmoid()(X_input)
 
     '''
 
@@ -1233,6 +1237,86 @@ class SReLU(Layer):
         config = {'tr': float(self.tr), 't1': float(self.t1), 'ar': float(self.ar), 'a1': float(self.a1)}
         base_config = super(SReLU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class LeCunTanh(Layer):
+    '''
+    LeCun's Tanh Activation Function.
+
+    .. math::
+
+        LeCun's Tanh(x) = 1.7159 * tanh (\\frac{2*x}{3})
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = LeCunTanh()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(LeCunTanh, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        return 1.7159 * K.tanh((2 * inputs)/3)
+
+    def get_config(self):
+        base_config = super(LeCunTanh, self).get_config()
+        return dict(list(base_config.items())
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class TaLU(Layer):
+    '''
+    TaLU Activation Function.
+
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    References:
+        - https://github.com/mjain72/TaLuActivationFunction
+
+    Examples:
+        >>> X_input = Input(input_shape)
+        >>> X = TaLU()(X_input)
+
+    '''
+
+    def __init__(self, **kwargs):
+        super(TaLU, self).__init__(**kwargs)
+        self.supports_masking = True
+
+    def call(self, inputs):
+        cond = K.less_equal(inputs, inputs*0.0)
+        t = K.tanh(inputs)
+        tanH = K.tanh(-0.05)
+        cond1 = K.less_equal(inputs, -0.05*(1 - inputs*0.0))
+        if cond1 == True:
+            y = tanH*(1 - inputs*0.0)
+        else:
+            y = t
+        if cond == True:
+            return y
+        else:
+            return inputs
+
+    def get_config(self):
+        base_config = super(TaLU, self).get_config()
+        return dict(list(base_config.items())
 
     def compute_output_shape(self, input_shape):
         return input_shape

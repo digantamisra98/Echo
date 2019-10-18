@@ -198,7 +198,7 @@ def main():
             activation_function = WeightedTanh(weight = 1, inplace = inplace)
 
         if (activation == MISH):
-            activation_function = Mish(inplace = inplace)
+            activation_function = Mish()
 
         if (activation == SILU):
             activation_function = Silu(inplace = inplace)

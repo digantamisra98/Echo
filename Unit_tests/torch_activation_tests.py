@@ -148,20 +148,6 @@ class TestTorchActivations(TestCase):
 
         self.assertEqual((fmish(input)).allclose(output) , True)
 
-    def test_mish_3(self):
-        '''
-        Unit test for Mish activation function.
-        See :mod:`Echo.Activation.Torch.Mish`.
-        '''
-        # checking the in-place implementation of mish
-        # checking that mish(1) == 0.865098
-        fmish = Mish(inplace = True)
-        input = torch.tensor((1.0,1.0))
-        output = torch.tensor((0.865098,0.865098))
-        fmish(input)
-
-        self.assertEqual((input).allclose(output) , True)
-
     def test_aria2_1(self):
         '''
         Unit test for Aria2 activation function.

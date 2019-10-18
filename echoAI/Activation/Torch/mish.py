@@ -4,14 +4,32 @@ Applies the mish function element-wise:
 .. math::
 
     mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))
+
+Heng's optimized implementation of mish:
+https://www.kaggle.com/c/severstal-steel-defect-detection/discussion/111457#651223
 '''
 
 # import pytorch
 import torch
 from torch import nn
+from torch.autograd import Function
+import torch.nn.functional as F
 
-# import activation functions
-import echoAI.Activation.Torch.functional as Func
+class MishFunction(Function):
+
+    @staticmethod
+    def forward(ctx, x):
+        ctx.save_for_backward(x)
+        y = x * torch.tanh(F.softplus(x))   # x * tanh(ln(1 + exp(x)))
+        return y
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        x = ctx.saved_variables[0]
+        sigmoid  = torch.sigmoid(x)
+        softplus = F.softplus(x)
+        tanh     = torch.tanh(softplus)
+        return grad_output * (1-tanh*tanh)*sigmoid
 
 class Mish(nn.Module):
     '''
@@ -32,24 +50,11 @@ class Mish(nn.Module):
           dimensions
         - Output: (N, *), same shape as the input
 
-    Arguments:
-        - inplace: (bool) perform the operation in-place
-
     Examples:
         >>> m = Mish()
         >>> input = torch.randn(2)
         >>> output = m(input)
 
     '''
-    def __init__(self, inplace = False):
-        '''
-        Init method.
-        '''
-        super().__init__()
-        self.inplace = inplace
-
-    def forward(self, input):
-        '''
-        Forward pass of the function.
-        '''
-        return Func.mish(input, inplace = self.inplace)
+    def forward(self, x):
+        return MishFunction.apply(x)

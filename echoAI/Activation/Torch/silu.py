@@ -7,7 +7,7 @@ Applies the Sigmoid Linear Unit (SiLU) function element-wise:
 
 
 See related paper:
-https://arxiv.org/pdf/1606.08415.pdf
+https://arxiv.org/pdf/1702.03118.pdf
 '''
 
 # import pytorch

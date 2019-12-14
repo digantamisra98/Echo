@@ -1123,3 +1123,29 @@ class TaLU(Layer):
         cond1 = tf.less_equal(inputs, -0.05*(1 - inputs*0.0))
         y = tf.where(cond1, tanH*(1 - inputs*0.0), t)
         return tf.where(cond, y, inputs)
+class GELU(Layer):
+    '''
+    GELU (GAUSSIAN ERROR LINEAR UNITS) Activation Function.
+    .. math::
+        GELU(x) = 0.5*x*(1+tanh(√2/π(x+0.044715*x^3)))
+    Plot:
+    .. figure::  _static/GELU.PNG
+        :align:   center
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+        - Output: Same shape as the input.
+    References:
+        - GELU paper:
+        https://arxiv.org/pdf/1606.08415v3.pdf
+        - Blog post:
+        https://mlfromscratch.com/activation-functions-explained/#/
+        
+    '''
+
+    def __init__(self):
+        super(GELU, self).__init__()
+
+    def call(self, inputs):
+        return 0.5 * inputs * (1 + tf.tanh(tf.sqrt(2 / np.pi) * (inputs + 0.044715 * tf.pow(inputs, 3))))

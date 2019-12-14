@@ -1320,3 +1320,64 @@ class TaLU(Layer):
 
     def compute_output_shape(self, input_shape):
         return input_shape
+
+
+                    
+class MaxoutConv2D(Layer):
+    """
+    References:
+        - Convolution Layer followed by Maxout activation: 
+        https://arxiv.org/abs/1505.03540.
+        - Code :
+        https://github.com/keras-team/keras/issues/8717#issue-280038650
+        
+    
+    Parameters
+    ----------
+    
+    kernel_size: kernel_size parameter for Conv2D
+    output_dim: final number of filters after Maxout
+    nb_features: number of filter maps to take the Maxout over; default=4
+    padding: 'same' or 'valid'
+    first_layer: True if x is the input_tensor
+    input_shape: Required if first_layer=True
+    
+    """
+    
+    def __init__(self, kernel_size, output_dim, nb_features=4, padding='valid', **kwargs):
+        
+        self.kernel_size = kernel_size
+        self.output_dim = output_dim
+        self.nb_features = nb_features
+        self.padding = padding
+        super(MaxoutConv2D, self).__init__(**kwargs)
+
+    def call(self, x):
+
+        output = None
+        for _ in range(self.output_dim):
+            
+            conv_out = Conv2D(self.nb_features, self.kernel_size, padding=self.padding)(x)
+            maxout_out = K.max(conv_out, axis=-1, keepdims=True)
+
+            if output is not None:
+                output = K.concatenate([output, maxout_out], axis=-1)
+
+            else:
+                output = maxout_out
+
+        return output
+
+    def compute_output_shape(self, input_shape):
+        input_height= input_shape[1]
+        input_width = input_shape[2]
+        
+        if(self.padding == 'same'):
+            output_height = input_height
+            output_width = input_width
+        
+        else:
+            output_height = input_height - self.kernel_size[0] + 1
+            output_width = input_width - self.kernel_size[1] + 1
+        
+        return (input_shape[0], output_height, output_width, self.output_dim)

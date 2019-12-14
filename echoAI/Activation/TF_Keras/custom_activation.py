@@ -1123,6 +1123,8 @@ class TaLU(Layer):
         cond1 = tf.less_equal(inputs, -0.05*(1 - inputs*0.0))
         y = tf.where(cond1, tanH*(1 - inputs*0.0), t)
         return tf.where(cond, y, inputs)
+    
+    
 class GELU(Layer):
     '''
     GELU (GAUSSIAN ERROR LINEAR UNITS) Activation Function.

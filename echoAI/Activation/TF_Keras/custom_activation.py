@@ -1129,7 +1129,7 @@ class GELU(Layer):
     '''
     GELU (GAUSSIAN ERROR LINEAR UNITS) Activation Function.
     .. math::
-        GELU(x) = 0.5*x*(1+tanh(√2/π(x+0.044715*x^3)))
+        GELU(x) = 0.5*x*(1+tanh(√(2/π)*(x+0.044715*x^3)))
     Plot:
     .. figure::  _static/GELU.PNG
         :align:   center
@@ -1141,13 +1141,15 @@ class GELU(Layer):
     References:
         - GELU paper:
         https://arxiv.org/pdf/1606.08415v3.pdf
-        - Blog post:
-        https://mlfromscratch.com/activation-functions-explained/#/
         
     '''
 
     def __init__(self):
         super(GELU, self).__init__()
 
-    def call(self, inputs):
-        return 0.5 * inputs * (1 + tf.tanh(tf.sqrt(2 / np.pi) * (inputs + 0.044715 * tf.pow(inputs, 3))))
+    def call(self, inputs,fast = True):
+        if fast:
+            X = 0.5 * inputs * (1.0 + tf.erf(inputs  / tf.sqrt(2.0)))
+        else:
+            X = 0.5 * inputs * (1 + tf.tanh(tf.sqrt(2 / np.pi) * (inputs + 0.044715 * tf.pow(inputs, 3))))
+        return X

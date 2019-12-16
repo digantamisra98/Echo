@@ -1123,3 +1123,37 @@ class TaLU(Layer):
         cond1 = tf.less_equal(inputs, -0.05*(1 - inputs*0.0))
         y = tf.where(cond1, tanH*(1 - inputs*0.0), t)
         return tf.where(cond, y, inputs)
+
+    
+class RReLU(Layer):
+    '''
+    Implementation of RRELU (RANDOMIZED LEAKY RECTIFIED LINEAR UNIT) activation function:
+    
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+        - Output: Same shape as the input.
+    Arguments:
+        l: lower bound of the uniform distribution, default is 1/8
+        u: upper bound of the uniform distribution, default is 1/3
+    References:
+        -  Related paper:
+        https://arxiv.org/pdf/1505.00853v2.pdf
+    '''
+    def __init__(self, l=1/8., u=1/3., **kwargs):
+        self.supports_masking = True
+        self.l = l
+        self.u = u
+        self.average = (l + u) / 2
+        self.uses_learning_phase = True
+        super(RReLU, self).__init__(**kwargs)
+
+    def call(self, x, mask=None):
+        return K.in_train_phase(K.relu(x, np.random.uniform(self.l, self.u)),
+                                K.relu(x, self.average))
+
+    def get_config(self):
+        config = {'l': self.l, 'u': self.u}
+        base_config = super(RReLU, self).get_config()
+        return dict(list(base_config.items()) + list(config.items()))

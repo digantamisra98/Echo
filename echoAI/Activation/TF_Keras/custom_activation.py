@@ -1157,3 +1157,32 @@ class RReLU(Layer):
         config = {'l': self.l, 'u': self.u}
         base_config = super(RReLU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
+
+class GELU(Layer):
+    '''
+    GELU (GAUSSIAN ERROR LINEAR UNITS) Activation Function.
+    .. math::
+        GELU(x) = 0.5*x*(1+tanh(√(2/π)*(x+0.044715*x^3)))
+    Plot:
+    .. figure::  _static/GELU.PNG
+        :align:   center
+    Shape:
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+        - Output: Same shape as the input.
+    References:
+        - GELU paper:
+        https://arxiv.org/pdf/1606.08415v3.pdf
+        
+    '''
+
+    def __init__(self):
+        super(GELU, self).__init__()
+
+    def call(self, inputs ,fast = False):
+        if fast:
+            X = 0.5 * inputs * (1.0 + tf.erf(x / tf.sqrt(2.0)))
+        else:
+            X = 0.5 * inputs * (1 + tf.tanh(tf.sqrt(2 / np.pi) * (inputs + 0.044715 * tf.pow(inputs, 3))))
+        return X

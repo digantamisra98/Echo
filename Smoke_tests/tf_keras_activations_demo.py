@@ -48,6 +48,7 @@ from echoAI.Activation.TF_Keras.custom_activation import SoftMin
 from echoAI.Activation.TF_Keras.custom_activation import LogSoftMax
 from echoAI.Activation.TF_Keras.custom_activation import SoftExponential
 from echoAI.Activation.TF_Keras.custom_activation import SReLU
+from echoAI.Activation.TF_Keras.custom_activation import RReLU
 
 # activation names constants
 RELU = 'relu'
@@ -77,6 +78,7 @@ SOFTMIN = 'softmin'
 LSOFTMAX = 'log_softmax'
 SEXP = 'soft_exponential'
 SRELU = 'srelu'
+RRELU = 'rrelu'
 
 def main():
     '''
@@ -91,7 +93,7 @@ def main():
                         help='Activation function for demonstration.',
                         choices = [SWISH, ESWISH, MILA, RELU, S_ISRU, BETA_MISH, MISH, S_SQNL, S_FTS, ELISH, HELISH, BENTID,
                         WTANH, SINERELU, S_ISRLU, SC, ARIA2, CELU, HTANH, LSIG, TANHSH, HSHRINK, SSHRINK, SOFTMIN,
-                        LSOFTMAX, SEXP, SRELU])
+                        LSOFTMAX, SEXP, SRELU,RRELU])
 
     # Parse command line arguments
     results = parser.parse_args()
@@ -194,6 +196,9 @@ def main():
 
     if (activation == SRELU):
         f_activation = SReLU()
+
+    if (activation == RRELU):
+        f_activation = RReLU()   
 
     # Create model
     if activation == RELU:

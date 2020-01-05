@@ -1,9 +1,8 @@
-'''
+"""
 Script for demonstration of the soft exponential activation function.
-'''
+"""
 # import utilities
 import sys
-sys.path.insert(0, '../')
 
 # import pytorch
 import torch
@@ -15,11 +14,15 @@ from torchvision import datasets, transforms
 # import APL function from Echo
 from echoAI.Activation.Torch.soft_exponential import SoftExponential
 
+sys.path.insert(0, "../")
+
+
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
-    '''
+    """
     Basic fully-connected network to test BReLU.
-    '''
+    """
+
     def __init__(self):
         super().__init__()
 
@@ -46,30 +49,43 @@ class Classifier(nn.Module):
 
         return x
 
+
 def main():
-    '''
+    """
     Script for soft exponential activation demonstration.
-    '''
+    """
     # create a model to classify Fashion MNIST dataset
     # Define a transform
     transform = transforms.Compose([transforms.ToTensor()])
 
     # Download and load the training data for Fashion MNIST
-    trainset = datasets.FashionMNIST('~/.pytorch/F_MNIST_data/', download=True, train=True, transform=transform)
+    trainset = datasets.FashionMNIST(
+        "~/.pytorch/F_MNIST_data/", download=True, train=True, transform=transform
+    )
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle=True)
 
     # Download and load the test data for Fashion MNIST
-    testset = datasets.FashionMNIST('~/.pytorch/F_MNIST_data/', download=True, train=False, transform=transform)
+    testset = datasets.FashionMNIST(
+        "~/.pytorch/F_MNIST_data/", download=True, train=False, transform=transform
+    )
     testloader = torch.utils.data.DataLoader(testset, batch_size=64, shuffle=True)
 
-    print("Create model with {activation} function.\n".format(activation = 'SoftExponential'))
+    print(
+        "Create model with {activation} function.\n".format(
+            activation="SoftExponential"
+        )
+    )
 
     # create model
     model = Classifier()
     print(model)
 
     # Train the model
-    print("Training the model on Fashion MNIST dataset with {} activation function.\n".format('SoftExponential'))
+    print(
+        "Training the model on Fashion MNIST dataset with {} activation function.\n".format(
+            "SoftExponential"
+        )
+    )
 
     criterion = nn.NLLLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.003)
@@ -91,5 +107,6 @@ def main():
         else:
             print(f"Training loss: {running_loss}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

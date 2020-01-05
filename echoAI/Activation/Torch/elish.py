@@ -1,4 +1,4 @@
-'''
+"""
 Applies the ELiSH (Exponential Linear Sigmoid SquasHing) function element-wise:
 
 .. math::
@@ -8,17 +8,17 @@ Applies the ELiSH (Exponential Linear Sigmoid SquasHing) function element-wise:
 
 See ELiSH paper:
 https://arxiv.org/pdf/1808.00783.pdf
-'''
+"""
 
 # import pytorch
-import torch
 from torch import nn
 
 # import activation functions
 import echoAI.Activation.Torch.functional as Func
 
+
 class Elish(nn.Module):
-    '''
+    """
     Applies the ELiSH (Exponential Linear Sigmoid SquasHing) function element-wise:
 
     .. math::
@@ -44,15 +44,16 @@ class Elish(nn.Module):
         >>> input = torch.randn(2)
         >>> output = m(input)
 
-    '''
+    """
+
     def __init__(self):
-        '''
+        """
         Init method.
-        '''
+        """
         super().__init__()
 
     def forward(self, input):
-        '''
+        """
         Forward pass of the function.
-        '''
+        """
         return Func.elish(input)

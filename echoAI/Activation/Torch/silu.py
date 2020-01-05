@@ -1,4 +1,4 @@
-'''
+"""
 Applies the Sigmoid Linear Unit (SiLU) function element-wise:
 
 .. math::
@@ -8,17 +8,17 @@ Applies the Sigmoid Linear Unit (SiLU) function element-wise:
 
 See related paper:
 https://arxiv.org/pdf/1606.08415.pdf
-'''
+"""
 
 # import pytorch
-import torch
 from torch import nn
 
 # import activation functions
 import echoAI.Activation.Torch.functional as Func
 
+
 class Silu(nn.Module):
-    '''
+    """
     Applies the Sigmoid Linear Unit (SiLU) function element-wise:
 
     .. math::
@@ -47,16 +47,17 @@ class Silu(nn.Module):
         >>> input = torch.randn(2)
         >>> output = m(input)
 
-    '''
-    def __init__(self, inplace = False):
-        '''
+    """
+
+    def __init__(self, inplace=False):
+        """
         Init method.
-        '''
+        """
         super().__init__()
         self.inplace = inplace
 
     def forward(self, input):
-        '''
+        """
         Forward pass of the function.
-        '''
+        """
         return Func.silu(input, self.inplace)

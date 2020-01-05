@@ -1,4 +1,4 @@
-'''
+"""
 Applies the Swish function element-wise:
 
 .. math::
@@ -7,17 +7,17 @@ Applies the Swish function element-wise:
 
 See Swish paper:
 https://arxiv.org/pdf/1710.05941.pdf
-'''
+"""
 
 # import pytorch
-import torch
 from torch import nn
 
 # import activation functions
 import echoAI.Activation.Torch.functional as Func
 
+
 class Swish(nn.Module):
-    '''
+    """
     Applies the Swish function element-wise:
 
     .. math::
@@ -46,17 +46,17 @@ class Swish(nn.Module):
         >>> input = torch.randn(2)
         >>> output = m(input)
 
-    '''
-    def __init__(self, beta = 1.25):
-        '''
+    """
+
+    def __init__(self, beta=1.25):
+        """
         Init method.
-        '''
+        """
         super().__init__()
         self.beta = beta
 
-
     def forward(self, input):
-        '''
+        """
         Forward pass of the function.
-        '''
+        """
         return Func.swish(input, self.beta)

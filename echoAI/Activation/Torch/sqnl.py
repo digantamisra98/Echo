@@ -1,4 +1,4 @@
-'''
+"""
 Applies the SQNL function element-wise:
 
 .. math::
@@ -7,17 +7,17 @@ Applies the SQNL function element-wise:
 
 See SQNL paper:
 https://ieeexplore.ieee.org/document/8489043
-'''
+"""
 
 # import pytorch
-import torch
 from torch import nn
 
 # import activation functions
 import echoAI.Activation.Torch.functional as Func
 
+
 class SQNL(nn.Module):
-    '''
+    """
     Applies the SQNL function element-wise:
 
     .. math::
@@ -43,15 +43,16 @@ class SQNL(nn.Module):
         >>> input = torch.randn(2)
         >>> output = m(input)
 
-    '''
+    """
+
     def __init__(self):
-        '''
+        """
         Init method.
-        '''
+        """
         super().__init__()
 
     def forward(self, input):
-        '''
+        """
         Forward pass of the function.
-        '''
+        """
         return Func.sqnl(input)

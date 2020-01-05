@@ -1,4 +1,4 @@
-'''
+"""
 Script defined the APL (ADAPTIVE PIECEWISE LINEAR UNITS):
 
 .. math::
@@ -7,19 +7,17 @@ Script defined the APL (ADAPTIVE PIECEWISE LINEAR UNITS):
 
 See APL paper:
 https://arxiv.org/pdf/1412.6830.pdf
-'''
- # import standard libraries
-import numpy as np
+"""
 
 # import torch
 import torch
-from torch.autograd import Variable
 import torch.nn as nn
 from torch.autograd import Function
 from torch.nn.parameter import Parameter
 
+
 class apl_function(Function):
-    '''
+    """
     Implementation of APL (ADAPTIVE PIECEWISE LINEAR UNITS) activation function:
 
         .. math::
@@ -47,8 +45,9 @@ class apl_function(Function):
         >>> a = torch.tensor([[[1.,1.],[1.,1.]],[[1.,1.],[1.,1.]]])
         >>> b = torch.tensor([[[1.,1.],[1.,1.]],[[1.,1.],[1.,1.]]])
         >>> t = apl_func(t, a, b)
-    '''
-    #both forward and backward are @staticmethods
+    """
+
+    # both forward and backward are @staticmethods
     @staticmethod
     def forward(ctx, input, a, b):
         """
@@ -57,13 +56,13 @@ class apl_function(Function):
         to stash information for backward computation. You can cache arbitrary
         objects for use in the backward pass using the ctx.save_for_backward method.
         """
-        ctx.save_for_backward(input, a, b) # save for backward pass
+        ctx.save_for_backward(input, a, b)  # save for backward pass
 
-        S = a.shape[0] # get S (number of hinges)
+        S = a.shape[0]  # get S (number of hinges)
 
         output = input.clamp(min=0)
         for s in range(S):
-            t = - input + b[s]
+            t = -input + b[s]
             output += a[s] * t.clamp(min=0)
 
         return output
@@ -80,32 +79,33 @@ class apl_function(Function):
         grad_a = None
         grad_b = None
 
-        input, a, b = ctx.saved_tensors # restore input from context
-        S = a.shape[0] # get S (number of hinges)
+        input, a, b = ctx.saved_tensors  # restore input from context
+        S = a.shape[0]  # get S (number of hinges)
 
         # check that input requires grad
         # if not requires grad we will return None to speed up computation
         if ctx.needs_input_grad[0]:
             grad_input = (input >= 0).float() * grad_output
             for s in range(S):
-                grad_input += (input >= 0).float() * ( - a[s]) * grad_output
+                grad_input += (input >= 0).float() * (-a[s]) * grad_output
 
         if ctx.needs_input_grad[1]:
             grad_a = torch.zeros(a.size())
             for s in range(S):
-                grad_as = (input >= 0).float() * ( - input) * grad_output
-                grad_a[s] = grad_as.sum(dim = 0, keepdim = True)
+                grad_as = (input >= 0).float() * (-input) * grad_output
+                grad_a[s] = grad_as.sum(dim=0, keepdim=True)
 
         if ctx.needs_input_grad[2]:
             grad_b = torch.zeros(b.size())
             for s in range(S):
                 grad_bs = (input >= 0).float() * a[s] * grad_output
-                grad_b[s] = grad_bs.sum(dim = 0, keepdim = True)
+                grad_b[s] = grad_bs.sum(dim=0, keepdim=True)
 
         return grad_input, grad_a, grad_b
 
+
 class APL(nn.Module):
-    '''
+    """
     Implementation of APL (ADAPTIVE PIECEWISE LINEAR UNITS) unit:
 
         .. math::
@@ -132,9 +132,10 @@ class APL(nn.Module):
         >>> a1 = apl(256, S = 1)
         >>> x = torch.randn(256)
         >>> x = a1(x)
-    '''
-    def __init__(self, in_features, S, a = None, b = None):
-        '''
+    """
+
+    def __init__(self, in_features, S, a=None, b=None):
+        """
         Initialization.
         INPUT:
             - in_features: shape of the input
@@ -142,29 +143,33 @@ class APL(nn.Module):
             - a - value for initialization of parameter, which controls the slopes of the linear segments
             - b - value for initialization of parameter, which determines the locations of the hinges
             a, b are initialized randomly by default
-        '''
-        super(APL,self).__init__()
+        """
+        super(APL, self).__init__()
         self.in_features = in_features
         self.S = S
 
         # initialize parameters
-        if a == None:
-            self.a = Parameter(torch.randn((S,in_features), dtype=torch.float, requires_grad = True))
+        if a is None:
+            self.a = Parameter(
+                torch.randn((S, in_features), dtype=torch.float, requires_grad=True)
+            )
         else:
             self.a = a
 
-        if b == None:
-            self.b = Parameter(torch.randn((S,in_features), dtype=torch.float, requires_grad = True))
+        if b is None:
+            self.b = Parameter(
+                torch.randn((S, in_features), dtype=torch.float, requires_grad=True)
+            )
         else:
             self.b = b
 
     def forward(self, x):
-        '''
+        """
         Forward pass of the function
-        '''
+        """
         output = x.clamp(min=0)
         for s in range(self.S):
-            t = - x + self.b[s]
+            t = -x + self.b[s]
             output += self.a[s] * t.clamp(min=0)
 
         return output

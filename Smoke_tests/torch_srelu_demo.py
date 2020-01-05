@@ -1,9 +1,8 @@
-'''
+"""
 Script for demonstration of the SReLU activation function.
-'''
+"""
 # import utilities
 import sys
-sys.path.insert(0, '../')
 
 # import pytorch
 import torch
@@ -14,6 +13,9 @@ from torchvision import datasets, transforms
 
 # import SReLU from Echo
 from echoAI.Activation.Torch.srelu import SReLU
+
+sys.path.insert(0, "../")
+
 
 # create class for basic fully-connected deep neural network
 class Classifier(nn.Module):
@@ -43,13 +45,14 @@ class Classifier(nn.Module):
 
         return x
 
+
 def main():
-    '''
+    """
     Script for SReLU demonstration.
-    '''
+    """
     # check that we can initialize class and perform forward pass
-    srelu_activation = SReLU((2,2))
-    t = torch.randn((2,2), dtype=torch.float, requires_grad = True)
+    srelu_activation = SReLU((2, 2))
+    t = torch.randn((2, 2), dtype=torch.float, requires_grad=True)
     output = srelu_activation(t)
 
     # create a model to classify Fashion MNIST dataset
@@ -57,21 +60,29 @@ def main():
     transform = transforms.Compose([transforms.ToTensor()])
 
     # Download and load the training data for Fashion MNIST
-    trainset = datasets.FashionMNIST('~/.pytorch/F_MNIST_data/', download=True, train=True, transform=transform)
+    trainset = datasets.FashionMNIST(
+        "~/.pytorch/F_MNIST_data/", download=True, train=True, transform=transform
+    )
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle=True)
 
     # Download and load the test data for Fashion MNIST
-    testset = datasets.FashionMNIST('~/.pytorch/F_MNIST_data/', download=True, train=False, transform=transform)
+    testset = datasets.FashionMNIST(
+        "~/.pytorch/F_MNIST_data/", download=True, train=False, transform=transform
+    )
     testloader = torch.utils.data.DataLoader(testset, batch_size=64, shuffle=True)
 
-    print("Create model with {activation} function.\n".format(activation = 'SReLU'))
+    print("Create model with {activation} function.\n".format(activation="SReLU"))
 
     # create model
     model = Classifier()
     print(model)
 
     # Train the model
-    print("Training the model on Fashion MNIST dataset with {} activation function.\n".format('SReLU'))
+    print(
+        "Training the model on Fashion MNIST dataset with {} activation function.\n".format(
+            "SReLU"
+        )
+    )
 
     criterion = nn.NLLLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.003)
@@ -93,5 +104,6 @@ def main():
         else:
             print(f"Training loss: {running_loss}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

@@ -1,4 +1,4 @@
-'''
+"""
 Applies the SineReLU function element-wise:
 
 .. math::
@@ -8,17 +8,17 @@ Applies the SineReLU function element-wise:
 
 See related Medium article:
 https://medium.com/@wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d
-'''
+"""
 
 # import pytorch
-import torch
 from torch import nn
 
 # import activation functions
 import echoAI.Activation.Torch.functional as Func
 
+
 class SineReLU(nn.Module):
-    '''
+    """
     Applies the SineReLU function element-wise:
 
     .. math::
@@ -47,16 +47,17 @@ class SineReLU(nn.Module):
         >>> input = torch.randn(2)
         >>> output = m(input)
 
-    '''
-    def __init__(self, epsilon = 0.01):
-        '''
+    """
+
+    def __init__(self, epsilon=0.01):
+        """
         Init method.
-        '''
+        """
         super().__init__()
         self.epsilon = epsilon
 
     def forward(self, input):
-        '''
+        """
         Forward pass of the function.
-        '''
+        """
         return Func.sineReLU(input, self.epsilon)

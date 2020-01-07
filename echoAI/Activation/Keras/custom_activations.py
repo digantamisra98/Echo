@@ -7,10 +7,10 @@ from __future__ import print_function
 
 from keras.engine.base_layer import Layer
 from keras import backend as K
-from keras import initializers
+
 
 class Mila(Layer):
-    '''
+    """
     Mila Activation Function.
 
     .. math::
@@ -39,7 +39,7 @@ class Mila(Layer):
         >>> X_input = Input(input_shape)
         >>> X = Mila(beta=0.5)(X_input)
 
-    '''
+    """
 
     def __init__(self, beta=-0.25, **kwargs):
         super(Mila, self).__init__(**kwargs)
@@ -47,18 +47,19 @@ class Mila(Layer):
         self.beta = K.cast_to_floatx(beta)
 
     def call(self, inputs):
-        return inputs*K.tanh(K.softplus(inputs + self.beta))
+        return inputs * K.tanh(K.softplus(inputs + self.beta))
 
     def get_config(self):
-        config = {'beta': float(self.beta)}
+        config = {"beta": float(self.beta)}
         base_config = super(Mila, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class Swish(Layer):
-    '''
+    """
     Swish Activation Function.
 
     .. math::
@@ -88,7 +89,7 @@ class Swish(Layer):
         >>> X_input = Input(input_shape)
         >>> X = Swish(beta=0.5)(X_input)
 
-    '''
+    """
 
     def __init__(self, beta=1.0, **kwargs):
         super(Swish, self).__init__(**kwargs)
@@ -96,18 +97,19 @@ class Swish(Layer):
         self.beta = K.cast_to_floatx(beta)
 
     def call(self, inputs):
-        return inputs*K.sigmoid(inputs*self.beta)
+        return inputs * K.sigmoid(inputs * self.beta)
 
     def get_config(self):
-        config = {'beta': float(self.beta)}
+        config = {"beta": float(self.beta)}
         base_config = super(Swish, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class Eswish(Layer):
-    '''
+    """
     E-Swish Activation Function.
 
     .. math::
@@ -137,7 +139,7 @@ class Eswish(Layer):
         >>> X_input = Input(input_shape)
         >>> X = Eswish(beta=0.5)(X_input)
 
-    '''
+    """
 
     def __init__(self, beta=1.375, **kwargs):
         super(Eswish, self).__init__(**kwargs)
@@ -145,18 +147,19 @@ class Eswish(Layer):
         self.beta = K.cast_to_floatx(beta)
 
     def call(self, inputs):
-        return self.beta*inputs*K.sigmoid(inputs)
+        return self.beta * inputs * K.sigmoid(inputs)
 
     def get_config(self):
-        config = {'beta': float(self.beta)}
+        config = {"beta": float(self.beta)}
         base_config = super(Eswish, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class BetaMish(Layer):
-    '''
+    """
     β mish activation function.
 
     .. math::
@@ -186,7 +189,7 @@ class BetaMish(Layer):
         >>> X_input = Input(input_shape)
         >>> X = BetaMish(beta=1.5)(X_input)
 
-    '''
+    """
 
     def __init__(self, beta=1.5, **kwargs):
         super(BetaMish, self).__init__(**kwargs)
@@ -194,18 +197,19 @@ class BetaMish(Layer):
         self.beta = K.cast_to_floatx(beta)
 
     def call(self, inputs):
-        return inputs*K.tanh(K.log(K.pow((1+K.exp(inputs)),self.beta)))
+        return inputs * K.tanh(K.log(K.pow((1 + K.exp(inputs)), self.beta)))
 
     def get_config(self):
-        config = {'beta': float(self.beta)}
+        config = {"beta": float(self.beta)}
         base_config = super(BetaMish, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class ISRU(Layer):
-    '''
+    """
     ISRU (Inverse Square Root Unit) Activation Function.
 
     .. math::
@@ -235,7 +239,7 @@ class ISRU(Layer):
         >>> X_input = Input(input_shape)
         >>> X = ISRU(alpha=0.5)(X_input)
 
-    '''
+    """
 
     def __init__(self, alpha=1.0, **kwargs):
         super(ISRU, self).__init__(**kwargs)
@@ -243,18 +247,19 @@ class ISRU(Layer):
         self.alpha = K.cast_to_floatx(alpha)
 
     def call(self, inputs):
-        return inputs/(K.sqrt(1 + self.alpha * K.pow(inputs,2)))
+        return inputs / (K.sqrt(1 + self.alpha * K.pow(inputs, 2)))
 
     def get_config(self):
-        config = {'alpha': float(self.alpha)}
+        config = {"alpha": float(self.alpha)}
         base_config = super(ISRU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class Mish(Layer):
-    '''
+    """
     Mish Activation Function.
 
     .. math::
@@ -281,7 +286,7 @@ class Mish(Layer):
         >>> X_input = Input(input_shape)
         >>> X = Mish()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(Mish, self).__init__(**kwargs)
@@ -292,13 +297,14 @@ class Mish(Layer):
 
     def get_config(self):
         base_config = super(Mish, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class SQNL(Layer):
-    '''
+    """
     SQNL Activation Function.
 
     .. math::
@@ -325,26 +331,34 @@ class SQNL(Layer):
         >>> X_input = Input(input_shape)
         >>> X = SQNL()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(SQNL, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
-        return K.cast(K.greater(inputs , 2), 'float32')\
-        + (inputs - K.pow(inputs,2)/4) * K.cast(K.greater_equal(inputs,0), 'float32') * K.cast(K.less_equal(inputs, 2), 'float32') \
-        + (inputs + K.pow(inputs,2)/4) * K.cast(K.less(inputs, 0), 'float32') * K.cast(K.greater_equal(inputs, -2), 'float32') - K.cast(K.less(inputs, -2), 'float32')
+        return (
+            K.cast(K.greater(inputs, 2), "float32")
+            + (inputs - K.pow(inputs, 2) / 4)
+            * K.cast(K.greater_equal(inputs, 0), "float32")
+            * K.cast(K.less_equal(inputs, 2), "float32")
+            + (inputs + K.pow(inputs, 2) / 4)
+            * K.cast(K.less(inputs, 0), "float32")
+            * K.cast(K.greater_equal(inputs, -2), "float32")
+            - K.cast(K.less(inputs, -2), "float32")
+        )
 
     def get_config(self):
         base_config = super(SQNL, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class FTS(Layer):
-    '''
+    """
     FTS (Flatten T-Swish) Activation Function.
 
     .. math::
@@ -371,24 +385,29 @@ class FTS(Layer):
         >>> X_input = Input(input_shape)
         >>> X = FTS()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(FTS, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
-        return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs / (1 + K.exp(- inputs))
+        return (
+            K.cast(K.greater_equal(inputs, 0), "float32")
+            * inputs
+            / (1 + K.exp(-inputs))
+        )
 
     def get_config(self):
         base_config = super(FTS, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class Elish(Layer):
-    '''
+    """
     ELiSH (Exponential Linear Sigmoid SquasHing) Activation Function.
 
     .. math::
@@ -415,24 +434,29 @@ class Elish(Layer):
         >>> X_input = Input(input_shape)
         >>> X = Elish()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(Elish, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
-        return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs * K.sigmoid(inputs) + K.cast(K.less(inputs, 0), 'float32') * (K.exp(inputs) - 1) / (K.exp(- inputs) + 1)
+        return K.cast(K.greater_equal(inputs, 0), "float32") * inputs * K.sigmoid(
+            inputs
+        ) + K.cast(K.less(inputs, 0), "float32") * (K.exp(inputs) - 1) / (
+            K.exp(-inputs) + 1
+        )
 
     def get_config(self):
         base_config = super(Elish, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class HardElish(Layer):
-    '''
+    """
     Hard ELiSH Activation Function.
 
     .. math::
@@ -459,25 +483,34 @@ class HardElish(Layer):
         >>> X_input = Input(input_shape)
         >>> X = HardElish()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(HardElish, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
-        return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs * K.maximum(K.cast_to_floatx(0.0), K.minimum(K.cast_to_floatx(1.0), (inputs + 1.0)/2.0)) \
-        + K.cast(K.less(inputs, 0), 'float32') * (K.exp(inputs - 1) * K.maximum(K.cast_to_floatx(0.0), K.minimum(K.cast_to_floatx(1.0), (inputs + 1.0)/2.0)))
+        return K.cast(K.greater_equal(inputs, 0), "float32") * inputs * K.maximum(
+            K.cast_to_floatx(0.0),
+            K.minimum(K.cast_to_floatx(1.0), (inputs + 1.0) / 2.0),
+        ) + K.cast(K.less(inputs, 0), "float32") * (
+            K.exp(inputs - 1)
+            * K.maximum(
+                K.cast_to_floatx(0.0),
+                K.minimum(K.cast_to_floatx(1.0), (inputs + 1.0) / 2.0),
+            )
+        )
 
     def get_config(self):
         base_config = super(HardElish, self).get_config()
-        return dict(list(base_config.items()) 
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class BentID(Layer):
-    '''
+    """
     Bent's Identity Activation Function.
 
     .. math::
@@ -500,24 +533,25 @@ class BentID(Layer):
         >>> X_input = Input(input_shape)
         >>> X = BentID()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(BentID, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
-        return inputs + ((K.sqrt(K.pow(inputs,2)+1)-1)/2)
+        return inputs + ((K.sqrt(K.pow(inputs, 2) + 1) - 1) / 2)
 
     def get_config(self):
         base_config = super(BentID, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class WeightedTanh(Layer):
-    '''
+    """
     Weighted TanH Activation Function.
 
     .. math::
@@ -543,7 +577,7 @@ class WeightedTanh(Layer):
         >>> X_input = Input(input_shape)
         >>> X = WeightedTanh(weight=1.0)(X_input)
 
-    '''
+    """
 
     def __init__(self, weight=1.0, **kwargs):
         super(WeightedTanh, self).__init__(**kwargs)
@@ -554,15 +588,16 @@ class WeightedTanh(Layer):
         return K.tanh(inputs * self.weight)
 
     def get_config(self):
-        config = {'weight': float(self.weight)}
+        config = {"weight": float(self.weight)}
         base_config = super(WeightedTanh, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class SineReLU(Layer):
-    '''
+    """
     Sine ReLU Activation Function.
 
     .. math::
@@ -592,7 +627,7 @@ class SineReLU(Layer):
         >>> X_input = Input(input_shape)
         >>> X = SineReLU(epsilon=0.01)(X_input)
 
-    '''
+    """
 
     def __init__(self, epsilon=0.01, **kwargs):
         super(SineReLU, self).__init__(**kwargs)
@@ -600,18 +635,21 @@ class SineReLU(Layer):
         self.epsilon = K.cast_to_floatx(epsilon)
 
     def call(self, inputs):
-        return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs + K.cast(K.less(inputs, 0), 'float32') * self.epsilon * (K.sin(inputs) - K.cos(inputs))
+        return K.cast(K.greater_equal(inputs, 0), "float32") * inputs + K.cast(
+            K.less(inputs, 0), "float32"
+        ) * self.epsilon * (K.sin(inputs) - K.cos(inputs))
 
     def get_config(self):
-        config = {'epsilon': float(self.epsilon)}
+        config = {"epsilon": float(self.epsilon)}
         base_config = super(SineReLU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class ISRLU(Layer):
-    '''
+    """
     ISRLU Activation Function.
 
     .. math::
@@ -640,7 +678,7 @@ class ISRLU(Layer):
         >>> X_input = Input(input_shape)
         >>> X = ISRLU(alpha=1.0)(X_input)
 
-    '''
+    """
 
     def __init__(self, alpha=1.0, **kwargs):
         super(ISRLU, self).__init__(**kwargs)
@@ -648,18 +686,22 @@ class ISRLU(Layer):
         self.alpha = K.cast_to_floatx(alpha)
 
     def call(self, inputs):
-        return K.cast(K.less(inputs, 0), 'float32') * ISRU(alpha=self.alpha)(inputs) + K.cast(K.greater_equal(inputs, 0), 'float32') * inputs
+        return (
+            K.cast(K.less(inputs, 0), "float32") * ISRU(alpha=self.alpha)(inputs)
+            + K.cast(K.greater_equal(inputs, 0), "float32") * inputs
+        )
 
     def get_config(self):
-        config = {'alpha': float(self.alpha)}
+        config = {"alpha": float(self.alpha)}
         base_config = super(ISRLU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class SoftClipping(Layer):
-    '''
+    """
     Soft Clipping Activation Function.
 
     .. math::
@@ -689,7 +731,7 @@ class SoftClipping(Layer):
         >>> X_input = Input(input_shape)
         >>> X = SoftClipping(alpha=0.5)(X_input)
 
-    '''
+    """
 
     def __init__(self, alpha=0.5, **kwargs):
         super(SoftClipping, self).__init__(**kwargs)
@@ -697,18 +739,21 @@ class SoftClipping(Layer):
         self.alpha = K.cast_to_floatx(alpha)
 
     def call(self, inputs):
-        return (1 / self.alpha) * K.log((1 + K.exp(self.alpha * inputs))/(1 + K.exp(self.alpha *(inputs - 1))))
+        return (1 / self.alpha) * K.log(
+            (1 + K.exp(self.alpha * inputs)) / (1 + K.exp(self.alpha * (inputs - 1)))
+        )
 
     def get_config(self):
-        config = {'alpha': float(self.alpha)}
+        config = {"alpha": float(self.alpha)}
         base_config = super(SoftClipping, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class Aria2(Layer):
-    '''
+    """
     Aria-2 Activation Function.
 
     .. math::
@@ -740,7 +785,7 @@ class Aria2(Layer):
         >>> X_input = Input(input_shape)
         >>> X =Aria2(alpha=1.0, beta=0.5)(X_input)
 
-    '''
+    """
 
     def __init__(self, alpha=1.0, beta=0.5, **kwargs):
         super(Aria2, self).__init__(**kwargs)
@@ -752,7 +797,7 @@ class Aria2(Layer):
         return K.pow((1 + K.exp(-self.beta * inputs)), -self.alpha)
 
     def get_config(self):
-        config = {'alpha': float(self.alpha), 'beta': float(self.beta)}
+        config = {"alpha": float(self.alpha), "beta": float(self.beta)}
         base_config = super(Aria2, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
@@ -761,7 +806,7 @@ class Aria2(Layer):
 
 
 class Celu(Layer):
-    '''
+    """
     CELU Activation Function.
 
     .. math::
@@ -786,7 +831,7 @@ class Celu(Layer):
         >>> X_input = Input(input_shape)
         >>> X = Celu(alpha=1.0)(X_input)
 
-    '''
+    """
 
     def __init__(self, alpha=1.0, **kwargs):
         super(Celu, self).__init__(**kwargs)
@@ -794,10 +839,12 @@ class Celu(Layer):
         self.alpha = K.cast_to_floatx(alpha)
 
     def call(self, inputs):
-        return K.cast(K.greater_equal(inputs, 0), 'float32') * inputs + K.cast(K.less(inputs, 0), 'float32') * self.alpha * (K.exp (inputs / self.alpha) - 1)
+        return K.cast(K.greater_equal(inputs, 0), "float32") * inputs + K.cast(
+            K.less(inputs, 0), "float32"
+        ) * self.alpha * (K.exp(inputs / self.alpha) - 1)
 
     def get_config(self):
-        config = {'alpha': float(self.alpha)}
+        config = {"alpha": float(self.alpha)}
         base_config = super(Celu, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
@@ -806,7 +853,7 @@ class Celu(Layer):
 
 
 class ReLU6(Layer):
-    '''
+    """
     RELU6 Activation Function.
 
     .. math::
@@ -828,25 +875,27 @@ class ReLU6(Layer):
         >>> X_input = Input(input_shape)
         >>> X = ReLU6()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(ReLU6, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
-        return K.cast(K.greater_equal(inputs, 6), 'float32') * 6 + K.cast(K.less(inputs, 6), 'float32') * K.relu(inputs)
+        return K.cast(K.greater_equal(inputs, 6), "float32") * 6 + K.cast(
+            K.less(inputs, 6), "float32"
+        ) * K.relu(inputs)
 
     def get_config(self):
         base_config = super(ReLU6, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
 class HardTanh(Layer):
-    '''
+    """
     Hard-TanH Activation Function.
 
     .. math::
@@ -864,26 +913,31 @@ class HardTanh(Layer):
         >>> X_input = Input(input_shape)
         >>> X = HardTanh()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(HardTanh, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
-        return K.cast(K.greater(inputs , 1), 'float32')\
-        + inputs * K.cast(K.less_equal(inputs, 1), 'float32') * K.cast(K.greater_equal(inputs, -1), 'float32') - K.cast(K.less(inputs, -1), 'float32')
+        return (
+            K.cast(K.greater(inputs, 1), "float32")
+            + inputs
+            * K.cast(K.less_equal(inputs, 1), "float32")
+            * K.cast(K.greater_equal(inputs, -1), "float32")
+            - K.cast(K.less(inputs, -1), "float32")
+        )
 
     def get_config(self):
         base_config = super(HardTanh, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
 class LogSigmoid(Layer):
-    '''
+    """
     Log-Sigmoid Activation Function.
 
     .. math::
@@ -901,7 +955,7 @@ class LogSigmoid(Layer):
         >>> X_input = Input(input_shape)
         >>> X = LogSigmoid()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(LogSigmoid, self).__init__(**kwargs)
@@ -912,14 +966,14 @@ class LogSigmoid(Layer):
 
     def get_config(self):
         base_config = super(LogSigmoid, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
 class TanhShrink(Layer):
-    '''
+    """
     TanH-Shrink Activation Function.
 
     .. math::
@@ -937,7 +991,7 @@ class TanhShrink(Layer):
         >>> X_input = Input(input_shape)
         >>> X = TanhShrink()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(TanhShrink, self).__init__(**kwargs)
@@ -948,14 +1002,14 @@ class TanhShrink(Layer):
 
     def get_config(self):
         base_config = super(TanhShrink, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
 class HardShrink(Layer):
-    '''
+    """
     Hard-Shrink Activation Function.
 
     .. math::
@@ -976,19 +1030,24 @@ class HardShrink(Layer):
         >>> X_input = Input(input_shape)
         >>> X = HardShrink(lambd = 0.5)(X_input)
 
-    '''
+    """
 
-    def __init__(self, lambd = 0.5, **kwargs):
+    def __init__(self, lambd=0.5, **kwargs):
         super(HardShrink, self).__init__(**kwargs)
         self.supports_masking = True
         self.lambd = K.cast_to_floatx(lambd)
 
     def call(self, inputs):
-        return K.cast(K.greater(inputs , self.lambd), 'float32') * inputs \
-        + 0 * K.cast(K.less_equal(inputs, self.lambd), 'float32') * K.cast(K.greater_equal(inputs, -self.lambd), 'float32') + inputs *  K.cast(K.less(inputs, -self.lambd), 'float32')
+        return (
+            K.cast(K.greater(inputs, self.lambd), "float32") * inputs
+            + 0
+            * K.cast(K.less_equal(inputs, self.lambd), "float32")
+            * K.cast(K.greater_equal(inputs, -self.lambd), "float32")
+            + inputs * K.cast(K.less(inputs, -self.lambd), "float32")
+        )
 
     def get_config(self):
-        config = {'lambd': float(self.lambd)}
+        config = {"lambd": float(self.lambd)}
         base_config = super(HardShrink, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
@@ -997,7 +1056,7 @@ class HardShrink(Layer):
 
 
 class SoftShrink(Layer):
-    '''
+    """
     Soft-Shrink Activation Function.
 
     .. math::
@@ -1018,20 +1077,26 @@ class SoftShrink(Layer):
         >>> X_input = Input(input_shape)
         >>> X = SoftShrink(lambd = 0.5)(X_input)
 
-    '''
+    """
 
-    def __init__(self, lambd= 0.5, **kwargs):
+    def __init__(self, lambd=0.5, **kwargs):
         super(SoftShrink, self).__init__(**kwargs)
         self.supports_masking = True
         self.lambd = K.cast_to_floatx(lambd)
 
     def call(self, inputs):
-        return (K.cast(K.greater(inputs , self.lambd), 'float32') * (inputs - self.lambd)) \
-        + (0 * K.cast(K.less_equal(inputs, self.lambd), 'float32') * K.cast(K.greater_equal(inputs, -self.lambd), 'float32')) \
-        + ((inputs + self.lambd) *  K.cast(K.less(inputs, -self.lambd), 'float32'))
+        return (
+            (K.cast(K.greater(inputs, self.lambd), "float32") * (inputs - self.lambd))
+            + (
+                0
+                * K.cast(K.less_equal(inputs, self.lambd), "float32")
+                * K.cast(K.greater_equal(inputs, -self.lambd), "float32")
+            )
+            + ((inputs + self.lambd) * K.cast(K.less(inputs, -self.lambd), "float32"))
+        )
 
     def get_config(self):
-        config = {'lambd': float(self.lambd)}
+        config = {"lambd": float(self.lambd)}
         base_config = super(SoftShrink, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
@@ -1040,7 +1105,7 @@ class SoftShrink(Layer):
 
 
 class SoftMin(Layer):
-    '''
+    """
     SoftMin Activation Function.
 
     .. math::
@@ -1058,7 +1123,7 @@ class SoftMin(Layer):
         >>> X_input = Input(input_shape)
         >>> X = SoftMin()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(SoftMin, self).__init__(**kwargs)
@@ -1069,14 +1134,14 @@ class SoftMin(Layer):
 
     def get_config(self):
         base_config = super(SoftMin, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
 class LogSoftmax(Layer):
-    '''
+    """
     Log-SoftMax Activation Function.
 
     .. math::
@@ -1094,7 +1159,7 @@ class LogSoftmax(Layer):
         >>> X_input = Input(input_shape)
         >>> X = LogSoftmax()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(LogSoftmax, self).__init__(**kwargs)
@@ -1105,14 +1170,14 @@ class LogSoftmax(Layer):
 
     def get_config(self):
         base_config = super(LogSoftmax, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
 
 class SoftExponential(Layer):
-    '''
+    """
     Soft-Exponential Activation Function.
 
     .. math::
@@ -1139,7 +1204,7 @@ class SoftExponential(Layer):
         >>> X_input = Input(input_shape)
         >>> X = SoftExponential()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(SoftExponential, self).__init__(**kwargs)
@@ -1147,29 +1212,35 @@ class SoftExponential(Layer):
 
     def build(self, input_shape):
         # Create a trainable weight for alpha parameter. Alpha by default is initialized with random normal distribution.
-        self.alpha = self.add_weight(name='alpha',
-                                     initializer='random_normal',
-                                     trainable=True,
-                                     shape = (1,))
+        self.alpha = self.add_weight(
+            name="alpha", initializer="random_normal", trainable=True, shape=(1,)
+        )
         super(SoftExponential, self).build(input_shape)
 
     def call(self, inputs):
-        output =  K.cast(K.greater(self.alpha, 0), 'float32') * (K.exp(self.alpha * inputs) - 1)/(self.alpha) + \
-        self.alpha + K.cast(K.less(self.alpha, 0), 'float32') * (- (K.log(1 - self.alpha * (inputs + self.alpha))) / self.alpha) + \
-        K.cast(K.equal(self.alpha, 0), 'float32') * inputs
+        output = (
+            K.cast(K.greater(self.alpha, 0), "float32")
+            * (K.exp(self.alpha * inputs) - 1)
+            / (self.alpha)
+            + self.alpha
+            + K.cast(K.less(self.alpha, 0), "float32")
+            * (-(K.log(1 - self.alpha * (inputs + self.alpha))) / self.alpha)
+            + K.cast(K.equal(self.alpha, 0), "float32") * inputs
+        )
 
         return output
 
     def get_config(self):
-        config = {'alpha': float(self.alpha)}
+        config = {"alpha": float(self.alpha)}
         base_config = super(SoftExponential, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class SReLU(Layer):
-    '''
+    """
     SReLU (S-shaped Rectified Linear Activation Unit): a combination of three linear functions, which perform mapping R → R with the following formulation:
 
     .. math::
@@ -1199,50 +1270,71 @@ class SReLU(Layer):
         >>> X_input = Input(input_shape)
         >>> X = SReLU(params=None)(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(SReLU, self).__init__(**kwargs)
         self.supports_masking = True
 
     def build(self, input_shape):
-        '''
+        """
         Adding Trainable Parameters.
             - parameters: (tr, tl, ar, al) initialized randomly.
-        '''
-        self.tr = self.add_weight(name='tr',
-                                 initializer='random_uniform',
-                                 trainable=True,
-                                 shape = (input_shape[-1],))
-        self.tl = self.add_weight(name='tl',
-                                 initializer='random_uniform',
-                                 trainable=True,
-                                 shape = (input_shape[-1],))
-        self.ar = self.add_weight(name='ar',
-                                 initializer='random_uniform',
-                                 trainable=True,
-                                 shape = (input_shape[-1],))
-        self.al = self.add_weight(name='al',
-                                 initializer='random_uniform',
-                                 trainable=True,
-                                 shape = (input_shape[-1],))
+        """
+        self.tr = self.add_weight(
+            name="tr",
+            initializer="random_uniform",
+            trainable=True,
+            shape=(input_shape[-1],),
+        )
+        self.tl = self.add_weight(
+            name="tl",
+            initializer="random_uniform",
+            trainable=True,
+            shape=(input_shape[-1],),
+        )
+        self.ar = self.add_weight(
+            name="ar",
+            initializer="random_uniform",
+            trainable=True,
+            shape=(input_shape[-1],),
+        )
+        self.al = self.add_weight(
+            name="al",
+            initializer="random_uniform",
+            trainable=True,
+            shape=(input_shape[-1],),
+        )
 
         super(SReLU, self).build(input_shape)
 
     def call(self, inputs):
-        return K.cast(K.greater_equal(inputs, self.tr), 'float32') * (self.tr + self.ar * (inputs + self.tr)) + K.cast(K.less(inputs, self.tr), 'float32') \
-               * K.cast(K.greater(inputs, self.tl), 'float32') * inputs + K.cast(K.less_equal(inputs, self.tl), 'float32') * (self.tl + self.al * (inputs + self.tl))
+        return (
+            K.cast(K.greater_equal(inputs, self.tr), "float32")
+            * (self.tr + self.ar * (inputs + self.tr))
+            + K.cast(K.less(inputs, self.tr), "float32")
+            * K.cast(K.greater(inputs, self.tl), "float32")
+            * inputs
+            + K.cast(K.less_equal(inputs, self.tl), "float32")
+            * (self.tl + self.al * (inputs + self.tl))
+        )
 
     def get_config(self):
-        config = {'tr': float(self.tr), 't1': float(self.t1), 'ar': float(self.ar), 'a1': float(self.a1)}
+        config = {
+            "tr": float(self.tr),
+            "t1": float(self.t1),
+            "ar": float(self.ar),
+            "a1": float(self.a1),
+        }
         base_config = super(SReLU, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class LeCunTanh(Layer):
-    '''
+    """
     LeCun's Tanh Activation Function.
 
     .. math::
@@ -1260,24 +1352,25 @@ class LeCunTanh(Layer):
         >>> X_input = Input(input_shape)
         >>> X = LeCunTanh()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(LeCunTanh, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
-        return 1.7159 * K.tanh((2 * inputs)/3)
+        return 1.7159 * K.tanh((2 * inputs) / 3)
 
     def get_config(self):
         base_config = super(LeCunTanh, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape
 
+
 class TaLU(Layer):
-    '''
+    """
     TaLU Activation Function.
 
     Shape:
@@ -1294,29 +1387,29 @@ class TaLU(Layer):
         >>> X_input = Input(input_shape)
         >>> X = TaLU()(X_input)
 
-    '''
+    """
 
     def __init__(self, **kwargs):
         super(TaLU, self).__init__(**kwargs)
         self.supports_masking = True
 
     def call(self, inputs):
-        cond = K.less_equal(inputs, inputs*0.0)
+        cond = K.less_equal(inputs, inputs * 0.0)
         t = K.tanh(inputs)
         tanH = K.tanh(-0.05)
-        cond1 = K.less_equal(inputs, -0.05*(1 - inputs*0.0))
-        if cond1 == True:
-            y = tanH*(1 - inputs*0.0)
+        cond1 = K.less_equal(inputs, -0.05 * (1 - inputs * 0.0))
+        if cond1 is True:
+            y = tanH * (1 - inputs * 0.0)
         else:
             y = t
-        if cond == True:
+        if cond is True:
             return y
         else:
             return inputs
 
     def get_config(self):
         base_config = super(TaLU, self).get_config()
-        return dict(list(base_config.items())
+        return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):
         return input_shape

@@ -10,7 +10,7 @@ from tensorflow.keras import initializers, regularizers, constraints
 
 
 class WeightedTanh(Layer):
-    '''
+    """
     Weighted TanH Activation Function.
 
     .. math::
@@ -33,7 +33,7 @@ class WeightedTanh(Layer):
     Arguments:
 
         - weight: hyperparameter (default=1.0)
-    '''
+    """
 
     def __init__(self, input_weight):
         super(WeightedTanh, self).__init__()
@@ -44,7 +44,7 @@ class WeightedTanh(Layer):
 
 
 class Swish(Layer):
-    '''
+    """
     Swish Activation Function.
 
     .. math::
@@ -72,7 +72,7 @@ class Swish(Layer):
 
         - See Swish paper:
         https://arxiv.org/pdf/1710.05941.pdf
-    '''
+    """
 
     def __init__(self, beta):
         super(Swish, self).__init__()
@@ -83,7 +83,7 @@ class Swish(Layer):
 
 
 class ESwish(Layer):
-    '''
+    """
     E-Swish Activation Function.
 
     .. math::
@@ -110,7 +110,7 @@ class ESwish(Layer):
 
         - See related paper:
         https://arxiv.org/abs/1801.07145
-    '''
+    """
 
     def __init__(self, beta):
         super(ESwish, self).__init__()
@@ -121,7 +121,7 @@ class ESwish(Layer):
 
 
 class Aria2(Layer):
-    '''
+    """
     Aria-2 Activation Function.
 
     .. math::
@@ -150,7 +150,7 @@ class Aria2(Layer):
 
         - See Aria paper:
             https://arxiv.org/abs/1805.08878
-    '''
+    """
 
     def __init__(self, alpha, beta):
         super(Aria2, self).__init__()
@@ -162,7 +162,7 @@ class Aria2(Layer):
 
 
 class Mila(Layer):
-    '''
+    """
     Mila Activation Function.
 
     .. math::
@@ -188,7 +188,7 @@ class Mila(Layer):
     References:
 
         -  https://github.com/digantamisra98/Mila
-    '''
+    """
 
     def __init__(self, beta):
         super(Mila, self).__init__()
@@ -199,7 +199,7 @@ class Mila(Layer):
 
 
 class ISRU(Layer):
-    '''
+    """
     ISRU (Inverse Square Root Unit) Activation Function.
 
     .. math::
@@ -226,7 +226,7 @@ class ISRU(Layer):
 
         - ISRU paper:
         https://arxiv.org/pdf/1710.09967.pdf
-    '''
+    """
 
     def __init__(self, alpha):
         super(ISRU, self).__init__()
@@ -237,7 +237,7 @@ class ISRU(Layer):
 
 
 class BentIdentity(Layer):
-    '''
+    """
     Bent's Identity Activation Function.
 
     .. math::
@@ -255,7 +255,7 @@ class BentIdentity(Layer):
         when using this layer as the first layer in a model.
 
         - Output: Same shape as the input.
-    '''
+    """
 
     def __init__(self):
         super(BentIdentity, self).__init__()
@@ -265,7 +265,7 @@ class BentIdentity(Layer):
 
 
 class SoftClipping(Layer):
-    '''
+    """
     Soft Clipping Activation Function.
 
     .. math::
@@ -292,18 +292,21 @@ class SoftClipping(Layer):
 
         - See SC paper:
             https://arxiv.org/pdf/1810.11509.pdf
-    '''
+    """
 
     def __init__(self, alpha):
         super(SoftClipping, self).__init__()
         self.alpha = alpha
 
     def call(self, inputs):
-        return tf.math.log((1 + tf.math.exp(self.alpha * inputs)) * tf.math.sigmoid(self.alpha * (1 - inputs)))
+        return tf.math.log(
+            (1 + tf.math.exp(self.alpha * inputs))
+            * tf.math.sigmoid(self.alpha * (1 - inputs))
+        )
 
 
 class Mish(Layer):
-    '''
+    """
     Mish Activation Function.
 
     .. math::
@@ -325,7 +328,7 @@ class Mish(Layer):
     References:
         - Mish paper:
         https://arxiv.org/abs/1908.08681
-    '''
+    """
 
     def __init__(self):
         super(Mish, self).__init__()
@@ -335,7 +338,7 @@ class Mish(Layer):
 
 
 class BetaMish(Layer):
-    '''
+    """
     β mish activation function.
 
     .. math::
@@ -362,18 +365,20 @@ class BetaMish(Layer):
 
         - β-Mish: An uni-parametric adaptive activation function derived from Mish:
         https://github.com/digantamisra98/Beta-Mish)
-    '''
+    """
 
     def __init__(self, beta):
         super(BetaMish, self).__init__()
         self.beta = beta
 
     def call(self, inputs):
-        return inputs * tf.math.tanh(tf.math.log(tf.math.pow(1 + tf.math.exp(inputs), self.beta)))
+        return inputs * tf.math.tanh(
+            tf.math.log(tf.math.pow(1 + tf.math.exp(inputs), self.beta))
+        )
 
 
 class ELiSH(Layer):
-    '''
+    """
     ELiSH (Exponential Linear Sigmoid SquasHing) Activation Function.
 
     .. math::
@@ -396,19 +401,27 @@ class ELiSH(Layer):
 
         - Related paper:
         https://arxiv.org/pdf/1710.05941.pdf
-    '''
+    """
 
     def __init__(self):
         super(ELiSH, self).__init__()
 
     def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs * tf.math.sigmoid(inputs)
-        case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * (tf.math.exp(inputs) - 1) * tf.math.sigmoid(inputs)
+        case_1 = (
+            tf.cast(tf.math.greater_equal(inputs, 0), "float32")
+            * inputs
+            * tf.math.sigmoid(inputs)
+        )
+        case_2 = (
+            tf.cast(tf.math.less(inputs, 0), "float32")
+            * (tf.math.exp(inputs) - 1)
+            * tf.math.sigmoid(inputs)
+        )
         return case_1 + case_2
 
 
 class HardELiSH(Layer):
-    '''
+    """
     Hard ELiSH Activation Function.
 
     .. math::
@@ -430,20 +443,27 @@ class HardELiSH(Layer):
 
         - Related paper:
         https://arxiv.org/pdf/1710.05941.pdf
-    '''
+    """
 
     def __init__(self):
         super(HardELiSH, self).__init__()
 
     def call(self, inputs):
-        common = tf.math.maximum(tf.cast(0, 'float32'), tf.math.minimum(tf.cast(1, 'float32'), (inputs + 1) / 2))
-        case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs * common
-        case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * (tf.math.exp(inputs) - 1) * common
+        common = tf.math.maximum(
+            tf.cast(0, "float32"),
+            tf.math.minimum(tf.cast(1, "float32"), (inputs + 1) / 2),
+        )
+        case_1 = tf.cast(tf.math.greater_equal(inputs, 0), "float32") * inputs * common
+        case_2 = (
+            tf.cast(tf.math.less(inputs, 0), "float32")
+            * (tf.math.exp(inputs) - 1)
+            * common
+        )
         return case_1 + case_2
 
 
 class SineReLU(Layer):
-    '''
+    """
     Sine ReLU Activation Function.
 
     .. math::
@@ -469,20 +489,25 @@ class SineReLU(Layer):
     Arguments:
 
         - epsilon: hyperparameter (default=0.01)
-    '''
+    """
 
     def __init__(self, epsilon):
         super(SineReLU, self).__init__()
         self.epsilon = epsilon
 
     def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater(inputs, 0), 'float32') * inputs
-        case_2 = tf.cast(tf.math.less_equal(self.epsilon * (tf.math.sin(inputs) - tf.math.cos(inputs)), 0), 'float32')
+        case_1 = tf.cast(tf.math.greater(inputs, 0), "float32") * inputs
+        case_2 = tf.cast(
+            tf.math.less_equal(
+                self.epsilon * (tf.math.sin(inputs) - tf.math.cos(inputs)), 0
+            ),
+            "float32",
+        )
         return case_1 + case_2
 
 
 class FlattenTSwish(Layer):
-    '''
+    """
     FTS (Flatten T-Swish) Activation Function.
 
     .. math::
@@ -504,17 +529,21 @@ class FlattenTSwish(Layer):
 
         - Flatten T-Swish paper:
         https://arxiv.org/pdf/1812.06247.pdf
-    '''
+    """
 
     def __init__(self):
         super(FlattenTSwish, self).__init__()
 
     def call(self, inputs):
-        return tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs * tf.math.sigmoid(inputs)
+        return (
+            tf.cast(tf.math.greater_equal(inputs, 0), "float32")
+            * inputs
+            * tf.math.sigmoid(inputs)
+        )
 
 
 class SQNL(Layer):
-    '''
+    """
     SQNL Activation Function.
 
     .. math::
@@ -536,21 +565,29 @@ class SQNL(Layer):
 
         - SQNL Paper:
         https://ieeexplore.ieee.org/document/8489043
-    '''
+    """
 
     def __init__(self):
         super(SQNL, self).__init__()
 
     def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater(inputs, 2), 'float32')
-        case_2 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * tf.cast(tf.math.less_equal(inputs, 2), 'float32') * (inputs - tf.math.pow(inputs, 2) / tf.cast(4, 'float32'))
-        case_3 = tf.cast(tf.math.greater_equal(inputs, -2), 'float32') * tf.cast(tf.math.less(inputs, 0), 'float32') * (inputs + tf.math.pow(inputs, 2) / tf.cast(4, 'float32'))
-        case_4 = tf.cast(tf.math.less(inputs, -2), 'float32') * tf.cast(-1, 'float32')
+        case_1 = tf.cast(tf.math.greater(inputs, 2), "float32")
+        case_2 = (
+            tf.cast(tf.math.greater_equal(inputs, 0), "float32")
+            * tf.cast(tf.math.less_equal(inputs, 2), "float32")
+            * (inputs - tf.math.pow(inputs, 2) / tf.cast(4, "float32"))
+        )
+        case_3 = (
+            tf.cast(tf.math.greater_equal(inputs, -2), "float32")
+            * tf.cast(tf.math.less(inputs, 0), "float32")
+            * (inputs + tf.math.pow(inputs, 2) / tf.cast(4, "float32"))
+        )
+        case_4 = tf.cast(tf.math.less(inputs, -2), "float32") * tf.cast(-1, "float32")
         return case_1 + case_2 + case_3 + case_4
 
 
 class ISRLU(Layer):
-    '''
+    """
     ISRLU Activation Function.
 
     .. math::
@@ -576,20 +613,24 @@ class ISRLU(Layer):
     References:
 
         - ISRLU paper: https://arxiv.org/pdf/1710.09967.pdf
-    '''
+    """
 
     def __init__(self, alpha):
         super(ISRLU, self).__init__()
         self.alpha = alpha
 
     def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs
-        case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * inputs  / tf.math.sqrt(1 + self.alpha * tf.math.pow(inputs, 2))
+        case_1 = tf.cast(tf.math.greater_equal(inputs, 0), "float32") * inputs
+        case_2 = (
+            tf.cast(tf.math.less(inputs, 0), "float32")
+            * inputs
+            / tf.math.sqrt(1 + self.alpha * tf.math.pow(inputs, 2))
+        )
         return case_1 + case_2
 
 
 class SoftExponential(Layer):
-    '''
+    """
     Soft-Exponential Activation Function with 1 trainable parameter..
 
     .. math::
@@ -611,24 +652,30 @@ class SoftExponential(Layer):
 
         - See Soft-Exponential paper:
         https://arxiv.org/pdf/1602.01321.pdf
-    '''
+    """
 
     def __init__(self, alpha):
         super(SoftExponential, self).__init__()
         self.alpha = alpha
 
     def call(self, inputs):
-        condition_1 = tf.cast(tf.math.less(self.alpha, 0), 'float32')
-        condition_2 = tf.cast(tf.math.equal(self.alpha, 0), 'float32')
-        condition_3 = tf.cast(tf.math.greater(self.alpha, 0), 'float32')
-        case_1 = condition_1 * (-1 / self.alpha) * tf.math.log(1 - self.alpha * (inputs + self.alpha))
+        condition_1 = tf.cast(tf.math.less(self.alpha, 0), "float32")
+        condition_2 = tf.cast(tf.math.equal(self.alpha, 0), "float32")
+        condition_3 = tf.cast(tf.math.greater(self.alpha, 0), "float32")
+        case_1 = (
+            condition_1
+            * (-1 / self.alpha)
+            * tf.math.log(1 - self.alpha * (inputs + self.alpha))
+        )
         case_2 = condition_2 * inputs
-        case_3 = condition_3 * (self.alpha + (1 / self.alpha) * (tf.math.exp(self.alpha * inputs) - 1))
+        case_3 = condition_3 * (
+            self.alpha + (1 / self.alpha) * (tf.math.exp(self.alpha * inputs) - 1)
+        )
         return case_1 + case_2 + case_3
 
 
 class CELU(Layer):
-    '''
+    """
     CELU Activation Function.
 
     .. math::
@@ -649,20 +696,24 @@ class CELU(Layer):
 
         - See CELU paper:
             https://arxiv.org/abs/1704.07483
-    '''
+    """
 
     def __init__(self, alpha):
         super(CELU, self).__init__()
         self.alpha = alpha
 
     def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater_equal(inputs, 0), 'float32') * inputs
-        case_2 = tf.cast(tf.math.less(inputs, 0), 'float32') * self.alpha * (tf.math.exp(inputs / self.alpha) - 1)
+        case_1 = tf.cast(tf.math.greater_equal(inputs, 0), "float32") * inputs
+        case_2 = (
+            tf.cast(tf.math.less(inputs, 0), "float32")
+            * self.alpha
+            * (tf.math.exp(inputs / self.alpha) - 1)
+        )
         return case_1 + case_2
 
 
 class HardTanh(Layer):
-    '''
+    """
     Hard-TanH Activation Function.
 
     .. math::
@@ -675,20 +726,24 @@ class HardTanh(Layer):
         when using this layer as the first layer in a model.
 
         - Output: Same shape as the input.
-    '''
+    """
 
     def __init__(self):
         super(HardTanh, self).__init__()
 
     def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater(inputs, 1), 'float32')
-        case_2 = tf.cast(tf.math.less(inputs, -1), 'float32') * -1
-        case_3 = tf.cast(tf.math.greater_equal(inputs, -1), 'float32') * tf.cast(tf.math.less_equal(inputs, 1), 'float32') * inputs
+        case_1 = tf.cast(tf.math.greater(inputs, 1), "float32")
+        case_2 = tf.cast(tf.math.less(inputs, -1), "float32") * -1
+        case_3 = (
+            tf.cast(tf.math.greater_equal(inputs, -1), "float32")
+            * tf.cast(tf.math.less_equal(inputs, 1), "float32")
+            * inputs
+        )
         return case_1 + case_2 + case_3
 
 
 class LogSigmoid(Layer):
-    '''
+    """
     Log-Sigmoid Activation Function.
 
     .. math::
@@ -701,7 +756,7 @@ class LogSigmoid(Layer):
         when using this layer as the first layer in a model.
 
         - Output: Same shape as the input.
-    '''
+    """
 
     def __init__(self):
         super(LogSigmoid, self).__init__()
@@ -711,7 +766,7 @@ class LogSigmoid(Layer):
 
 
 class TanhShrink(Layer):
-    '''
+    """
     TanH-Shrink Activation Function.
 
     .. math::
@@ -724,7 +779,7 @@ class TanhShrink(Layer):
         when using this layer as the first layer in a model.
 
         - Output: Same shape as the input.
-    '''
+    """
 
     def __init__(self):
         super(TanhShrink, self).__init__()
@@ -734,7 +789,7 @@ class TanhShrink(Layer):
 
 
 class HardShrink(Layer):
-    '''
+    """
     Hard-Shrink Activation Function.
 
     .. math::
@@ -751,20 +806,20 @@ class HardShrink(Layer):
     Arguments:
 
         - lambda: the λ value for the Hardshrink formulation (default=0.5)
-    '''
+    """
 
-    def __init__(self, _lambda = 0.5):
+    def __init__(self, _lambda=0.5):
         super(HardShrink, self).__init__()
         self._lambda = _lambda
 
     def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater(inputs, self._lambda), 'float32') * inputs
-        case_2 = tf.cast(tf.math.less(inputs, -1 * self._lambda), 'float32') * inputs
+        case_1 = tf.cast(tf.math.greater(inputs, self._lambda), "float32") * inputs
+        case_2 = tf.cast(tf.math.less(inputs, -1 * self._lambda), "float32") * inputs
         return case_1 + case_2
 
 
 class SoftShrink(Layer):
-    '''
+    """
     Soft-Shrink Activation Function.
 
     .. math::
@@ -780,20 +835,24 @@ class SoftShrink(Layer):
     Arguments:
 
         - lambda: the λ value for the Softshrink formulation (default=0.5)
-    '''
+    """
 
-    def __init__(self, _lambda = 0.5):
+    def __init__(self, _lambda=0.5):
         super(HardShrink, self).__init__()
         self._lambda = _lambda
 
     def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater(inputs, self._lambda), 'float32') * (inputs - self._lambda)
-        case_2 = tf.cast(tf.math.less(inputs, -1 * self._lambda), 'float32') * (inputs - self._lambda)
+        case_1 = tf.cast(tf.math.greater(inputs, self._lambda), "float32") * (
+            inputs - self._lambda
+        )
+        case_2 = tf.cast(tf.math.less(inputs, -1 * self._lambda), "float32") * (
+            inputs - self._lambda
+        )
         return case_1 + case_2
 
 
 class SoftMin(Layer):
-    '''
+    """
     SoftMin Activation Function.
 
     .. math::
@@ -806,7 +865,7 @@ class SoftMin(Layer):
         when using this layer as the first layer in a model.
 
         - Output: Same shape as the input.
-    '''
+    """
 
     def __init__(self):
         super(SoftMin, self).__init__()
@@ -816,7 +875,7 @@ class SoftMin(Layer):
 
 
 class LogSoftMax(Layer):
-    '''
+    """
     Log-SoftMax Activation Function.
 
     .. math::
@@ -829,7 +888,7 @@ class LogSoftMax(Layer):
         when using this layer as the first layer in a model.
 
         - Output: Same shape as the input.
-    '''
+    """
 
     def __init__(self):
         super(LogSoftMax, self).__init__()
@@ -839,7 +898,7 @@ class LogSoftMax(Layer):
 
 
 class MaxOut(Layer):
-    '''
+    """
     Implementation of Maxout:
 
         .. math::
@@ -856,7 +915,7 @@ class MaxOut(Layer):
 
         - See Maxout paper:
         https://arxiv.org/pdf/1302.4389.pdf
-    '''
+    """
 
     def __init__(self):
         super(MaxOut, self).__init__()
@@ -866,7 +925,7 @@ class MaxOut(Layer):
 
 
 class SReLU(Layer):
-    '''
+    """
     SReLU (S-shaped Rectified Linear Activation Unit): a combination of three linear functions, which perform mapping R → R with the following formulation:
 
     .. math::
@@ -887,27 +946,39 @@ class SReLU(Layer):
 
         - See SReLU paper:
         https://arxiv.org/pdf/1512.07030.pdf
-    '''
+    """
 
-    def __init__(self, t, a, r, l):
+    def __init__(self, t, a, r, p):
         super(SReLU, self).__init__()
-        self.t = tf.cast(t, 'float32')
-        self.a = tf.cast(a, 'float32')
-        self.r = tf.cast(r, 'float32')
-        self.l = tf.cast(l, 'float32')
+        self.t = tf.cast(t, "float32")
+        self.a = tf.cast(a, "float32")
+        self.r = tf.cast(r, "float32")
+        self.p = tf.cast(p, "float32")
 
     def call(self, inputs):
-        condition_1 = tf.cast(tf.math.greater_equal(inputs, tf.math.pow(self.t, self.r)), 'float32')
-        condition_2 = tf.cast(tf.math.greater(tf.math.pow(self.t, self.r), inputs), 'float32') + tf.cast(tf.math.greater(inputs, tf.math.pow(self.t, self.l)), 'float32')
-        condition_3 = tf.cast(tf.math.less_equal(inputs, tf.math.pow(self.t, self.l)), 'float32')
-        case_1 = condition_1 * (tf.math.pow(self.t, self.r) + tf.math.pow(self.a, self.r) * (inputs - tf.math.pow(self.t, self.r)))
+        condition_1 = tf.cast(
+            tf.math.greater_equal(inputs, tf.math.pow(self.t, self.r)), "float32"
+        )
+        condition_2 = tf.cast(
+            tf.math.greater(tf.math.pow(self.t, self.r), inputs), "float32"
+        ) + tf.cast(tf.math.greater(inputs, tf.math.pow(self.t, self.p)), "float32")
+        condition_3 = tf.cast(
+            tf.math.less_equal(inputs, tf.math.pow(self.t, self.p)), "float32"
+        )
+        case_1 = condition_1 * (
+            tf.math.pow(self.t, self.r)
+            + tf.math.pow(self.a, self.r) * (inputs - tf.math.pow(self.t, self.r))
+        )
         case_2 = condition_2 * inputs
-        case_3 = condition_3 * (tf.math.pow(self.t, self.l) + tf.math.pow(self.a, self.l) * (inputs - tf.math.pow(self.t, self.l)))
+        case_3 = condition_3 * (
+            tf.math.pow(self.t, self.p)
+            + tf.math.pow(self.a, self.p) * (inputs - tf.math.pow(self.t, self.p))
+        )
         return case_1 + case_2 + case_3
 
 
 class BReLU(Layer):
-    '''
+    """
     Implementation of BReLU activation function:
 
         .. math::
@@ -929,34 +1000,35 @@ class BReLU(Layer):
 
         - See BReLU paper:
         https://arxiv.org/pdf/1709.04054.pdf
-    '''
+    """
 
     def __init__(self):
         super(BReLU, self).__init__()
 
     def call(self, inputs):
         def brelu(x):
-            #get shape of X, we are interested in the last axis, which is constant
+            # get shape of X, we are interested in the last axis, which is constant
             shape = K.int_shape(x)
-            #last axis
+            # last axis
             dim = shape[-1]
-            #half of the last axis (+1 if necessary)
+            # half of the last axis (+1 if necessary)
             dim2 = dim // 2
             if dim % 2 != 0:
                 dim2 += 1
-            #multiplier will be a tensor of alternated +1 and -1
+            # multiplier will be a tensor of alternated +1 and -1
             multiplier = K.ones((dim2,))
-            multiplier = K.stack([multiplier, -multiplier], axis = -1)
+            multiplier = K.stack([multiplier, -multiplier], axis=-1)
             if dim % 2 != 0:
                 multiplier = multiplier[:-1]
-            #adjust multiplier shape to the shape of x
+            # adjust multiplier shape to the shape of x
             multiplier = K.reshape(multiplier, tuple(1 for _ in shape[:-1]) + (-1,))
             return multiplier * tf.nn.relu(multiplier * x)
+
         return Lambda(brelu)(inputs)
 
 
 class APL(Layer):
-    '''
+    """
     Implementation of APL (ADAPTIVE PIECEWISE LINEAR UNITS) activation function:
 
         .. math::
@@ -976,22 +1048,23 @@ class APL(Layer):
         - b: variables determine the locations of the hinges
 
     References:
-    
+
         - See APL paper:
         https://arxiv.org/pdf/1412.6830.pdf
-    '''
+    """
 
     def __init__(
         self,
-        alpha_initializer = 'zeros',
-        b_initializer = 'zeros',
-        S = 1,
-        alpha_regularizer = None,
-        b_regularizer = None,
-        alpha_constraint = None,
-        b_constraint = None,
-        shared_axes = None,
-        **kwargs):
+        alpha_initializer="zeros",
+        b_initializer="zeros",
+        S=1,
+        alpha_regularizer=None,
+        b_regularizer=None,
+        alpha_constraint=None,
+        b_constraint=None,
+        shared_axes=None,
+        **kwargs
+    ):
         super(APL, self).__init__(**kwargs)
         self.supports_masking = True
         self.alpha_initializer = initializers.get(alpha_initializer)
@@ -1007,8 +1080,8 @@ class APL(Layer):
         else:
             self.shared_axes = list(shared_axes)
         self.S = S
-        self.alpha_arr=[]
-        self.b_arr=[]
+        self.alpha_arr = []
+        self.b_arr = []
 
     def build(self, input_shape):
         param_shape = list(input_shape[1:])
@@ -1020,20 +1093,20 @@ class APL(Layer):
         for i in range(self.S):
             self.alpha_arr.append(
                 self.add_weight(
-                    shape = param_shape,
-                    name = 'alpha_' + str(i),
-                    initializer = self.alpha_initializer,
-                    regularizer = self.alpha_regularizer,
-                    constraint = self.alpha_constraint
+                    shape=param_shape,
+                    name="alpha_" + str(i),
+                    initializer=self.alpha_initializer,
+                    regularizer=self.alpha_regularizer,
+                    constraint=self.alpha_constraint,
                 )
             )
             self.b_arr.append(
                 self.add_weight(
-                    shape = param_shape,
-                    name = 'b_' + str(i),
-                    initializer = self.b_initializer,
-                    regularizer = self.b_regularizer,
-                    constraint = self.b_constraint
+                    shape=param_shape,
+                    name="b_" + str(i),
+                    initializer=self.b_initializer,
+                    regularizer=self.b_regularizer,
+                    constraint=self.b_constraint,
                 )
             )
         # Set input spec
@@ -1045,28 +1118,29 @@ class APL(Layer):
         self.input_spec = InputSpec(ndim=len(input_shape), axes=axes)
         self.built = True
 
-    def call(self, inputs, mask = None):
-        max_a = tf.maximum(0., inputs)
+    def call(self, inputs, mask=None):
+        max_a = tf.maximum(0.0, inputs)
         max_b = 0
         for i in range(self.S):
-            max_b += self.alpha_arr[i] * tf.maximum(0., -inputs + self.b_arr[i])
+            max_b += self.alpha_arr[i] * tf.maximum(0.0, -inputs + self.b_arr[i])
         return max_a + max_b
 
     def get_config(self):
         config = {
-            'alpha_initializer': initializers.serialize(self.b_initializer),
-            'alpha_regularizer': regularizers.serialize(self.b_regularizer),
-            'alpha_constraint': constraints.serialize(self.b_constraint),
-            'b_initializer': initializers.serialize(self.b_initializer),
-            'b_regularizer': regularizers.serialize(self.b_regularizer),
-            'b_constraint': constraints.serialize(self.b_constraint),
-            'shared_axes': self.shared_axes
+            "alpha_initializer": initializers.serialize(self.b_initializer),
+            "alpha_regularizer": regularizers.serialize(self.b_regularizer),
+            "alpha_constraint": constraints.serialize(self.b_constraint),
+            "b_initializer": initializers.serialize(self.b_initializer),
+            "b_regularizer": regularizers.serialize(self.b_regularizer),
+            "b_constraint": constraints.serialize(self.b_constraint),
+            "shared_axes": self.shared_axes,
         }
         base_config = super(APL, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
 
+
 class LeCunTanh(Layer):
-    '''
+    """
     LeCun's Tanh Activation Function.
 
     .. math::
@@ -1084,17 +1158,17 @@ class LeCunTanh(Layer):
         >>> X_input = Input(input_shape)
         >>> X = LeCunTanh()(X_input)
 
-    '''
+    """
 
     def __init__(self):
         super(LeCunTanh, self).__init__()
 
     def call(self, inputs):
-        return 1.7159 * tf.math.tanh((2 * inputs)/3)
+        return 1.7159 * tf.math.tanh((2 * inputs) / 3)
 
 
 class TaLU(Layer):
-    '''
+    """
     TaLU Activation Function.
 
     Shape:
@@ -1111,15 +1185,15 @@ class TaLU(Layer):
         >>> X_input = Input(input_shape)
         >>> X = TaLU()(X_input)
 
-    '''
+    """
 
     def __init__(self):
         super(TaLU, self).__init__()
 
     def call(self, inputs):
-        cond = tf.less_equal(inputs, inputs*0.0)
+        cond = tf.less_equal(inputs, inputs * 0.0)
         t = tf.tanh(inputs)
         tanH = tf.tanh(-0.05)
-        cond1 = tf.less_equal(inputs, -0.05*(1 - inputs*0.0))
-        y = tf.where(cond1, tanH*(1 - inputs*0.0), t)
+        cond1 = tf.less_equal(inputs, -0.05 * (1 - inputs * 0.0))
+        y = tf.where(cond1, tanH * (1 - inputs * 0.0), t)
         return tf.where(cond, y, inputs)

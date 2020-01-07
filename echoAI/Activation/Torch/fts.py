@@ -1,4 +1,4 @@
-'''
+"""
 Applies the FTS (Flatten T-Swish) function element-wise:
 
 .. math::
@@ -7,17 +7,17 @@ Applies the FTS (Flatten T-Swish) function element-wise:
 
 See Flatten T-Swish paper:
 https://arxiv.org/pdf/1812.06247.pdf
-'''
+"""
 
 # import pytorch
-import torch
 from torch import nn
 
 # import activation functions
 import echoAI.Activation.Torch.functional as Func
 
+
 class FTS(nn.Module):
-    '''
+    """
     Applies the FTS (Flatten T-Swish) function element-wise:
 
     .. math::
@@ -43,15 +43,16 @@ class FTS(nn.Module):
         >>> input = torch.randn(2)
         >>> output = m(input)
 
-    '''
+    """
+
     def __init__(self):
-        '''
+        """
         Init method.
-        '''
+        """
         super().__init__()
 
     def forward(self, input):
-        '''
+        """
         Forward pass of the function.
-        '''
+        """
         return Func.fts(input)

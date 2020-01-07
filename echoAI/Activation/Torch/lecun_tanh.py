@@ -1,4 +1,4 @@
-'''
+"""
 Applies the Le Cun's Tanh function element-wise:
 
 .. math::
@@ -6,17 +6,17 @@ Applies the Le Cun's Tanh function element-wise:
     lecun_tanh(x) = 1.7159 * tanh((2/3) * input)
 
 See additional documentation for :mod:`echoAI.Activation.Torch.lecun_tanh`.
-'''
+"""
 
 # import pytorch
-import torch
 from torch import nn
 
 # import activation functions
 import echoAI.Activation.Torch.functional as Func
 
+
 class LeCunTanh(nn.Module):
-    '''
+    """
     Applies the Le Cun's Tanh function element-wise:
 
     .. math::
@@ -33,15 +33,16 @@ class LeCunTanh(nn.Module):
         >>> input = torch.randn(2)
         >>> output = m(input)
 
-    '''
+    """
+
     def __init__(self):
-        '''
+        """
         Init method.
-        '''
+        """
         super().__init__()
 
     def forward(self, input):
-        '''
+        """
         Forward pass of the function.
-        '''
+        """
         return Func.lecun_tanh(input)

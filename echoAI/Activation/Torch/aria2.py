@@ -1,4 +1,4 @@
-'''
+"""
 Applies the Aria-2 function element-wise:
 
 .. math::
@@ -7,17 +7,17 @@ Applies the Aria-2 function element-wise:
 
 See Aria paper:
 https://arxiv.org/abs/1805.08878
-'''
+"""
 
 # import pytorch
-import torch
 from torch import nn
 
 # import activation functions
 import echoAI.Activation.Torch.functional as Func
 
+
 class Aria2(nn.Module):
-    '''
+    """
     Applies the Aria-2 function element-wise:
 
     .. math::
@@ -48,18 +48,18 @@ class Aria2(nn.Module):
         >>> input = torch.randn(2)
         >>> output = m(input)
 
-    '''
-    def __init__(self, beta = 1., alpha = 1.5):
-        '''
+    """
+
+    def __init__(self, beta=1.0, alpha=1.5):
+        """
         Init method.
-        '''
+        """
         super().__init__()
         self.beta = beta
         self.alpha = alpha
 
-
     def forward(self, input):
-        '''
+        """
         Forward pass of the function.
-        '''
+        """
         return Func.aria2(input, self.beta, self.alpha)

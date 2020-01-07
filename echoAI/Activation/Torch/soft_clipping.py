@@ -1,4 +1,4 @@
-'''
+"""
 Applies Soft Clipping function element-wise:
 
 .. math::
@@ -7,17 +7,17 @@ Applies Soft Clipping function element-wise:
 
 See SC paper:
 https://arxiv.org/pdf/1810.11509.pdf
-'''
+"""
 
 # import pytorch
-import torch
 from torch import nn
 
 # import activation functions
 import echoAI.Activation.Torch.functional as Func
 
+
 class SoftClipping(nn.Module):
-    '''
+    """
     Applies the Soft Clipping function element-wise:
 
     .. math::
@@ -46,17 +46,17 @@ class SoftClipping(nn.Module):
         >>> input = torch.randn(2)
         >>> output = m(input)
 
-    '''
-    def __init__(self, alpha = 0.5):
-        '''
+    """
+
+    def __init__(self, alpha=0.5):
+        """
         Init method.
-        '''
+        """
         super().__init__()
         self.alpha = alpha
 
-
     def forward(self, input):
-        '''
+        """
         Forward pass of the function.
-        '''
+        """
         return Func.soft_clipping(input, self.alpha)

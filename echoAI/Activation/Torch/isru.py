@@ -1,4 +1,4 @@
-'''
+"""
 Applies the ISRU (Inverse Square Root Unit) function element-wise:
 
 .. math::
@@ -7,17 +7,17 @@ Applies the ISRU (Inverse Square Root Unit) function element-wise:
 
 ISRU paper:
 https://arxiv.org/pdf/1710.09967.pdf
-'''
+"""
 
 # import pytorch
-import torch
 from torch import nn
 
 # import activation functions
 import echoAI.Activation.Torch.functional as Func
 
+
 class ISRU(nn.Module):
-    '''
+    """
     Applies the ISRU function element-wise:
 
     .. math::
@@ -46,16 +46,17 @@ class ISRU(nn.Module):
         >>> input = torch.randn(2)
         >>> output = m(input)
 
-    '''
-    def __init__(self, alpha = 1.0):
-        '''
+    """
+
+    def __init__(self, alpha=1.0):
+        """
         Init method.
-        '''
+        """
         super().__init__()
         self.alpha = alpha
 
     def forward(self, input):
-        '''
+        """
         Forward pass of the function.
-        '''
+        """
         return Func.isru(input, self.alpha)

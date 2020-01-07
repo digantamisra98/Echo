@@ -1,0 +1,12 @@
+[flake8]
+max-line-length = 115
+
+ignore =
+    # these rules don't play well with black
+    E203  # whitespace before :
+    W503  # line break before binary operator
+    E501 # Line lengths are recommended to be no greater than 79 characters. (Disabled Temporarily)
+    F811 # A module has been imported twice, and the original import is unused. (Disabled Temporarily)
+    F841 # local variable name is assigned to but never used. (Disabled Temporarily)
+
+exclude = .git,__init__.py,conf.py

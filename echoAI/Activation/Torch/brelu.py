@@ -1,4 +1,4 @@
-'''
+"""
 Script defined the BReLU (Bipolar Rectified Linear Activation Unit):
 
 .. math::
@@ -7,18 +7,14 @@ Script defined the BReLU (Bipolar Rectified Linear Activation Unit):
 
 See BReLU paper:
 https://arxiv.org/pdf/1709.04054.pdf
-'''
- # import standard libraries
-import numpy as np
+"""
 
 # import torch
-import torch
-from torch.autograd import Variable
-import torch.nn as nn
 from torch.autograd import Function
 
+
 class BReLU(Function):
-    '''
+    """
     Implementation of BReLU activation function:
 
         .. math::
@@ -43,8 +39,9 @@ class BReLU(Function):
         >>> brelu_activation = brelu.apply
         >>> t = torch.randn((5,5), dtype=torch.float, requires_grad = True)
         >>> t = brelu_activation(t)
-    '''
-    #both forward and backward are @staticmethods
+    """
+
+    # both forward and backward are @staticmethods
     @staticmethod
     def forward(ctx, input):
         """
@@ -53,7 +50,7 @@ class BReLU(Function):
         to stash information for backward computation. You can cache arbitrary
         objects for use in the backward pass using the ctx.save_for_backward method.
         """
-        ctx.save_for_backward(input) # save input for backward pass
+        ctx.save_for_backward(input)  # save input for backward pass
 
         # get lists of odd and even indices
         input_shape = input.shape[0]
@@ -67,8 +64,10 @@ class BReLU(Function):
         output[even_indices] = output[even_indices].clamp(min=0)
 
         # apply inversed ReLU to inversed elements where i mod 2 != 0
-        output[odd_indices] = 0 - output[odd_indices] # reverse elements with odd indices
-        output[odd_indices] = - output[odd_indices].clamp(min = 0) # apply reversed ReLU
+        output[odd_indices] = (
+            0 - output[odd_indices]
+        )  # reverse elements with odd indices
+        output[odd_indices] = -output[odd_indices].clamp(min=0)  # apply reversed ReLU
 
         return output
 
@@ -79,9 +78,9 @@ class BReLU(Function):
         with respect to the output, and we need to compute the gradient of the loss
         with respect to the input.
         """
-        grad_input = None # set output to None
+        grad_input = None  # set output to None
 
-        input, = ctx.saved_tensors # restore input from context
+        (input,) = ctx.saved_tensors  # restore input from context
 
         # check that input requires grad
         # if not requires grad we will return None to speed up computation
@@ -94,9 +93,13 @@ class BReLU(Function):
             odd_indices = [i for i in range(1, input_shape, 2)]
 
             # set grad_input for even_indices
-            grad_input[even_indices] = (input[even_indices] >= 0).float() * grad_input[even_indices]
+            grad_input[even_indices] = (input[even_indices] >= 0).float() * grad_input[
+                even_indices
+            ]
 
             # set grad_input for odd_indices
-            grad_input[odd_indices] = (input[odd_indices] < 0).float() * grad_input[odd_indices]
+            grad_input[odd_indices] = (input[odd_indices] < 0).float() * grad_input[
+                odd_indices
+            ]
 
         return grad_input

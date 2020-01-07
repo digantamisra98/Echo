@@ -23,7 +23,7 @@ The full documentation for Echo is provided [here](https://echo-ai.readthedocs.i
 The package contains implementation for following activation functions (✅ - implemented functions, 🕑 - functions to be implemented soon, :white_large_square: - function is implemented in the original deep learning package):
 
 |#| Function | Equation  | PyTorch | TensorFlow-Keras | TensorFlow - Core |
-| --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | 
 |1| Weighted Tanh | ![equation](https://latex.codecogs.com/gif.latex?weightedtanh%28x%29%20%3D%20tanh%28x%20*%20weight%29)  | ✅ | ✅  |🕑|
 |2| [Swish](https://arxiv.org/pdf/1710.05941.pdf) | ![equation](https://latex.codecogs.com/gif.latex?SwishX%28x%2C%20%5Cbeta%29%20%3D%20x*sigmoid%28%5Cbeta*x%29%20%3D%20%5Cfrac%7Bx%7D%7B%281&plus;e%5E%7B-%5Cbeta*x%7D%29%7D)  | ✅ | ✅  |🕑|
 |3| [ESwish](https://arxiv.org/abs/1801.07145) | ![equation](https://latex.codecogs.com/gif.latex?ESwish%28x%2C%20%5Cbeta%29%20%3D%20%5Cbeta*x*sigmoid%28x%29) | ✅| ✅  |🕑|

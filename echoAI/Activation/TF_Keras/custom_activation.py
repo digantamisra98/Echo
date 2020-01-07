@@ -698,7 +698,7 @@ class CELU(Layer):
             https://arxiv.org/abs/1704.07483
     """
 
-    def __init__(self, alpha):
+    def __init__(self, alpha = 1.0):
         super(CELU, self).__init__()
         self.alpha = alpha
 

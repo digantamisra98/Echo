@@ -59,6 +59,11 @@ The package contains implementation for following activation functions (✅ - im
 |32| [LeCun's Tanh](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf) |  |✅ | ✅ |🕑 |
 |33| [TaLU](https://github.com/mjain72/TaLuActivationFunction) |  |🕑 | ✅ |🕑 |
 |34| [SiLU](https://arxiv.org/abs/1702.03118) | | ✅ | ✅ |🕑 |
+|35| [GELU](https://arxiv.org/abs/1606.08415) | | 🕑| 🕑 | 🕑|
+|36| [NReLU](https://www.cs.toronto.edu/~fritz/absps/reluICML.pdf)| | 🕑| 🕑 | 🕑|
+|37| [CReLU](https://arxiv.org/abs/1603.05201)| | 🕑| ✅ | 🕑|
+|38| [ProbAct](https://arxiv.org/abs/1905.10761)| | 🕑| 🕑 | 🕑|
+|39| [Noisy Activation Function](https://arxiv.org/pdf/1603.00391.pdf) | | 🕑| 🕑 | 🕑|
 
 ## Repository Structure
 The repository has the following structure:

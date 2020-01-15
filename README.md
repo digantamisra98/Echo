@@ -58,6 +58,7 @@ The package contains implementation for following activation functions (✅ - im
 |31| [Gumbel-Softmax](https://arxiv.org/pdf/1611.01144.pdf) |  | ⬜ | 🕑 |🕑 |
 |32| [LeCun's Tanh](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf) |  |✅ | ✅ |🕑 |
 |33| [TaLU](https://github.com/mjain72/TaLuActivationFunction) |  |🕑 | ✅ |🕑 |
+|34| [SiLU](https://arxiv.org/abs/1702.03118) | | ✅ | ✅ |🕑 |
 
 ## Repository Structure
 The repository has the following structure:

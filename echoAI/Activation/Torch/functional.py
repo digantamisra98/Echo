@@ -25,23 +25,6 @@ def weighted_tanh(input, weight=1, inplace=False):
         return input
 
 
-def mish(input, inplace=False):
-    """
-    Applies the mish function element-wise:
-
-    .. math::
-
-        mish(x) = x * tanh(softplus(x)) = x * tanh(ln(1 + e^{x}))
-
-    See additional documentation for :mod:`echoAIAI.Activation.Torch.mish`.
-    """
-    if inplace:
-        inner = F.softplus(input).tanh()
-        return input.mul_(inner)
-    else:
-        return input * torch.tanh(F.softplus(input))
-
-
 def silu(input, inplace=False):
     """
     Applies the Sigmoid Linear Unit (SiLU) function element-wise:

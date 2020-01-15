@@ -16,7 +16,7 @@ from torch import nn
 from torch.autograd import Function
 import torch.nn.functional as F
 
-class MishFunction(Function):
+class Mish(Function):
 
 """
     Applies the mish function element-wise:

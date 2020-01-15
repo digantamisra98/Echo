@@ -10,6 +10,7 @@ https://arxiv.org/pdf/1710.05941.pdf
 """
 
 # import pytorch
+import torch
 from torch import nn
 
 # import activation functions
@@ -34,9 +35,6 @@ class Swish(nn.Module):
           dimensions
         - Output: (N, *), same shape as the input
 
-    Arguments:
-        - beta: hyperparameter, which controls the shape of the bump (default = 1.25)
-
     References:
         - See Swish paper:
         https://arxiv.org/pdf/1710.05941.pdf
@@ -48,12 +46,13 @@ class Swish(nn.Module):
 
     """
 
-    def __init__(self, beta=1.25):
+    def __init__(self):
         """
         Init method.
         """
         super().__init__()
-        self.beta = beta
+        self.beta = nn.Parameter(torch.randn(1))
+        self.beta.requires_grad = True
 
     def forward(self, input):
         """

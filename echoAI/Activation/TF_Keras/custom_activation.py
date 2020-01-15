@@ -64,22 +64,59 @@ class Swish(Layer):
 
         - Output: Same shape as the input.
 
-    Arguments:
-
-        -  a constant or a trainable parameter (default=1; which is equivalent to  Sigmoid-weighted Linear Unit (SiL))
-
     References:
 
         - See Swish paper:
         https://arxiv.org/pdf/1710.05941.pdf
     """
 
-    def __init__(self, beta):
-        super(Swish, self).__init__()
-        self.beta = beta
+    def __init__(self, **kwargs):
+        super(Swish, self).__init__(**kwargs)
+
+    def build(self, input_shape):
+        # Trainable Beta Parameter for the Layer.
+        self._beta = self.add_weight(name='beta', 
+                                    shape=(1,),
+                                    initializer='uniform',
+                                    trainable=True)
+        super(Swish, self).build(input_shape)
+
 
     def call(self, inputs):
-        return inputs * tf.math.sigmoid(self.beta * inputs)
+        return inputs * tf.math.sigmoid(self._beta * inputs)
+
+
+class SiLU(Layer):
+    """
+    SiLU Activation Function.
+
+    .. math::
+
+        SiLU(x) = x*sigmoid(*x) = \\frac{x}{(1+e^{-x})}
+
+    Shape:
+
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Arguments:
+
+        -  a trainable parameter
+
+    References:
+
+        - See SiLU paper:
+        https://arxiv.org/abs/1702.03118
+    """
+
+    def __init__(self):
+        super(SiLU, self).__init__
+
+    def call(self, inputs):
+        return inputs * tf.math.sigmoid(inputs)
 
 
 class ESwish(Layer):

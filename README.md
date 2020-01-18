@@ -3,6 +3,8 @@
 </p>
 
 [![Donate](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3b9607d06bc0420ebe1ce4443e34e1ba)](https://www.codacy.com/manual/digantamisra98/Echo?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digantamisra98/Echo&amp;utm_campaign=Badge_Grade)
+[![Hits](http://hits.dwyl.io/digantamisra98/Echo.svg)]
 
 # Echo-AI
 

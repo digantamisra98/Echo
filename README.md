@@ -64,6 +64,7 @@ The package contains implementation for following activation functions (✅ - im
 |37| [CReLU](https://arxiv.org/abs/1603.05201)| | 🕑| ✅ | 🕑|
 |38| [ProbAct](https://arxiv.org/abs/1905.10761)| | 🕑| 🕑 | 🕑|
 |39| [Noisy Activation Function](https://arxiv.org/pdf/1603.00391.pdf) | | 🕑| 🕑 | 🕑|
+|40| [NLReLU](https://arxiv.org/abs/1908.03682) | | 🕑| 🕑 | 🕑|
 
 ## Repository Structure
 The repository has the following structure:

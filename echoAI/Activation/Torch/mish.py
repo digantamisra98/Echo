@@ -16,7 +16,7 @@ from torch import nn
 from torch.autograd import Function
 import torch.nn.functional as F
 
-class Mish(Function):
+class Mish_Function(Function):
 
 """
     Applies the mish function element-wise:
@@ -61,4 +61,9 @@ class Mish(Function):
             delta = torch.exp(-input)
             alpha = 1 + 2 * delta
             return input * alpha / (alpha + 2* delta * delta)
+
+
+class Mish(nn.Module):
+    def forward(self, x):
+        return Mish_Function.apply(x)
         

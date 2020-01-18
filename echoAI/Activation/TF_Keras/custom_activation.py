@@ -1234,3 +1234,33 @@ class TaLU(Layer):
         cond1 = tf.less_equal(inputs, -0.05 * (1 - inputs * 0.0))
         y = tf.where(cond1, tanH * (1 - inputs * 0.0), t)
         return tf.where(cond, y, inputs)
+
+
+class NLReLU(Layer):
+    """
+    Natural Logarithmic ReLU Activation Function.
+
+    Shape:
+
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    Arguments:
+
+        -  beta (default: 1.0)
+
+    References:
+
+        - See NLReLU paper:
+        https://arxiv.org/abs/1908.03682
+    """
+
+    def __init__(self, beta= 1.):
+        super(NLReLU, self).__init__
+        self.beta = beta
+
+    def call(self, inputs):
+        return tf.math.log(1 + self.beta * tf.nn.relu(inputs))

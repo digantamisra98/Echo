@@ -14,6 +14,7 @@ The full documentation for Echo is provided [here](https://echo-ai.readthedocs.i
 ## Table of Contents
 * [About the Project](#about)
   * [Activation Functions](#activation-functions)
+  * Optimizaters
 * [Repository Structure](#repository-structure)
 * [Setup Instructions](#setup-instructions)
 

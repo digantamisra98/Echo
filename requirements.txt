@@ -10,3 +10,10 @@ black==19.10b0
 
 # For creating git precommit hooks
 pre-commit==1.18.3
+
+# For PyTorch and TensorFlow support
+torchvision
+tensorflow
+
+# For build coverage
+codecov

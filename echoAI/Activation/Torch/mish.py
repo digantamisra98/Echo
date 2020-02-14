@@ -18,7 +18,7 @@ import torch.nn.functional as F
 
 class Mish_Function(Function):
 
-"""
+    """
     Applies the mish function element-wise:
 
     .. math::

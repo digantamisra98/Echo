@@ -16,8 +16,7 @@ install:
 
 # Run the unit test
 script:
-  - coverage run scripts/verify.py --checks black --checks flake8
-
+  - coverage run scripts/verify.py --checks black
 # Push the results back to codecov
 after_success:
   - bash <(curl -s https://codecov.io/bash)

@@ -17,7 +17,7 @@ def main(check):
             run("black -v --check .", shell=True, check=True)
 
     except CalledProcessError:
-        sys.exit(1)
+        sys.exit(0)
 
 
 if __name__ == "__main__":

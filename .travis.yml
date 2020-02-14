@@ -16,7 +16,7 @@ install:
 
 # Run the unit test
 script:
-  - coverage run scripts/verify.py
+  - coverage run scripts/verify.py --checks black --checks flake8
 
 # Push the results back to codecov
 after_success:

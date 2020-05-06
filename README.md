@@ -10,6 +10,8 @@
 
 # Echo-AI
 
+*Development to resume from June*
+
 Python package containing all mathematical backend algorithms used in Machine Learning.
 The full documentation for Echo is provided [here](https://echo-ai.readthedocs.io/en/latest/).
 

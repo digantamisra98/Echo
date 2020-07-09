@@ -10,7 +10,7 @@
 
 # Echo-AI
 
-*Development to resume from June*
+*Development to resume from June. Next Release in Q3, 2020*
 
 Python package containing all mathematical backend algorithms used in Machine Learning.
 The full documentation for Echo is provided [here](https://echo-ai.readthedocs.io/en/latest/).

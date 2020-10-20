@@ -3,6 +3,7 @@
 """
 
 # Import Necessary Modules
+import math
 import tensorflow as tf
 from tensorflow.keras.layers import Layer, Lambda, InputSpec
 from tensorflow.keras import backend as K
@@ -1264,3 +1265,30 @@ class NLReLU(Layer):
 
     def call(self, inputs):
         return tf.math.log(1 + self.beta * tf.nn.relu(inputs))
+
+
+class GELU(Layer):
+    """
+    Gaussian Error Linear Unit, a smoother version of ReLU.
+
+    Shape:
+
+        - Input: Arbitrary. Use the keyword argument `input_shape`
+        (tuple of integers, does not include the samples axis)
+        when using this layer as the first layer in a model.
+
+        - Output: Same shape as the input.
+
+    References:
+
+        - See GELU paper:
+        https://arxiv.org/abs/1606.08415
+    """
+
+    def __init__(self):
+        super(GELU, self).__init__()
+    
+    def call(self, inputs):
+        cumulative_distribution = 0.5 * (1.0 + tf.tanh(
+            (math.sqrt(2 / math.pi) * (inputs + 0.044715 * tf.pow(inputs, 3)))))
+        return inputs * cumulative_distribution

@@ -1281,7 +1281,7 @@ class GELU(Layer):
 
     References:
 
-        - See NLReLU paper:
+        - See GELU paper:
         https://arxiv.org/abs/1606.08415
     """
 

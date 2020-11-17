@@ -9,41 +9,6 @@ from tensorflow.keras.layers import Layer, Lambda, InputSpec
 from tensorflow.keras import backend as K
 from tensorflow.keras import initializers, regularizers, constraints
 
-
-class WeightedTanh(Layer):
-    """
-    Weighted TanH Activation Function.
-
-    .. math::
-
-        Weighted TanH(x, weight) = tanh(x * weight)
-
-    Plot:
-
-    .. figure::  _static/weighted_tanh.png
-        :align:   center
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-
-    Arguments:
-
-        - weight: hyperparameter (default=1.0)
-    """
-
-    def __init__(self, input_weight):
-        super(WeightedTanh, self).__init__()
-        self.input_weight = input_weight
-
-    def call(self, inputs):
-        return tf.math.tanh(self.input_weight * inputs)
-
-
 class Swish(Layer):
     """
     Swish Activation Function.
@@ -199,43 +164,6 @@ class Aria2(Layer):
         return tf.math.pow(1 + tf.math.exp(-self.beta * inputs), -self.alpha)
 
 
-class Mila(Layer):
-    """
-    Mila Activation Function.
-
-    .. math::
-        Mila(x) = x * tanh(ln(1 + e^{\\beta + x})) = x * tanh(softplus(\\beta + x)
-
-    Plot:
-
-    .. figure::  _static/mila.png
-        :align:   center
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-
-    Arguments:
-
-        - beta: scale to control the concavity of the global minima of the function (default = -0.25)
-
-    References:
-
-        -  https://github.com/digantamisra98/Mila
-    """
-
-    def __init__(self, beta):
-        super(Mila, self).__init__()
-        self.beta = beta
-
-    def call(self, inputs):
-        return inputs * tf.math.tanh(tf.math.log(1 + tf.math.exp(self.beta + inputs)))
-
-
 class ISRU(Layer):
     """
     ISRU (Inverse Square Root Unit) Activation Function.
@@ -272,34 +200,6 @@ class ISRU(Layer):
 
     def call(self, inputs):
         return inputs / tf.math.sqrt(1 + self.alpha * tf.math.pow(inputs, 2))
-
-
-class BentIdentity(Layer):
-    """
-    Bent's Identity Activation Function.
-
-    .. math::
-        bentId(x) = x + \\frac{\\sqrt{x^{2}+1}-1}{2}
-
-    Plot:
-
-    .. figure::  _static/bent_id.png
-        :align:   center
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-    """
-
-    def __init__(self):
-        super(BentIdentity, self).__init__()
-
-    def call(self, inputs):
-        return inputs + (tf.math.sqrt(tf.math.pow(inputs, 2) + 1) - 1) / 2
 
 
 class SoftClipping(Layer):
@@ -373,46 +273,6 @@ class Mish(Layer):
 
     def call(self, inputs):
         return inputs * tf.math.tanh(tf.math.softplus(inputs))
-
-
-class BetaMish(Layer):
-    """
-    β mish activation function.
-
-    .. math::
-        \\beta mish(x) = x * tanh(ln((1 + e^{x})^{\\beta}))
-
-    Plot:
-
-    .. figure::  _static/beta_mish.png
-        :align:   center
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-
-    Arguments:
-
-        - beta: A constant or a trainable parameter (default = 1.5)
-
-    References
-
-        - β-Mish: An uni-parametric adaptive activation function derived from Mish:
-        https://github.com/digantamisra98/Beta-Mish)
-    """
-
-    def __init__(self, beta):
-        super(BetaMish, self).__init__()
-        self.beta = beta
-
-    def call(self, inputs):
-        return inputs * tf.math.tanh(
-            tf.math.log(tf.math.pow(1 + tf.math.exp(inputs), self.beta))
-        )
 
 
 class ELiSH(Layer):
@@ -496,50 +356,6 @@ class HardELiSH(Layer):
             tf.cast(tf.math.less(inputs, 0), "float32")
             * (tf.math.exp(inputs) - 1)
             * common
-        )
-        return case_1 + case_2
-
-
-class SineReLU(Layer):
-    """
-    Sine ReLU Activation Function.
-
-    .. math::
-        SineReLU(x, \\epsilon) = \\left\\{\\begin{matrix} x , x > 0 \\\\ \\epsilon * (sin(x)-cos(x)), x \\leq 0 \\end{matrix}\\right.
-
-    Plot:
-    .. figure::  _static/sine_relu.png
-        :align:   center
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-
-    References:
-
-        - See related Medium article:
-        https://medium.com/@wilder.rodrigues/sinerelu-an-alternative-to-the-relu-activation-function-e46a6199997d
-
-    Arguments:
-
-        - epsilon: hyperparameter (default=0.01)
-    """
-
-    def __init__(self, epsilon):
-        super(SineReLU, self).__init__()
-        self.epsilon = epsilon
-
-    def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater(inputs, 0), "float32") * inputs
-        case_2 = tf.cast(
-            tf.math.less_equal(
-                self.epsilon * (tf.math.sin(inputs) - tf.math.cos(inputs)), 0
-            ),
-            "float32",
         )
         return case_1 + case_2
 
@@ -748,191 +564,6 @@ class CELU(Layer):
             * (tf.math.exp(inputs / self.alpha) - 1)
         )
         return case_1 + case_2
-
-
-class HardTanh(Layer):
-    """
-    Hard-TanH Activation Function.
-
-    .. math::
-        Hard-TanH(x) = \\left\\{\\begin{matrix} 1, x > 1 \\\\   x , -1 \\leq x \\leq 1 \\\\ -1, x <- 1 \\end{matrix}\\right.
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-    """
-
-    def __init__(self):
-        super(HardTanh, self).__init__()
-
-    def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater(inputs, 1), "float32")
-        case_2 = tf.cast(tf.math.less(inputs, -1), "float32") * -1
-        case_3 = (
-            tf.cast(tf.math.greater_equal(inputs, -1), "float32")
-            * tf.cast(tf.math.less_equal(inputs, 1), "float32")
-            * inputs
-        )
-        return case_1 + case_2 + case_3
-
-
-class LogSigmoid(Layer):
-    """
-    Log-Sigmoid Activation Function.
-
-    .. math::
-        Log-Sigmoid(x) = log (\\frac{1}{1+e^{-x}})
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-    """
-
-    def __init__(self):
-        super(LogSigmoid, self).__init__()
-
-    def call(self, inputs):
-        return tf.math.log(tf.math.sigmoid(inputs))
-
-
-class TanhShrink(Layer):
-    """
-    TanH-Shrink Activation Function.
-
-    .. math::
-        TanH-Shrink(x) = x - tanh(x)
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-    """
-
-    def __init__(self):
-        super(TanhShrink, self).__init__()
-
-    def call(self, inputs):
-        return inputs - tf.math.tanh(inputs)
-
-
-class HardShrink(Layer):
-    """
-    Hard-Shrink Activation Function.
-
-    .. math::
-        Hard-Shrink(x) = \\left\\{\\begin{matrix} x, x > \\lambda \\\\   0 , - \\lambda \\leq x \\leq \\lambda \\\\ x, x <- \\lambda \\end{matrix}\\right.
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-
-    Arguments:
-
-        - lambda: the λ value for the Hardshrink formulation (default=0.5)
-    """
-
-    def __init__(self, _lambda=0.5):
-        super(HardShrink, self).__init__()
-        self._lambda = _lambda
-
-    def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater(inputs, self._lambda), "float32") * inputs
-        case_2 = tf.cast(tf.math.less(inputs, -1 * self._lambda), "float32") * inputs
-        return case_1 + case_2
-
-
-class SoftShrink(Layer):
-    """
-    Soft-Shrink Activation Function.
-
-    .. math::
-        Soft-Shrink(x) = \\left\\{\\begin{matrix} x - \\lambda , x > \\lambda \\\\   0 , - \\lambda \\leq x \\leq \\lambda \\\\ x + \\lambda , x <- \\lambda \\end{matrix}\\right.
-
-    Shape:
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-
-    Arguments:
-
-        - lambda: the λ value for the Softshrink formulation (default=0.5)
-    """
-
-    def __init__(self, _lambda=0.5):
-        super(HardShrink, self).__init__()
-        self._lambda = _lambda
-
-    def call(self, inputs):
-        case_1 = tf.cast(tf.math.greater(inputs, self._lambda), "float32") * (
-            inputs - self._lambda
-        )
-        case_2 = tf.cast(tf.math.less(inputs, -1 * self._lambda), "float32") * (
-            inputs - self._lambda
-        )
-        return case_1 + case_2
-
-
-class SoftMin(Layer):
-    """
-    SoftMin Activation Function.
-
-    .. math::
-        SoftMin(x) = Softmax(-x)
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-    """
-
-    def __init__(self):
-        super(SoftMin, self).__init__()
-
-    def call(self, inputs):
-        return tf.math.softmax(-inputs)
-
-
-class LogSoftMax(Layer):
-    """
-    Log-SoftMax Activation Function.
-
-    .. math::
-        Log-SoftMax(x) = log(Softmax(-x))
-
-    Shape:
-
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-    """
-
-    def __init__(self):
-        super(LogSoftMax, self).__init__()
-
-    def call(self, inputs):
-        return tf.math.log(tf.math.softmax(inputs))
 
 
 class MaxOut(Layer):
@@ -1175,66 +806,6 @@ class APL(Layer):
         }
         base_config = super(APL, self).get_config()
         return dict(list(base_config.items()) + list(config.items()))
-
-
-class LeCunTanh(Layer):
-    """
-    LeCun's Tanh Activation Function.
-
-    .. math::
-
-        LeCun's Tanh(x) = 1.7159 * tanh (\\frac{2*x}{3})
-
-    Shape:
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-
-    Examples:
-        >>> X_input = Input(input_shape)
-        >>> X = LeCunTanh()(X_input)
-
-    """
-
-    def __init__(self):
-        super(LeCunTanh, self).__init__()
-
-    def call(self, inputs):
-        return 1.7159 * tf.math.tanh((2 * inputs) / 3)
-
-
-class TaLU(Layer):
-    """
-    TaLU Activation Function.
-
-    Shape:
-        - Input: Arbitrary. Use the keyword argument `input_shape`
-        (tuple of integers, does not include the samples axis)
-        when using this layer as the first layer in a model.
-
-        - Output: Same shape as the input.
-
-    References:
-        - https://github.com/mjain72/TaLuActivationFunction
-
-    Examples:
-        >>> X_input = Input(input_shape)
-        >>> X = TaLU()(X_input)
-
-    """
-
-    def __init__(self):
-        super(TaLU, self).__init__()
-
-    def call(self, inputs):
-        cond = tf.less_equal(inputs, inputs * 0.0)
-        t = tf.tanh(inputs)
-        tanH = tf.tanh(-0.05)
-        cond1 = tf.less_equal(inputs, -0.05 * (1 - inputs * 0.0))
-        y = tf.where(cond1, tanH * (1 - inputs * 0.0), t)
-        return tf.where(cond, y, inputs)
 
 
 class NLReLU(Layer):

@@ -20,7 +20,7 @@ The full documentation for Echo is provided [here](https://echo-ai.readthedocs.i
 * [Setup Instructions](#setup-instructions)
 
 ## About
-**Echo-AI Package** is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as [PyTorch](https://pytorch.org/) and [TensorFlow](https://www.tensorflow.org/).
+**Echo-AI Package** is created to provide an implementation of the most promising mathematical algorithms, novel layers and methods, which are missing in the most popular deep learning libraries, such as [PyTorch](https://pytorch.org/) and [TensorFlow](https://www.tensorflow.org/).
 
 ## Setup Instructions
 To install __echoAI__ package from PyPI run the following command:

@@ -17,39 +17,10 @@ The full documentation for Echo is provided [here](https://echo-ai.readthedocs.i
 
 ## Table of Contents
 * [About the Project](#about)
-  * [Activation Functions](#activation-functions)
-* [Repository Structure](#repository-structure)
 * [Setup Instructions](#setup-instructions)
 
 ## About
-**Echo-AI Package** is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as [PyTorch](https://pytorch.org/), [Keras](https://keras.io/) and
-[TensorFlow](https://www.tensorflow.org/).
-
-
-## Repository Structure
-The repository has the following structure:
-```python
-- echoAI # main package directory
-| - Activation # sub-package containing activation functions implementation
-| |- Torch  # sub-package containing implementation for PyTorch
-| | | - functional.py # script which contains implementation of activation functions
-| | | - weightedTanh.py # activation functions wrapper class for PyTorch
-| | | - ... # PyTorch activation functions wrappers
-| |- TF_Keras  # sub-package containing implementation for Tensorflow-Keras
-| | | - custom_activation.py # script which contains implementation of activation functions
-| - __init__.py
-
-- Observations # Folder containing other assets
-
-- docs # Sphinx documentation folder
-
-- LICENSE # license file
-- README.md
-- setup.py # package setup file
-- Scripts #folder, which contains the Black and Flake8 automated test scripts
-- Smoke_tests # folder, which contains scripts with demonstration of activation functions usage
-- Unit_tests # folder, which contains unit test scripts
-```
+**Echo-AI Package** is created to provide an implementation of the most promising mathematical algorithms, which are missing in the most popular deep learning libraries, such as [PyTorch](https://pytorch.org/) and [TensorFlow](https://www.tensorflow.org/).
 
 ## Setup Instructions
 To install __echoAI__ package from PyPI run the following command:

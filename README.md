@@ -10,7 +10,7 @@
 
 # Echo-AI
 
-*Currently under development. Next release to include activations, optimizers and attention layers.*
+*Currently under development. Next release to include activations, optimizers and attention layers. We plan to shift our documentation to GitBook. Our new release willl be out by New Year's eve.*
 
 Python package containing all mathematical backend algorithms used in Machine Learning.
 The full documentation for Echo is provided [here](https://echo-ai.readthedocs.io/en/latest/).

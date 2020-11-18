@@ -51,7 +51,7 @@ class Mish(nn.Module):
 
 class Aria2(nn.Module):
 
-    def __init__(self, beta=1.0, alpha=1.5):
+    def __init__(self, beta=0.5, alpha=1.0):
         """
         Init method.
         """

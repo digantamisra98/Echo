@@ -298,7 +298,7 @@ class Swish(nn.Module):
         if self.swish is not False:
             return input * torch.sigmoid(self.param * input)
         if self.eswish is not False:
-            return input * torch.sigmoid(self.beta * input)
+            return self.beta * input * torch.sigmoid(input)
         if self.flatten is not False:
             return torch.clamp(input / (1 + torch.exp(-input)), min=0)
 

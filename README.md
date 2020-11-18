@@ -1,4 +1,4 @@
-# Initial page
+# Echo!
 
 ![](https://github.com/digantamisra98/Echo/raw/master/Observations/logo_transparent.png)
 

@@ -13,6 +13,7 @@ pre-commit==1.18.3
 
 # For PyTorch and TensorFlow support
 torchvision
+torch
 tensorflow
 
 # For build coverage

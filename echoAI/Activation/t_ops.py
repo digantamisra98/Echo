@@ -300,7 +300,7 @@ class Swish(nn.Module):
         if self.eswish is not False:
             return self.beta * input * torch.sigmoid(input)
         if self.flatten is not False:
-            return torch.clamp(input / (1 + torch.exp(-input)), min=0)
+            return torch.clamp(input * torch.sigmoid(input), min=0)
 
 
 # ISRU/ ISRLU

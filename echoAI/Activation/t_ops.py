@@ -321,7 +321,7 @@ class ISRU(nn.Module):
         Forward pass of the function.
         """
         if self.isrlu is not False:
-            return (input < 0).float() * isru(input,self.alpha) + (input >= 0).float() * input
+            return (input < 0).float() * input / (torch.sqrt(1 + self.alpha * torch.pow(input, 2))) + (input >= 0).float() * input
         else:
             return input / (torch.sqrt(1 + self.alpha * torch.pow(input, 2)))
 

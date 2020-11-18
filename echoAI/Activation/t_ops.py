@@ -263,7 +263,7 @@ class Elish(nn.Module):
         Forward pass of the function.
         """
         if self.hard is False:
-            return (input >= 0).float() * input * torch.sigmoid(input) + (input < 0).float() * (torch.exp(input) - 1) / (torch.exp(-input) + 1)
+            return (input >= 0).float() * input * torch.sigmoid(input) + (input < 0).float() * (torch.exp(input) - 1) * torch.sigmoid(input)
         else:
             return (input >= 0).float() * input * torch.max(self.a,torch.min(self.b, (input + 1.0) / 2.0)) + (input < 0).float() * (torch.exp(input - 1) * torch.max(self.a, torch.min(self.b, (input + 1.0) / 2.0)))
 

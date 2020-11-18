@@ -14,7 +14,7 @@
 
 *Under construction Gitbook Documentation can be viewed [here](https://xa9ax.gitbook.io/echo/).*
 
-The full documentation for Echo is provided [here](https://echo-ai.readthedocs.io/en/latest/). (**Outdated**)
+**Sphinx Documentation has been depreciated.**
 
 ## Table of Contents
 * [About the Project](#about)

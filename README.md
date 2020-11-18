@@ -14,8 +14,7 @@
 
 *Under construction Gitbook Documentation can be viewed [here](https://xa9ax.gitbook.io/echo/).*
 
-Python package containing all mathematical backend algorithms used in Machine Learning.
-The full documentation for Echo is provided [here](https://echo-ai.readthedocs.io/en/latest/).
+The full documentation for Echo is provided [here](https://echo-ai.readthedocs.io/en/latest/). (**Outdated**)
 
 ## Table of Contents
 * [About the Project](#about)

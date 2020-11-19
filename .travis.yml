@@ -16,9 +16,10 @@ install:
 
 # Run the unit test
 script:
-  - coverage run tests/unit_t_ops.py
   - make test
-  
+  - snyk test --all-projects
+  - coverage run tests/unit_t_ops.py
+ 
 # Push the results back to codecov
 after_success:
   - bash <(curl -s https://codecov.io/bash)

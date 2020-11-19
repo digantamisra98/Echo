@@ -3,46 +3,47 @@ Script for demonstration of the custom Keras activation functions
 implemented in the Echo package for classification of Fashion MNIST dataset.
 """
 
-# import utilities
-import sys
-
 # argsparse
 import argparse
 
+# import utilities
+import sys
+
 # import keras
 import tensorflow as tf
-from tensorflow.keras import layers
 from keras.datasets import fashion_mnist
 from keras.utils import np_utils
-
+from tensorflow.keras import layers
 
 # import activation functions from Echo
-from echoAI.Activation.TF_Keras.custom_activation import Mila
-from echoAI.Activation.TF_Keras.custom_activation import Swish
-from echoAI.Activation.TF_Keras.custom_activation import ESwish
-from echoAI.Activation.TF_Keras.custom_activation import ISRU
-from echoAI.Activation.TF_Keras.custom_activation import BetaMish
-from echoAI.Activation.TF_Keras.custom_activation import Mish
-from echoAI.Activation.TF_Keras.custom_activation import SQNL
-from echoAI.Activation.TF_Keras.custom_activation import FlattenTSwish
-from echoAI.Activation.TF_Keras.custom_activation import ELiSH
-from echoAI.Activation.TF_Keras.custom_activation import HardELiSH
-from echoAI.Activation.TF_Keras.custom_activation import BentIdentity
-from echoAI.Activation.TF_Keras.custom_activation import WeightedTanh
-from echoAI.Activation.TF_Keras.custom_activation import SineReLU
-from echoAI.Activation.TF_Keras.custom_activation import ISRLU
-from echoAI.Activation.TF_Keras.custom_activation import SoftClipping
-from echoAI.Activation.TF_Keras.custom_activation import Aria2
-from echoAI.Activation.TF_Keras.custom_activation import CELU
-from echoAI.Activation.TF_Keras.custom_activation import HardTanh
-from echoAI.Activation.TF_Keras.custom_activation import LogSigmoid
-from echoAI.Activation.TF_Keras.custom_activation import TanhShrink
-from echoAI.Activation.TF_Keras.custom_activation import HardShrink
-from echoAI.Activation.TF_Keras.custom_activation import SoftShrink
-from echoAI.Activation.TF_Keras.custom_activation import SoftMin
-from echoAI.Activation.TF_Keras.custom_activation import LogSoftMax
-from echoAI.Activation.TF_Keras.custom_activation import SoftExponential
-from echoAI.Activation.TF_Keras.custom_activation import SReLU
+from echoAI.Activation.TF_Keras.custom_activation import (
+    CELU,
+    ISRLU,
+    ISRU,
+    SQNL,
+    Aria2,
+    BentIdentity,
+    BetaMish,
+    ELiSH,
+    ESwish,
+    FlattenTSwish,
+    HardELiSH,
+    HardShrink,
+    HardTanh,
+    LogSigmoid,
+    LogSoftMax,
+    Mila,
+    Mish,
+    SineReLU,
+    SoftClipping,
+    SoftExponential,
+    SoftMin,
+    SoftShrink,
+    SReLU,
+    Swish,
+    TanhShrink,
+    WeightedTanh,
+)
 
 sys.path.insert(0, "../")
 

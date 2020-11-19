@@ -1,12 +1,34 @@
 [flake8]
-max-line-length = 115
+max-line-length = 120
+
+exclude = .git,
 
 ignore =
-    # these rules don't play well with black
-    E203  # whitespace before :
-    W503  # line break before binary operator
-    E501 # Line lengths are recommended to be no greater than 79 characters. (Disabled Temporarily)
-    F811 # A module has been imported twice, and the original import is unused. (Disabled Temporarily)
-    F841 # local variable name is assigned to but never used. (Disabled Temporarily)
+    E203, # whitespace before :
+    E266,
+    E305, 
+    E402, #
+    E501, # Line lengths are recommended to be no greater than 79 characters. (Disabled Temporarily)
+    E721, #
+    E741, #
+    F403, #
+    F405, 
+    F821, 
+    F811,
+    F841, 
+    F999,
+    W503, # line break before binary operator
+    W504, 
+    C408,
+    C901,
+    E302,
+    W291,
+    E303,
+    N812 # N812 lowercase 'torch.nn.functional' imported as non lowercase 'F'
 
-exclude = .git,__init__.py,conf.py
+per-file-ignores = 
+    __init__.py: F401
+
+max-complexity = 18
+
+select = B,C,E,F,W,T4,B9

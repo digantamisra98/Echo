@@ -1,20 +1,20 @@
+import megengine as mge
 import megengine.functional as F
 import megengine.module as M
-import megengine as mge
 import numpy as np
-
 
 # FReLU
 
 
 class FReLU(M.Module):
-
     def __init__(self, in_channels):
         """
         Init method.
         """
-        super(FReLU,self).__init__()
-        self.conv_frelu = M.Conv2d(in_channels, in_channels, 3, 1, 1, groups=in_channels)
+        super(FReLU, self).__init__()
+        self.conv_frelu = M.Conv2d(
+            in_channels, in_channels, 3, 1, 1, groups=in_channels
+        )
         self.bn_frelu = M.BatchNorm2d(in_channels)
 
     def forward(self, input):
@@ -31,12 +31,11 @@ class FReLU(M.Module):
 
 
 class Mish(M.Module):
-
     def __init__(self):
         """
         Init method.
         """
-        super(Mish,self).__init__()
+        super(Mish, self).__init__()
 
     def forward(self, input):
         """
@@ -49,7 +48,6 @@ class Mish(M.Module):
 
 
 class Aria2(nn.Module):
-
     def __init__(self, beta=0.5, alpha=1.0):
         """
         Init method.
@@ -65,7 +63,6 @@ class Aria2(nn.Module):
         return F.pow((1 + F.exp(-self.beta * input)), -self.alpha)
 
 
-
 # Swish/ SILU/ E-Swish/ Flatten T-Swish
 
 
@@ -79,8 +76,7 @@ def swish_function(input, swish, eswish, beta, param):
 
 
 class Swish(nn.Module):
-
-    def __init__(self, eswish=False, swish=False, beta = 1.735, flatten = False):
+    def __init__(self, eswish=False, swish=False, beta=1.735, flatten=False):
         """
         Init method.
         """
@@ -96,7 +92,9 @@ class Swish(nn.Module):
             self.param = mge.Parameter(mge.tensor(np.random.randn(1)))
             self.param.requires_grad = True
         if eswish is not False and swish is not False and flatten is not False:
-            raise RuntimeError('Advisable to run either Swish or E-Swish or Flatten T-Swish')
+            raise RuntimeError(
+                "Advisable to run either Swish or E-Swish or Flatten T-Swish"
+            )
 
     def forward(self, input):
         """
@@ -116,7 +114,6 @@ class Swish(nn.Module):
 
 
 class Elish(nn.Module):
-
     def __init__(self, hard=False):
         """
         Init method.
@@ -132,20 +129,26 @@ class Elish(nn.Module):
         Forward pass of the function.
         """
         if self.hard is False:
-            return (input >= 0).float() * swish_function(input, False, False, None, None) + (input < 0).float() * (F.exp(input) - 1) * F.sigmoid(input)
+            return (input >= 0).float() * swish_function(
+                input, False, False, None, None
+            ) + (input < 0).float() * (F.exp(input) - 1) * F.sigmoid(input)
         else:
-            return (input >= 0).float() * input * F.max(self.a,F.min(self.b, (input + 1.0) / 2.0)) + (input < 0).float() * (F.exp(input - 1) * F.max(self.a, F.min(self.b, (input + 1.0) / 2.0)))
+            return (input >= 0).float() * input * F.max(
+                self.a, F.min(self.b, (input + 1.0) / 2.0)
+            ) + (input < 0).float() * (
+                F.exp(input - 1) * F.max(self.a, F.min(self.b, (input + 1.0) / 2.0))
+            )
 
 
 # ISRU/ ISRLU
+
 
 def isru(input, alpha):
     return input / (F.sqrt(1 + alpha * F.pow(input, 2)))
 
 
 class ISRU(nn.Module):
-
-    def __init__(self, alpha=1.0, isrlu = False):
+    def __init__(self, alpha=1.0, isrlu=False):
         """
         Init method.
         """
@@ -158,7 +161,9 @@ class ISRU(nn.Module):
         Forward pass of the function.
         """
         if self.isrlu is not False:
-            return (input < 0).float() * isru(input, self.apha) + (input >= 0).float() * input
+            return (input < 0).float() * isru(input, self.apha) + (
+                input >= 0
+            ).float() * input
         else:
             return isru(input, self.apha)
 
@@ -167,7 +172,6 @@ class ISRU(nn.Module):
 
 
 class NLReLU(nn.Module):
-
     def __init__(self, beta=1.0):
         """
         Init method.
@@ -182,12 +186,10 @@ class NLReLU(nn.Module):
         return F.log(1 + self.beta * F.relu(x))
 
 
-
 # Soft Clipping
 
 
 class SoftClipping(nn.Module):
-
     def __init__(self, alpha=0.5):
         """
         Init method.
@@ -199,15 +201,15 @@ class SoftClipping(nn.Module):
         """
         Forward pass of the function.
         """
-        return (1 / self.alpha) * F.log((1 + F.exp(self.alpha * input)) / (1 + F.exp(self.alpha * (input - 1))))
-
+        return (1 / self.alpha) * F.log(
+            (1 + F.exp(self.alpha * input)) / (1 + F.exp(self.alpha * (input - 1)))
+        )
 
 
 # Soft Exponential
 
 
 class SoftExponential(nn.Module):
-
     def __init__(self, alpha=None):
         """
         Init method.
@@ -235,40 +237,36 @@ class SoftExponential(nn.Module):
             return (F.exp(self.alpha * x) - 1) / self.alpha + self.alpha
 
 
-
 # SQNL
 
 
 class SQNL(nn.Module):
-
     def __init__(self):
         """
         Init method.
         """
-        super(SQNL,self).__init__()
+        super(SQNL, self).__init__()
 
     def forward(self, input):
         """
         Forward pass of the function.
         """
         return (
-        (input > 2).float()
-        + (input - F.pow(input, 2) / 4)
-        * (input >= 0).float()
-        * (input <= 2).float()
-        + (input + F.pow(input, 2) / 4)
-        * (input < 0).float()
-        * (input >= -2).float()
-        - (input < -2).float()
+            (input > 2).float()
+            + (input - F.pow(input, 2) / 4)
+            * (input >= 0).float()
+            * (input <= 2).float()
+            + (input + F.pow(input, 2) / 4)
+            * (input < 0).float()
+            * (input >= -2).float()
+            - (input < -2).float()
         )
-
 
 
 # SReLU
 
 
 class SReLU(nn.Module):
-
     def __init__(self, in_features, parameters=None):
         """
         Init method.
@@ -277,10 +275,18 @@ class SReLU(nn.Module):
         self.in_features = in_features
 
         if parameters is None:
-            self.tr = mge.Parameter(mge.tensor(np.random.randn(in_features).astype(np.float32)))
-            self.tl = mge.Parameter(mge.tensor(np.random.randn(in_features).astype(np.float32)))
-            self.ar = mge.Parameter(mge.tensor(np.random.randn(in_features).astype(np.float32)))
-            self.al = mge.Parameter(mge.tensor(np.random.randn(in_features).astype(np.float32)))
+            self.tr = mge.Parameter(
+                mge.tensor(np.random.randn(in_features).astype(np.float32))
+            )
+            self.tl = mge.Parameter(
+                mge.tensor(np.random.randn(in_features).astype(np.float32))
+            )
+            self.ar = mge.Parameter(
+                mge.tensor(np.random.randn(in_features).astype(np.float32))
+            )
+            self.al = mge.Parameter(
+                mge.tensor(np.random.randn(in_features).astype(np.float32))
+            )
 
             self.tr.requiresGrad = True
             self.tl.requiresGrad = True

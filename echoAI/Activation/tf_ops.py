@@ -1,30 +1,27 @@
 import math
+
 import tensorflow as tf
-from tensorflow.keras.layers import Layer, Lambda, InputSpec
 from tensorflow.keras import backend as K
-from tensorflow.keras import initializers, regularizers, constraints
+from tensorflow.keras import constraints, initializers, regularizers
+from tensorflow.keras.layers import InputSpec, Lambda, Layer
 
 
 class Swish(Layer):
-
     def __init__(self, **kwargs):
         super(Swish, self).__init__(**kwargs)
 
     def build(self, input_shape):
         # Trainable Beta Parameter for the Layer.
-        self._beta = self.add_weight(name='beta', 
-                                    shape=(1,),
-                                    initializer='uniform',
-                                    trainable=True)
+        self._beta = self.add_weight(
+            name="beta", shape=(1,), initializer="uniform", trainable=True
+        )
         super(Swish, self).build(input_shape)
-
 
     def call(self, inputs):
         return inputs * tf.math.sigmoid(self._beta * inputs)
 
 
 class SiLU(Layer):
-
     def __init__(self):
         super(SiLU, self).__init__
 
@@ -33,7 +30,6 @@ class SiLU(Layer):
 
 
 class ESwish(Layer):
-
     def __init__(self, beta):
         super(ESwish, self).__init__()
         self.beta = beta
@@ -43,7 +39,6 @@ class ESwish(Layer):
 
 
 class Aria2(Layer):
-
     def __init__(self, alpha, beta):
         super(Aria2, self).__init__()
         self.alpha = alpha
@@ -54,7 +49,6 @@ class Aria2(Layer):
 
 
 class ISRU(Layer):
-
     def __init__(self, alpha):
         super(ISRU, self).__init__()
         self.alpha = alpha
@@ -64,7 +58,6 @@ class ISRU(Layer):
 
 
 class SoftClipping(Layer):
-
     def __init__(self, alpha):
         super(SoftClipping, self).__init__()
         self.alpha = alpha
@@ -77,7 +70,6 @@ class SoftClipping(Layer):
 
 
 class Mish(Layer):
-
     def __init__(self):
         super(Mish, self).__init__()
 
@@ -86,7 +78,6 @@ class Mish(Layer):
 
 
 class ELiSH(Layer):
-
     def __init__(self):
         super(ELiSH, self).__init__()
 
@@ -105,7 +96,6 @@ class ELiSH(Layer):
 
 
 class HardELiSH(Layer):
-
     def __init__(self):
         super(HardELiSH, self).__init__()
 
@@ -124,7 +114,6 @@ class HardELiSH(Layer):
 
 
 class FlattenTSwish(Layer):
-
     def __init__(self):
         super(FlattenTSwish, self).__init__()
 
@@ -137,7 +126,6 @@ class FlattenTSwish(Layer):
 
 
 class SQNL(Layer):
-
     def __init__(self):
         super(SQNL, self).__init__()
 
@@ -158,7 +146,6 @@ class SQNL(Layer):
 
 
 class ISRLU(Layer):
-
     def __init__(self, alpha):
         super(ISRLU, self).__init__()
         self.alpha = alpha
@@ -174,7 +161,6 @@ class ISRLU(Layer):
 
 
 class SoftExponential(Layer):
-
     def __init__(self, alpha):
         super(SoftExponential, self).__init__()
         self.alpha = alpha
@@ -196,8 +182,7 @@ class SoftExponential(Layer):
 
 
 class CELU(Layer):
-
-    def __init__(self, alpha = 1.0):
+    def __init__(self, alpha=1.0):
         super(CELU, self).__init__()
         self.alpha = alpha
 
@@ -212,7 +197,6 @@ class CELU(Layer):
 
 
 class MaxOut(Layer):
-
     def __init__(self):
         super(MaxOut, self).__init__()
 
@@ -221,7 +205,6 @@ class MaxOut(Layer):
 
 
 class SReLU(Layer):
-
     def __init__(self, t, a, r, p):
         super(SReLU, self).__init__()
         self.t = tf.cast(t, "float32")
@@ -252,7 +235,6 @@ class SReLU(Layer):
 
 
 class BReLU(Layer):
-
     def __init__(self):
         super(BReLU, self).__init__()
 
@@ -279,7 +261,6 @@ class BReLU(Layer):
 
 
 class APL(Layer):
-
     def __init__(
         self,
         alpha_initializer="zeros",
@@ -367,8 +348,7 @@ class APL(Layer):
 
 
 class NLReLU(Layer):
-
-    def __init__(self, beta= 1.):
+    def __init__(self, beta=1.0):
         super(NLReLU, self).__init__
         self.beta = beta
 
@@ -377,11 +357,14 @@ class NLReLU(Layer):
 
 
 class GELU(Layer):
-
     def __init__(self):
         super(GELU, self).__init__()
-    
+
     def call(self, inputs):
-        cumulative_distribution = 0.5 * (1.0 + tf.tanh(
-            (math.sqrt(2 / math.pi) * (inputs + 0.044715 * tf.pow(inputs, 3)))))
+        cumulative_distribution = 0.5 * (
+            1.0
+            + tf.tanh(
+                (math.sqrt(2 / math.pi) * (inputs + 0.044715 * tf.pow(inputs, 3)))
+            )
+        )
         return inputs * cumulative_distribution

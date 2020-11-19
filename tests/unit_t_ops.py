@@ -11,10 +11,11 @@ from unittest import TestCase
 # import pytorch
 import torch
 
+from echoAI.Activation.Torch.aria2 import Aria2
+
 # import custom activations from Echo
 from echoAI.Activation.Torch.mish import Mish
 from echoAI.Activation.Torch.silu import Silu
-from echoAI.Activation.Torch.aria2 import Aria2
 
 sys.path.insert(0, "../")
 

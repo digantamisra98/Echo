@@ -1,16 +1,15 @@
 import torch
 import torch.nn as nn
-from torch.autograd import Function
-from torch.nn.parameter import Parameter
-from torch.autograd import Variable
 import torch.nn.functional as F
-
+from torch.autograd import Function, Variable
+from torch.nn.parameter import Parameter
 
 # Mish
 
 
 class mish_function(Function):
-    if torch.cuda.is_available(): 
+    if torch.cuda.is_available():
+
         @staticmethod
         def forward(ctx, x):
             ctx.save_for_backward(x)
@@ -21,18 +20,19 @@ class mish_function(Function):
         def backward(ctx, grad_output):
             x = ctx.saved_variables[0]
             sigmoid = torch.sigmoid(x)
-            tanh_sp = torch.tanh(F.softplus(x)) 
+            tanh_sp = torch.tanh(F.softplus(x))
             return grad_output * (tanh_sp + x * sigmoid * (1 - tanh_sp * tanh_sp))
+
     else:
+
         @torch.jit.script
         def mish(input):
             delta = torch.exp(-input)
             alpha = 1 + 2 * delta
-            return input * alpha / (alpha + 2* delta * delta)
+            return input * alpha / (alpha + 2 * delta * delta)
 
 
 class Mish(nn.Module):
-
     def __init__(self):
         """
         Init method.
@@ -50,7 +50,6 @@ class Mish(nn.Module):
 
 
 class Aria2(nn.Module):
-
     def __init__(self, beta=0.5, alpha=1.0):
         """
         Init method.
@@ -136,7 +135,6 @@ class brelu_function(Function):
 
 
 class BReLU(nn.Module):
-
     def __init__(self):
         """
         Init method.
@@ -213,7 +211,6 @@ class apl_function(Function):
 
 
 class APL(nn.Module):
-
     def __init__(self, in_features, a=None, b=None):
         """
         Init method.
@@ -256,8 +253,7 @@ def swish_function(input, swish, eswish, beta, param):
 
 
 class Swish(nn.Module):
-
-    def __init__(self, eswish=False, swish=False, beta = 1.735, flatten = False):
+    def __init__(self, eswish=False, swish=False, beta=1.735, flatten=False):
         """
         Init method.
         """
@@ -273,7 +269,9 @@ class Swish(nn.Module):
             self.param = nn.Parameter(torch.randn(1))
             self.param.requires_grad = True
         if eswish is not False and swish is not False and flatten is not False:
-            raise RuntimeError('Advisable to run either Swish or E-Swish or Flatten T-Swish')
+            raise RuntimeError(
+                "Advisable to run either Swish or E-Swish or Flatten T-Swish"
+            )
 
     def forward(self, input):
         """
@@ -286,14 +284,16 @@ class Swish(nn.Module):
         if self.eswish is not False:
             return swish_function(input, self.swish, self.eswish, self.beta, self.param)
         if self.flatten is not False:
-            return torch.clamp(swish_function(input, self.swish, self.eswish, self.beta, self.param), min=0)
+            return torch.clamp(
+                swish_function(input, self.swish, self.eswish, self.beta, self.param),
+                min=0,
+            )
 
 
 # ELisH/ Hard-ELisH
 
 
 class Elish(nn.Module):
-
     def __init__(self, hard=False):
         """
         Init method.
@@ -309,20 +309,27 @@ class Elish(nn.Module):
         Forward pass of the function.
         """
         if self.hard is False:
-            return (input >= 0).float() * swish_function(input, False, False, None, None) + (input < 0).float() * (torch.exp(input) - 1) * torch.sigmoid(input)
+            return (input >= 0).float() * swish_function(
+                input, False, False, None, None
+            ) + (input < 0).float() * (torch.exp(input) - 1) * torch.sigmoid(input)
         else:
-            return (input >= 0).float() * input * torch.max(self.a,torch.min(self.b, (input + 1.0) / 2.0)) + (input < 0).float() * (torch.exp(input - 1) * torch.max(self.a, torch.min(self.b, (input + 1.0) / 2.0)))
+            return (input >= 0).float() * input * torch.max(
+                self.a, torch.min(self.b, (input + 1.0) / 2.0)
+            ) + (input < 0).float() * (
+                torch.exp(input - 1)
+                * torch.max(self.a, torch.min(self.b, (input + 1.0) / 2.0))
+            )
 
 
 # ISRU/ ISRLU
+
 
 def isru(input, alpha):
     return input / (torch.sqrt(1 + alpha * torch.pow(input, 2)))
 
 
 class ISRU(nn.Module):
-
-    def __init__(self, alpha=1.0, isrlu = False):
+    def __init__(self, alpha=1.0, isrlu=False):
         """
         Init method.
         """
@@ -335,17 +342,17 @@ class ISRU(nn.Module):
         Forward pass of the function.
         """
         if self.isrlu is not False:
-            return (input < 0).float() * isru(input, self.apha) + (input >= 0).float() * input
+            return (input < 0).float() * isru(input, self.apha) + (
+                input >= 0
+            ).float() * input
         else:
             return isru(input, self.apha)
-
 
 
 # Maxout
 
 
 class maxout_function(Function):
-
     @staticmethod
     def forward(ctx, input):
         x = input
@@ -373,10 +380,9 @@ class maxout_function(Function):
             input[:, i : input.data.shape[1] : max_out] = a0.float() * grad_output
 
         return input
-        
+
 
 class Maxout(nn.Module):
-
     def __init__(self):
         """
         Init method.
@@ -390,13 +396,11 @@ class Maxout(nn.Module):
         return maxout_function.apply(input)
 
 
-
 # NLReLU
 
 
 class NLReLU(nn.Module):
-
-    def __init__(self, beta=1.0, inplace = False):
+    def __init__(self, beta=1.0, inplace=False):
         """
         Init method.
         """
@@ -414,12 +418,10 @@ class NLReLU(nn.Module):
             return torch.log(1 + self.beta * F.relu(x))
 
 
-
 # Soft Clipping
 
 
 class SoftClipping(nn.Module):
-
     def __init__(self, alpha=0.5):
         """
         Init method.
@@ -431,15 +433,16 @@ class SoftClipping(nn.Module):
         """
         Forward pass of the function.
         """
-        return (1 / self.alpha) * torch.log((1 + torch.exp(self.alpha * input)) / (1 + torch.exp(self.alpha * (input - 1))))
-
+        return (1 / self.alpha) * torch.log(
+            (1 + torch.exp(self.alpha * input))
+            / (1 + torch.exp(self.alpha * (input - 1)))
+        )
 
 
 # Soft Exponential
 
 
 class SoftExponential(nn.Module):
-
     def __init__(self, alpha=None):
         """
         Init method.
@@ -468,40 +471,36 @@ class SoftExponential(nn.Module):
             return (torch.exp(self.alpha * x) - 1) / self.alpha + self.alpha
 
 
-
 # SQNL
 
 
 class SQNL(nn.Module):
-
     def __init__(self):
         """
         Init method.
         """
-        super(SQNL,self).__init__()
+        super(SQNL, self).__init__()
 
     def forward(self, input):
         """
         Forward pass of the function.
         """
         return (
-        (input > 2).float()
-        + (input - torch.pow(input, 2) / 4)
-        * (input >= 0).float()
-        * (input <= 2).float()
-        + (input + torch.pow(input, 2) / 4)
-        * (input < 0).float()
-        * (input >= -2).float()
-        - (input < -2).float()
+            (input > 2).float()
+            + (input - torch.pow(input, 2) / 4)
+            * (input >= 0).float()
+            * (input <= 2).float()
+            + (input + torch.pow(input, 2) / 4)
+            * (input < 0).float()
+            * (input >= -2).float()
+            - (input < -2).float()
         )
-
 
 
 # SReLU
 
 
 class SReLU(nn.Module):
-
     def __init__(self, in_features, parameters=None):
         """
         Init method.
@@ -536,18 +535,18 @@ class SReLU(nn.Module):
         )
 
 
-
 # FReLU
 
 
 class FReLU(nn.Module):
-
     def __init__(self, in_channels):
         """
         Init method.
         """
         super(FReLU, self).__init__()
-        self.conv_frelu = nn.Conv2d(in_channels, in_channels, 3, 1, 1, groups=in_channels)
+        self.conv_frelu = nn.Conv2d(
+            in_channels, in_channels, 3, 1, 1, groups=in_channels
+        )
         self.bn_frelu = nn.BatchNorm2d(in_channels)
 
     def forward(self, input):

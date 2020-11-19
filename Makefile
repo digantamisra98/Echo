@@ -1,15 +1,20 @@
-ISORT_FLAGS = --diff --atomic
-BLACK_FLAGS = -v --check --diff --color
-FLAKE8_FLAGS = -v
+ISORT_FLAGS = --atomic
+BLACK_FLAGS = -v --color
+AUTOFLAKE_FLAGS = -i --remove-all-unused-imports --remove-unused-variables
+FLAKE8_FLAGS = 
 
 
-all: test
+all:
 
 isort:
 	isort $(ISORT_FLAGS) .
 flake:
-	flake8 $(FLAKE8_FLAGS) .	
+	find . -name '*.py' | xargs autoflake $(AUTOFLAKE_FLAGS)
+	flake8 $(FLAKE8_FLAGS)	
+	@echo "Passed flake8 tests"
 black:
 	black $(BLACK_FLAGS) .
 
-test: flake isort black	
+lint: isort black flake
+
+test: lint

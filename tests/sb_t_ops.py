@@ -3,39 +3,39 @@ Script for demonstration of the custom activation functions
 implemented in the EchoAI package for classification of Fashion MNIST dataset.
 """
 
-# import basic libraries
-from collections import OrderedDict
-import sys
-
 # import custom packages
 import argparse
+import sys
+
+# import basic libraries
+from collections import OrderedDict
 
 # import pytorch
 import torch
-from torch import nn
-from torch import optim
 import torch.nn.functional as F
+from torch import nn, optim
 from torchvision import datasets, transforms
+
+import echoAI.Activation.Torch.functional as Func
+from echoAI.Activation.Torch.aria2 import Aria2
+from echoAI.Activation.Torch.bent_id import BentID
+from echoAI.Activation.Torch.beta_mish import BetaMish
+from echoAI.Activation.Torch.elish import Elish
+from echoAI.Activation.Torch.eswish import Eswish
+from echoAI.Activation.Torch.fts import FTS
+from echoAI.Activation.Torch.hard_elish import HardElish
+from echoAI.Activation.Torch.isrlu import ISRLU
+from echoAI.Activation.Torch.isru import ISRU
+from echoAI.Activation.Torch.mila import Mila
+from echoAI.Activation.Torch.mish import Mish
+from echoAI.Activation.Torch.silu import Silu
+from echoAI.Activation.Torch.sine_relu import SineReLU
+from echoAI.Activation.Torch.soft_clipping import SoftClipping
+from echoAI.Activation.Torch.sqnl import SQNL
+from echoAI.Activation.Torch.swish import Swish
 
 # import custom activations
 from echoAI.Activation.Torch.weightedTanh import WeightedTanh
-from echoAI.Activation.Torch.mish import Mish
-from echoAI.Activation.Torch.silu import Silu
-from echoAI.Activation.Torch.aria2 import Aria2
-from echoAI.Activation.Torch.eswish import Eswish
-from echoAI.Activation.Torch.swish import Swish
-from echoAI.Activation.Torch.beta_mish import BetaMish
-from echoAI.Activation.Torch.elish import Elish
-from echoAI.Activation.Torch.hard_elish import HardElish
-from echoAI.Activation.Torch.mila import Mila
-from echoAI.Activation.Torch.sine_relu import SineReLU
-from echoAI.Activation.Torch.fts import FTS
-from echoAI.Activation.Torch.sqnl import SQNL
-from echoAI.Activation.Torch.isru import ISRU
-from echoAI.Activation.Torch.isrlu import ISRLU
-from echoAI.Activation.Torch.bent_id import BentID
-from echoAI.Activation.Torch.soft_clipping import SoftClipping
-import echoAI.Activation.Torch.functional as Func
 
 sys.path.insert(0, "../")
 

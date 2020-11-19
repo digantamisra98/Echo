@@ -1,4 +1,5 @@
 from distutils.core import setup
+
 import setuptools
 
 with open("README_PyPI.md", "r") as fh:

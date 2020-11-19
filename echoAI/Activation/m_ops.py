@@ -107,7 +107,7 @@ class Swish(nn.Module):
         if self.eswish is not False:
             return swish_function(input, self.swish, self.eswish, self.beta, self.param)
         if self.flatten is not False:
-            return F.clip(input * F.sigmoid(input), lower=0)
+            return F.clip(swish_function(input, self.swish, self.eswish, self.beta, self.param), lower=0)
 
 
 # ELisH/ Hard-ELisH

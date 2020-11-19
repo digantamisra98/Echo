@@ -5,6 +5,12 @@ flake8==3.7.9
 # Automatic code formatting
 black==19.10b0
 
+# Handling Imports
+isort
+
+# Removing unused imports and variables
+autoflake
+
 # For creating git precommit hooks
 pre-commit==1.18.3
 

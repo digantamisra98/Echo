@@ -426,12 +426,11 @@ class SoftClipping(nn.Module):
 
 class SoftExponential(nn.Module):
 
-    def __init__(self, in_features, alpha=None):
+    def __init__(self, alpha=None):
         """
         Init method.
         """
         super(SoftExponential, self).__init__()
-        self.in_features = in_features
 
         # initialize alpha
         if alpha is None:

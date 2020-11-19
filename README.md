@@ -17,10 +17,6 @@
 
 **Sphinx Documentation has been depreciated.**
 
-## Table of Contents
-* [About the Project](#about)
-* [Setup Instructions](#setup-instructions)
-
 ## About
 **Echo Package** is created to provide an implementation of the most promising mathematical algorithms, novel layers and methods, which are missing in the most popular deep learning libraries, such as [PyTorch](https://pytorch.org/), [TensorFlow](https://www.tensorflow.org/) and [MegEngine](https://megengine.org.cn/).
 

@@ -27,4 +27,8 @@
 To install __echoAI__ package from PyPI run the following command:
 
   ```$ pip install echoAI ```
+  
+## Contributing
+
+Check our [contributing guidelines](https://xa9ax.gitbook.io/echo/contributing-guidelines) to get started.
 

@@ -249,9 +249,9 @@ class APL(nn.Module):
 def swish_function(input, swish, eswish, beta, param):
     if swish is False and eswish is False:
         return input * torch.sigmoid(input)
-    if swish:
+    if swish is True and eswish is False:
         return input * torch.sigmoid(param * input)
-    if eswish:
+    if eswish is True and swish is False:
         return beta * input * torch.sigmoid(input)
 
 

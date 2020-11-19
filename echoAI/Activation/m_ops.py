@@ -103,11 +103,11 @@ class Swish(nn.Module):
         Forward pass of the function.
         """
         if self.swish is False and self.eswish is False and self.flatten is False:
-            return swish(input, self.swish, self.eswish, self.beta, self.param)
+            return swish_function(input, self.swish, self.eswish, self.beta, self.param)
         if self.swish is not False:
-            return swish(input, self.swish, self.eswish, self.beta, self.param)
+            return swish_function(input, self.swish, self.eswish, self.beta, self.param)
         if self.eswish is not False:
-            return swish(input, self.swish, self.eswish, self.beta, self.param)
+            return swish_function(input, self.swish, self.eswish, self.beta, self.param)
         if self.flatten is not False:
             return F.clip(input * F.sigmoid(input), lower=0)
 
@@ -132,7 +132,7 @@ class Elish(nn.Module):
         Forward pass of the function.
         """
         if self.hard is False:
-            return (input >= 0).float() * swish(input, False, False, None, None) + (input < 0).float() * (F.exp(input) - 1) * F.sigmoid(input)
+            return (input >= 0).float() * swish_function(input, False, False, None, None) + (input < 0).float() * (F.exp(input) - 1) * F.sigmoid(input)
         else:
             return (input >= 0).float() * input * F.max(self.a,F.min(self.b, (input + 1.0) / 2.0)) + (input < 0).float() * (F.exp(input - 1) * F.max(self.a, F.min(self.b, (input + 1.0) / 2.0)))
 

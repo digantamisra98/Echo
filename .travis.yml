@@ -5,7 +5,7 @@ sudo: false
 language: python
 
 # Set the python version to 2.7
-python: 3.6
+python: 3.7
 
 # Cache dependencies
 cache: pip

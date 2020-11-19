@@ -2,11 +2,12 @@
   <img width="270" src="https://github.com/digantamisra98/Echo/raw/master/Observations/logo_transparent.png">
 </p>
 
-[![Donate](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3b9607d06bc0420ebe1ce4443e34e1ba)](https://www.codacy.com/manual/digantamisra98/Echo?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digantamisra98/Echo&amp;utm_campaign=Badge_Grade)
 [![HitCount](http://hits.dwyl.io/digantamisra98/Echo.svg)](http://hits.dwyl.io/digantamisra98/Echo)
 [![Build Status](https://travis-ci.com/digantamisra98/Echo.svg?branch=master)](https://travis-ci.com/digantamisra98/Echo)
 [![codecov](https://codecov.io/gh/digantamisra98/Echo/branch/master/graph/badge.svg)](https://codecov.io/gh/digantamisra98/Echo)
+![](https://img.shields.io/pypi/dm/echoAI?color=blue)
 
 # Echo
 

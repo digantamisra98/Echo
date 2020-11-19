@@ -243,6 +243,52 @@ class APL(nn.Module):
         return apl_function.apply(input, a, b)
 
 
+# Swish/ SILU/ E-Swish/ Flatten T-Swish
+
+
+def swish_function(input, swish, eswish, beta, param):
+    if swish is False and eswish is False:
+        return input * torch.sigmoid(input)
+    if swish:
+        return input * torch.sigmoid(param * input)
+    if eswish:
+        return beta * input * torch.sigmoid(input)
+
+
+class Swish(nn.Module):
+
+    def __init__(self, eswish=False, swish=False, beta = 1.735, flatten = False):
+        """
+        Init method.
+        """
+        super(Swish, self).__init__()
+        self.swish = swish
+        self.eswish = eswish
+        self.flatten = flatten
+        self.beta = None
+        self.param = None
+        if eswish is not False:
+            self.beta = beta
+        if swish is not False:
+            self.param = nn.Parameter(torch.randn(1))
+            self.param.requires_grad = True
+        if eswish is not False and swish is not False and flatten is not False:
+            raise RuntimeError('Advisable to run either Swish or E-Swish or Flatten T-Swish')
+
+    def forward(self, input):
+        """
+        Forward pass of the function.
+        """
+        if self.swish is False and self.eswish is False and self.flatten is False:
+            return swish(input, self.swish, self.eswish, self.beta, self.param)
+        if self.swish is not False:
+            return swish(input, self.swish, self.eswish, self.beta, self.param)
+        if self.eswish is not False:
+            return swish(input, self.swish, self.eswish, self.beta, self.param)
+        if self.flatten is not False:
+            return torch.clamp(input * torch.sigmoid(input), min=0)
+
+
 # ELisH/ Hard-ELisH
 
 
@@ -263,47 +309,15 @@ class Elish(nn.Module):
         Forward pass of the function.
         """
         if self.hard is False:
-            return (input >= 0).float() * input * torch.sigmoid(input) + (input < 0).float() * (torch.exp(input) - 1) * torch.sigmoid(input)
+            return (input >= 0).float() * swish(input, False, False, None, None) + (input < 0).float() * (torch.exp(input) - 1) * torch.sigmoid(input)
         else:
             return (input >= 0).float() * input * torch.max(self.a,torch.min(self.b, (input + 1.0) / 2.0)) + (input < 0).float() * (torch.exp(input - 1) * torch.max(self.a, torch.min(self.b, (input + 1.0) / 2.0)))
 
 
-# Swish/ SILU/ E-Swish/ Flatten T-Swish
-
-
-class Swish(nn.Module):
-
-    def __init__(self, eswish=False, swish=False, beta = 1.735, flatten = False):
-        """
-        Init method.
-        """
-        super(Swish, self).__init__()
-        self.swish = swish
-        self.eswish = eswish
-        self.flatten = flatten
-        if eswish is not False:
-            self.beta = beta
-        if swish is not False:
-            self.param = nn.Parameter(torch.randn(1))
-            self.param.requires_grad = True
-        if eswish is not False and swish is not False and flatten is not False:
-            raise RuntimeError('Advisable to run either Swish or E-Swish or Flatten T-Swish')
-
-    def forward(self, input):
-        """
-        Forward pass of the function.
-        """
-        if self.swish is False and self.eswish is False and self.flatten is False:
-            return input * torch.sigmoid(input)
-        if self.swish is not False:
-            return input * torch.sigmoid(self.param * input)
-        if self.eswish is not False:
-            return self.beta * input * torch.sigmoid(input)
-        if self.flatten is not False:
-            return torch.clamp(input * torch.sigmoid(input), min=0)
-
-
 # ISRU/ ISRLU
+
+def isru(input, alpha):
+    return input / (torch.sqrt(1 + alpha * torch.pow(input, 2)))
 
 
 class ISRU(nn.Module):
@@ -321,9 +335,9 @@ class ISRU(nn.Module):
         Forward pass of the function.
         """
         if self.isrlu is not False:
-            return (input < 0).float() * input / (torch.sqrt(1 + self.alpha * torch.pow(input, 2))) + (input >= 0).float() * input
+            return (input < 0).float() * isru(input, self.apha) + (input >= 0).float() * input
         else:
-            return input / (torch.sqrt(1 + self.alpha * torch.pow(input, 2)))
+            return isru(input, self.apha)
 
 
 

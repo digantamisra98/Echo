@@ -511,12 +511,36 @@ class SReLU(nn.Module):
         else:
             self.tr, self.tl, self.ar, self.al = parameters
 
-    def forward(self, x):
+    def forward(self, input):
         """
         Forward pass of the function
         """
         return (
-            (x >= self.tr).float() * (self.tr + self.ar * (x + self.tr))
-            + (x < self.tr).float() * (x > self.tl).float() * x
-            + (x <= self.tl).float() * (self.tl + self.al * (x + self.tl))
+            (input >= self.tr).float() * (self.tr + self.ar * (input + self.tr))
+            + (input < self.tr).float() * (input > self.tl).float() * input
+            + (input <= self.tl).float() * (self.tl + self.al * (input + self.tl))
         )
+
+
+
+# FReLU
+
+
+class FReLU(nn.Module):
+
+    def __init__(self, in_channels):
+        """
+        Init method.
+        """
+        super(FReLU, self).__init__()
+        self.conv_frelu = nn.Conv2d(in_channels, in_channels, 3, 1, 1, groups=in_channels)
+        self.bn_frelu = nn.BatchNorm2d(in_channels)
+
+    def forward(self, input):
+        """
+        Forward pass of the function
+        """
+        tau = self.conv_frelu(input)
+        tau = self.bn_frelu(tau)
+        output = torch.max(input, tau)
+        return output

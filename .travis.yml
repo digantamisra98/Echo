@@ -11,12 +11,13 @@ python: 3.7
 cache: pip
 
 # Install the codecov pip dependency
-install:
+install: 
   - pip install -r requirements.txt
 
 # Run the unit test
 script:
-  - coverage run make test 
+  - coverage run tests/unit_t_ops.py
+  - make test
   
 # Push the results back to codecov
 after_success:

@@ -286,7 +286,7 @@ class Swish(nn.Module):
         if self.eswish is not False:
             return swish_function(input, self.swish, self.eswish, self.beta, self.param)
         if self.flatten is not False:
-            return torch.clamp(input * torch.sigmoid(input), min=0)
+            return torch.clamp(swish_function(input, self.swish, self.eswish, self.beta, self.param), min=0)
 
 
 # ELisH/ Hard-ELisH

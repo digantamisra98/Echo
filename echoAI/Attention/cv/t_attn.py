@@ -26,18 +26,45 @@ class TripletAttention(nn.Module):
         return x_out
 
 
+class SpatialGate(nn.Module):
+    def __init__(self, gate_channel, reduction_ratio=16, dilation_conv_num=2, dilation_val=4):
+        super(SpatialGate, self).__init__()
+        self.gate_s = nn.Sequential()
+        self.gate_s.add_module( 'gate_s_conv_reduce0', nn.Conv2d(gate_channel, gate_channel//reduction_ratio, kernel_size=1))
+        self.gate_s.add_module( 'gate_s_bn_reduce0',	nn.BatchNorm2d(gate_channel//reduction_ratio) )
+        self.gate_s.add_module( 'gate_s_relu_reduce0',nn.ReLU() )
+        for i in range( dilation_conv_num ):
+            self.gate_s.add_module( 'gate_s_conv_di_%d'%i, nn.Conv2d(gate_channel//reduction_ratio, gate_channel//reduction_ratio, kernel_size=3, \
+						padding=dilation_val, dilation=dilation_val) )
+            self.gate_s.add_module( 'gate_s_bn_di_%d'%i, nn.BatchNorm2d(gate_channel//reduction_ratio) )
+            self.gate_s.add_module( 'gate_s_relu_di_%d'%i, nn.ReLU() )
+        self.gate_s.add_module( 'gate_s_conv_final', nn.Conv2d(gate_channel//reduction_ratio, 1, kernel_size=1) )
+    def forward(self, in_tensor):
+        return self.gate_s( in_tensor ).expand_as(in_tensor)
+
+
 class CBAM(nn.Module):
-    def __init__(self, gate_channels, kernel_size=3, reduction_ratio=16, pool_types=['avg', 'max'], no_spatial=False, bam=False):
+    def __init__(self, gate_channels, kernel_size=3, reduction_ratio=16, pool_types=['avg', 'max'], no_spatial=False, bam=False, num_layers=1, bn=False, dilation_conv_num=2, dilation_val=4):
         super(CBAM, self).__init__()
-        self.ChannelGate = torch_utils.ChannelGate(gate_channels, reduction_ratio, pool_types)
+        self.bam = bam
         self.no_spatial=no_spatial
-        if not no_spatial:
-            self.SpatialGate = torch_utils.AttentionGate(kernel_size)
+        if self.bam:
+            self.dilatedGate = SpatialGate(gate_channels, reduction_ratio, dilation_conv_num, dilation_val)
+            self.ChannelGate = torch_utils.ChannelGate(gate_channels, reduction_ratio, pool_types, bam=self.bam, num_layers=num_layers,bn=bn)
+        else:
+            self.ChannelGate = torch_utils.ChannelGate(gate_channels, reduction_ratio, pool_types)
+            if not no_spatial:
+                self.SpatialGate = torch_utils.AttentionGate(kernel_size)
     def forward(self, x):
         x_out = self.ChannelGate(x)
-        if not self.no_spatial:
-            x_out = self.SpatialGate(x_out)
-        return x_out
+        if not self.bam:
+            if not self.no_spatial:
+                x_out = self.SpatialGate(x_out)
+            return x_out
+        else:
+            att = 1 + F.sigmoid(self.ChannelGate(x) * self.dilatedGate(x))
+            return att * x
+
 
 
 class SE(nn.Module):
@@ -47,3 +74,4 @@ class SE(nn.Module):
     def forward(self, x):
         x_out = self.ChannelGate(x)
         return x_out
+

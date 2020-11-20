@@ -1,15 +1,15 @@
 
 import torch.nn as nn
-from .. import t_att_utils
+from echoAI.utils import torch_utils
 
 class TripletAttention(nn.Module):
     def __init__(self, no_spatial=False, kernel_size=7):
         super(TripletAttention, self).__init__()
-        self.cw = t_att_utils.AttentionGate(kernel_size)
-        self.hc = t_att_utils.AttentionGate(kernel_size)
+        self.cw = torch_utils.AttentionGate(kernel_size)
+        self.hc = torch_utils.AttentionGate(kernel_size)
         self.no_spatial = no_spatial
         if not no_spatial:
-            self.hw = t_att_utils.AttentionGate(kernel_size)
+            self.hw = torch_utils.AttentionGate(kernel_size)
 
     def forward(self, x):
         x_perm1 = x.permute(0, 2, 1, 3).contiguous()
@@ -29,10 +29,10 @@ class TripletAttention(nn.Module):
 class CBAM(nn.Module):
     def __init__(self, gate_channels, kernel_size=3, reduction_ratio=16, pool_types=['avg', 'max'], no_spatial=False, bam=False):
         super(CBAM, self).__init__()
-        self.ChannelGate = t_att_utils.ChannelGate(gate_channels, reduction_ratio, pool_types)
+        self.ChannelGate = torch_utils.ChannelGate(gate_channels, reduction_ratio, pool_types)
         self.no_spatial=no_spatial
         if not no_spatial:
-            self.SpatialGate = t_att_utils.AttentionGate(kernel_size)
+            self.SpatialGate = torch_utils.AttentionGate(kernel_size)
     def forward(self, x):
         x_out = self.ChannelGate(x)
         if not self.no_spatial:
@@ -43,7 +43,7 @@ class CBAM(nn.Module):
 class SE(nn.Module):
     def __init__(self, gate_channels, reduction_ratio=16):
         super(SE, self).__init__()
-        self.ChannelGate = t_att_utils.ChannelGate(gate_channels, reduction_ratio, ['avg'])
+        self.ChannelGate = torch_utils.ChannelGate(gate_channels, reduction_ratio, ['avg'])
     def forward(self, x):
         x_out = self.ChannelGate(x)
         return x_out

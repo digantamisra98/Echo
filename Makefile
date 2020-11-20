@@ -1,5 +1,5 @@
 ISORT_FLAGS = --atomic
-BLACK_FLAGS = -v --color
+BLACK_FLAGS = -v
 AUTOFLAKE_FLAGS = -i --remove-all-unused-imports --remove-unused-variables
 FLAKE8_FLAGS = 
 

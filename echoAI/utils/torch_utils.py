@@ -58,7 +58,7 @@ class ChannelGate(nn.Module):
             else:
                 channel_att_sum = channel_att_sum + channel_att_raw
         
-        if bam:
+        if self.bam:
             return channel_att_sum.unsqueeze(2).unsqueeze(3).expand_as(x)
         else
             scale = F.sigmoid( channel_att_sum ).unsqueeze(2).unsqueeze(3).expand_as(x)

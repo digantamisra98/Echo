@@ -7,31 +7,6 @@ from torch.nn.parameter import Parameter
 # Mish
 
 
-class mish_function(Function):
-    if torch.cuda.is_available():
-
-        @staticmethod
-        def forward(ctx, x):
-            ctx.save_for_backward(x)
-            y = x * torch.tanh(F.softplus(x))
-            return y
-
-        @staticmethod
-        def backward(ctx, grad_output):
-            x = ctx.saved_variables[0]
-            sigmoid = torch.sigmoid(x)
-            tanh_sp = torch.tanh(F.softplus(x))
-            return grad_output * (tanh_sp + x * sigmoid * (1 - tanh_sp * tanh_sp))
-
-    else:
-
-        @torch.jit.script
-        def mish(input):
-            delta = torch.exp(-input)
-            alpha = 1 + 2 * delta
-            return input * alpha / (alpha + 2 * delta * delta)
-
-
 class Mish(nn.Module):
     def __init__(self):
         """
@@ -43,7 +18,7 @@ class Mish(nn.Module):
         """
         Forward pass of the function.
         """
-        return mish_function.apply(input)
+        return input * (torch.tanh(F.softplus(input)))
 
 
 # Aria 2

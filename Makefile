@@ -20,3 +20,4 @@ black:
 lint: isort black flake
 
 test: lint
+	python tests/test_t_ops.py

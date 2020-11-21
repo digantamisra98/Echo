@@ -139,7 +139,7 @@ class BReLU(nn.Module):
         """
         Init method.
         """
-        super(BreLU, self).__init__()
+        super(BReLU, self).__init__()
 
     def forward(self, input):
         """

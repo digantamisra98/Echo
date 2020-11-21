@@ -4,7 +4,7 @@ sudo: false
 # Set the build language to Python
 language: python
 
-# Set the python version to 2.7
+# Set the python version to 3.7
 python: 3.7
 
 # Cache dependencies

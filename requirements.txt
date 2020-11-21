@@ -11,6 +11,9 @@ isort
 # Removing unused imports and variables
 autoflake
 
+# For UnitTests
+parameterized
+
 # For creating git precommit hooks
 pre-commit==1.18.3
 

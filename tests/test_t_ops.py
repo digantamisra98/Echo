@@ -1,121 +1,38 @@
-"""
-Script containing unit tests for PyTorch activation functions.
-"""
-
-import sys
-
-# import unit tests
 import unittest
-from unittest import TestCase
 
-# import pytorch
 import torch
+from parameterized import parameterized
 
-from echoAI.Activation.Torch.aria2 import Aria2
-
-# import custom activations from Echo
-from echoAI.Activation.Torch.mish import Mish
-from echoAI.Activation.Torch.silu import Silu
-
-sys.path.insert(0, "../")
+from echoAI.Activation.t_ops import *
 
 
-# class containing unit tests for PyTorch activation functions
-class TestTorchActivations(TestCase):
-    """
-    Class containing unit tests for PyTorch activation functions
-    """
+TEST_SWISH = [
+    Swish(swish=True),
+    torch.tensor([[[[-10, -8, -6, -4, -2], [0, 2, 4, 6, 8]]]], dtype=torch.float32),
+    torch.tensor(
+        [[[[-4.54e-04, -2.68e-03, -1.48e-02, -7.19e-02, -2.38e-01], [0.00e00, 1.76e00, 3.93e00, 5.99e00, 8.00e00]]]]
+    ),
+    (1, 1, 2, 5),
+]
 
-    def test_silu_1(self):
-        """
-        Unit test for SiLU activation function.
-        See :mod:`Echo.Activation.Torch.Silu`.
-        """
-        fsilu = Silu()
-        input = torch.tensor((0.0, 0.0))
-        output = torch.tensor((0.0, 0.0))
-        # checking that silu(0) == 0
-        self.assertEqual((fsilu(input)).allclose(output), True)
-
-    def test_silu_2(self):
-        """
-        Unit test for SiLU activation function.
-        See :mod:`Echo.Activation.Torch.Silu`.
-        """
-        fsilu = Silu()
-        input = torch.tensor((1.0, 1.0))
-        output = torch.tensor((0.731058, 0.731058))
-
-        # checking that silu(1.0) == 0.7310
-        self.assertEqual((fsilu(input)).allclose(output), True)
-
-    def test_silu_3(self):
-        """
-        Unit test for SiLU activation function.
-        See :mod:`Echo.Activation.Torch.Silu`.
-        """
-        # checking an inplace implementation
-        fsilu = Silu(inplace=True)
-        input = torch.tensor((1.0, 1.0))
-        output = torch.tensor((0.731058, 0.731058))
-
-        # performing the inplace operation
-        fsilu(input)
-
-        # checking that value of an input is SiLU(input) == 0.7310 now
-        self.assertEqual((input).allclose(output), True)
-
-    def test_mish_1(self):
-        """
-        Unit test for Mish activation function.
-        See :mod:`Echo.Activation.Torch.Mish`.
-        """
-        # checking that mish(0) == 0
-        fmish = Mish()
-        input = torch.tensor((0.0, 0.0))
-        output = torch.tensor((0.0, 0.0))
-
-        self.assertEqual((fmish(input)).allclose(output), True)
-
-    def test_mish_2(self):
-        """
-        Unit test for Mish activation function.
-        See :mod:`Echo.Activation.Torch.Mish`.
-        """
-        # checking that mish(1) == 0.865098
-        fmish = Mish()
-        input = torch.tensor((1.0, 1.0))
-        output = torch.tensor((0.865098, 0.865098))
-
-        self.assertEqual((fmish(input)).allclose(output), True)
-
-    def test_aria2_1(self):
-        """
-        Unit test for Aria2 activation function.
-        See :mod:`Echo.Activation.Torch.Aria2`.
-        """
-        # checking that aria2(0, 0) = (0.5, 0.5)
-        input = torch.tensor((0.0, 0.0))
-        aria = Aria2(beta=1.0, alpha=1.0)
-        output = aria(input)
-
-        self.assertEqual(output.allclose(torch.tensor((0.5, 0.5))), True)
-
-    def test_aria2_2(self):
-        """
-        Unit test for Aria2 activation function.
-        See :mod:`Echo.Activation.Torch.Aria2`.
-        """
-        # checking that aria2(1., 1.) = (0.73105, 0.73105)
-        input = torch.tensor((1.0, 1.0))
-        aria = Aria2(beta=1.0, alpha=1.0)
-        output = aria(input)
-
-        self.assertEqual(
-            output.allclose(torch.tensor((0.7310585786, 0.7310585786))), True
-        )
+TEST_MISH = [
+    Mish(),
+    torch.tensor([[[[-10, -8, -6, -4, -2], [0, 2, 4, 6, 8]]]], dtype=torch.float32),
+    torch.tensor(
+        [[[[-4.54e-04, -2.68e-03, -1.49e-02, -7.26e-02, -2.53e-01], [0.00e00, 1.94e00, 4.00e00, 6.00e00, 8.00e00]]]]
+    ),
+    (1, 1, 2, 5),
+]
 
 
-# define entry point
+class TestActivations(unittest.TestCase):
+    @parameterized.expand([TEST_SWISH, TEST_MISH])
+    def test_activations_value_shape(self, cls, inp, out, exp):
+        result = cls(inp)
+        torch.testing.assert_allclose(result, out, rtol=1e-2, atol=1e-5)
+        self.assertTupleEqual(result.shape, exp)
+
+
 if __name__ == "__main__":
+
     unittest.main()

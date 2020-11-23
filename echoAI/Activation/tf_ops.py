@@ -355,16 +355,3 @@ class NLReLU(Layer):
     def call(self, inputs):
         return tf.math.log(1 + self.beta * tf.nn.relu(inputs))
 
-
-class GELU(Layer):
-    def __init__(self):
-        super(GELU, self).__init__()
-
-    def call(self, inputs):
-        cumulative_distribution = 0.5 * (
-            1.0
-            + tf.tanh(
-                (math.sqrt(2 / math.pi) * (inputs + 0.044715 * tf.pow(inputs, 3)))
-            )
-        )
-        return inputs * cumulative_distribution

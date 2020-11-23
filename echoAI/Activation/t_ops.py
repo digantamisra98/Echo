@@ -126,93 +126,32 @@ class BReLU(nn.Module):
 # APL
 
 
-class apl_function(Function):
-
-    # both forward and backward are @staticmethods
-    @staticmethod
-    def forward(ctx, input, a, b):
-        """
-        In the forward pass we receive a Tensor containing the input and return
-        a Tensor containing the output. ctx is a context object that can be used
-        to stash information for backward computation. You can cache arbitrary
-        objects for use in the backward pass using the ctx.save_for_backward method.
-        """
-        ctx.save_for_backward(input, a, b)  # save for backward pass
-
-        S = a.shape[0]  # get S (number of hinges)
-
-        output = input.clamp(min=0)
-        for s in range(S):
-            t = -input + b[s]
-            output += a[s] * t.clamp(min=0)
-
-        return output
-
-    @staticmethod
-    def backward(ctx, grad_output):
-        """
-        In the backward pass we receive a Tensor containing the gradient of the loss
-        with respect to the output, and we need to compute the gradient of the loss
-        with respect to the input.
-        """
-        # set output to None
-        grad_input = None
-        grad_a = None
-        grad_b = None
-
-        input, a, b = ctx.saved_tensors  # restore input from context
-        S = a.shape[0]  # get S (number of hinges)
-
-        # check that input requires grad
-        # if not requires grad we will return None to speed up computation
-        if ctx.needs_input_grad[0]:
-            grad_input = (input >= 0).float() * grad_output
-            for s in range(S):
-                grad_input += (input >= 0).float() * (-a[s]) * grad_output
-
-        if ctx.needs_input_grad[1]:
-            grad_a = torch.zeros(a.size())
-            for s in range(S):
-                grad_as = (input >= 0).float() * (-input) * grad_output
-                grad_a[s] = grad_as.sum(dim=0, keepdim=True)
-
-        if ctx.needs_input_grad[2]:
-            grad_b = torch.zeros(b.size())
-            for s in range(S):
-                grad_bs = (input >= 0).float() * a[s] * grad_output
-                grad_b[s] = grad_bs.sum(dim=0, keepdim=True)
-
-        return grad_input, grad_a, grad_b
-
 
 class APL(nn.Module):
-    def __init__(self, in_features, a=None, b=None):
+
+    def __init__(self, s=1):
         """
         Init method.
         """
         super(APL, self).__init__()
-        self.in_features = in_features
 
-        # initialize parameters
-        if a is None:
-            self.a = Parameter(
-                torch.randn((S, in_features), dtype=torch.float, requires_grad=True)
-            )
-        else:
-            self.a = a
-
-        if b is None:
-            self.b = Parameter(
-                torch.randn((S, in_features), dtype=torch.float, requires_grad=True)
-            )
-        else:
-            self.b = b
+        self.a = nn.ParameterList(
+            [nn.Parameter(torch.tensor(0.2)) for _ in range(s)])
+        self.b = nn.ParameterList(
+            [nn.Parameter(torch.tensor(0.5)) for _ in range(s)])
+        self.s = s
 
     def forward(self, input):
         """
-        Forward pass of the function
+        Forward pass of the function.
         """
-        return apl_function.apply(input, a, b)
+        part_1 = torch.clamp_min(input, min=0.0)
+        part_2 = 0
+        for i in range(self.s):
+            part_2 += self.a[i] * torch.clamp_min(-input+self.b[i], min=0)
+
+        return part_1 + part_2
+
 
 
 # Swish/ SILU/ E-Swish/ Flatten T-Swish

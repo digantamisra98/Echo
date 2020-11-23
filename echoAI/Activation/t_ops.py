@@ -266,48 +266,24 @@ class ISRU(nn.Module):
 # Maxout
 
 
-class maxout_function(Function):
-    @staticmethod
-    def forward(ctx, input):
-        x = input
-        kernels = x.shape[1]  # to get how many kernels/output
-        max_out = 4  # Maxout Parameter
-        feature_maps = int(kernels / max_out)
-        out_shape = (x.shape[0], feature_maps, max_out, x.shape[2], x.shape[3])
-        x = x.view(out_shape)
-        y, indices = torch.max(x[:, :, :], 2)
-        ctx.save_for_backward(input)
-        ctx.indices = indices
-        ctx.max_out = max_out
-        return y
-
-    @staticmethod
-    def backward(ctx, grad_output):
-        input1, indices, max_out = (
-            ctx.saved_variables[0],
-            Variable(ctx.indices),
-            ctx.max_out,
-        )
-        input = input1.clone()
-        for i in range(max_out):
-            a0 = indices == i
-            input[:, i : input.data.shape[1] : max_out] = a0.float() * grad_output
-
-        return input
-
-
 class Maxout(nn.Module):
-    def __init__(self):
+    def __init__(self, pool_size=1):
         """
         Init method.
         """
         super(Maxout, self).__init__()
+        self._pool_size = pool_size
 
     def forward(self, input):
         """
-        Forward pass of the function
+        Forward pass of the function.
         """
-        return maxout_function.apply(input)
+        assert input.shape[1] % self._pool_size == 0, \
+            'Wrong input last dim size ({}) for Maxout({})'.format(
+                input.shape[1], self._pool_size)
+        m, i = input.view(*input.shape[:1], input.shape[1] // self._pool_size,
+                      self._pool_size, *input.shape[2:]).max(2)
+        return m
 
 
 # NLReLU
@@ -471,3 +447,46 @@ class FReLU(nn.Module):
         tau = self.bn_frelu(tau)
         output = torch.max(input, tau)
         return output
+
+
+# SLAF
+
+
+class SLAF(nn.Module):
+    def __init__(self, k=2):
+        """
+        Init method.
+        """
+        super(SLAF, self).__init__()
+        self.k = k
+        self.coeff = nn.ParameterList(
+            [nn.Parameter(torch.tensor(1.0)) for i in range(k)])
+
+    def forward(self, input):
+        """
+        Forward pass of the function
+        """
+        out = sum([self.coeff[k] * torch.pow(input, k) for k in range(self.k)])
+        return out
+
+
+# AReLU
+
+
+class AReLU(nn.Module):
+    def __init__(self, alpha=0.90, beta=2.0):
+        super(AReLU, self).__init__()
+        """
+        Init method.
+        """
+        self.alpha = nn.Parameter(torch.tensor([alpha]))
+        self.beta = nn.Parameter(torch.tensor([beta]))
+
+    def forward(self, input):
+        """
+        Forward pass of the function
+        """
+        alpha = torch.clamp(self.alpha, min=0.01, max=0.99)
+        beta = 1 + torch.sigmoid(self.beta)
+
+        return F.relu(input) * beta - F.relu(-input) * alpha

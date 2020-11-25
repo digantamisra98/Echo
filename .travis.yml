@@ -13,6 +13,7 @@ cache: pip
 # Install the codecov pip dependency
 install: 
   - pip install -r requirements.txt
+  - pip install git+https://github.com/LandskapeAI/deeptest
 
 # Run the unit test
 script:

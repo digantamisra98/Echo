@@ -1,10 +1,12 @@
 import unittest
+import os
 
 import torch
 from parameterized import parameterized
 
 from echoAI.Activation.t_ops import *
 from deeptest.functional import *
+from fastcore.script import *
 
 TEST_SILU = [
     Swish(swish=False),
@@ -21,14 +23,14 @@ TEST_MISH = [
 ]
 
 
-
 class TestActivations(unittest.TestCase):
-
+    
+    tester = WolframTester(os.environ.get('WOLFRAM_API_KEY'), 'torch')
+    
     @parameterized.expand([TEST_SILU, TEST_MISH])
     def test_activations_value_shape(self, fn, fn_expr, xs, shape):
-        tester.test(fn, fn_expr, xs, shape)
+        self.tester.test(fn, fn_expr, xs, shape)
 
-
-if __name__ == "__main__":
-    tester = WolframTester('QYU645-4EGHX3JVLE', 'torch')
+@call_parse
+def main():
     unittest.main()

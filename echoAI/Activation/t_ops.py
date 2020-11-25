@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.autograd import Function, Variable
+from torch.autograd import Function
 from torch.nn.parameter import Parameter
 
 # Mish
@@ -126,19 +126,15 @@ class BReLU(nn.Module):
 # APL
 
 
-
 class APL(nn.Module):
-
     def __init__(self, s=1):
         """
         Init method.
         """
         super(APL, self).__init__()
 
-        self.a = nn.ParameterList(
-            [nn.Parameter(torch.tensor(0.2)) for _ in range(s)])
-        self.b = nn.ParameterList(
-            [nn.Parameter(torch.tensor(0.5)) for _ in range(s)])
+        self.a = nn.ParameterList([nn.Parameter(torch.tensor(0.2)) for _ in range(s)])
+        self.b = nn.ParameterList([nn.Parameter(torch.tensor(0.5)) for _ in range(s)])
         self.s = s
 
     def forward(self, input):
@@ -148,13 +144,12 @@ class APL(nn.Module):
         part_1 = torch.clamp_min(input, min=0.0)
         part_2 = 0
         for i in range(self.s):
-            part_2 += self.a[i] * torch.clamp_min(-input+self.b[i], min=0)
+            part_2 += self.a[i] * torch.clamp_min(-input + self.b[i], min=0)
 
         return part_1 + part_2
 
 
-
-# Swish/ SILU/ E-Swish/ Flatten T-Swish/ Parametric Flatten T-Swish 
+# Swish/ SILU/ E-Swish/ Flatten T-Swish/ Parametric Flatten T-Swish
 
 
 def swish_function(input, swish, eswish, beta, param):
@@ -167,7 +162,9 @@ def swish_function(input, swish, eswish, beta, param):
 
 
 class Swish(nn.Module):
-    def __init__(self, eswish=False, swish=False, beta=1.735, flatten=False, pfts=False):
+    def __init__(
+        self, eswish=False, swish=False, beta=1.735, flatten=False, pfts=False
+    ):
         """
         Init method.
         """
@@ -204,8 +201,15 @@ class Swish(nn.Module):
         if self.eswish is not False:
             return swish_function(input, self.swish, self.eswish, self.beta, self.param)
         if self.flatten is not False:
-            return (input >= 0).float() * ((input * swish_function(input, self.swish, self.eswish, self.beta, self.param)) + self.const) + (input < 0).float() * self.const
-
+            return (input >= 0).float() * (
+                (
+                    input
+                    * swish_function(
+                        input, self.swish, self.eswish, self.beta, self.param
+                    )
+                )
+                + self.const
+            ) + (input < 0).float() * self.const
 
 
 # ELisH/ Hard-ELisH
@@ -282,11 +286,17 @@ class Maxout(nn.Module):
         """
         Forward pass of the function.
         """
-        assert input.shape[1] % self._pool_size == 0, \
-            'Wrong input last dim size ({}) for Maxout({})'.format(
-                input.shape[1], self._pool_size)
-        m, i = input.view(*input.shape[:1], input.shape[1] // self._pool_size,
-                      self._pool_size, *input.shape[2:]).max(2)
+        assert (
+            input.shape[1] % self._pool_size == 0
+        ), "Wrong input last dim size ({}) for Maxout({})".format(
+            input.shape[1], self._pool_size
+        )
+        m, i = input.view(
+            *input.shape[:1],
+            input.shape[1] // self._pool_size,
+            self._pool_size,
+            *input.shape[2:]
+        ).max(2)
         return m
 
 
@@ -464,7 +474,8 @@ class SLAF(nn.Module):
         super(SLAF, self).__init__()
         self.k = k
         self.coeff = nn.ParameterList(
-            [nn.Parameter(torch.tensor(1.0)) for i in range(k)])
+            [nn.Parameter(torch.tensor(1.0)) for i in range(k)]
+        )
 
     def forward(self, input):
         """
@@ -494,7 +505,6 @@ class AReLU(nn.Module):
         beta = 1 + torch.sigmoid(self.beta)
 
         return F.relu(input) * beta - F.relu(-input) * alpha
-
 
 
 # FReLU

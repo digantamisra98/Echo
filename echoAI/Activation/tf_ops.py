@@ -1,4 +1,3 @@
-import math
 
 import tensorflow as tf
 from tensorflow.keras import backend as K
@@ -354,4 +353,3 @@ class NLReLU(Layer):
 
     def call(self, inputs):
         return tf.math.log(1 + self.beta * tf.nn.relu(inputs))
-

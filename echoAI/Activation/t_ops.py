@@ -154,7 +154,7 @@ class APL(nn.Module):
 
 
 
-# Swish/ SILU/ E-Swish/ Flatten T-Swish
+# Swish/ SILU/ E-Swish/ Flatten T-Swish/ Parametric Flatten T-Swish 
 
 
 def swish_function(input, swish, eswish, beta, param):
@@ -167,7 +167,7 @@ def swish_function(input, swish, eswish, beta, param):
 
 
 class Swish(nn.Module):
-    def __init__(self, eswish=False, swish=False, beta=1.735, flatten=False):
+    def __init__(self, eswish=False, swish=False, beta=1.735, flatten=False, pfts=False):
         """
         Init method.
         """
@@ -182,6 +182,12 @@ class Swish(nn.Module):
         if swish is not False:
             self.param = nn.Parameter(torch.randn(1))
             self.param.requires_grad = True
+        if flatten is not False:
+            if pfts is not False:
+                self.const = nn.Parameter(torch.tensor(-0.2))
+                self.const.requires_grad = True
+            else:
+                self.const = -0.2
         if eswish is not False and swish is not False and flatten is not False:
             raise RuntimeError(
                 "Advisable to run either Swish or E-Swish or Flatten T-Swish"
@@ -198,10 +204,8 @@ class Swish(nn.Module):
         if self.eswish is not False:
             return swish_function(input, self.swish, self.eswish, self.beta, self.param)
         if self.flatten is not False:
-            return torch.clamp(
-                swish_function(input, self.swish, self.eswish, self.beta, self.param),
-                min=0,
-            )
+            return (input >= 0).float() * ((input * swish_function(input, self.swish, self.eswish, self.beta, self.param)) + self.const) + (input < 0).float() * self.const
+
 
 
 # ELisH/ Hard-ELisH

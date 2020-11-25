@@ -1,0 +1,4 @@
+cache.pkl
+.ipynb_checkpoints/
+__pycache__/
+echoAI.egg-info/

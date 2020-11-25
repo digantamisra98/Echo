@@ -345,9 +345,9 @@ class SoftExponential(nn.Module):
 
         # initialize alpha
         if alpha is None:
-            self.alpha = Parameter(torch.tensor(0.0))
+            self.alpha = nn.Parameter(torch.tensor(0.0))
         else:
-            self.alpha = Parameter(torch.tensor(alpha))
+            self.alpha = nn.Parameter(torch.tensor(alpha))
 
         self.alpha.requiresGrad = True
 
@@ -429,26 +429,26 @@ class SReLU(nn.Module):
         )
 
 
-# FReLU
+# Funnel Activation
 
 
-class FReLU(nn.Module):
+class Funnel(nn.Module):
     def __init__(self, in_channels):
         """
         Init method.
         """
-        super(FReLU, self).__init__()
-        self.conv_frelu = nn.Conv2d(
+        super(Funnel, self).__init__()
+        self.conv_funnel = nn.Conv2d(
             in_channels, in_channels, 3, 1, 1, groups=in_channels
         )
-        self.bn_frelu = nn.BatchNorm2d(in_channels)
+        self.bn_funnel = nn.BatchNorm2d(in_channels)
 
     def forward(self, input):
         """
         Forward pass of the function
         """
-        tau = self.conv_frelu(input)
-        tau = self.bn_frelu(tau)
+        tau = self.conv_funnel(input)
+        tau = self.bn_funnel(tau)
         output = torch.max(input, tau)
         return output
 
@@ -494,3 +494,23 @@ class AReLU(nn.Module):
         beta = 1 + torch.sigmoid(self.beta)
 
         return F.relu(input) * beta - F.relu(-input) * alpha
+
+
+
+# FReLU
+
+
+class FReLU(nn.Module):
+    def __init__(self, in_channels):
+        """
+        Init method.
+        """
+        super(FReLU, self).__init__()
+        self.bias = nn.Parameter(torch.randn(1))
+        self.bias.requires_grad = True
+
+    def forward(self, input):
+        """
+        Forward pass of the function
+        """
+        return F.relu(input) + self.bias

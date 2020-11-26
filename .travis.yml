@@ -14,6 +14,7 @@ cache: pip
 install: 
   - pip install -r requirements.txt
   - pip install git+https://github.com/LandskapeAI/deeptest
+  - pip install .
 
 # Run the unit test
 script:

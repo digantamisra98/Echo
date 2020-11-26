@@ -29,7 +29,7 @@ install:
 # Run the unit test
 script:
   - make test
-  - coverage run tests/unit_t_ops.py
+  - coverage run tests/test_t_ops.py
  
 # Push the results back to codecov
 after_success:

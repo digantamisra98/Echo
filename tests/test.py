@@ -11,7 +11,7 @@ module_choices= ['activation', 'attention']
 def main(
             backends: Param("DL Frameworks", str, nargs='+', choices=backend_choices),
             modules: Param("Module to test", str, nargs='+', choices=module_choices),
-            api_key : Param("Wolfram | Alpha API Key", str) = "QYU645-4EGHX3JVLE"
+            api_key : Param("Wolfram | Alpha API Key", str) = "XYZ"
         ):
 
     os.environ['WOLFRAM_API_KEY'] = api_key

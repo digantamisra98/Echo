@@ -529,6 +529,8 @@ class FReLU(nn.Module):
 
 # DICE 
 
+
+
 class DICE(nn.Module):
     def __init__(self, emb_size, dim=2, epsilon=1e-8):
         super(DICE, self).__init__()
@@ -558,3 +560,114 @@ class DICE(nn.Module):
         
         return out
 
+
+
+# MPeLU
+
+
+class MPeLU(nn.Module):
+    def __init__(self, alpha=0.25, beta=1.0):
+        super(MPeLU, self).__init__()
+        """
+        Init method.
+        """
+        self.alpha = nn.Parameter(torch.tensor([alpha]))
+        self.beta = nn.Parameter(torch.tensor([beta]))
+        self.elu = nn.ELU(self.alpha)
+
+    def forward(self, input):
+        """
+        Forward pass of the function
+        """
+        return (
+            (input > 0).float() * input
+            + (input <= 0).float() * self.elu(self.beta * input)
+        )
+
+
+
+# TanhSoft
+
+
+class TanhSoft(nn.Module):
+    def __init__(self, alpha=0.0, beta=0.6, gamma=1.0, delta=0.0):
+        super(TanhSoft, self).__init__()
+        """
+        Init method.
+        """
+        self.alpha = alpha
+        self.beta = beta
+        self.gamma = gamma
+        self.delta = delta
+        if self.alpha > 1:
+            raise RuntimeError("Alpha should be less than equal to 1")
+        if self.beta < 0:
+            raise RuntimeError("Beta should be greater than equal to 0")
+        if self.gamma <= 0:
+            raise RuntimeError("Gamma should be greater than 0")
+        if self.delta > 1 or self.delta < 0:
+            raise RuntimeError("Delta should be in range of [0,1]")
+        self.elu = nn.ELU(self.alpha)
+
+    def forward(self, input):
+        """
+        Forward pass of the function
+        """
+        return (torch.tanh(self.alpha * input + self.beta * torch.exp(self.gamma * input)))*torch.log(self.delta + torch.exp(input))
+
+
+
+
+# ProbAct
+
+
+
+class ProbAct(nn.Module):
+	def __init__(self, num_parameters=1, init=0):
+        """
+        Init method.
+        """
+		self.num_parameters = num_parameters
+		super(ProbAct, self).__init__()
+		self.weight = Parameter(torch.Tensor(num_parameters).fill_(init))
+
+	def forward(self, input):
+        """
+        Forward pass of the function
+        """
+		mu = input
+
+		if mu.is_cuda:
+			eps = torch.cuda.FloatTensor(mu.size()).normal_(mean = 0, std = 1)
+		else:
+			eps = torch.FloatTensor(mu.size()).normal_(mean = 0, std = 1)
+
+		return F.relu(mu) + self.weight * eps
+
+	def extra_repr(self):
+	    return 'num_parameters={}'.format(self.num_parameters)
+
+
+
+# XUnit
+
+
+class XUnit(nn.Module):
+    def __init__(self, out_channels, kernel_size=9):
+        """
+        Init method.
+        """
+        super(XUnit,self).__init__()
+        self.module = nn.Sequential(
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(),
+            nn.Conv2d(out_channels, out_channels, kernel_size=kernel_size, stride=1, padding=((kernel_size-1)//2), groups=out_channels),
+            nn.BatchNorm2d(out_channels))
+
+    def forward(self,input):
+        """
+        Forward pass of the function
+        """
+        x1 = self.module(input)
+        out = torch.exp(-torch.mul(x1,x1))
+        return torch.mul(input,out)

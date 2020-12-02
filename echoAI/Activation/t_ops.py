@@ -524,3 +524,37 @@ class FReLU(nn.Module):
         Forward pass of the function
         """
         return F.relu(input) + self.bias
+
+
+
+# DICE 
+
+class DICE(nn.Module):
+    def __init__(self, emb_size, dim=2, epsilon=1e-8):
+        super(DICE, self).__init__()
+        assert dim == 2 or dim == 3
+
+        self.bn = nn.BatchNorm1d(emb_size, eps=epsilon)
+        self.sigmoid = nn.Sigmoid()
+        self.dim = dim
+
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+        if self.dim == 2: 
+            self.alpha = torch.zeros((emb_size,)).to(device)
+        else:
+            self.alpha = torch.zeros((emb_size, 1)).to(device)
+
+    def forward(self, input):
+        assert input.dim() == self.dim
+        if self.dim == 2:
+            x_p = self.sigmoid(self.bn(input))
+            out = self.alpha * (1 - x_p) * input + x_p * input
+        else:
+            input = torch.transpose(x, 1, 2)
+            x_p = self.sigmoid(self.bn(input))
+            out = self.alpha * (1 - x_p) * input + x_p * input
+            out = torch.transpose(out, 1, 2)
+        
+        return out
+

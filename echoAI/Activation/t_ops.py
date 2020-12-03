@@ -607,7 +607,6 @@ class TanhSoft(nn.Module):
             raise RuntimeError("Gamma should be greater than 0")
         if self.delta > 1 or self.delta < 0:
             raise RuntimeError("Delta should be in range of [0,1]")
-        self.elu = nn.ELU(self.alpha)
 
     def forward(self, input):
         """
@@ -671,3 +670,59 @@ class XUnit(nn.Module):
         x1 = self.module(input)
         out = torch.exp(-torch.mul(x1,x1))
         return torch.mul(input,out)
+
+
+
+# EIS
+
+
+class EIS(nn.Module):
+    def __init__(self, alpha, beta, gamma, delta, theta, version=0):
+        super(EIS, self).__init__()
+        """
+        Init method.
+        """
+        self.alpha = alpha
+        self.beta = beta
+        self.gamma = gamma
+        self.delta = delta
+        self.theta = theta
+        self.version = version
+        if self.alpha > 1 or self.alpha < 0:
+            raise RuntimeError("Alpha should be in range [0,1]")
+        if self.beta < 0:
+            raise RuntimeError("Beta should be greater than equal to 0")
+        if self.gamma < 0:
+            raise RuntimeError("Gamma should be greater than equal to 0")
+        if self.delta < 0:
+            raise RuntimeError("Delta should be greater than equal to 0")
+        if self.theta < 0:
+            raise RuntimeError("Theta should be greater than equal to 0")
+        if self.version is not in [0,1,2,3]:
+            raise RuntimeError("EIS Version is not supported")
+        if self.version == 1:
+            self.alpha = 1.0
+            self.beta = 0.0
+            self.gamma = 1.0
+            self.delta = 1.16
+            self.theta = 1.0
+        if self.version == 2:
+            self.alpha = 1.0
+            self.delta = 0.0
+            self.theta = 0.0
+            self.beta = 1.0
+            self.gamma = 1.0
+        if self.version == 3:
+            self.alpha = 0.0
+            self.beta = 1.0
+            self.gamma = 0.0
+            self.delta = 0.68
+            self.theta = 1.7
+
+    def forward(self, input):
+        """
+        Forward pass of the function
+        """
+        num = input * torch.pow(F.softplus(input), self.alpha)
+        den = torch.sqrt(self.beta + self.gamma * torch.pow(input, 2)) + self.delta * torch.exp(-self.theta * input)
+        return num/den

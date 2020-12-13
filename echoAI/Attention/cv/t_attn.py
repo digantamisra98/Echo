@@ -1,4 +1,5 @@
 import torch.nn as nn
+import math
 
 from echoAI.utils import torch_utils
 
@@ -122,3 +123,27 @@ class SE(nn.Module):
     def forward(self, x):
         x_out = self.ChannelGate(x)
         return x_out
+
+
+
+class ECA(nn.Module):
+    def __init__(self, channels, b=1, gamma=2):
+        super(ECA, self).__init__()
+        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+        self.channels = channels
+        self.b = b
+        self.gamma = gamma
+        self.conv = nn.Conv1d(1, 1, kernel_size=self.kernel_size(), padding=(self.kernel_size() - 1) // 2, bias=False) 
+        self.sigmoid = nn.Sigmoid()
+
+    def kernel_size(self):
+        k = int(abs((math.log2(self.channels)/self.gamma)+ self.b/self.gamma))
+        out = k if k % 2 else k+1
+        return out
+
+    def forward(self, x):
+        b, c, h, w = x.size()
+        y = self.avg_pool(x)
+        y = self.conv(y.squeeze(-1).transpose(-1, -2)).transpose(-1, -2).unsqueeze(-1)
+        y = self.sigmoid(y)
+        return x * y.expand_as(x)

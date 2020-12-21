@@ -28,7 +28,7 @@ class Flatten(nn.Module):
 class ChannelGate(nn.Module):
     def __init__(
         self,
-        gate_channels,
+        gate_channel,
         reduction_ratio=16,
         pool_types=["avg", "max"],
         bam=False,

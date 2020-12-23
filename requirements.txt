@@ -3,7 +3,7 @@
 flake8==3.7.9
 
 # Automatic code formatting
-black==19.10b0
+black==19.10
 
 # Handling Imports
 isort

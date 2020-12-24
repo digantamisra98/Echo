@@ -28,3 +28,6 @@ pillow>=7.1.0 # not directly required, pinned by Snyk to avoid a vulnerability
 
 # Primarily used for CLI parsing
 fastcore
+
+# Deep learning test suite
+git+https://github.com/LandskapeAI/deeptest 

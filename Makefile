@@ -19,5 +19,5 @@ black:
 
 lint: isort black flake
 
-test: lint
+test: 
 	python tests/test_t_ops.py

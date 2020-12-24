@@ -526,9 +526,7 @@ class FReLU(nn.Module):
         return F.relu(input) + self.bias
 
 
-
-# DICE 
-
+# DICE
 
 
 class DICE(nn.Module):
@@ -540,9 +538,9 @@ class DICE(nn.Module):
         self.sigmoid = nn.Sigmoid()
         self.dim = dim
 
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        if self.dim == 2: 
+        if self.dim == 2:
             self.alpha = torch.zeros((emb_size,)).to(device)
         else:
             self.alpha = torch.zeros((emb_size, 1)).to(device)
@@ -557,9 +555,8 @@ class DICE(nn.Module):
             x_p = self.sigmoid(self.bn(input))
             out = self.alpha * (1 - x_p) * input + x_p * input
             out = torch.transpose(out, 1, 2)
-        
-        return out
 
+        return out
 
 
 # MPeLU
@@ -579,11 +576,9 @@ class MPeLU(nn.Module):
         """
         Forward pass of the function
         """
-        return (
-            (input > 0).float() * input
-            + (input <= 0).float() * self.elu(self.beta * input)
+        return (input > 0).float() * input + (input <= 0).float() * self.elu(
+            self.beta * input
         )
-
 
 
 # TanhSoft
@@ -612,40 +607,38 @@ class TanhSoft(nn.Module):
         """
         Forward pass of the function
         """
-        return (torch.tanh(self.alpha * input + self.beta * torch.exp(self.gamma * input)))*torch.log(self.delta + torch.exp(input))
-
-
+        return (
+            torch.tanh(self.alpha * input + self.beta * torch.exp(self.gamma * input))
+        ) * torch.log(self.delta + torch.exp(input))
 
 
 # ProbAct
 
 
-
 class ProbAct(nn.Module):
-	def __init__(self, num_parameters=1, init=0):
+    def __init__(self, num_parameters=1, init=0):
         """
         Init method.
         """
-		self.num_parameters = num_parameters
-		super(ProbAct, self).__init__()
-		self.weight = Parameter(torch.Tensor(num_parameters).fill_(init))
+        self.num_parameters = num_parameters
+        super(ProbAct, self).__init__()
+        self.weight = Parameter(torch.Tensor(num_parameters).fill_(init))
 
-	def forward(self, input):
+    def forward(self, input):
         """
         Forward pass of the function
         """
-		mu = input
+        mu = input
 
-		if mu.is_cuda:
-			eps = torch.cuda.FloatTensor(mu.size()).normal_(mean = 0, std = 1)
-		else:
-			eps = torch.FloatTensor(mu.size()).normal_(mean = 0, std = 1)
+        if mu.is_cuda:
+            eps = torch.cuda.FloatTensor(mu.size()).normal_(mean=0, std=1)
+        else:
+            eps = torch.FloatTensor(mu.size()).normal_(mean=0, std=1)
 
-		return F.relu(mu) + self.weight * eps
+        return F.relu(mu) + self.weight * eps
 
-	def extra_repr(self):
-	    return 'num_parameters={}'.format(self.num_parameters)
-
+    def extra_repr(self):
+        return "num_parameters={}".format(self.num_parameters)
 
 
 # XUnit
@@ -656,21 +649,28 @@ class XUnit(nn.Module):
         """
         Init method.
         """
-        super(XUnit,self).__init__()
+        super(XUnit, self).__init__()
         self.module = nn.Sequential(
             nn.BatchNorm2d(out_channels),
             nn.ReLU(),
-            nn.Conv2d(out_channels, out_channels, kernel_size=kernel_size, stride=1, padding=((kernel_size-1)//2), groups=out_channels),
-            nn.BatchNorm2d(out_channels))
+            nn.Conv2d(
+                out_channels,
+                out_channels,
+                kernel_size=kernel_size,
+                stride=1,
+                padding=((kernel_size - 1) // 2),
+                groups=out_channels,
+            ),
+            nn.BatchNorm2d(out_channels),
+        )
 
-    def forward(self,input):
+    def forward(self, input):
         """
         Forward pass of the function
         """
         x1 = self.module(input)
-        out = torch.exp(-torch.mul(x1,x1))
-        return torch.mul(input,out)
-
+        out = torch.exp(-torch.mul(x1, x1))
+        return torch.mul(input, out)
 
 
 # EIS
@@ -698,7 +698,7 @@ class EIS(nn.Module):
             raise RuntimeError("Delta should be greater than equal to 0")
         if self.theta < 0:
             raise RuntimeError("Theta should be greater than equal to 0")
-        if self.version is not in [0,1,2,3]:
+        if self.version not in [0, 1, 2, 3]:
             raise RuntimeError("EIS Version is not supported")
         if self.version == 1:
             self.alpha = 1.0
@@ -724,5 +724,7 @@ class EIS(nn.Module):
         Forward pass of the function
         """
         num = input * torch.pow(F.softplus(input), self.alpha)
-        den = torch.sqrt(self.beta + self.gamma * torch.pow(input, 2)) + self.delta * torch.exp(-self.theta * input)
-        return num/den
+        den = torch.sqrt(
+            self.beta + self.gamma * torch.pow(input, 2)
+        ) + self.delta * torch.exp(-self.theta * input)
+        return num / den

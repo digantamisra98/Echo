@@ -1,5 +1,6 @@
-import torch.nn as nn
 import math
+
+import torch.nn as nn
 
 from echoAI.utils import torch_utils
 
@@ -125,7 +126,6 @@ class SE(nn.Module):
         return x_out
 
 
-
 class ECA(nn.Module):
     def __init__(self, channels, b=1, gamma=2):
         super(ECA, self).__init__()
@@ -133,12 +133,18 @@ class ECA(nn.Module):
         self.channels = channels
         self.b = b
         self.gamma = gamma
-        self.conv = nn.Conv1d(1, 1, kernel_size=self.kernel_size(), padding=(self.kernel_size() - 1) // 2, bias=False) 
+        self.conv = nn.Conv1d(
+            1,
+            1,
+            kernel_size=self.kernel_size(),
+            padding=(self.kernel_size() - 1) // 2,
+            bias=False,
+        )
         self.sigmoid = nn.Sigmoid()
 
     def kernel_size(self):
-        k = int(abs((math.log2(self.channels)/self.gamma)+ self.b/self.gamma))
-        out = k if k % 2 else k+1
+        k = int(abs((math.log2(self.channels) / self.gamma) + self.b / self.gamma))
+        out = k if k % 2 else k + 1
         return out
 
     def forward(self, x):

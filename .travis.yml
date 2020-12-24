@@ -1,36 +1,36 @@
-# Disable sudo to speed up the build
-sudo: false
+# # Disable sudo to speed up the build
+# sudo: false
 
-# Set the build language to Python
-language: python
+# # Set the build language to Python
+# language: python
 
-# Set the python version to 3.7
-python: 3.7
+# # Set the python version to 3.7
+# python: 3.7
 
-# Cache dependencies
-cache: pip
+# # Cache dependencies
+# cache: pip
 
-before_install:
-- |
-    if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-      TRAVIS_COMMIT_RANGE="FETCH_HEAD...$TRAVIS_BRANCH"
-    fi
-    git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '(\.md$)|(^(examples))/' || {
-      echo "Only docs were updated, stopping build process."
-      exit
-    }
+# before_install:
+# - |
+#     if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+#       TRAVIS_COMMIT_RANGE="FETCH_HEAD...$TRAVIS_BRANCH"
+#     fi
+#     git diff --name-only $TRAVIS_COMMIT_RANGE | grep -qvE '(\.md$)|(^(examples))/' || {
+#       echo "Only docs were updated, stopping build process."
+#       exit
+#     }
 
-# Install the codecov pip dependency
-install: 
-  - pip install -r requirements.txt
-  - pip install git+https://github.com/LandskapeAI/deeptest
-  - pip install .
+# # Install the codecov pip dependency
+# install: 
+#   - pip install -r requirements.txt
+#   - pip install git+https://github.com/LandskapeAI/deeptest
+#   - pip install .
 
-# Run the unit test
-script:
-  - make test
-  - coverage run tests/test_t_ops.py
+# # Run the unit test
+# script:
+#   - make test
+#   - coverage run tests/test_t_ops.py
  
-# Push the results back to codecov
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+# # Push the results back to codecov
+# after_success:
+#   - bash <(curl -s https://codecov.io/bash)

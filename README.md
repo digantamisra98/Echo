@@ -13,6 +13,8 @@
 
 *Currently under development. Next release to include activations, optimizers and attention layers. We plan to shift our documentation to GitBook. Our new release willl be out by New Year's eve.*
 
+*Update - CI and testing pipeline is fixed. We will now be adding modules to release the first full version. MegEngine will be shifted to dev branch*
+
 *Under construction Gitbook Documentation can be viewed [here](https://xa9ax.gitbook.io/echo/).*
 
 **Sphinx Documentation has been depreciated.**

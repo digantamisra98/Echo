@@ -3,6 +3,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Function
 from torch.nn.parameter import Parameter
+from torch.distributions.exponential import Exponential
+import math
+
 
 # Mish
 
@@ -620,8 +623,8 @@ class ProbAct(nn.Module):
         """
         Init method.
         """
-        self.num_parameters = num_parameters
         super(ProbAct, self).__init__()
+        self.num_parameters = num_parameters
         self.weight = Parameter(torch.Tensor(num_parameters).fill_(init))
 
     def forward(self, input):
@@ -728,3 +731,100 @@ class EIS(nn.Module):
             self.beta + self.gamma * torch.pow(input, 2)
         ) + self.delta * torch.exp(-self.theta * input)
         return num / den
+
+
+# Seagull
+
+
+class Seagull(nn.Module):
+    def __init__(self):
+        """
+        Init method.
+        """
+        super(Seagull, self).__init__()
+
+    def forward(self, input):
+        """
+        Forward pass of the function
+        """
+        return torch.log(1 + torch.pow(input, 2))
+
+
+# Snake
+
+
+class Snake(nn.Module):
+    def __init__(self, in_features, alpha = None, alpha_trainable = True):
+        """
+        Init method.
+        """
+        super(Snake,self).__init__()
+        self.in_features = in_features
+        if alpha is not None:
+            self.alpha = Parameter(torch.ones(in_features) * alpha)
+        else:            
+            m = Exponential(torch.tensor([0.1]))
+            self.alpha = Parameter(m.sample(in_features))
+
+        self.alpha.requiresGrad = alpha_trainable
+
+
+    def forward(self, x):
+        '''
+        Forward pass of the function.
+        '''
+        return  x + (1.0/self.alpha) * torch.pow(torch.sin(x * self.alpha), 2)
+
+
+# Siren
+
+
+def exists(val):
+    return val is not None
+
+class Sine(nn.Module):
+    def __init__(self, w0 = 1.):
+        """
+        Init method.
+        """
+        super().__init__()
+        self.w0 = w0
+    def forward(self, x):
+        """
+        Forward pass of the function.
+        """
+        return torch.sin(self.w0 * x)
+
+class Siren(nn.Module):
+    def __init__(self, dim_in, dim_out, w0 = 30., c = 6., is_first = False, use_bias = True, activation = None):
+        """
+        Init method.
+        """
+        super().__init__()
+        self.dim_in = dim_in
+        self.is_first = is_first
+
+        weight = torch.zeros(dim_out, dim_in)
+        bias = torch.zeros(dim_out) if use_bias else None
+        self.init_(weight, bias, c = c, w0 = w0)
+
+        self.weight = nn.Parameter(weight)
+        self.bias = nn.Parameter(bias) if use_bias else None
+        self.activation = Sine(w0) if activation is None else activation
+
+    def init_(self, weight, bias, c, w0):
+        dim = self.dim_in
+
+        w_std = (1 / dim) if self.is_first else (math.sqrt(c / dim) / w0)
+        weight.uniform_(-w_std, w_std)
+
+        if exists(bias):
+            bias.uniform_(-w_std, w_std)
+
+    def forward(self, x):
+        """
+        Forward pass of the function.
+        """
+        out =  F.linear(x, self.weight, self.bias)
+        out = self.activation(out)
+        return out

@@ -19,14 +19,6 @@ class Swish(Layer):
         return inputs * tf.math.sigmoid(self._beta * inputs)
 
 
-class SiLU(Layer):
-    def __init__(self):
-        super(SiLU, self).__init__
-
-    def call(self, inputs):
-        return inputs * tf.math.sigmoid(inputs)
-
-
 class ESwish(Layer):
     def __init__(self, beta):
         super(ESwish, self).__init__()

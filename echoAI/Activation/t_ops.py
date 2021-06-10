@@ -7,23 +7,6 @@ from torch.distributions.exponential import Exponential
 import math
 
 
-# Mish
-
-
-class Mish(nn.Module):
-    def __init__(self):
-        """
-        Init method.
-        """
-        super(Mish, self).__init__()
-
-    def forward(self, input):
-        """
-        Forward pass of the function.
-        """
-        return input * (torch.tanh(F.softplus(input)))
-
-
 # Aria 2
 
 
@@ -152,12 +135,10 @@ class APL(nn.Module):
         return part_1 + part_2
 
 
-# Swish/ SILU/ E-Swish/ Flatten T-Swish/ Parametric Flatten T-Swish
+# Swish/ E-Swish/ Flatten T-Swish/ Parametric Flatten T-Swish
 
 
 def swish_function(input, swish, eswish, beta, param):
-    if swish is False and eswish is False:
-        return input * torch.sigmoid(input)
     if swish is True and eswish is False:
         return input * torch.sigmoid(param * input)
     if eswish is True and swish is False:
@@ -197,8 +178,6 @@ class Swish(nn.Module):
         """
         Forward pass of the function.
         """
-        if self.swish is False and self.eswish is False and self.flatten is False:
-            return swish_function(input, self.swish, self.eswish, self.beta, self.param)
         if self.swish is not False:
             return swish_function(input, self.swish, self.eswish, self.beta, self.param)
         if self.eswish is not False:

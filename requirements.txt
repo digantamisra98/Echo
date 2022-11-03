@@ -31,3 +31,4 @@ fastcore
 
 # Deep learning test suite
 git+https://github.com/LandskapeAI/deeptest 
+wheel>=0.38.0 # not directly required, pinned by Snyk to avoid a vulnerability
